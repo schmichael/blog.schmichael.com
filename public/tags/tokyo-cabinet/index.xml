@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tokyo Cabinet on </title>
+    <link>/tags/tokyo-cabinet/</link>
+    <description>Recent content in Tokyo Cabinet on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 11 Aug 2009 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/tokyo-cabinet/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Switched tc-rest to webob</title>
+      <link>/2009/08/10/switched-tc-est-to-webob/</link>
+      <pubDate>Tue, 11 Aug 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/08/10/switched-tc-est-to-webob/</guid>
+      <description>&lt;p&gt;Small update on my toy tc-rest project: I switched to using &lt;a href=&#34;http://pythonpaste.org/webob/&#34;&gt;WebOb&lt;/a&gt; for creating HTTP Request and Response objects. Cleaned up the code a bit, but a real dispatcher is what&amp;#8217;s needed to really remove the cruft.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;m anxious to extend the API and add features, but I have no clue when I&amp;#8217;ll have time to touch it again. In the mean time I&amp;#8217;ve [pushed tc-rest to bitbucket.org if you want to take a look][2].&lt;/p&gt;
+
+&lt;p&gt;[2]: &lt;a href=&#34;http://bitbucket.org/schmichael/tc-rest/overview/&#34;&gt;http://bitbucket.org/schmichael/tc-rest/overview/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>TokyoCabinet &#43; fapws3 = tc-rest</title>
+      <link>/2009/08/08/tokyocabinet-fapws3-tc-rest/</link>
+      <pubDate>Sun, 09 Aug 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/08/08/tokyocabinet-fapws3-tc-rest/</guid>
+      <description>&lt;p&gt;Have you ever wondered how hard it would be to tack a RESTful HTTP interface on top of a fast key/value database like TokyoCabinet?&lt;/p&gt;
+
+&lt;p&gt;Probably not, but I did: &lt;a href=&#34;/files/tc-rest.tar.gz&#34;&gt;tc-rest.tar.gz&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Components:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://tokyocabinet.sourceforge.net/&#34;&gt;TokyoCabinet&lt;/a&gt; &amp;#8211; my favorite persistent key/value database&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://pypi.python.org/pypi/pytc/&#34;&gt;pytc&lt;/a&gt; &amp;#8211; a wonderful Python wrapper for TC&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://github.com/william-os4y/fapws3/tree/master&#34;&gt;fapws3&lt;/a&gt; &amp;#8211; a fast libev based HTTP/&lt;a href=&#34;http://www.python.org/dev/peps/pep-0333/&#34;&gt;WSGI&lt;/a&gt; server&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://code.google.com/p/simplejson/&#34;&gt;simpleson&lt;/a&gt; &amp;#8211; (or Python &amp;gt;= 2.6) for encapsulating HTTP responses&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.aminus.net/wiki/Okapi&#34;&gt;okapi&lt;/a&gt; &amp;#8211; a fantastic little static HTML page for testing HTTP APIs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Getting TokyoCabinet+pytc to work inside a &lt;a href=&#34;http://pypi.python.org/pypi/virtualenv/&#34;&gt;virtualenv&lt;/a&gt; was a bit tricky, so check out my &lt;code&gt;run.sh&lt;/code&gt; script if you&amp;#8217;re having trouble getting it to start.&lt;/p&gt;
+
+&lt;p&gt;Once you get it started, load okapi in your browser:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://localhost:8080/static/okapi.html&#34;&gt;http://localhost:8080/static/okapi.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;And then create a database by doing a POST like:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;http://localhost:8080/foo/&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;And finally store/get keys and values using GET and POST requests like:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;http://localhost:8080/foo/bar/&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;http://localhost:8080/foo/baz/&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Doing a GET request to a database URL lists keys.&lt;/p&gt;
+
+&lt;p&gt;At any rate, I had big dreams for building a system where you would store JSON, specify indexes on certain keys, and the server would maintain those indexes for you by creating ad hoc TokyoCabinet databases.&lt;/p&gt;
+
+&lt;p&gt;Instead I ended up wasting most of my time learning how to write a low-level WSGI app. I should have just used CherryPy or Django from the beginning, but I had never written a pure WSGI app before. It was a good lesson even if it meant not getting some of my features implemented.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;ll probably keep playing with this idea, but the next version will probably be based on some existing framework. Parsing &lt;code&gt;environ[&#39;PATH_INFO&#39;]&lt;/code&gt; and running &lt;code&gt;start_response(...)&lt;/code&gt; manually gets old fast.&lt;/p&gt;
+
+&lt;p&gt;fapws3 is pretty neat, but had lots of annoying rough edges. I had to manually create a &lt;code&gt;README&lt;/code&gt; file because its setup.py expects one to exist. Then I had to manually allow DELETE HTTP methods in fapws/base.py, otherwise it would return an HTML error message for me! That was a bit shocking since I was working under the assumption fapws3 is just a low-level HTTP/WSGI server.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Update&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;[If you&amp;#8217;re new to TokyoCabinet, I posted my presentation on it that I did at Portland Python meetup][9].&lt;/li&gt;
+&lt;li&gt;Someone want to benchmark this for me? Might be interesting since its made with the fastest libs available in Python for their respective tasks. I&amp;#8217;m just feeling lazy at this point. &lt;img src=&#34;http://localhost/wp-includes/images/smilies/simple-smile.png&#34; alt=&#34;:-)&#34; class=&#34;wp-smiley&#34; style=&#34;height: 1em; max-height: 1em;&#34; /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;[9]: &lt;a href=&#34;http://michael.susens-schurter.com/blog/2009/03/11/tokyo-cabinet-pytyrant-talk/&#34;&gt;http://michael.susens-schurter.com/blog/2009/03/11/tokyo-cabinet-pytyrant-talk/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Tokyo {Cabinet, [Py]Tyrant} Talk</title>
+      <link>/2009/03/11/tokyo-cabinet-pytyrant-talk/</link>
+      <pubDate>Wed, 11 Mar 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/03/11/tokyo-cabinet-pytyrant-talk/</guid>
+      <description>&lt;p&gt;I did an introductory talk on &lt;a href=&#34;http://tokyocabinet.sourceforge.net/index.html&#34;&gt;Tokyo Cabinet&lt;/a&gt;, &lt;a href=&#34;http://tokyocabinet.sourceforge.net/tyrantdoc/&#34;&gt;Tokyo Tyrant&lt;/a&gt;, &lt;a href=&#34;http://pypi.python.org/pypi/pytc/&#34;&gt;pytc&lt;/a&gt;, and &lt;a href=&#34;http://code.google.com/p/pytyrant/&#34;&gt;PyTyrant&lt;/a&gt; at the &lt;a href=&#34;http://www.pdxpython.org&#34;&gt;Portland Python User Group&lt;/a&gt; meeting last night.&lt;/p&gt;
+
+&lt;p&gt;It was definitely just an introductory talk, so if you&amp;#8217;re already familiar with these projects it probably won&amp;#8217;t be very interesting.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/tokyotalk/&#34;&gt;Slides (html)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tokyotalk/tokyotalk.html&#34;&gt;Single page (HTML version)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tokyotalk/tokyotalk.pdf&#34;&gt;Single page (PDF version)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;[reStructuredText (rst) source][9]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Errata:&lt;/strong&gt; My slides state PyTyrant 1.1.11 doesn&amp;#8217;t work with Tokyo Tyrant 1.1.17 &amp;#8212; this is &lt;em&gt;wrong.&lt;/em&gt; I don&amp;#8217;t know what I was doing yesterday, but today all my tests &lt;em&gt;work on Tokyo Tyrant 1.1.17&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;[9]: /tokyotalk/tokyotalk.txt&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

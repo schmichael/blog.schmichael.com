@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Google on </title>
+    <link>/tags/google/</link>
+    <description>Recent content in Google on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 22 Sep 2009 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/google/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Google Chrome Frame</title>
+      <link>/2009/09/22/google-chrome-frame/</link>
+      <pubDate>Tue, 22 Sep 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/09/22/google-chrome-frame/</guid>
+      <description>&lt;p&gt;I maintain a web application that must support Internet Explorer 6, so I was delighted to hear about [Google Chrome Frame][1].&lt;/p&gt;
+
+&lt;p&gt;Unfortunately their warnings of its alpha status seem to be well founded. The 2 show-stoppers I ran into fairly quickly were:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Flash is difficult to install. (Tip: Try visiting: &lt;a href=&#34;cf:http://www.adobe.com/software/flash/about/&#34;&gt;cf:http://www.adobe.com/software/flash/about/&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;The Location bar did not always change to reflect the current page.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;I&amp;#8217;ll definitely be following this project closely as it may allow corporate users stuck on IE to use a different browser relatively easily.&lt;/p&gt;
+
+&lt;p&gt;[1]: &lt;a href=&#34;http://code.google.com/chrome/chromeframe/&#34;&gt;http://code.google.com/chrome/chromeframe/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Introducing Hzzah!</title>
+      <link>/2008/07/15/introducing-hzzah/</link>
+      <pubDate>Tue, 15 Jul 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/07/15/introducing-hzzah/</guid>
+      <description>&lt;p&gt;&lt;small&gt;from the I-can-haz-a-search-engine department&amp;#8230;&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Sorry about the tacky donate link all. I tried to hide it from feed readers with WordPress&amp;#8217;s &amp;lt;!&amp;#8211;more&amp;gt; feature, but evidently that doesn&amp;#8217;t apply to feeds. &lt;img src=&#34;http://localhost/wp-includes/images/smilies/frownie.png&#34; alt=&#34;:(&#34; class=&#34;wp-smiley&#34; style=&#34;height: 1em; max-height: 1em;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;When it comes to market share, Google is to Searching as Microsoft is to Operating Systems. Thankfully Google has won their dominant position by creating a really amazing product &lt;small&gt;(you can find plenty of discussions on &lt;a href=&#34;http://en.wikipedia.org/wiki/Criticism_of_Microsoft#Business_practices&#34;&gt;why Microsoft is on top elsewhere)&lt;/a&gt;&lt;/small&gt;.&lt;/p&gt;
+
+&lt;p&gt;Recently &lt;a href=&#34;http://developer.yahoo.com/search/boss/&#34;&gt;Yahoo! opened up their search APIs&lt;/a&gt; for anyone to use along with &lt;a href=&#34;http://developer.yahoo.com/search/boss/mashup.html&#34;&gt;a handy Python library&lt;/a&gt;. In a time when Yahoo&amp;#8217;s very existence is being threatened, I felt a pang of nostalgia for the search engine that fed me decent results for &amp;#8220;free dos games&amp;#8221; throughout the mid-90s.&lt;/p&gt;
+
+&lt;p&gt;So last night I whipped up a little search engine called &lt;a href=&#34;http://hzzah.com&#34;&gt;Hzzah!&lt;/a&gt;*&lt;/p&gt;
+
+&lt;div style=&#34;clear: both; line-height: 0px; font-size: 0px;&#34;&gt;
+  &amp;nbsp;
+&lt;/div&gt;
+
+&lt;div style=&#34;float: right; clear: both;&#34;&gt;
+  &lt;a href=&#34;http://creativecommons.org/licenses/BSD/&#34;&gt;&lt;img src=&#34;http://michael.susens-schurter.com/files/40bsd.png&#34; alt=&#34;BSDtastic!&#34; /&gt;&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Features:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Simple&lt;/li&gt;
+&lt;li&gt;No ads, cookies, or even JavaScript &lt;small&gt;(at the moment at least)&lt;/small&gt;&lt;/li&gt;
+&lt;li&gt;Open Source! &lt;a href=&#34;http://creativecommons.org/licenses/BSD/&#34;&gt;BSD to be precise&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Did I mention simple? That&amp;#8217;s really all it has going for it&amp;#8230;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you have &lt;a href=&#34;http://bazaar-vcs.org/&#34;&gt;Bazaar&lt;/a&gt; installed you can grab the code a variety of ways:&lt;/p&gt;
+
+&lt;pre lang=&#34;bash&#34;&gt;# If you know Subversion, use this method.  `bzr up` will keep you up to date
+bzr checkout http://michael.susens-schurter.com/code/hzzah-public
+
+# If you want to hack on Hzzah or are comfortable with bzr, feel free to branch
+bzr branch http://michael.susens-schurter.com/code/hzzah-public hzzah-steve
+&lt;/pre&gt;
+
+&lt;p&gt;You can also &lt;a href=&#34;http://michael.susens-schurter.com/code/hzzah-public-r5.zip&#34;&gt;grab a zip&lt;/a&gt;, but its probably going to become out of date quickly.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Read the README file for help setting it up.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;And like I say in the README, if you&amp;#8217;re feeling generous, feel free to toss some cash this way:&lt;/p&gt;
+
+&lt;p&gt;[&lt;img src=&#34;https://www.paypal.com/en_US/i/btn/btn_donate_SM.gif&#34; border=&#34;0&#34; alt=&#34;PayPal - The safer, easier way to pay online!&#34; /&gt;][7]&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;* Make fun of the name all you like&amp;#8230; there&amp;#8217;s no good domain names left. The name is inspired by a friend from college for whom &lt;em&gt;huzzah&lt;/em&gt; was her exclamation of choice.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;[7]: &lt;a href=&#34;https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;amp;business=mschurter%40yahoo%2ecom&amp;amp;item_name=hzzah%2ecom%20by%20Michael%20Schurter&amp;amp;item_number=1337&amp;amp;no_shipping=0&amp;amp;no_note=1&amp;amp;tax=0&amp;amp;currency_code=USD&amp;amp;lc=US&amp;amp;bn=PP%2dDonationsBF&amp;amp;charset=UTF%2d8&#34;&gt;https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;amp;business=mschurter%40yahoo%2ecom&amp;amp;item_name=hzzah%2ecom%20by%20Michael%20Schurter&amp;amp;item_number=1337&amp;amp;no_shipping=0&amp;amp;no_note=1&amp;amp;tax=0&amp;amp;currency_code=USD&amp;amp;lc=US&amp;amp;bn=PP%2dDonationsBF&amp;amp;charset=UTF%2d8&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

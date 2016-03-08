@@ -1,3 +1,21 @@
-url: http://localhost/
-name: 'schmichael&#039;s blog'
-description: good good study, day day up
+baseurl: https://blog.schmichael.com/
+title: schmichael's blog
+theme: "herring-cove"
+permalinks:
+        post: /:year/:month/:day/:title/
+params:
+        # From Hugo docs
+        AuthorName: "Michael Schurter"
+
+        # From heather-hugo docs
+        author:
+                name: "Michael Schurter"
+                email: "m+blog@schmichael.com"
+        GitHubUser: "schmichael"
+
+        # From Herring Cove docs
+        links:
+                Home : "/"
+                Blog: "/blog/"
+                About: "/about-me/"
+

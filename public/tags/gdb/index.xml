@@ -1,0 +1,680 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gdb on </title>
+    <link>/tags/gdb/</link>
+    <description>Recent content in Gdb on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 02 Apr 2014 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/gdb/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Debugging Go 1.2 on Ubuntu 13.10 with GDB</title>
+      <link>/2014/04/02/debugging-go-1-2-on-ubuntu-13-10-with-gdb/</link>
+      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/2014/04/02/debugging-go-1-2-on-ubuntu-13-10-with-gdb/</guid>
+      <description>&lt;p&gt;While the &lt;a href=&#34;http://golang.org/doc/gdb&#34;&gt;Debugging Go Code with GDB&lt;/a&gt; documentation is fantastic, it unfortunately doesn&amp;#8217;t work out of the box with Ubuntu 13.10. If you try it you&amp;#8217;ll probably see an error similar to:&lt;/p&gt;
+
+&lt;p&gt;The problem is that Ubuntu 13.10 links GDB against Python 3.3 while the script golang ships is for Python 2. &lt;a href=&#34;https://code.google.com/p/go/issues/detail?id=6698&#34;&gt;Someone has already filed an issue, and it appears to be fixed&lt;/a&gt; upstream (so expect Go 1.3 to Just Work).&lt;/p&gt;
+
+&lt;p&gt;Luckily backporting the fix is easy. Simply move your existing &lt;code&gt;runtime-gdb.py&lt;/code&gt; out of the way and [download the upstream version][3] in its place.&lt;/p&gt;
+
+&lt;p&gt;If your &lt;code&gt;$GOROOT&lt;/code&gt; is &lt;code&gt;/usr/local/go&lt;/code&gt; the following should Just Work:&lt;/p&gt;
+
+&lt;p&gt;[3]: &lt;a href=&#34;https://go.googlecode.com/hg/src/pkg/runtime/runtime-gdb.py&#34;&gt;https://go.googlecode.com/hg/src/pkg/runtime/runtime-gdb.py&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>A Complete Noobs Guide to Hacking Nginx</title>
+      <link>/2010/12/28/noobs-guide-to-hacking-nginx/</link>
+      <pubDate>Wed, 29 Dec 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/2010/12/28/noobs-guide-to-hacking-nginx/</guid>
+      <description>&lt;p&gt;At &lt;a href=&#34;http://urbanairship.com&#34;&gt;Urban Airship&lt;/a&gt; our &lt;a href=&#34;http://en.wikipedia.org/wiki/Representational_State_Transfer#RESTful_web_services&#34;&gt;RESTful HTTP API&lt;/a&gt; uses PUT requests for, among other things, &lt;a href=&#34;http://urbanairship.com/docs/push.html#registration&#34;&gt;registering a device&lt;/a&gt;. Since the application registering the device is the HTTP Basic Auth username, there&amp;#8217;s often no body (&lt;a href=&#34;http://www.w3.org/Protocols/rfc2616/rfc2616-sec7.html#sec7.2&#34;&gt;entity body&lt;/a&gt; in HTTP parlance). Unfortunately &lt;a href=&#34;http://wiki.nginx.org&#34;&gt;nginx&lt;/a&gt; (as of 0.8.54, and I believe 0.9.3) doesn&amp;#8217;t support PUT requests without a Content-Length header and responds with a 411 Length Required response. While the &lt;a href=&#34;http://wiki.nginx.org/HttpChunkinModule&#34;&gt;chunkin&lt;/a&gt; module adds Transfer-Encoding: chunked support, it doesn&amp;#8217;t fix the empty PUT problem since HTTP requests without bodies don&amp;#8217;t require Content-Length nor Transfer-Encoding headers.&lt;/p&gt;
+
+&lt;p&gt;So let&amp;#8217;s hack nginx shall we?&lt;/p&gt;
+
+&lt;p&gt;I know a bit of C but am primarily a Python developer, so hacking an established C project doesn&amp;#8217;t come easily to me. To make matters worse, as far as I can tell there&amp;#8217;s no official public source repository (&lt;a href=&#34;https://github.com/git-mirror/nginx&#34;&gt;but there&amp;#8217;s a mirror&lt;/a&gt;) and it seems to be mainly developed by the creator, &lt;a href=&#34;http://sysoev.ru/en/&#34;&gt;Igor Sysoev&lt;/a&gt;. At least the code looks clean.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;First Pass&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I had &lt;a href=&#34;http://nginx.org/download/nginx-0.8.54.tar.gz&#34;&gt;nginx-0.8.54.tar.gz&lt;/a&gt; handy from compiling the source and nginx was nice enough to log an error for PUTs without Content-Length:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;client sent PUT method without &amp;#8220;Content-Length&amp;#8221; header while reading client request headers, client: &amp;#8230;, server: , request: &amp;#8220;PUT / HTTP/1.1&amp;#8221; &amp;#8230;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;So let&amp;#8217;s use &lt;a href=&#34;http://betterthangrep.com/&#34;&gt;ack&lt;/a&gt; to find it:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://schmichael.com/files/nginx-01-ack.png&#34; alt=&#34;ack-grep &#39;client sent .* method without&#39;&#34; title=&#34;ack-grep &#39;client sent .* method without&#39;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;A quick &lt;code&gt;vim +1532 src/http/ngx_http_request.c&lt;/code&gt; later and we&amp;#8217;re looking at the problem:&lt;/p&gt;
+
+&lt;pre lang=&#34;c&#34;&gt;if (r-&gt;method &amp;#038; NGX_HTTP_PUT &amp;#038;&amp;#038; r-&gt;headers_in.content_length_n == -1) {
+        ngx_log_error(NGX_LOG_INFO, r-&gt;connection-&gt;log, 0,
+                  &#34;client sent %V method without \&#34;Content-Length\&#34; header&#34;,
+                  &amp;#038;r-&gt;method_name);
+        ngx_http_finalize_request(r, NGX_HTTP_LENGTH_REQUIRED);
+        return NGX_ERROR;
+    }&lt;/pre&gt;
+
+&lt;p&gt;This code returns the 411 Length Required response for PUTs lacking a Content-Length header. Remove it, recompile (&lt;code&gt;make -j2 &amp;amp;#038;&amp;amp;#038; sudo make install &amp;amp;#038;&amp;amp;#038; sudo service nginx restart&lt;/code&gt;), and test:&lt;/p&gt;
+
+&lt;p&gt;``At &lt;a href=&#34;http://urbanairship.com&#34;&gt;Urban Airship&lt;/a&gt; our &lt;a href=&#34;http://en.wikipedia.org/wiki/Representational_State_Transfer#RESTful_web_services&#34;&gt;RESTful HTTP API&lt;/a&gt; uses PUT requests for, among other things, &lt;a href=&#34;http://urbanairship.com/docs/push.html#registration&#34;&gt;registering a device&lt;/a&gt;. Since the application registering the device is the HTTP Basic Auth username, there&amp;#8217;s often no body (&lt;a href=&#34;http://www.w3.org/Protocols/rfc2616/rfc2616-sec7.html#sec7.2&#34;&gt;entity body&lt;/a&gt; in HTTP parlance). Unfortunately &lt;a href=&#34;http://wiki.nginx.org&#34;&gt;nginx&lt;/a&gt; (as of 0.8.54, and I believe 0.9.3) doesn&amp;#8217;t support PUT requests without a Content-Length header and responds with a 411 Length Required response. While the &lt;a href=&#34;http://wiki.nginx.org/HttpChunkinModule&#34;&gt;chunkin&lt;/a&gt; module adds Transfer-Encoding: chunked support, it doesn&amp;#8217;t fix the empty PUT problem since HTTP requests without bodies don&amp;#8217;t require Content-Length nor Transfer-Encoding headers.&lt;/p&gt;
+
+&lt;p&gt;So let&amp;#8217;s hack nginx shall we?&lt;/p&gt;
+
+&lt;p&gt;I know a bit of C but am primarily a Python developer, so hacking an established C project doesn&amp;#8217;t come easily to me. To make matters worse, as far as I can tell there&amp;#8217;s no official public source repository (&lt;a href=&#34;https://github.com/git-mirror/nginx&#34;&gt;but there&amp;#8217;s a mirror&lt;/a&gt;) and it seems to be mainly developed by the creator, &lt;a href=&#34;http://sysoev.ru/en/&#34;&gt;Igor Sysoev&lt;/a&gt;. At least the code looks clean.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;First Pass&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I had &lt;a href=&#34;http://nginx.org/download/nginx-0.8.54.tar.gz&#34;&gt;nginx-0.8.54.tar.gz&lt;/a&gt; handy from compiling the source and nginx was nice enough to log an error for PUTs without Content-Length:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;client sent PUT method without &amp;#8220;Content-Length&amp;#8221; header while reading client request headers, client: &amp;#8230;, server: , request: &amp;#8220;PUT / HTTP/1.1&amp;#8221; &amp;#8230;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;So let&amp;#8217;s use &lt;a href=&#34;http://betterthangrep.com/&#34;&gt;ack&lt;/a&gt; to find it:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://schmichael.com/files/nginx-01-ack.png&#34; alt=&#34;ack-grep &#39;client sent .* method without&#39;&#34; title=&#34;ack-grep &#39;client sent .* method without&#39;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;A quick &lt;code&gt;vim +1532 src/http/ngx_http_request.c&lt;/code&gt; later and we&amp;#8217;re looking at the problem:&lt;/p&gt;
+
+&lt;pre lang=&#34;c&#34;&gt;if (r-&gt;method &amp;#038; NGX_HTTP_PUT &amp;#038;&amp;#038; r-&gt;headers_in.content_length_n == -1) {
+        ngx_log_error(NGX_LOG_INFO, r-&gt;connection-&gt;log, 0,
+                  &#34;client sent %V method without \&#34;Content-Length\&#34; header&#34;,
+                  &amp;#038;r-&gt;method_name);
+        ngx_http_finalize_request(r, NGX_HTTP_LENGTH_REQUIRED);
+        return NGX_ERROR;
+    }&lt;/pre&gt;
+
+&lt;p&gt;This code returns the 411 Length Required response for PUTs lacking a Content-Length header. Remove it, recompile (&lt;code&gt;make -j2 &amp;amp;#038;&amp;amp;#038; sudo make install &amp;amp;#038;&amp;amp;#038; sudo service nginx restart&lt;/code&gt;), and test:&lt;/p&gt;
+
+&lt;p&gt;``&lt;/p&gt;
+
+&lt;p&gt;Success! Now create a patch &lt;code&gt;diff -ru nginx-0.8.54 nginx &amp;gt; fix-empty-put.patch&lt;/code&gt; and &lt;a href=&#34;http://nginx.org/pipermail/nginx-devel/2010-December/000605.html&#34;&gt;post it to the nginx-devel mailing list&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now to play Minecraft for 12 hours as you wait for the Russian developers to wake up and take notice of your patch. Possibly sleep.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Second Pass: Fixing WebDAV&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;A positive &lt;a href=&#34;http://nginx.org/pipermail/nginx-devel/2010-December/000606.html&#34;&gt;reply from Maxim Dounin to my patch&lt;/a&gt;! I don&amp;rsquo;t use WebDAV though, but if I want this patch accepted I better make sure it doesn&amp;rsquo;t break official modules.&lt;/p&gt;
+
+&lt;p&gt;This time around I wanted to work locally, so I installed nginx with the following configuration:&lt;/p&gt;
+
+&lt;p&gt;```At &lt;a href=&#34;http://urbanairship.com&#34;&gt;Urban Airship&lt;/a&gt; our &lt;a href=&#34;http://en.wikipedia.org/wiki/Representational_State_Transfer#RESTful_web_services&#34;&gt;RESTful HTTP API&lt;/a&gt; uses PUT requests for, among other things, &lt;a href=&#34;http://urbanairship.com/docs/push.html#registration&#34;&gt;registering a device&lt;/a&gt;. Since the application registering the device is the HTTP Basic Auth username, there&amp;#8217;s often no body (&lt;a href=&#34;http://www.w3.org/Protocols/rfc2616/rfc2616-sec7.html#sec7.2&#34;&gt;entity body&lt;/a&gt; in HTTP parlance). Unfortunately &lt;a href=&#34;http://wiki.nginx.org&#34;&gt;nginx&lt;/a&gt; (as of 0.8.54, and I believe 0.9.3) doesn&amp;#8217;t support PUT requests without a Content-Length header and responds with a 411 Length Required response. While the &lt;a href=&#34;http://wiki.nginx.org/HttpChunkinModule&#34;&gt;chunkin&lt;/a&gt; module adds Transfer-Encoding: chunked support, it doesn&amp;#8217;t fix the empty PUT problem since HTTP requests without bodies don&amp;#8217;t require Content-Length nor Transfer-Encoding headers.&lt;/p&gt;
+
+&lt;p&gt;So let&amp;#8217;s hack nginx shall we?&lt;/p&gt;
+
+&lt;p&gt;I know a bit of C but am primarily a Python developer, so hacking an established C project doesn&amp;#8217;t come easily to me. To make matters worse, as far as I can tell there&amp;#8217;s no official public source repository (&lt;a href=&#34;https://github.com/git-mirror/nginx&#34;&gt;but there&amp;#8217;s a mirror&lt;/a&gt;) and it seems to be mainly developed by the creator, &lt;a href=&#34;http://sysoev.ru/en/&#34;&gt;Igor Sysoev&lt;/a&gt;. At least the code looks clean.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;First Pass&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I had &lt;a href=&#34;http://nginx.org/download/nginx-0.8.54.tar.gz&#34;&gt;nginx-0.8.54.tar.gz&lt;/a&gt; handy from compiling the source and nginx was nice enough to log an error for PUTs without Content-Length:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;client sent PUT method without &amp;#8220;Content-Length&amp;#8221; header while reading client request headers, client: &amp;#8230;, server: , request: &amp;#8220;PUT / HTTP/1.1&amp;#8221; &amp;#8230;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;So let&amp;#8217;s use &lt;a href=&#34;http://betterthangrep.com/&#34;&gt;ack&lt;/a&gt; to find it:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://schmichael.com/files/nginx-01-ack.png&#34; alt=&#34;ack-grep &#39;client sent .* method without&#39;&#34; title=&#34;ack-grep &#39;client sent .* method without&#39;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;A quick &lt;code&gt;vim +1532 src/http/ngx_http_request.c&lt;/code&gt; later and we&amp;#8217;re looking at the problem:&lt;/p&gt;
+
+&lt;pre lang=&#34;c&#34;&gt;if (r-&gt;method &amp;#038; NGX_HTTP_PUT &amp;#038;&amp;#038; r-&gt;headers_in.content_length_n == -1) {
+        ngx_log_error(NGX_LOG_INFO, r-&gt;connection-&gt;log, 0,
+                  &#34;client sent %V method without \&#34;Content-Length\&#34; header&#34;,
+                  &amp;#038;r-&gt;method_name);
+        ngx_http_finalize_request(r, NGX_HTTP_LENGTH_REQUIRED);
+        return NGX_ERROR;
+    }&lt;/pre&gt;
+
+&lt;p&gt;This code returns the 411 Length Required response for PUTs lacking a Content-Length header. Remove it, recompile (&lt;code&gt;make -j2 &amp;amp;#038;&amp;amp;#038; sudo make install &amp;amp;#038;&amp;amp;#038; sudo service nginx restart&lt;/code&gt;), and test:&lt;/p&gt;
+
+&lt;p&gt;``At &lt;a href=&#34;http://urbanairship.com&#34;&gt;Urban Airship&lt;/a&gt; our &lt;a href=&#34;http://en.wikipedia.org/wiki/Representational_State_Transfer#RESTful_web_services&#34;&gt;RESTful HTTP API&lt;/a&gt; uses PUT requests for, among other things, &lt;a href=&#34;http://urbanairship.com/docs/push.html#registration&#34;&gt;registering a device&lt;/a&gt;. Since the application registering the device is the HTTP Basic Auth username, there&amp;#8217;s often no body (&lt;a href=&#34;http://www.w3.org/Protocols/rfc2616/rfc2616-sec7.html#sec7.2&#34;&gt;entity body&lt;/a&gt; in HTTP parlance). Unfortunately &lt;a href=&#34;http://wiki.nginx.org&#34;&gt;nginx&lt;/a&gt; (as of 0.8.54, and I believe 0.9.3) doesn&amp;#8217;t support PUT requests without a Content-Length header and responds with a 411 Length Required response. While the &lt;a href=&#34;http://wiki.nginx.org/HttpChunkinModule&#34;&gt;chunkin&lt;/a&gt; module adds Transfer-Encoding: chunked support, it doesn&amp;#8217;t fix the empty PUT problem since HTTP requests without bodies don&amp;#8217;t require Content-Length nor Transfer-Encoding headers.&lt;/p&gt;
+
+&lt;p&gt;So let&amp;#8217;s hack nginx shall we?&lt;/p&gt;
+
+&lt;p&gt;I know a bit of C but am primarily a Python developer, so hacking an established C project doesn&amp;#8217;t come easily to me. To make matters worse, as far as I can tell there&amp;#8217;s no official public source repository (&lt;a href=&#34;https://github.com/git-mirror/nginx&#34;&gt;but there&amp;#8217;s a mirror&lt;/a&gt;) and it seems to be mainly developed by the creator, &lt;a href=&#34;http://sysoev.ru/en/&#34;&gt;Igor Sysoev&lt;/a&gt;. At least the code looks clean.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;First Pass&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I had &lt;a href=&#34;http://nginx.org/download/nginx-0.8.54.tar.gz&#34;&gt;nginx-0.8.54.tar.gz&lt;/a&gt; handy from compiling the source and nginx was nice enough to log an error for PUTs without Content-Length:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;client sent PUT method without &amp;#8220;Content-Length&amp;#8221; header while reading client request headers, client: &amp;#8230;, server: , request: &amp;#8220;PUT / HTTP/1.1&amp;#8221; &amp;#8230;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;So let&amp;#8217;s use &lt;a href=&#34;http://betterthangrep.com/&#34;&gt;ack&lt;/a&gt; to find it:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://schmichael.com/files/nginx-01-ack.png&#34; alt=&#34;ack-grep &#39;client sent .* method without&#39;&#34; title=&#34;ack-grep &#39;client sent .* method without&#39;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;A quick &lt;code&gt;vim +1532 src/http/ngx_http_request.c&lt;/code&gt; later and we&amp;#8217;re looking at the problem:&lt;/p&gt;
+
+&lt;pre lang=&#34;c&#34;&gt;if (r-&gt;method &amp;#038; NGX_HTTP_PUT &amp;#038;&amp;#038; r-&gt;headers_in.content_length_n == -1) {
+        ngx_log_error(NGX_LOG_INFO, r-&gt;connection-&gt;log, 0,
+                  &#34;client sent %V method without \&#34;Content-Length\&#34; header&#34;,
+                  &amp;#038;r-&gt;method_name);
+        ngx_http_finalize_request(r, NGX_HTTP_LENGTH_REQUIRED);
+        return NGX_ERROR;
+    }&lt;/pre&gt;
+
+&lt;p&gt;This code returns the 411 Length Required response for PUTs lacking a Content-Length header. Remove it, recompile (&lt;code&gt;make -j2 &amp;amp;#038;&amp;amp;#038; sudo make install &amp;amp;#038;&amp;amp;#038; sudo service nginx restart&lt;/code&gt;), and test:&lt;/p&gt;
+
+&lt;p&gt;``&lt;/p&gt;
+
+&lt;p&gt;Success! Now create a patch &lt;code&gt;diff -ru nginx-0.8.54 nginx &amp;gt; fix-empty-put.patch&lt;/code&gt; and &lt;a href=&#34;http://nginx.org/pipermail/nginx-devel/2010-December/000605.html&#34;&gt;post it to the nginx-devel mailing list&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now to play Minecraft for 12 hours as you wait for the Russian developers to wake up and take notice of your patch. Possibly sleep.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Second Pass: Fixing WebDAV&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;A positive &lt;a href=&#34;http://nginx.org/pipermail/nginx-devel/2010-December/000606.html&#34;&gt;reply from Maxim Dounin to my patch&lt;/a&gt;! I don&amp;rsquo;t use WebDAV though, but if I want this patch accepted I better make sure it doesn&amp;rsquo;t break official modules.&lt;/p&gt;
+
+&lt;p&gt;This time around I wanted to work locally, so I installed nginx with the following configuration:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+Note that I set the prefix to a path in my home directory, turned on debugging and the dav module, and set nginx to run as my user and group. A quick symlink from /home/schmichael/local/nginx/sbin/nginx to ~/bin/nginx, and I can start and restart nginx quickly and easily. More importantly I can attach a debugger to it.
+
+The importance of being able to attach a debugger became clear as soon as I tested [dav support (with their standard config)][14]:
+  
+````At [Urban Airship][1] our [RESTful HTTP API][2] uses PUT requests for, among other things, [registering a device][3]. Since the application registering the device is the HTTP Basic Auth username, there&amp;amp;#8217;s often no body ([entity body][4] in HTTP parlance). Unfortunately [nginx][5] (as of 0.8.54, and I believe 0.9.3) doesn&amp;amp;#8217;t support PUT requests without a Content-Length header and responds with a 411 Length Required response. While the [chunkin][6] module adds Transfer-Encoding: chunked support, it doesn&amp;amp;#8217;t fix the empty PUT problem since HTTP requests without bodies don&amp;amp;#8217;t require Content-Length nor Transfer-Encoding headers.
+
+So let&amp;amp;#8217;s hack nginx shall we?
+
+I know a bit of C but am primarily a Python developer, so hacking an established C project doesn&amp;amp;#8217;t come easily to me. To make matters worse, as far as I can tell there&amp;amp;#8217;s no official public source repository ([but there&amp;amp;#8217;s a mirror][7]) and it seems to be mainly developed by the creator, [Igor Sysoev][8]. At least the code looks clean.
+
+**First Pass**
+
+I had [nginx-0.8.54.tar.gz][9] handy from compiling the source and nginx was nice enough to log an error for PUTs without Content-Length:
+
+&amp;gt; client sent PUT method without &amp;amp;#8220;Content-Length&amp;amp;#8221; header while reading client request headers, client: &amp;amp;#8230;, server: , request: &amp;amp;#8220;PUT / HTTP/1.1&amp;amp;#8221; &amp;amp;#8230; 
+
+So let&amp;amp;#8217;s use [ack][10] to find it:
+
+![ack-grep &#39;client sent .* method without&#39;][11]
+
+A quick `vim +1532 src/http/ngx_http_request.c` later and we&amp;amp;#8217;re looking at the problem:
+
+&amp;lt;pre lang=&amp;quot;c&amp;quot;&amp;gt;if (r-&amp;gt;method &amp;amp;#038; NGX_HTTP_PUT &amp;amp;#038;&amp;amp;#038; r-&amp;gt;headers_in.content_length_n == -1) {
+        ngx_log_error(NGX_LOG_INFO, r-&amp;gt;connection-&amp;gt;log, 0,
+                  &amp;quot;client sent %V method without \&amp;quot;Content-Length\&amp;quot; header&amp;quot;,
+                  &amp;amp;#038;r-&amp;gt;method_name);
+        ngx_http_finalize_request(r, NGX_HTTP_LENGTH_REQUIRED);
+        return NGX_ERROR;
+    }&amp;lt;/pre&amp;gt;
+
+This code returns the 411 Length Required response for PUTs lacking a Content-Length header. Remove it, recompile (`make -j2 &amp;amp;#038;&amp;amp;#038; sudo make install &amp;amp;#038;&amp;amp;#038; sudo service nginx restart`), and test:
+
+``At [Urban Airship][1] our [RESTful HTTP API][2] uses PUT requests for, among other things, [registering a device][3]. Since the application registering the device is the HTTP Basic Auth username, there&amp;amp;#8217;s often no body ([entity body][4] in HTTP parlance). Unfortunately [nginx][5] (as of 0.8.54, and I believe 0.9.3) doesn&amp;amp;#8217;t support PUT requests without a Content-Length header and responds with a 411 Length Required response. While the [chunkin][6] module adds Transfer-Encoding: chunked support, it doesn&amp;amp;#8217;t fix the empty PUT problem since HTTP requests without bodies don&amp;amp;#8217;t require Content-Length nor Transfer-Encoding headers.
+
+So let&amp;amp;#8217;s hack nginx shall we?
+
+I know a bit of C but am primarily a Python developer, so hacking an established C project doesn&amp;amp;#8217;t come easily to me. To make matters worse, as far as I can tell there&amp;amp;#8217;s no official public source repository ([but there&amp;amp;#8217;s a mirror][7]) and it seems to be mainly developed by the creator, [Igor Sysoev][8]. At least the code looks clean.
+
+**First Pass**
+
+I had [nginx-0.8.54.tar.gz][9] handy from compiling the source and nginx was nice enough to log an error for PUTs without Content-Length:
+
+&amp;gt; client sent PUT method without &amp;amp;#8220;Content-Length&amp;amp;#8221; header while reading client request headers, client: &amp;amp;#8230;, server: , request: &amp;amp;#8220;PUT / HTTP/1.1&amp;amp;#8221; &amp;amp;#8230; 
+
+So let&amp;amp;#8217;s use [ack][10] to find it:
+
+![ack-grep &#39;client sent .* method without&#39;][11]
+
+A quick `vim +1532 src/http/ngx_http_request.c` later and we&amp;amp;#8217;re looking at the problem:
+
+&amp;lt;pre lang=&amp;quot;c&amp;quot;&amp;gt;if (r-&amp;gt;method &amp;amp;#038; NGX_HTTP_PUT &amp;amp;#038;&amp;amp;#038; r-&amp;gt;headers_in.content_length_n == -1) {
+        ngx_log_error(NGX_LOG_INFO, r-&amp;gt;connection-&amp;gt;log, 0,
+                  &amp;quot;client sent %V method without \&amp;quot;Content-Length\&amp;quot; header&amp;quot;,
+                  &amp;amp;#038;r-&amp;gt;method_name);
+        ngx_http_finalize_request(r, NGX_HTTP_LENGTH_REQUIRED);
+        return NGX_ERROR;
+    }&amp;lt;/pre&amp;gt;
+
+This code returns the 411 Length Required response for PUTs lacking a Content-Length header. Remove it, recompile (`make -j2 &amp;amp;#038;&amp;amp;#038; sudo make install &amp;amp;#038;&amp;amp;#038; sudo service nginx restart`), and test:
+
+`` 
+
+Success! Now create a patch `diff -ru nginx-0.8.54 nginx &amp;gt; fix-empty-put.patch` and [post it to the nginx-devel mailing list][12].
+
+Now to play Minecraft for 12 hours as you wait for the Russian developers to wake up and take notice of your patch. Possibly sleep.
+
+**Second Pass: Fixing WebDAV**
+
+A positive [reply from Maxim Dounin to my patch][13]! I don&#39;t use WebDAV though, but if I want this patch accepted I better make sure it doesn&#39;t break official modules.
+
+This time around I wanted to work locally, so I installed nginx with the following configuration:
+
+```At [Urban Airship][1] our [RESTful HTTP API][2] uses PUT requests for, among other things, [registering a device][3]. Since the application registering the device is the HTTP Basic Auth username, there&amp;amp;#8217;s often no body ([entity body][4] in HTTP parlance). Unfortunately [nginx][5] (as of 0.8.54, and I believe 0.9.3) doesn&amp;amp;#8217;t support PUT requests without a Content-Length header and responds with a 411 Length Required response. While the [chunkin][6] module adds Transfer-Encoding: chunked support, it doesn&amp;amp;#8217;t fix the empty PUT problem since HTTP requests without bodies don&amp;amp;#8217;t require Content-Length nor Transfer-Encoding headers.
+
+So let&amp;amp;#8217;s hack nginx shall we?
+
+I know a bit of C but am primarily a Python developer, so hacking an established C project doesn&amp;amp;#8217;t come easily to me. To make matters worse, as far as I can tell there&amp;amp;#8217;s no official public source repository ([but there&amp;amp;#8217;s a mirror][7]) and it seems to be mainly developed by the creator, [Igor Sysoev][8]. At least the code looks clean.
+
+**First Pass**
+
+I had [nginx-0.8.54.tar.gz][9] handy from compiling the source and nginx was nice enough to log an error for PUTs without Content-Length:
+
+&amp;gt; client sent PUT method without &amp;amp;#8220;Content-Length&amp;amp;#8221; header while reading client request headers, client: &amp;amp;#8230;, server: , request: &amp;amp;#8220;PUT / HTTP/1.1&amp;amp;#8221; &amp;amp;#8230; 
+
+So let&amp;amp;#8217;s use [ack][10] to find it:
+
+![ack-grep &#39;client sent .* method without&#39;][11]
+
+A quick `vim +1532 src/http/ngx_http_request.c` later and we&amp;amp;#8217;re looking at the problem:
+
+&amp;lt;pre lang=&amp;quot;c&amp;quot;&amp;gt;if (r-&amp;gt;method &amp;amp;#038; NGX_HTTP_PUT &amp;amp;#038;&amp;amp;#038; r-&amp;gt;headers_in.content_length_n == -1) {
+        ngx_log_error(NGX_LOG_INFO, r-&amp;gt;connection-&amp;gt;log, 0,
+                  &amp;quot;client sent %V method without \&amp;quot;Content-Length\&amp;quot; header&amp;quot;,
+                  &amp;amp;#038;r-&amp;gt;method_name);
+        ngx_http_finalize_request(r, NGX_HTTP_LENGTH_REQUIRED);
+        return NGX_ERROR;
+    }&amp;lt;/pre&amp;gt;
+
+This code returns the 411 Length Required response for PUTs lacking a Content-Length header. Remove it, recompile (`make -j2 &amp;amp;#038;&amp;amp;#038; sudo make install &amp;amp;#038;&amp;amp;#038; sudo service nginx restart`), and test:
+
+``At [Urban Airship][1] our [RESTful HTTP API][2] uses PUT requests for, among other things, [registering a device][3]. Since the application registering the device is the HTTP Basic Auth username, there&amp;amp;#8217;s often no body ([entity body][4] in HTTP parlance). Unfortunately [nginx][5] (as of 0.8.54, and I believe 0.9.3) doesn&amp;amp;#8217;t support PUT requests without a Content-Length header and responds with a 411 Length Required response. While the [chunkin][6] module adds Transfer-Encoding: chunked support, it doesn&amp;amp;#8217;t fix the empty PUT problem since HTTP requests without bodies don&amp;amp;#8217;t require Content-Length nor Transfer-Encoding headers.
+
+So let&amp;amp;#8217;s hack nginx shall we?
+
+I know a bit of C but am primarily a Python developer, so hacking an established C project doesn&amp;amp;#8217;t come easily to me. To make matters worse, as far as I can tell there&amp;amp;#8217;s no official public source repository ([but there&amp;amp;#8217;s a mirror][7]) and it seems to be mainly developed by the creator, [Igor Sysoev][8]. At least the code looks clean.
+
+**First Pass**
+
+I had [nginx-0.8.54.tar.gz][9] handy from compiling the source and nginx was nice enough to log an error for PUTs without Content-Length:
+
+&amp;gt; client sent PUT method without &amp;amp;#8220;Content-Length&amp;amp;#8221; header while reading client request headers, client: &amp;amp;#8230;, server: , request: &amp;amp;#8220;PUT / HTTP/1.1&amp;amp;#8221; &amp;amp;#8230; 
+
+So let&amp;amp;#8217;s use [ack][10] to find it:
+
+![ack-grep &#39;client sent .* method without&#39;][11]
+
+A quick `vim +1532 src/http/ngx_http_request.c` later and we&amp;amp;#8217;re looking at the problem:
+
+&amp;lt;pre lang=&amp;quot;c&amp;quot;&amp;gt;if (r-&amp;gt;method &amp;amp;#038; NGX_HTTP_PUT &amp;amp;#038;&amp;amp;#038; r-&amp;gt;headers_in.content_length_n == -1) {
+        ngx_log_error(NGX_LOG_INFO, r-&amp;gt;connection-&amp;gt;log, 0,
+                  &amp;quot;client sent %V method without \&amp;quot;Content-Length\&amp;quot; header&amp;quot;,
+                  &amp;amp;#038;r-&amp;gt;method_name);
+        ngx_http_finalize_request(r, NGX_HTTP_LENGTH_REQUIRED);
+        return NGX_ERROR;
+    }&amp;lt;/pre&amp;gt;
+
+This code returns the 411 Length Required response for PUTs lacking a Content-Length header. Remove it, recompile (`make -j2 &amp;amp;#038;&amp;amp;#038; sudo make install &amp;amp;#038;&amp;amp;#038; sudo service nginx restart`), and test:
+
+`` 
+
+Success! Now create a patch `diff -ru nginx-0.8.54 nginx &amp;gt; fix-empty-put.patch` and [post it to the nginx-devel mailing list][12].
+
+Now to play Minecraft for 12 hours as you wait for the Russian developers to wake up and take notice of your patch. Possibly sleep.
+
+**Second Pass: Fixing WebDAV**
+
+A positive [reply from Maxim Dounin to my patch][13]! I don&#39;t use WebDAV though, but if I want this patch accepted I better make sure it doesn&#39;t break official modules.
+
+This time around I wanted to work locally, so I installed nginx with the following configuration:
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note that I set the prefix to a path in my home directory, turned on debugging and the dav module, and set nginx to run as my user and group. A quick symlink from /home/schmichael/local/nginx/sbin/nginx to ~/bin/nginx, and I can start and restart nginx quickly and easily. More importantly I can attach a debugger to it.&lt;/p&gt;
+
+&lt;p&gt;The importance of being able to attach a debugger became clear as soon as I tested &lt;a href=&#34;http://wiki.nginx.org/HttpDavModule&#34;&gt;dav support (with their standard config)&lt;/a&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+My patch was causing a segfault in the dav module that killed nginx&#39;s worker process. Bumping up my error logging to `debug` level didn&#39;t give me many clues:
+  
+`````At [Urban Airship][1] our [RESTful HTTP API][2] uses PUT requests for, among other things, [registering a device][3]. Since the application registering the device is the HTTP Basic Auth username, there&amp;amp;#8217;s often no body ([entity body][4] in HTTP parlance). Unfortunately [nginx][5] (as of 0.8.54, and I believe 0.9.3) doesn&amp;amp;#8217;t support PUT requests without a Content-Length header and responds with a 411 Length Required response. While the [chunkin][6] module adds Transfer-Encoding: chunked support, it doesn&amp;amp;#8217;t fix the empty PUT problem since HTTP requests without bodies don&amp;amp;#8217;t require Content-Length nor Transfer-Encoding headers.
+
+So let&amp;amp;#8217;s hack nginx shall we?
+
+I know a bit of C but am primarily a Python developer, so hacking an established C project doesn&amp;amp;#8217;t come easily to me. To make matters worse, as far as I can tell there&amp;amp;#8217;s no official public source repository ([but there&amp;amp;#8217;s a mirror][7]) and it seems to be mainly developed by the creator, [Igor Sysoev][8]. At least the code looks clean.
+
+**First Pass**
+
+I had [nginx-0.8.54.tar.gz][9] handy from compiling the source and nginx was nice enough to log an error for PUTs without Content-Length:
+
+&amp;gt; client sent PUT method without &amp;amp;#8220;Content-Length&amp;amp;#8221; header while reading client request headers, client: &amp;amp;#8230;, server: , request: &amp;amp;#8220;PUT / HTTP/1.1&amp;amp;#8221; &amp;amp;#8230; 
+
+So let&amp;amp;#8217;s use [ack][10] to find it:
+
+![ack-grep &#39;client sent .* method without&#39;][11]
+
+A quick `vim +1532 src/http/ngx_http_request.c` later and we&amp;amp;#8217;re looking at the problem:
+
+&amp;lt;pre lang=&amp;quot;c&amp;quot;&amp;gt;if (r-&amp;gt;method &amp;amp;#038; NGX_HTTP_PUT &amp;amp;#038;&amp;amp;#038; r-&amp;gt;headers_in.content_length_n == -1) {
+        ngx_log_error(NGX_LOG_INFO, r-&amp;gt;connection-&amp;gt;log, 0,
+                  &amp;quot;client sent %V method without \&amp;quot;Content-Length\&amp;quot; header&amp;quot;,
+                  &amp;amp;#038;r-&amp;gt;method_name);
+        ngx_http_finalize_request(r, NGX_HTTP_LENGTH_REQUIRED);
+        return NGX_ERROR;
+    }&amp;lt;/pre&amp;gt;
+
+This code returns the 411 Length Required response for PUTs lacking a Content-Length header. Remove it, recompile (`make -j2 &amp;amp;#038;&amp;amp;#038; sudo make install &amp;amp;#038;&amp;amp;#038; sudo service nginx restart`), and test:
+
+``At [Urban Airship][1] our [RESTful HTTP API][2] uses PUT requests for, among other things, [registering a device][3]. Since the application registering the device is the HTTP Basic Auth username, there&amp;amp;#8217;s often no body ([entity body][4] in HTTP parlance). Unfortunately [nginx][5] (as of 0.8.54, and I believe 0.9.3) doesn&amp;amp;#8217;t support PUT requests without a Content-Length header and responds with a 411 Length Required response. While the [chunkin][6] module adds Transfer-Encoding: chunked support, it doesn&amp;amp;#8217;t fix the empty PUT problem since HTTP requests without bodies don&amp;amp;#8217;t require Content-Length nor Transfer-Encoding headers.
+
+So let&amp;amp;#8217;s hack nginx shall we?
+
+I know a bit of C but am primarily a Python developer, so hacking an established C project doesn&amp;amp;#8217;t come easily to me. To make matters worse, as far as I can tell there&amp;amp;#8217;s no official public source repository ([but there&amp;amp;#8217;s a mirror][7]) and it seems to be mainly developed by the creator, [Igor Sysoev][8]. At least the code looks clean.
+
+**First Pass**
+
+I had [nginx-0.8.54.tar.gz][9] handy from compiling the source and nginx was nice enough to log an error for PUTs without Content-Length:
+
+&amp;gt; client sent PUT method without &amp;amp;#8220;Content-Length&amp;amp;#8221; header while reading client request headers, client: &amp;amp;#8230;, server: , request: &amp;amp;#8220;PUT / HTTP/1.1&amp;amp;#8221; &amp;amp;#8230; 
+
+So let&amp;amp;#8217;s use [ack][10] to find it:
+
+![ack-grep &#39;client sent .* method without&#39;][11]
+
+A quick `vim +1532 src/http/ngx_http_request.c` later and we&amp;amp;#8217;re looking at the problem:
+
+&amp;lt;pre lang=&amp;quot;c&amp;quot;&amp;gt;if (r-&amp;gt;method &amp;amp;#038; NGX_HTTP_PUT &amp;amp;#038;&amp;amp;#038; r-&amp;gt;headers_in.content_length_n == -1) {
+        ngx_log_error(NGX_LOG_INFO, r-&amp;gt;connection-&amp;gt;log, 0,
+                  &amp;quot;client sent %V method without \&amp;quot;Content-Length\&amp;quot; header&amp;quot;,
+                  &amp;amp;#038;r-&amp;gt;method_name);
+        ngx_http_finalize_request(r, NGX_HTTP_LENGTH_REQUIRED);
+        return NGX_ERROR;
+    }&amp;lt;/pre&amp;gt;
+
+This code returns the 411 Length Required response for PUTs lacking a Content-Length header. Remove it, recompile (`make -j2 &amp;amp;#038;&amp;amp;#038; sudo make install &amp;amp;#038;&amp;amp;#038; sudo service nginx restart`), and test:
+
+`` 
+
+Success! Now create a patch `diff -ru nginx-0.8.54 nginx &amp;gt; fix-empty-put.patch` and [post it to the nginx-devel mailing list][12].
+
+Now to play Minecraft for 12 hours as you wait for the Russian developers to wake up and take notice of your patch. Possibly sleep.
+
+**Second Pass: Fixing WebDAV**
+
+A positive [reply from Maxim Dounin to my patch][13]! I don&#39;t use WebDAV though, but if I want this patch accepted I better make sure it doesn&#39;t break official modules.
+
+This time around I wanted to work locally, so I installed nginx with the following configuration:
+
+```At [Urban Airship][1] our [RESTful HTTP API][2] uses PUT requests for, among other things, [registering a device][3]. Since the application registering the device is the HTTP Basic Auth username, there&amp;amp;#8217;s often no body ([entity body][4] in HTTP parlance). Unfortunately [nginx][5] (as of 0.8.54, and I believe 0.9.3) doesn&amp;amp;#8217;t support PUT requests without a Content-Length header and responds with a 411 Length Required response. While the [chunkin][6] module adds Transfer-Encoding: chunked support, it doesn&amp;amp;#8217;t fix the empty PUT problem since HTTP requests without bodies don&amp;amp;#8217;t require Content-Length nor Transfer-Encoding headers.
+
+So let&amp;amp;#8217;s hack nginx shall we?
+
+I know a bit of C but am primarily a Python developer, so hacking an established C project doesn&amp;amp;#8217;t come easily to me. To make matters worse, as far as I can tell there&amp;amp;#8217;s no official public source repository ([but there&amp;amp;#8217;s a mirror][7]) and it seems to be mainly developed by the creator, [Igor Sysoev][8]. At least the code looks clean.
+
+**First Pass**
+
+I had [nginx-0.8.54.tar.gz][9] handy from compiling the source and nginx was nice enough to log an error for PUTs without Content-Length:
+
+&amp;gt; client sent PUT method without &amp;amp;#8220;Content-Length&amp;amp;#8221; header while reading client request headers, client: &amp;amp;#8230;, server: , request: &amp;amp;#8220;PUT / HTTP/1.1&amp;amp;#8221; &amp;amp;#8230; 
+
+So let&amp;amp;#8217;s use [ack][10] to find it:
+
+![ack-grep &#39;client sent .* method without&#39;][11]
+
+A quick `vim +1532 src/http/ngx_http_request.c` later and we&amp;amp;#8217;re looking at the problem:
+
+&amp;lt;pre lang=&amp;quot;c&amp;quot;&amp;gt;if (r-&amp;gt;method &amp;amp;#038; NGX_HTTP_PUT &amp;amp;#038;&amp;amp;#038; r-&amp;gt;headers_in.content_length_n == -1) {
+        ngx_log_error(NGX_LOG_INFO, r-&amp;gt;connection-&amp;gt;log, 0,
+                  &amp;quot;client sent %V method without \&amp;quot;Content-Length\&amp;quot; header&amp;quot;,
+                  &amp;amp;#038;r-&amp;gt;method_name);
+        ngx_http_finalize_request(r, NGX_HTTP_LENGTH_REQUIRED);
+        return NGX_ERROR;
+    }&amp;lt;/pre&amp;gt;
+
+This code returns the 411 Length Required response for PUTs lacking a Content-Length header. Remove it, recompile (`make -j2 &amp;amp;#038;&amp;amp;#038; sudo make install &amp;amp;#038;&amp;amp;#038; sudo service nginx restart`), and test:
+
+``At [Urban Airship][1] our [RESTful HTTP API][2] uses PUT requests for, among other things, [registering a device][3]. Since the application registering the device is the HTTP Basic Auth username, there&amp;amp;#8217;s often no body ([entity body][4] in HTTP parlance). Unfortunately [nginx][5] (as of 0.8.54, and I believe 0.9.3) doesn&amp;amp;#8217;t support PUT requests without a Content-Length header and responds with a 411 Length Required response. While the [chunkin][6] module adds Transfer-Encoding: chunked support, it doesn&amp;amp;#8217;t fix the empty PUT problem since HTTP requests without bodies don&amp;amp;#8217;t require Content-Length nor Transfer-Encoding headers.
+
+So let&amp;amp;#8217;s hack nginx shall we?
+
+I know a bit of C but am primarily a Python developer, so hacking an established C project doesn&amp;amp;#8217;t come easily to me. To make matters worse, as far as I can tell there&amp;amp;#8217;s no official public source repository ([but there&amp;amp;#8217;s a mirror][7]) and it seems to be mainly developed by the creator, [Igor Sysoev][8]. At least the code looks clean.
+
+**First Pass**
+
+I had [nginx-0.8.54.tar.gz][9] handy from compiling the source and nginx was nice enough to log an error for PUTs without Content-Length:
+
+&amp;gt; client sent PUT method without &amp;amp;#8220;Content-Length&amp;amp;#8221; header while reading client request headers, client: &amp;amp;#8230;, server: , request: &amp;amp;#8220;PUT / HTTP/1.1&amp;amp;#8221; &amp;amp;#8230; 
+
+So let&amp;amp;#8217;s use [ack][10] to find it:
+
+![ack-grep &#39;client sent .* method without&#39;][11]
+
+A quick `vim +1532 src/http/ngx_http_request.c` later and we&amp;amp;#8217;re looking at the problem:
+
+&amp;lt;pre lang=&amp;quot;c&amp;quot;&amp;gt;if (r-&amp;gt;method &amp;amp;#038; NGX_HTTP_PUT &amp;amp;#038;&amp;amp;#038; r-&amp;gt;headers_in.content_length_n == -1) {
+        ngx_log_error(NGX_LOG_INFO, r-&amp;gt;connection-&amp;gt;log, 0,
+                  &amp;quot;client sent %V method without \&amp;quot;Content-Length\&amp;quot; header&amp;quot;,
+                  &amp;amp;#038;r-&amp;gt;method_name);
+        ngx_http_finalize_request(r, NGX_HTTP_LENGTH_REQUIRED);
+        return NGX_ERROR;
+    }&amp;lt;/pre&amp;gt;
+
+This code returns the 411 Length Required response for PUTs lacking a Content-Length header. Remove it, recompile (`make -j2 &amp;amp;#038;&amp;amp;#038; sudo make install &amp;amp;#038;&amp;amp;#038; sudo service nginx restart`), and test:
+
+`` 
+
+Success! Now create a patch `diff -ru nginx-0.8.54 nginx &amp;gt; fix-empty-put.patch` and [post it to the nginx-devel mailing list][12].
+
+Now to play Minecraft for 12 hours as you wait for the Russian developers to wake up and take notice of your patch. Possibly sleep.
+
+**Second Pass: Fixing WebDAV**
+
+A positive [reply from Maxim Dounin to my patch][13]! I don&#39;t use WebDAV though, but if I want this patch accepted I better make sure it doesn&#39;t break official modules.
+
+This time around I wanted to work locally, so I installed nginx with the following configuration:
+
+``` 
+
+Note that I set the prefix to a path in my home directory, turned on debugging and the dav module, and set nginx to run as my user and group. A quick symlink from /home/schmichael/local/nginx/sbin/nginx to ~/bin/nginx, and I can start and restart nginx quickly and easily. More importantly I can attach a debugger to it.
+
+The importance of being able to attach a debugger became clear as soon as I tested [dav support (with their standard config)][14]:
+  
+````At [Urban Airship][1] our [RESTful HTTP API][2] uses PUT requests for, among other things, [registering a device][3]. Since the application registering the device is the HTTP Basic Auth username, there&amp;amp;#8217;s often no body ([entity body][4] in HTTP parlance). Unfortunately [nginx][5] (as of 0.8.54, and I believe 0.9.3) doesn&amp;amp;#8217;t support PUT requests without a Content-Length header and responds with a 411 Length Required response. While the [chunkin][6] module adds Transfer-Encoding: chunked support, it doesn&amp;amp;#8217;t fix the empty PUT problem since HTTP requests without bodies don&amp;amp;#8217;t require Content-Length nor Transfer-Encoding headers.
+
+So let&amp;amp;#8217;s hack nginx shall we?
+
+I know a bit of C but am primarily a Python developer, so hacking an established C project doesn&amp;amp;#8217;t come easily to me. To make matters worse, as far as I can tell there&amp;amp;#8217;s no official public source repository ([but there&amp;amp;#8217;s a mirror][7]) and it seems to be mainly developed by the creator, [Igor Sysoev][8]. At least the code looks clean.
+
+**First Pass**
+
+I had [nginx-0.8.54.tar.gz][9] handy from compiling the source and nginx was nice enough to log an error for PUTs without Content-Length:
+
+&amp;gt; client sent PUT method without &amp;amp;#8220;Content-Length&amp;amp;#8221; header while reading client request headers, client: &amp;amp;#8230;, server: , request: &amp;amp;#8220;PUT / HTTP/1.1&amp;amp;#8221; &amp;amp;#8230; 
+
+So let&amp;amp;#8217;s use [ack][10] to find it:
+
+![ack-grep &#39;client sent .* method without&#39;][11]
+
+A quick `vim +1532 src/http/ngx_http_request.c` later and we&amp;amp;#8217;re looking at the problem:
+
+&amp;lt;pre lang=&amp;quot;c&amp;quot;&amp;gt;if (r-&amp;gt;method &amp;amp;#038; NGX_HTTP_PUT &amp;amp;#038;&amp;amp;#038; r-&amp;gt;headers_in.content_length_n == -1) {
+        ngx_log_error(NGX_LOG_INFO, r-&amp;gt;connection-&amp;gt;log, 0,
+                  &amp;quot;client sent %V method without \&amp;quot;Content-Length\&amp;quot; header&amp;quot;,
+                  &amp;amp;#038;r-&amp;gt;method_name);
+        ngx_http_finalize_request(r, NGX_HTTP_LENGTH_REQUIRED);
+        return NGX_ERROR;
+    }&amp;lt;/pre&amp;gt;
+
+This code returns the 411 Length Required response for PUTs lacking a Content-Length header. Remove it, recompile (`make -j2 &amp;amp;#038;&amp;amp;#038; sudo make install &amp;amp;#038;&amp;amp;#038; sudo service nginx restart`), and test:
+
+``At [Urban Airship][1] our [RESTful HTTP API][2] uses PUT requests for, among other things, [registering a device][3]. Since the application registering the device is the HTTP Basic Auth username, there&amp;amp;#8217;s often no body ([entity body][4] in HTTP parlance). Unfortunately [nginx][5] (as of 0.8.54, and I believe 0.9.3) doesn&amp;amp;#8217;t support PUT requests without a Content-Length header and responds with a 411 Length Required response. While the [chunkin][6] module adds Transfer-Encoding: chunked support, it doesn&amp;amp;#8217;t fix the empty PUT problem since HTTP requests without bodies don&amp;amp;#8217;t require Content-Length nor Transfer-Encoding headers.
+
+So let&amp;amp;#8217;s hack nginx shall we?
+
+I know a bit of C but am primarily a Python developer, so hacking an established C project doesn&amp;amp;#8217;t come easily to me. To make matters worse, as far as I can tell there&amp;amp;#8217;s no official public source repository ([but there&amp;amp;#8217;s a mirror][7]) and it seems to be mainly developed by the creator, [Igor Sysoev][8]. At least the code looks clean.
+
+**First Pass**
+
+I had [nginx-0.8.54.tar.gz][9] handy from compiling the source and nginx was nice enough to log an error for PUTs without Content-Length:
+
+&amp;gt; client sent PUT method without &amp;amp;#8220;Content-Length&amp;amp;#8221; header while reading client request headers, client: &amp;amp;#8230;, server: , request: &amp;amp;#8220;PUT / HTTP/1.1&amp;amp;#8221; &amp;amp;#8230; 
+
+So let&amp;amp;#8217;s use [ack][10] to find it:
+
+![ack-grep &#39;client sent .* method without&#39;][11]
+
+A quick `vim +1532 src/http/ngx_http_request.c` later and we&amp;amp;#8217;re looking at the problem:
+
+&amp;lt;pre lang=&amp;quot;c&amp;quot;&amp;gt;if (r-&amp;gt;method &amp;amp;#038; NGX_HTTP_PUT &amp;amp;#038;&amp;amp;#038; r-&amp;gt;headers_in.content_length_n == -1) {
+        ngx_log_error(NGX_LOG_INFO, r-&amp;gt;connection-&amp;gt;log, 0,
+                  &amp;quot;client sent %V method without \&amp;quot;Content-Length\&amp;quot; header&amp;quot;,
+                  &amp;amp;#038;r-&amp;gt;method_name);
+        ngx_http_finalize_request(r, NGX_HTTP_LENGTH_REQUIRED);
+        return NGX_ERROR;
+    }&amp;lt;/pre&amp;gt;
+
+This code returns the 411 Length Required response for PUTs lacking a Content-Length header. Remove it, recompile (`make -j2 &amp;amp;#038;&amp;amp;#038; sudo make install &amp;amp;#038;&amp;amp;#038; sudo service nginx restart`), and test:
+
+`` 
+
+Success! Now create a patch `diff -ru nginx-0.8.54 nginx &amp;gt; fix-empty-put.patch` and [post it to the nginx-devel mailing list][12].
+
+Now to play Minecraft for 12 hours as you wait for the Russian developers to wake up and take notice of your patch. Possibly sleep.
+
+**Second Pass: Fixing WebDAV**
+
+A positive [reply from Maxim Dounin to my patch][13]! I don&#39;t use WebDAV though, but if I want this patch accepted I better make sure it doesn&#39;t break official modules.
+
+This time around I wanted to work locally, so I installed nginx with the following configuration:
+
+```At [Urban Airship][1] our [RESTful HTTP API][2] uses PUT requests for, among other things, [registering a device][3]. Since the application registering the device is the HTTP Basic Auth username, there&amp;amp;#8217;s often no body ([entity body][4] in HTTP parlance). Unfortunately [nginx][5] (as of 0.8.54, and I believe 0.9.3) doesn&amp;amp;#8217;t support PUT requests without a Content-Length header and responds with a 411 Length Required response. While the [chunkin][6] module adds Transfer-Encoding: chunked support, it doesn&amp;amp;#8217;t fix the empty PUT problem since HTTP requests without bodies don&amp;amp;#8217;t require Content-Length nor Transfer-Encoding headers.
+
+So let&amp;amp;#8217;s hack nginx shall we?
+
+I know a bit of C but am primarily a Python developer, so hacking an established C project doesn&amp;amp;#8217;t come easily to me. To make matters worse, as far as I can tell there&amp;amp;#8217;s no official public source repository ([but there&amp;amp;#8217;s a mirror][7]) and it seems to be mainly developed by the creator, [Igor Sysoev][8]. At least the code looks clean.
+
+**First Pass**
+
+I had [nginx-0.8.54.tar.gz][9] handy from compiling the source and nginx was nice enough to log an error for PUTs without Content-Length:
+
+&amp;gt; client sent PUT method without &amp;amp;#8220;Content-Length&amp;amp;#8221; header while reading client request headers, client: &amp;amp;#8230;, server: , request: &amp;amp;#8220;PUT / HTTP/1.1&amp;amp;#8221; &amp;amp;#8230; 
+
+So let&amp;amp;#8217;s use [ack][10] to find it:
+
+![ack-grep &#39;client sent .* method without&#39;][11]
+
+A quick `vim +1532 src/http/ngx_http_request.c` later and we&amp;amp;#8217;re looking at the problem:
+
+&amp;lt;pre lang=&amp;quot;c&amp;quot;&amp;gt;if (r-&amp;gt;method &amp;amp;#038; NGX_HTTP_PUT &amp;amp;#038;&amp;amp;#038; r-&amp;gt;headers_in.content_length_n == -1) {
+        ngx_log_error(NGX_LOG_INFO, r-&amp;gt;connection-&amp;gt;log, 0,
+                  &amp;quot;client sent %V method without \&amp;quot;Content-Length\&amp;quot; header&amp;quot;,
+                  &amp;amp;#038;r-&amp;gt;method_name);
+        ngx_http_finalize_request(r, NGX_HTTP_LENGTH_REQUIRED);
+        return NGX_ERROR;
+    }&amp;lt;/pre&amp;gt;
+
+This code returns the 411 Length Required response for PUTs lacking a Content-Length header. Remove it, recompile (`make -j2 &amp;amp;#038;&amp;amp;#038; sudo make install &amp;amp;#038;&amp;amp;#038; sudo service nginx restart`), and test:
+
+``At [Urban Airship][1] our [RESTful HTTP API][2] uses PUT requests for, among other things, [registering a device][3]. Since the application registering the device is the HTTP Basic Auth username, there&amp;amp;#8217;s often no body ([entity body][4] in HTTP parlance). Unfortunately [nginx][5] (as of 0.8.54, and I believe 0.9.3) doesn&amp;amp;#8217;t support PUT requests without a Content-Length header and responds with a 411 Length Required response. While the [chunkin][6] module adds Transfer-Encoding: chunked support, it doesn&amp;amp;#8217;t fix the empty PUT problem since HTTP requests without bodies don&amp;amp;#8217;t require Content-Length nor Transfer-Encoding headers.
+
+So let&amp;amp;#8217;s hack nginx shall we?
+
+I know a bit of C but am primarily a Python developer, so hacking an established C project doesn&amp;amp;#8217;t come easily to me. To make matters worse, as far as I can tell there&amp;amp;#8217;s no official public source repository ([but there&amp;amp;#8217;s a mirror][7]) and it seems to be mainly developed by the creator, [Igor Sysoev][8]. At least the code looks clean.
+
+**First Pass**
+
+I had [nginx-0.8.54.tar.gz][9] handy from compiling the source and nginx was nice enough to log an error for PUTs without Content-Length:
+
+&amp;gt; client sent PUT method without &amp;amp;#8220;Content-Length&amp;amp;#8221; header while reading client request headers, client: &amp;amp;#8230;, server: , request: &amp;amp;#8220;PUT / HTTP/1.1&amp;amp;#8221; &amp;amp;#8230; 
+
+So let&amp;amp;#8217;s use [ack][10] to find it:
+
+![ack-grep &#39;client sent .* method without&#39;][11]
+
+A quick `vim +1532 src/http/ngx_http_request.c` later and we&amp;amp;#8217;re looking at the problem:
+
+&amp;lt;pre lang=&amp;quot;c&amp;quot;&amp;gt;if (r-&amp;gt;method &amp;amp;#038; NGX_HTTP_PUT &amp;amp;#038;&amp;amp;#038; r-&amp;gt;headers_in.content_length_n == -1) {
+        ngx_log_error(NGX_LOG_INFO, r-&amp;gt;connection-&amp;gt;log, 0,
+                  &amp;quot;client sent %V method without \&amp;quot;Content-Length\&amp;quot; header&amp;quot;,
+                  &amp;amp;#038;r-&amp;gt;method_name);
+        ngx_http_finalize_request(r, NGX_HTTP_LENGTH_REQUIRED);
+        return NGX_ERROR;
+    }&amp;lt;/pre&amp;gt;
+
+This code returns the 411 Length Required response for PUTs lacking a Content-Length header. Remove it, recompile (`make -j2 &amp;amp;#038;&amp;amp;#038; sudo make install &amp;amp;#038;&amp;amp;#038; sudo service nginx restart`), and test:
+
+`` 
+
+Success! Now create a patch `diff -ru nginx-0.8.54 nginx &amp;gt; fix-empty-put.patch` and [post it to the nginx-devel mailing list][12].
+
+Now to play Minecraft for 12 hours as you wait for the Russian developers to wake up and take notice of your patch. Possibly sleep.
+
+**Second Pass: Fixing WebDAV**
+
+A positive [reply from Maxim Dounin to my patch][13]! I don&#39;t use WebDAV though, but if I want this patch accepted I better make sure it doesn&#39;t break official modules.
+
+This time around I wanted to work locally, so I installed nginx with the following configuration:
+
+``` 
+
+Note that I set the prefix to a path in my home directory, turned on debugging and the dav module, and set nginx to run as my user and group. A quick symlink from /home/schmichael/local/nginx/sbin/nginx to ~/bin/nginx, and I can start and restart nginx quickly and easily. More importantly I can attach a debugger to it.
+
+The importance of being able to attach a debugger became clear as soon as I tested [dav support (with their standard config)][14]:
+  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;My patch was causing a segfault in the dav module that killed nginx&amp;rsquo;s worker process. Bumping up my error logging to &lt;code&gt;debug&lt;/code&gt; level didn&amp;rsquo;t give me many clues:&lt;/p&gt;
+
+&lt;p&gt;`````&lt;/p&gt;
+
+&lt;p&gt;Time to break out the debugger! While I&amp;rsquo;ve used &lt;code&gt;gdb --pid&lt;/code&gt; to attach to running processes before, I&amp;rsquo;d just installed Eclipse to work on some Java code and wondered if it might make debugging a bit easier.&lt;/p&gt;
+
+&lt;p&gt;After installing plugins for C/C++, Autotools, and GDB, I could easily import nginx by creating a &amp;ldquo;New Makefile project with existing code&amp;rdquo;:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://schmichael.com/files/nginx-02-import-existing.png&#34; alt=&#34;Import existing code&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now create a new Debug Configuration:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://schmichael.com/files/nginx-03-debug-conf.png&#34; alt=&#34;Debug Configuration&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;Note&lt;/strong&gt; on Linux systems (at least Ubuntu):&lt;/em&gt; by default PTRACE is disabled in the kernel. Just flip the 1 to 0 in &lt;code&gt;/etc/sysctl.d/10-ptrace.conf&lt;/code&gt; and run &lt;code&gt;sudo sysctl -p /etc/sysctl.d/10-ptrace.conf&lt;/code&gt; to allow PTRACE.&lt;/p&gt;
+
+&lt;p&gt;Finally click &amp;ldquo;Debug&amp;rdquo; and select the nginx &lt;em&gt;worker&lt;/em&gt; process from your process list:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://schmichael.com/files/nginx-04-select-process.png&#34; alt=&#34;Select Process&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;By default GDB will pause the process it attaches to, so make sure to click the Resume button (or press F8) to allow nginx to continue serving requests.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Crashing nginx&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Now cause the segfault by running our curl command &lt;code&gt;curl -v -X PUT http://localhost:8888/foo&lt;/code&gt;. This time curl won&amp;rsquo;t return because gdb/Eclipse caught the segfault in the nginx child process, leaving the socket to curl open. A quick peek in Eclipse shows us exactly where the segfault occurs:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://schmichael.com/files/nginx-05-debugging.png&#34; alt=&#34;Debugging in Eclipse&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Eclipse makes it quick and easy to interactively inspect the variables. Doing that I discovered the culprit was the src variable being uninitialized. Bouncing up the stack once you can see dav&amp;rsquo;s put handler expects to be given a temporary file (&lt;code&gt;&amp;amp;#038;r-&amp;gt;request_body-&amp;gt;temp_file-&amp;gt;file.name&lt;/code&gt;) full of PUT data (of which we sent none), and it copies that to the destination file (&lt;code&gt;path&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;Bounce up the stack again to &lt;code&gt;ngx_http_read_client_request_body&lt;/code&gt; and you can see this relevant code:&lt;/p&gt;
+
+&lt;pre lang=&#34;c&#34;&gt;if (r-&gt;headers_in.content_length_n &amp;lt; 0) {&lt;/pre&gt;
+
+&lt;p&gt;nginx&amp;rsquo;s core HTTP module short circuits a bit when there&amp;rsquo;s no Content-Length specified. It skips the temp file creation because there&amp;rsquo;s no data to put into the temp file!&lt;/p&gt;
+
+&lt;p&gt;So we have our problem:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The dav module put handler expects a temp file containing the data to be saved.&lt;/li&gt;
+&lt;li&gt;The http module doesn&amp;rsquo;t create a temp file when there&amp;rsquo;s no body data.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The 2 solutions I can think of are:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Always create a temp file, even if it&amp;rsquo;s empty.&lt;/li&gt;
+&lt;li&gt;Add a special case to the dav module&amp;rsquo;s put handler for when the temp file doesn&amp;rsquo;t exist.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;I really don&amp;rsquo;t want to hack the core http module just to make a sub-module happy. It &lt;em&gt;makes sense&lt;/em&gt; that no temporary file exists when there&amp;rsquo;s no body data. Sub-modules shouldn&amp;rsquo;t be lazy and expect it to exist. So I decided to try #2.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The Fix&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;You can see my &lt;a href=&#34;https://github.com/schmichael/nginx/commit/c6051556460561bac4b0931fd9436e37b84925a3&#34;&gt;implementation of solution #2 on GitHub&lt;/a&gt;. Simply put, if the temp file exists, follow the existing logic. If the temp file does not exist we have a PUT with an empty body: use nginx&amp;rsquo;s open wrapper to do a create or truncate (&lt;code&gt;O_CREAT|O_TRUNC&lt;/code&gt;) on the destination file (since an empty PUT should create an empty file).&lt;/p&gt;
+
+&lt;p&gt;I don&amp;rsquo;t know if this is the best solution or even a correct one, but it appears to work and was a fun journey arriving at it. You can [follow the discussion on the mailing list][20].&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;Updated to switch from bitbucket to github.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;[20]: &lt;a href=&#34;http://nginx.org/pipermail/nginx-devel/2010-December/000609.html&#34;&gt;http://nginx.org/pipermail/nginx-devel/2010-December/000609.html&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

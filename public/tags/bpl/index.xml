@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bpl on </title>
+    <link>/tags/bpl/</link>
+    <description>Recent content in Bpl on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 18 Mar 2009 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/bpl/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>BPL Died, Nobody Came to the Funeral</title>
+      <link>/2009/03/18/bpl-died-nobody-came-to-the-funeral/</link>
+      <pubDate>Wed, 18 Mar 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/03/18/bpl-died-nobody-came-to-the-funeral/</guid>
+      <description>&lt;p&gt;Growing up, going to college, and then working for a couple of years in rural Illinois, BPL (Broadband over Powerlines) was always a technology I watched with eager anticipation.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately sometime in &lt;a href=&#34;http://michael.susens-schurter.com/blog/2005/10/20/broadband-over-power-line-more-non-news/&#34;&gt;2005 I realized Duke Nukem Forever and Perl 6 had better chances of seeing the light of day than BPL.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Today I got confirmation that not only is BPL not-gonna-happen, but it quietly died when no one was looking:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Jones said these utility-built networks are &amp;#8220;just not panning out like utilities were expecting.&amp;#8221; Broadband over powerline is one example, where existing infrastructure could be leveraged to combine broadband to the home and smart metering services. However, there&amp;#8217;s no successful large-scale BPL rollout anywhere in the world after a decade of trying.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;From the Ars Technica article [&lt;/p&gt;
+
+&lt;p&gt;AT&amp;amp;T plugs into grid, powers smart meters&amp;#8217; conversations]&lt;a href=&#34;http://arstechnica.com/telecom/news/2009/03/-att-plugs-into-grid-powers-smart-meters-conversations.ars&#34;&gt;2&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The article is all about utilities turning to AT&amp;amp;T for data connectivity to electrical meters. That task was supposed to be Job 1 for BPL. The one feature it could actually offer to utilities to convince them that &lt;a href=&#34;http://michael.susens-schurter.com/blog/2007/03/15/bpl-still-not-going-to-happen/&#34;&gt;becoming an ISP wasn&amp;#8217;t &lt;em&gt;entirely&lt;/em&gt; outside their business model.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Anyone have a copy of the obituary?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;While in [2005 Google and Goldman Sachs were pumping money into BPL][4], I don&amp;#8217;t think I&amp;#8217;ve seen it mentioned in the news in at least a couple of years.&lt;/p&gt;
+
+&lt;p&gt;So did I miss the funeral, or is there some BPL company promising a just-around-the-corner breakthrough to &lt;em&gt;finally&lt;/em&gt; make BPL an option?&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;small&gt;In case you missed the links above, here are my other 2 posts on BPL:&lt;/p&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;a href=&#34;http://michael.susens-schurter.com/blog/2005/10/20/broadband-over-power-line-more-non-news/&#34;&gt;Oct 2005 &amp;#8211; BPL: More Non-News&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&#34;http://michael.susens-schurter.com/blog/2007/03/15/bpl-still-not-going-to-happen/&#34;&gt;BPL: Still Not Going to Happen&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;
+  &lt;/small&gt;
+&lt;/p&gt;
+
+&lt;p&gt;[4]: &lt;a href=&#34;http://arstechnica.com/old/content/2005/07/5074.ars&#34;&gt;http://arstechnica.com/old/content/2005/07/5074.ars&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

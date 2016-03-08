@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Joel On Software on </title>
+    <link>/tags/joel-on-software/</link>
+    <description>Recent content in Joel On Software on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 18 Mar 2008 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/joel-on-software/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Annoyed with Joel on Software</title>
+      <link>/2008/03/17/annoyed-with-joel-on-software/</link>
+      <pubDate>Tue, 18 Mar 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/03/17/annoyed-with-joel-on-software/</guid>
+      <description>&lt;p&gt;A quote from [Joel on Software&amp;#8217;s latest post on the IE8 standards mode by default][1]:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&amp;#8230;the way to make a paragraph with small text is &lt;p&gt;&lt;small&gt;, but a lot of people wrote &lt;small&gt;&lt;p&gt; which is technically incorrect for reasons most web developers donâ€™t understand&amp;#8230;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;What?! If you&amp;#8217;re a web developer and you don&amp;#8217;t understand the difference between a block level element (&lt;p&gt;) and an inline element (&lt;small&gt;), you should &lt;strong&gt;get a new job.&lt;/strong&gt; &lt;strong&gt;&lt;em&gt;NOW.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I stopped reading the article at that point. It was extremely long-winded and treated the reader like a 5 year old (or upper level management perhaps).&lt;/p&gt;
+
+&lt;p&gt;Perhaps if managers like Joel Spolsky wouldn&amp;#8217;t set their expectations of technical knowledge so low for their developers, the web would be a tidier place. 😉&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;Just kidding Joel. But seriously, inline vs. block? Thats like a web developer not knowing the difference between GET and POST.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;Also, CSS is preferable to &lt;small&gt;, especially for a whole element like a paragraph. However, if you check out the source to this paragraph, you&amp;#8217;ll see I&amp;#8217;m not exactly a purist myself.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;[1]: &lt;a href=&#34;http://www.joelonsoftware.com/items/2008/03/17.html&#34;&gt;http://www.joelonsoftware.com/items/2008/03/17.html&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

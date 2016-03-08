@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Localecompare on </title>
+    <link>/tags/localecompare/</link>
+    <description>Recent content in Localecompare on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 14 Jul 2008 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/localecompare/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>JavaScript Collation Fail</title>
+      <link>/2008/07/14/javascript-collation-fail/</link>
+      <pubDate>Mon, 14 Jul 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/07/14/javascript-collation-fail/</guid>
+      <description>&lt;p&gt;In JavaScript, the &lt;a href=&#34;https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String/localeCompare&#34;&gt;localeCompare method on Strings&lt;/a&gt; seems like a great way to properly sort strings, but its not:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://michael.susens-schurter.com/files/localecompare-x-browser.png&#34;&gt;&lt;img src=&#34;http://michael.susens-schurter.com/files/localecompare-x-browser.png&#34; alt=&#34;localeCompare Javasript method in 4 browsers&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Hint: The last line should all look the same.&lt;/em&gt; At least I expect Firefox and Opera to agree. You can&amp;#8217;t expect much from IE6.&lt;/p&gt;
+
+&lt;p&gt;For kicks [try out other browsers][3] and post the final sorted list in the comments (hopefully my blog supports unicode).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Updated 2012-05-16:&lt;/strong&gt; Hilariously a coworker stumbled across this page, so I updated the MDN link as Mozilla had broken it.&lt;/p&gt;
+
+&lt;p&gt;[3]: &lt;a href=&#34;http://michael.susens-schurter.com/files/localecompare.html&#34;&gt;http://michael.susens-schurter.com/files/localecompare.html&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

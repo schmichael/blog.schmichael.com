@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Php on </title>
+    <link>/categories/php/</link>
+    <description>Recent content in Php on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 18 Nov 2009 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/categories/php/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Web Developer Contractor Rates</title>
+      <link>/2009/11/18/web-developer-contractor-rates/</link>
+      <pubDate>Wed, 18 Nov 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/11/18/web-developer-contractor-rates/</guid>
+      <description>&lt;p&gt;We just happened* to start chatting in the #pdxdjango IRC channel on Freenode about what the rates web developer contractors charge today, and I wanted to post my experiences after leaving the contractor world a few months ago after 2 years of more or less successful contracting either individually or via &lt;a href=&#34;http://lofiart.com&#34;&gt;Lo-Fi Art&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;A really rough table of my rates as a contractor:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Language&lt;/th&gt;
+&lt;th&gt;Experience&lt;/th&gt;
+&lt;th&gt;Rate per hour&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;PHP&lt;/td&gt;
+&lt;td&gt;Entry Level&lt;/td&gt;
+&lt;td&gt;$8-20&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;PHP&lt;/td&gt;
+&lt;td&gt;Experienced&lt;/td&gt;
+&lt;td&gt;$20-65&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;PHP&lt;/td&gt;
+&lt;td&gt;Specialist&lt;/td&gt;
+&lt;td&gt;never got here with PHP (thankfully 😉 )&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Sysadmin&lt;/td&gt;
+&lt;td&gt;Slightly Experienced&lt;/td&gt;
+&lt;td&gt;$45&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Python&lt;/td&gt;
+&lt;td&gt;Entry Level&lt;/td&gt;
+&lt;td&gt;$25-35&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Python&lt;/td&gt;
+&lt;td&gt;Experienced&lt;/td&gt;
+&lt;td&gt;$35-65&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Python&lt;/td&gt;
+&lt;td&gt;Specialist (Django)&lt;/td&gt;
+&lt;td&gt;$65-85&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;However, I think I&amp;#8217;ve billed pretty cheaply, especially for Python work. If I had continued in the contracting world I think I would have been aiming for north of &lt;strong&gt;$100/hr for new contracts by the end of 2009&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Important Notes&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;All of the experience levels and rates are really rough estimates, please don&amp;#8217;t read too much into it. I just wanted to give people &lt;em&gt;some&lt;/em&gt; idea of what rates are floating around. (I also have a terrible memory, so these numbers could be way off. Mea culpa.)&lt;/li&gt;
+&lt;li&gt;The sysadmin job is a career oddity for me and consisted of mostly doing Active Directory / Exchange setup (snuck in a Debian server of course). That being said I still enjoy sysadminish type work today.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Experienced&lt;/strong&gt; means you have a few &amp;#8220;serious&amp;#8221; projects under your belt (not the meaingless &amp;#8220;5 years of experience&amp;#8221; so many job descriptions call for).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Specialist&lt;/strong&gt; is a poor term, but I needed someway to describe the shift from &amp;#8220;I&amp;#8217;ll do anything if it&amp;#8217;s PHP or Python&amp;#8221; to &amp;#8220;I&amp;#8217;m a Django&amp;#8221; developer. My guess is that &lt;em&gt;real&lt;/em&gt; specialists (contributors to major projects or popular plugin/module authors) fall into the upper end of this spectrum and can often charge well over $100/hr for highly sought after specialties (Anything + Facebook might be a good example of that right now).&lt;/li&gt;
+&lt;li&gt;I started with PHP first (2000-2006), so I was just less experienced in general.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Not only does supply &amp;amp; demand help Python devs fetch a higher rate (reasonable demand, with low supply), but also a Python developer knows how to write code.&lt;/p&gt;
+
+&lt;p&gt;A PHP &amp;#8220;developer&amp;#8221; could just be someone who has setup a few WordPress or Drupal sites and maybe done some theming. I think you&amp;#8217;d be hard pressed to find a web developer who couldn&amp;#8217;t be described as having PHP &amp;#8220;experience.&amp;#8221;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;My entire career in the &amp;#8220;Specialist (Django)&amp;#8221; range was in Portland, OR which has a vibrant web related economy (at least as far as my untrained eye can tell). All other rates fell at least partially into time periods where I lived in Illinois (and not Chicago), so that could account for some of the upward shift in the my rates.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;These numbers are also rough estimates because I&amp;#8217;ve done flat per-project billing, retainers, and a variety of other crazy ways of exchanging money for labor. Dollars per hour is still what it all comes down to in the end (like &lt;a href=&#34;http://en.wikipedia.org/wiki/Damage_per_second&#34;&gt;DPS&lt;/a&gt; for you MMORPG freaks).&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;So I&amp;#8217;m {ripping off,getting ripped off by} my clients?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I don&amp;#8217;t know, but I doubt it. If anything my rough estimates should show what an inexact science billing is. It probably varies more on project factors than on the contractor&amp;#8217;s experience.&lt;/p&gt;
+
+&lt;p&gt;Right up until I took my full time job at [YouGov][3] my &lt;em&gt;favorite&lt;/em&gt; client was still paying me at my $35/hr rate. In fact sometimes &lt;strong&gt;I wonder if there might have been an inverse relationship between hourly rate and job satisfaction.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This could be a quirk of me being a pretty neurotic person and therefore feeling more pressure when working at a higher rate. At lower rates I generally worked more hours and spent more time tweaking designs, writing tests, and doing other tasks other than putting my head down and coding. Thus at the end of the day, the more hours I worked on projects I liked, the less money I made (relative to working fewer hours on less enjoyable projects).&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;* Ok, so it looks like I brought it up&amp;#8230; but I&amp;#8217;d like to think it spawned some good discussion.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;Left off the Python category as that gets syndicated on Unofficial Planet Python, and I don&amp;#8217;t think this post is high enough quality to deserve that. &lt;img src=&#34;http://localhost/wp-includes/images/smilies/simple-smile.png&#34; alt=&#34;:)&#34; class=&#34;wp-smiley&#34; style=&#34;height: 1em; max-height: 1em;&#34; /&gt;&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;[3]: &lt;a href=&#34;http://www.yougov.com&#34;&gt;http://www.yougov.com&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Web Server Quandary</title>
+      <link>/2008/12/27/web-server-quandary/</link>
+      <pubDate>Sat, 27 Dec 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/12/27/web-server-quandary/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://httpd.apache.org/&#34;&gt;Apache&lt;/a&gt; was probably the first Linux application I learned how to configure. However, I&amp;#8217;ve gotten a bit frustrated with it recently&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The Problem&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;A memory leak.&lt;/em&gt; Apache is eating up memory so quickly that I need to restart it every couple days or risk my entire server grinding to a halt as it starts swapping wildly. I&amp;#8217;ve poured over log files and &lt;code&gt;pmap&lt;/code&gt; output, but I still can&amp;#8217;t figure out where the problem lies. Curse you monolithic in-process architecture!&lt;/p&gt;
+
+&lt;p&gt;Actually I know what my problem is, I&amp;#8217;m running a mess of modules:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ssl&lt;/code&gt; &amp;#8211; 2 certificates on 2 ports&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;php5&lt;/code&gt; &amp;#8211; blerg, who doesn&amp;#8217;t have to run this?&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;suphp&lt;/code&gt; &amp;#8211; I suspect this is my problem, but I can&amp;#8217;t prove it. A client&amp;#8217;s 3rd party web application &lt;em&gt;requires&lt;/em&gt; it, but I think its easily replaceable with FastCGI.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;wsgi&lt;/code&gt; &amp;#8211; No complaints. Python apps are out-of-process thankfully.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;proxy&lt;/code&gt; &amp;#8211; Again no complaints. Can&amp;#8217;t imagine how this module could cause any problems except it does proxy some large (multi-megabyte, not huge) POSTs at times. I can&amp;#8217;t imagine a memory leak could slip into this module without a lot of people noticing.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution A: Apache+FastCGI&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I love the idea of putting each web application in its own process and letting Apache just act as an HTTP router. FastCGI seems to have all the features I need, and I&amp;#8217;m not really worried about the CPU overhead incurred by IPC.&lt;/p&gt;
+
+&lt;p&gt;However, there are 2 competing FastCGI modules for Apache, and I have no idea what to choose. Anecdotally the official &lt;a href=&#34;http://www.fastcgi.com/drupal/node/3&#34;&gt;mod_fastcgi&lt;/a&gt; is buggy and &lt;a href=&#34;http://www.fastcgi.com/drupal/node/2&#34;&gt;fastcgi.com is a spam infested wasteland&lt;/a&gt;. However, I&amp;#8217;ve found no authoritative source saying: &lt;em&gt;&amp;#8220;fastcgi is dead, long live &lt;a href=&#34;http://fastcgi.coremail.cn/&#34;&gt;fcgid&lt;/a&gt;!&amp;#8221;&lt;/em&gt; (Lame excuse, I know.)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution B: &lt;a href=&#34;http://www.lighttpd.net/&#34;&gt;Lighttpd&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I know Lighty is the darling of Rails sites, but whenever I stop by its site I&amp;#8217;m greeted with a list of recently fixed &lt;a href=&#34;http://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=lighttpd&#34;&gt;security bugs&lt;/a&gt;, and now it seems as though &lt;a href=&#34;http://blog.lighttpd.net/articles/2008/12/02/a-little-heads-up&#34;&gt;they&amp;#8217;re rewriting the core&lt;/a&gt;!&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;m sure Lighty is a high quality intelligently engineered project, but it seems to be the definition of immature. Not necessarily bad (in fact it usually means its progressing quickly!), but perhaps not as reliable as good old workhorses like Apache.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution C: &lt;a href=&#34;http://www.cherokee-project.com/&#34;&gt;Cherokee&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;ve been following Cherokee for some time now and running it locally on my workstation. I &lt;em&gt;love&lt;/em&gt; the web interface. I&amp;#8217;m usually a very anti-webmin, pro-vim kind of guy, but I&amp;#8217;m sick of editing Apache&amp;#8217;s config files. I do it about once a month and therefore it always takes lots of double-checking the docs. I don&amp;#8217;t know why, but its configuration has just never felt natural to me.&lt;/p&gt;
+
+&lt;p&gt;However, the lead Cherokee developer&amp;#8217;s bravado is by the most off-putting aspect of the project. &lt;a href=&#34;http://lists.octality.com/pipermail/cherokee/2008-December/009437.html&#34;&gt;He mocks modwsgi&lt;/a&gt; and posts simplistic benchmarks showing Cherokee to be the fastest web server, but meanwhile Cherokee churns out numerous bug patch releases in-between feature releases and has yet to reach 1.0 status.&lt;/p&gt;
+
+&lt;p&gt;It seems like an excellent project technically, but I&amp;#8217;m afraid there will be negative consequences for the lead developers hubris. &lt;small&gt;(I&amp;#8217;m not meaning to insult the guy. He&amp;#8217;s probably a far better hacker than I&amp;#8217;ll ever be. Self-promotion just makes me uncomfortable.)&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution D: [nginx][10]&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I don&amp;#8217;t know much about nginx except that it works. Basically all I&amp;#8217;ve heard about it is:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;It works.&lt;/li&gt;
+&lt;li&gt;Its fast. &lt;em&gt;Really&lt;/em&gt; fast.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;While &amp;#8220;working&amp;#8221; is definitely my primary objective, nginx seems a bit bare bones for me. I just don&amp;#8217;t think I&amp;#8217;m the target demographic. I&amp;#8217;d kind of like for my web server to handle spawning and kill of FastCGI processes.&lt;/p&gt;
+
+&lt;p&gt;nginx feels like git to me. Those who know it: use it and love it. Those who don&amp;#8217;t: stand in fear and awe of its unbridled power.&lt;/p&gt;
+
+&lt;p&gt;&amp;#8230;or maybe its just a nice simple barebones HTTP server&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Conclusions?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I think &lt;strong&gt;Solution A: FastCGI&lt;/strong&gt; is the most sensible. Apache has always served me well, and the memory leak is most likely due to that shoddy suphp module.&lt;/p&gt;
+
+&lt;p&gt;Moving my web applications to FastCGI is also the best way to prepare to move to one of these 2nd generation web servers.&lt;/p&gt;
+
+&lt;p&gt;However, I&amp;#8217;m getting kind of sick of Apache, and the ambiguousness of which FastCGI solution to choose is fairly annoying.&lt;/p&gt;
+
+&lt;p&gt;So dear lazyweb, for your everyday web developer consultant looking to run a bunch of PHP and Python web applications, what HTTP server stack should I use? (Debian Lenny packages are a plus.)&lt;/p&gt;
+
+&lt;p&gt;[10]: &lt;a href=&#34;http://nginx.net/&#34;&gt;http://nginx.net/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Selling some books</title>
+      <link>/2008/07/26/selling-some-books/</link>
+      <pubDate>Sun, 27 Jul 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/07/26/selling-some-books/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://www.amazon.com/gp/shops/index.html?ie=UTF8&amp;amp;sellerID=A1BXMNI10WRYMA&#34;&gt;I&amp;#8217;m selling some books on Amazon&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;#8217;s the full list that I&amp;#8217;m too lazy to link individually (click above instead):&lt;/p&gt;
+
+&lt;pre&gt;0-262-53170-4 - $16 - Evolution and Human Behavior
+0-534-95216-X - $6.35 - Data Structures
+0-321-26853-9 - $14 - Succeeding with Open Source
+0-7382-0142-1 - $6  - Emergence
+0-596-00792-2 - $8  - Mono A Developer&#39;s Notebook
+1-861008-07-4 - $9  - Professional PHP Web Services
+0-90571261-7  - $8  - Foundation Trilogy Stars Like Dust Naked
+0-446-53268-1 - $6  - America (the book)
+0-943575-32-X - $16 - Matthew Henry&#39;s Commentary (unabridged)
+0-8499-1815-4 - $5  - And the Angels Were Silent
+0-7637-2339-8 - $20 - Computing with C#
+&lt;/pre&gt;
+
+&lt;p&gt;I also have the following books that I&amp;#8217;m ready to get rid of, but they&amp;#8217;re not worth enough to bother selling on Amazon. [Contact me][2] if you&amp;#8217;d like one of them:&lt;/p&gt;
+
+&lt;pre&gt;The Emperor&#39;s New Mind - Roger Penrose (1989 Paperback)
+0-596-00559-8 - Wireless Hacks
+0-451-21166-9 - The Procrastinator&#39;s Guide to the Job Hunt
+0-88730-866-X - The Dilbert Future
+0-43936213-X  - Harry Potter and the Sorcerer&#39;s Stone
+0-13-088262-3 - Business Data Communications and Networking (list price on Amazon is a hilarious $115)
+&lt;/pre&gt;
+
+&lt;p&gt;[2]: mailto:michael@susens-schurter.com&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>WordPress Rocks at Updates</title>
+      <link>/2008/07/15/wordpress-rocks-at-updates/</link>
+      <pubDate>Tue, 15 Jul 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/07/15/wordpress-rocks-at-updates/</guid>
+      <description>&lt;p&gt;I feel I owe it to my friends who put up with my senseless Python fanboying to admit &lt;a href=&#34;http://wordpress.org&#34;&gt;WordPress&lt;/a&gt; is not only a great blog engine, but rocks at updates.&lt;/p&gt;
+
+&lt;p&gt;I just upgraded from 2.5 to 2.6 by doing a simple &lt;code&gt;svn switch http://...&lt;/code&gt; and then logging into the web admin interface. It took about 30 seconds to complete.&lt;/p&gt;
+
+&lt;p&gt;Now compare that to my last experience upgrading [Trac][2] from 0.10 to 0.11&amp;#8230; ugh.&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;I love you Trac. Python just lacks an easy and efficient web app deployment method.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;[2]: &lt;a href=&#34;http://trac.edgewall.org/&#34;&gt;http://trac.edgewall.org/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Simple WordPress Upgrade Using Subversion</title>
+      <link>/2007/10/28/simple-wordpress-upgrade-using-subversion/</link>
+      <pubDate>Sun, 28 Oct 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/2007/10/28/simple-wordpress-upgrade-using-subversion/</guid>
+      <description>&lt;p&gt;I&amp;#8217;ve been using subversion to update WordPress for a few minor revisions now. I simply followed the 2.2 branch and ran&amp;#8230;&lt;/p&gt;
+
+&lt;pre lang=&#34;bash&#34;&gt;svn up&lt;/pre&gt;
+
+&lt;p&gt;&amp;#8230;to update my code.&lt;/p&gt;
+
+&lt;p&gt;Today I ran&amp;#8230;&lt;/p&gt;
+
+&lt;pre lang=&#34;bash&#34;&gt;svn switch http://svn.automattic.com/wordpress/branches/2.3&lt;/pre&gt;
+
+&lt;p&gt;&amp;#8230;followed by visiting the upgrade script page and everything worked beautifully!&lt;/p&gt;
+
+&lt;p&gt;Anyone &lt;em&gt;not&lt;/em&gt; using subversion to update WordPress is doing way too much work! Time to play with tags&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;Now if I was really cool I&amp;#8217;d use &lt;a href=&#34;http://bazaar-vcs.org/&#34;&gt;bzr&lt;/a&gt; to maintain my local code changes and plugins in my own repository&amp;#8230; maybe later.&lt;/small&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>IRC After a 10 Year Hiatus</title>
+      <link>/2007/09/21/irc-after-a-10-year-hiatus/</link>
+      <pubDate>Fri, 21 Sep 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/2007/09/21/irc-after-a-10-year-hiatus/</guid>
+      <description>&lt;p&gt;Its probably been 10+ years since I&amp;#8217;ve touched IRC. In the early days of the public Internet, IRC was IM + MySpace + Filesharing, only a lot geekier. &lt;img src=&#34;http://localhost/wp-includes/images/smilies/simple-smile.png&#34; alt=&#34;:)&#34; class=&#34;wp-smiley&#34; style=&#34;height: 1em; max-height: 1em;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Then came ICQ and soon after a flood of IM clients that rendered IRC clumsy and antiquated for casual chatting. When I went from High School to College in 2000, I left IRC behind&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;Now its 2007, I&amp;#8217;m an old man and returning to my old ways. I&amp;#8217;m back on IRC except instead of chatting with friends using &lt;a href=&#34;http://en.wikipedia.org/wiki/Pirch&#34;&gt;pIRCh&lt;/a&gt;* on Windows 98, I&amp;#8217;m lurking in technical channels using &lt;a href=&#34;http://www.irssi.org/&#34;&gt;irsii&lt;/a&gt; centrally located on a &lt;a href=&#34;http://www.debian.org/releases/etch/&#34;&gt;Debian Etch&lt;/a&gt; server.&lt;/p&gt;
+
+&lt;p&gt;If you want to track me down I go by the nick &lt;strong&gt;schmichael&lt;/strong&gt;** and am currently lurking in the following channels.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;#cherrypy&lt;/code&gt; on irc.oftc.net&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;#linode&lt;/code&gt; on irc.oftc.net&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;#python-genshi&lt;/code&gt; on irc.freenode.net&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;#drupal-ecommerce&lt;/code&gt; on irc.freenode.net&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I also pop in and out of &lt;code&gt;#gnome&lt;/code&gt; on [gimpnet][4] and &lt;code&gt;#drupal-support&lt;/code&gt; on irc.freenode.net.&lt;/p&gt;
+
+&lt;p&gt;To experienced free and open source software community members the fact that IRC is new or strange to anyone is probably a bit hard to grasp. As far as I can tell, IRC is simply the de facto method for communicating about FOSS projects. Mailing lists may be more popular for some projects, but I find the instance gratification of IRC much more appealing.&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;* I remember liking its scripting better then &lt;a href=&#34;http://en.wikipedia.org/wiki/MIRC&#34;&gt;mIRC&lt;/a&gt; or some such nonsense&amp;#8230; I&amp;#8217;ve never been known to use the most popular software available&amp;#8230;&lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;
+  ** A very unimaginative combination of my first and last names given to me by some friends in college. It works.&lt;/small&gt;
+&lt;/p&gt;
+
+&lt;p&gt;[4]: &lt;a href=&#34;http://wiki.gimp.org/gimp/Irc&#34;&gt;http://wiki.gimp.org/gimp/Irc&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>New WordPress Plugins and Updates</title>
+      <link>/2007/09/01/new-wordpress-plugins-and-updates/</link>
+      <pubDate>Sun, 02 Sep 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/2007/09/01/new-wordpress-plugins-and-updates/</guid>
+      <description>&lt;div style=&#34;margin: 6px; float: right&#34;&gt;
+  &lt;a href=&#34;http://wordpress.org&#34; title=&#34;WordPress&#34;&gt;&lt;img src=&#34;http://michael.susens-schurter.com/blog/wp-content/uploads/2007/09/wordpress-screenshot.png&#34; alt=&#34;WordPress Screenshot&#34; /&gt;&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;p&gt;I just added the &lt;strong&gt;&lt;a href=&#34;http://txfx.net/code/wordpress/subscribe-to-comments/&#34;&gt;Subscribe to Comments&lt;/a&gt;&lt;/strong&gt; WordPress plugin. You should now be able to get e-mail notifications when new comments are posted. This should make flamewars and trolling much easier. 😉&lt;/p&gt;
+
+&lt;p&gt;For what its worth I also installed the &lt;strong&gt;&lt;a href=&#34;http://www.arnebrachhold.de/2005/06/05/google-sitemaps-generator-v2-final&#34;&gt;Google Sitemap Generator&lt;/a&gt;&lt;/strong&gt; plugin which seems to work alright. My main gripe is that the author uses a blog post dated June 5, 2005 as the home page for the plugin! I actually passed it up and kept looking the first time I hit the page because I assumed the plugin was old.&lt;/p&gt;
+
+&lt;p&gt;I have to admit, sites that use a blog like a full-fledged CMS usually annoy me. Of course tons of sites probably do it without me noticing, so I suppose if its done well, I don&amp;#8217;t mind. &lt;img src=&#34;http://localhost/wp-includes/images/smilies/simple-smile.png&#34; alt=&#34;:)&#34; class=&#34;wp-smiley&#34; style=&#34;height: 1em; max-height: 1em;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;A while ago I installed the &lt;strong&gt;&lt;a href=&#34;http://wordpress.org/extend/plugins/wp-syntax/&#34;&gt;WP-Syntax&lt;/a&gt;&lt;/strong&gt; plugin. Here&amp;#8217;s a snippet of Python to test it out since I haven&amp;#8217;t gotten around to posting any code lately:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;d = {&#39;test1&#39;: &#39;hello world&#39;}
+d.setdefault(&#39;test1&#39;, &#39;goodbye world&#39;)
+d.setdefault(&#39;foo&#39;, &#39;bar&#39;)
+print d[&#39;test1&#39;]
+print d[&#39;foo&#39;]&lt;/pre&gt;
+
+&lt;p&gt;This prints:&lt;/p&gt;
+
+&lt;pre&gt;hello world
+bar&lt;/pre&gt;
+
+&lt;p&gt;becase setdefault() only changes the value of a dictionary key if the key has no value. Very handy.&lt;/p&gt;
+
+&lt;p&gt;My final bit of WordPress hacking has been to switch to using [&lt;strong&gt;Subversion&lt;/strong&gt;][4] to update WordPress. Juggling files to do updates is just annoying. With Subversion I just checked out &lt;code&gt;http://svn.automattic.com/wordpress/branches/2.2&lt;/code&gt; and run &lt;code&gt;svn up&lt;/code&gt; whenever an update is released.&lt;/p&gt;
+
+&lt;p&gt;I suppose I could just schedule running &lt;code&gt;svn up&lt;/code&gt; with a cron job. It would even automatically e-mail what files it updates because cron e-mails stdout by default. But considering how much I &lt;em&gt;love&lt;/em&gt; automatic updates on Windows, I think I&amp;#8217;ll hold off on that&amp;#8230; 😉&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Grrr&amp;#8230; Now if only I could convince WordPress not to convert my &lt;div&gt; tags to &lt;p&gt; tags when editing posts and messing up my whitespace when saving!&lt;/p&gt;
+
+&lt;p&gt;[4]: &lt;a href=&#34;http://subversion.tigris.org/&#34;&gt;http://subversion.tigris.org/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Deploying CherryPy on Apache 2 using mod_proxy</title>
+      <link>/2007/08/16/deploying-cherrypy-on-apache-2-using-mod_proxy/</link>
+      <pubDate>Thu, 16 Aug 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/2007/08/16/deploying-cherrypy-on-apache-2-using-mod_proxy/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Background&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;ve been trying to move away from PHP to &lt;a href=&#34;http://python.org/&#34;&gt;Python&lt;/a&gt; for web applications. I tried &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; and &lt;a href=&#34;http://turbogears.org/&#34;&gt;TurboGears,&lt;/a&gt; but I settled upon the more basic &lt;a href=&#34;http://cherrypy.org/&#34;&gt;CherryPy&lt;/a&gt; framework. It helped that my friend &lt;a href=&#34;http://dowski.com/&#34;&gt;Christian&lt;/a&gt; is active in the CherryPy community and promised to answer all of my stupid questions (thanks Christian!).&lt;/p&gt;
+
+&lt;p&gt;Regardless of which framework I had chosen though, they all have a significant architectural difference from PHP:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;PHP is a &lt;em&gt;scripting language&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Django, TurboGears, CherryPy, etc. are &lt;em&gt;application servers&lt;/em&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Technically Python is a scripting language and PHP+Apache could be called an application server, so I should explain:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;PHP web applications are executed from start to finish for each web request.&lt;/li&gt;
+&lt;li&gt;The Python frameworks all run as a daemon and requests are processed based on object and method mappings.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;small&gt;Still probably a gross oversimplification, but for the sake of brevity lets move on!&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;The reason I mention these fundamental differences is because they &lt;strong&gt;completely change how you deploy your web applications.&lt;/strong&gt; &lt;em&gt;PHP scripts can be FTPed&lt;/em&gt; (via SSH/SSL/TLS of course!) to a web accessible directory and instantly accessed. &lt;em&gt;Python web applications must be started&lt;/em&gt; and somehow integrated with your existing web server (Apache 2 in my case).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The Problem&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;So how do you deploy CherryPy applications and have them play nice with Apache 2?&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;One Solution: Using &lt;a href=&#34;http://httpd.apache.org/docs/2.2/mod/mod_proxy.html&#34;&gt;mod_proxy&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Warning:&lt;/em&gt; These instructions are for &lt;a href=&#34;http://www.debian.org/releases/etch/&#34;&gt;&lt;em&gt;Debian Etch&lt;/em&gt;&lt;/a&gt;, but the principles should be fairly universal.&lt;/p&gt;
+
+&lt;p&gt;Example domain: &lt;code&gt;www.example.com&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Example CherryPy URL: &lt;code&gt;http://www.example.com/webapp/&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Example CherryPy Root Object: &lt;code&gt;WebApp()&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Example CherryPy Configuration File: &lt;code&gt;webapp.config&lt;/code&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Install Apache 2 (if you don&amp;#8217;t use PHP, feel free to choose a MPM other than prefork) and Python&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Install python-setuptools if you haven&amp;#8217;t already:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;sudo apt-get install python-setuptools&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Install CherryPy via _easy&lt;em&gt;install&lt;/em&gt; to get the latest stable version:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;sudo easy_install cherrypy&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Edit your CherryPy applications&amp;#8217; config file (webapp.config in this example) to include the following lines:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;server.socket_port = 6464&amp;lt;br /&amp;gt;
+server.socket_host = &amp;quot;127.0.0.1&amp;quot;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;To start your web application you should have a line similar to:&lt;/p&gt;
+
+&lt;p&gt;&lt;code style=&#34;text-align: left;&#34;&gt;cherrypy.quickstart(WebApp(), &amp;lsquo;/webapp&amp;rsquo;, &amp;lsquo;webapp.config&amp;rsquo;)&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Start your application as a background process. I usually use a command like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;code style=&#34;text-align: left;&#34;&gt;python start-webapp.py &amp;gt; stdout.log &amp;amp;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;If you have lynx or links installed you can test your web application:&lt;/p&gt;
+
+&lt;p&gt;&lt;code style=&#34;text-align: left;&#34;&gt;lynx &lt;a href=&#34;http://127.0.01:6464/webapp/&#34;&gt;http://127.0.01:6464/webapp/&lt;/a&gt;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Enable mod_proxy for Apache 2:&lt;/p&gt;
+
+&lt;p&gt;&lt;code style=&#34;text-align: left;&#34;&gt;sudo a2enmod proxy_http&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Add the following to the &lt;strong&gt;Apache virtual host configuration for &lt;em&gt;www.example.com&lt;/em&gt;&lt;/strong&gt; (for example: /etc/apache2/sites-enabled/000-default or /etc/apache2/sites-enabled/www.example.com):&lt;/p&gt;
+
+&lt;p&gt;&lt;code style=&#34;text-align: left&#34;&gt;ProxyPreserveHost on&amp;lt;br /&amp;gt;
+&amp;lt;Proxy *&amp;gt;&amp;lt;br /&amp;gt;
+&amp;nbsp;&amp;nbsp;Order allow,deny&amp;lt;br /&amp;gt;
+&amp;nbsp;&amp;nbsp;Allow from all&amp;lt;br /&amp;gt;
+&amp;lt;/Proxy&amp;gt;&amp;lt;br /&amp;gt;
+ProxyPass /webapp/ &lt;a href=&#34;http://127.0.0.1:6464/webapp/&amp;lt;br&#34;&gt;http://127.0.0.1:6464/webapp/&amp;lt;br&lt;/a&gt; /&amp;gt;
+ProxyPassReverse /webapp/ &lt;a href=&#34;http://127.0.0.1:6464/webapp/&#34;&gt;http://127.0.0.1:6464/webapp/&lt;/a&gt;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Restart Apache 2 using the following command:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;sudo /etc/init.d/apache2 force-reload&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Go to &lt;a href=&#34;http://www.example.com/webapp&#34;&gt;http://www.example.com/webapp&lt;/a&gt; to see if it works!&lt;/p&gt;
+
+&lt;p&gt;**Caveats and Tips&lt;/p&gt;
+
+&lt;p&gt;**&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Be careful using &lt;strong&gt;absolute URLs&lt;/strong&gt; (especially in &lt;strong&gt;redirects&lt;/strong&gt;!) in your web application.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;To make sure your web application &lt;strong&gt;always starts at boot&lt;/strong&gt;, add this line to your &lt;em&gt;crontab&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;code style=&#34;text-align: left&#34;&gt;@reboot /usr/bin/python /path/to/start-webapp.py &amp;gt; /path/to/stdout.log &amp;amp;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Other Solutions&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Using mod_proxy is neither the only way to deploy CherryPy web applications nor the best for all deployment scenarios. Once I have a bit more experience I&amp;#8217;d love to post a side-by-side comparison, but for now your probably best off reading [CherryPy&amp;#8217;s wiki article on the subject][8].&lt;/p&gt;
+
+&lt;p&gt;[8]: &lt;a href=&#34;http://tools.cherrypy.org/wiki/BehindApache&#34;&gt;http://tools.cherrypy.org/wiki/BehindApache&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Drupal Database Maintenance Script</title>
+      <link>/2007/08/03/drupal-database-maintenance-script/</link>
+      <pubDate>Fri, 03 Aug 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/2007/08/03/drupal-database-maintenance-script/</guid>
+      <description>&lt;p&gt;I love &lt;a href=&#34;http://drupal.org&#34;&gt;Drupal&lt;/a&gt;, but its insistence on saving every session its ever created causes the &lt;code&gt;sessions&lt;/code&gt; table to become massive. So I usually end up creating a shell script like the following:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;drupal-db-maint.sh&lt;/strong&gt; (I posted &lt;a href=&#34;http://pastebin.ca/644472&#34;&gt;a copy to pastebin&lt;/a&gt; since WordPress makes the code impossible to read.)&lt;/p&gt;
+
+&lt;div style=&#34;border: 1px solid #cccccc; margin: 2px; padding: 2px; font-family: monospace; font-size: 8pt; text-align: left&#34;&gt;
+  #!/bin/sh&lt;br /&gt; echo `date` &amp;#8211; Starting Drupal database maintenance&lt;br /&gt; MYSQL_USERNAME=&amp;#8217;&lt;strong&gt;insert your MySQL username here&lt;/strong&gt;&amp;#8216;&lt;br /&gt; MYSQL_PASSWORD=&amp;#8217;&lt;strong&gt;insert your MySQL password here&lt;/strong&gt;&amp;#8216;&lt;br /&gt; MYSQL_DATABASE=&amp;#8217;&lt;strong&gt;insert your database name here&lt;/strong&gt;&amp;#8216;&lt;/p&gt; 
+  
+  &lt;p&gt;
+    # Note: 2592000 = sessions over 30 days old.&lt;br /&gt; # Adjust the timespan as desired.&lt;br /&gt; CLEAN_SESSIONS_SQL=&amp;#8217;DELETE FROM `sessions` WHERE `timestamp` &lt; (UNIX_TIMESTAMP() &amp;#8211; 2592000)&amp;#8217;&lt;br /&gt; OPTIMIZE_CACHES_SQL=&amp;#8217;OPTIMIZE TABLE `cache` , `cache_filter` , `cache_menu` , `cache_page` , `cache_views` , `sessions`&amp;#8217;
+  &lt;/p&gt;
+  
+  &lt;p&gt;
+    # Note: I have tons of modules installed.&lt;br /&gt; # I tried cleaning out their table names before posting, but you&amp;#8217;ll want to double check this SQL.&lt;br /&gt; OPTIMIZE_REST_SQL=&amp;#8217;OPTIMIZE TABLE `access` , `accesslog` , `aggregator_category` , `aggregator_category_feed` , `aggregator_category_item` , `aggregator_feed` , `aggregator_item` , `authmap` , `blocks` , `blocks_roles` , `boxes` , `client` , `client_system` , `comments` , `contact` , `files` , `file_revisions` , `filters` , `filter_formats` , `flood` , `history` , `invite` , `menu` , `node` , `node_access` , `node_comment_statistics` , `node_counter` , `node_revisions` , `node_type` , `permission` , `profile_fields` , `profile_values` , `role` , `search_dataset` , `search_index` , `search_total` , `sequences` , `system` , `term_data` , `term_hierarchy` , `term_node` , `term_relation` , `term_synonym` , `url_alias` , `users` , `users_roles` , `variable` , `vocabulary` , `vocabulary_node_types` , `watchdog`&amp;#8217;
+  &lt;/p&gt;
+  
+  &lt;p&gt;
+    # Note: I run this script on a Linode which has limited IO.&lt;br /&gt; # Adding a short wait between commands lessens the load on the server.&lt;br /&gt; SLEEP_TIME=5
+  &lt;/p&gt;
+  
+  &lt;p&gt;
+    echo $CLEAN_SESSIONS_SQL | mysql -u $MYSQL_USERNAME -p$MYSQL_PASSWORD $MYSQL_DATABASE&lt;br /&gt; sleep $SLEEP_TIME
+  &lt;/p&gt;
+  
+  &lt;p&gt;
+    echo $OPTIMIZE_CACHES_SQL | mysql -u $MYSQL_USERNAME -p$MYSQL_PASSWORD $MYSQL_DATABASE &gt; /dev/null&lt;br /&gt; sleep $SLEEP_TIME
+  &lt;/p&gt;
+  
+  &lt;p&gt;
+    echo $OPTIMIZE_REST_SQL | mysql -u $MYSQL_USERNAME -p$MYSQL_PASSWORD $MYSQL_DATABASE &gt; /dev/null
+  &lt;/p&gt;
+  
+  &lt;p&gt;
+    echo `date` &amp;#8211; Done with Drupal database maintenance
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Then just run &lt;code&gt;crontab -e&lt;/code&gt; to edit your crontab and add a line similar to:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;46  4  *   *   *     /path/to/drupal-db-maint.sh&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;That will optimize your database nightly at 4:46 AM server time (usually UTC).&lt;/p&gt;
+
+&lt;p&gt;If you don&amp;#8217;t like my solution, there are plenty of &lt;a href=&#34;http://tools.ourmedia.org/blog/markus_sandy/performance_and_a_new_module&#34;&gt;more elegant session cleaning solutions out there&lt;/a&gt;. I&amp;#8217;m just more comfortable writing shell scripts and crontabs than Drupal modules that use [hook_cron][4].&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;Posting code in WordPress so that its readable is pretty much impossible. Any suggestions?&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;[4]: &lt;a href=&#34;http://api.drupal.org/api/function/hook_cron/5&#34;&gt;http://api.drupal.org/api/function/hook_cron/5&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Tips on Surviving DreamHost</title>
+      <link>/2007/06/10/tips-on-surviving-dreamhost/</link>
+      <pubDate>Mon, 11 Jun 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/2007/06/10/tips-on-surviving-dreamhost/</guid>
+      <description>&lt;p&gt;I use DreamHost and it is by far the &lt;em&gt;&lt;strong&gt;least&lt;/strong&gt;&lt;/em&gt; &lt;strong&gt;reliable hosting service I&amp;#8217;ve ever used.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;However, they&amp;#8217;re quite cheap for the vast amounts of storage and bandwidth provided. I also &lt;strong&gt;love&lt;/strong&gt; their &lt;a href=&#34;http://blog.dreamhost.com/&#34;&gt;blog&lt;/a&gt;, newsletter, &lt;a href=&#34;http://www.dreamhoststatus.com/&#34;&gt;status page&lt;/a&gt;, control panel, and especially that they&amp;#8217;re &lt;a href=&#34;http://www.dreamhost.com/green.cgi?susens-schurter.com&#34;&gt;green&lt;/a&gt;!&lt;/p&gt;
+
+&lt;p&gt;Bottom line: DreamHost is great for some use cases, and incredibly dangerous for others. Here are some tips:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Do&lt;/strong&gt; &lt;strong&gt;&lt;em&gt;not&lt;/em&gt; use IMAP for DreamHost e-mail.&lt;/strong&gt; IMAP is wonderful&amp;#8230;at least over a 100% reliable high-bandwidth, low-latency connection. I would recommend only using DreamHost for POP access or e-mail forwarding.&lt;/p&gt;
+
+&lt;p&gt;I made the mistake of using IMAP and now have over 5,000 wonderfully organized and filtered messages trapped on DreamHost&amp;#8217;s unreliable servers. I&amp;#8217;m not a big fan of Gmail&amp;#8217;s non-hierarchical organization scheme, and both Yahoo! &amp;amp; Hotmail have miserable user interfaces. So now I&amp;#8217;m stuck with embarrassingly unreliable e-mail acces.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Do &lt;em&gt;not&lt;/em&gt; store any sensitive information on DreamHost.&lt;/strong&gt; They just had a &lt;a href=&#34;http://www.dreamhoststatus.com/2007/06/06/security-breach/&#34;&gt;security breach&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you do, make sure that the file permissions only allow your user access to sensitive files: &lt;code&gt;chmod 0600 &amp;lt;em&amp;gt;filename&amp;lt;/em&amp;gt;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Do &lt;em&gt;not&lt;/em&gt; host sites which require high levels of availability.&lt;/strong&gt; You&amp;#8217;ve been warned. 😉&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Enough bad news, here&amp;#8217;s what I do recommend using DreamHost for:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Personal sites (like my blog) or sites which don&amp;#8217;t require high availability (small businesses or organizations).&lt;/li&gt;
+&lt;li&gt;Serving static media files for a site hosted elsewhere (although some sort of failover should be used).&lt;/li&gt;
+&lt;li&gt;Remote backup &amp;#8212; as long as you &lt;strong&gt;encrypt any sensitive information&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Shell access to a Linux server. If you want to play with Linux + Apache + MySQL + &lt;a href=&#34;http://www.php.net/&#34;&gt;PHP&lt;/a&gt;/&lt;a href=&#34;http://www.perl.org/&#34;&gt;Perl&lt;/a&gt;/&lt;a href=&#34;http://www.rubyonrails.org/&#34;&gt;Ruby on Rails&lt;/a&gt;/[Python][8], DreamHost seems like an excellent choice. Just remember to move to a more reliable hosting service before launching your Web 2.0 startup.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;[8]: &lt;a href=&#34;http://www.python.org/&#34;&gt;http://www.python.org/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Any Takers for Drupal in Python?</title>
+      <link>/2007/05/10/any-takers-for-drupal-in-python/</link>
+      <pubDate>Thu, 10 May 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/2007/05/10/any-takers-for-drupal-in-python/</guid>
+      <description>&lt;p&gt;I half-jokingly &lt;a href=&#34;http://buytaert.net/php-is-dead-long-live-php&#34;&gt;posted a comment on Dries Buytaert blog about re-implementing Drupal in Python&lt;/a&gt;.Â  Honestly, I expected to either be flamed or ignored, but instead it turns out I&amp;#8217;m not the first person to think of this!Â  Some people even suggested Haskell&amp;#8230;Â  I think something a tad more mainstream like Python would fair much better.&lt;/p&gt;
+
+&lt;p&gt;Another commenter suggested &lt;strong&gt;Python doesn&amp;#8217;t need Yet Another Web Framework&lt;/strong&gt; which is absolutely true!Â  However, &lt;strong&gt;Python desperately needs an easy to use Content Management System&lt;/strong&gt;, and Drupal is the best there is!&lt;/p&gt;
+
+&lt;p&gt;I posted a follow-up comment asking for anyone interested in pursuing such a wild course of action to contact me.&lt;/p&gt;
+
+&lt;p&gt;If you&amp;#8217;ve read much of my blog, you know I&amp;#8217;m relatively new to &lt;a href=&#34;http://www.python.org&#34;&gt;Python,&lt;/a&gt; but &lt;a href=&#34;http://www.cherrypy.org/&#34;&gt;CherryPy&lt;/a&gt; and &lt;a href=&#34;http://genshi.edgewall.org/&#34;&gt;Genshi&lt;/a&gt; seem ideal for implementing [Drupal.][5]Â  CherryPy gives you the nice URLs and module layout while Genshi allows for a very similar theming experience.&lt;/p&gt;
+
+&lt;p&gt;[5]: &lt;a href=&#34;http://drupal.org/&#34;&gt;http://drupal.org/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Debian Etch Released</title>
+      <link>/2007/04/08/debian-etch-released/</link>
+      <pubDate>Sun, 08 Apr 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/2007/04/08/debian-etch-released/</guid>
+      <description>&lt;p&gt;It &lt;a href=&#34;http://www.debian-administration.org/articles/514&#34;&gt;appears&lt;/a&gt; &lt;a href=&#34;http://www.debian.org/releases/etch/releasenotes&#34;&gt;Debian GNU/Linux 4.0, codenamed Etch,&lt;/a&gt; (quite a mouthful) &lt;a href=&#34;http://www.debian.org/News/2007/20070408&#34;&gt;has been released as the latest stable version of Debian&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Go &lt;a href=&#34;http://www.debian.org/CD/torrent-cd/&#34;&gt;download it using BitTorrent to be cool&lt;/a&gt;. 😉&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Tip #1:&lt;/strong&gt;Â  You do &lt;em&gt;&lt;strong&gt;not&lt;/strong&gt;&lt;/em&gt; have to download all of the CDs, just get one and Debian&amp;#8217;s installer will download the rest.)&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;m a happy and loyal Debian user and strongly encourage any Linux power users to try out Etch. &lt;a href=&#34;http://www.ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt; is still my recommendation for users who want things to &amp;#8220;Just Work.&amp;#8221; However, I highly recommend Debian for any kind of server (file, print, application, database, web, e-mail).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Tip #2:&lt;/strong&gt; Check out &lt;a href=&#34;http://www.debian-multimedia.org/&#34;&gt;Debian Multimedia&lt;/a&gt; for all of your proprietary codec needs!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Mini-Review&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;ve been using Etch (and Sid) for a while now, so its tough to do a real review from a &amp;#8220;normal&amp;#8221; end user&amp;#8217;s perspective.&lt;/p&gt;
+
+&lt;p&gt;Some highlights:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Developer&amp;#8217;s should be happy as &lt;a href=&#34;http://php.net/&#34;&gt;PHP,&lt;/a&gt; &lt;a href=&#34;http://python.org/&#34;&gt;Python&lt;/a&gt;, &lt;a href=&#34;http://mono-project.com/&#34;&gt;Mono,&lt;/a&gt; &lt;a href=&#34;http://mysql.com/&#34;&gt;MySQL,&lt;/a&gt; and &lt;a href=&#34;http://www.postgresql.org/&#34;&gt;PostgreSQL&lt;/a&gt; are all fairly up-to-date and extremely easy to install.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.gnome.org/&#34;&gt;Gnome&lt;/a&gt; is stable and speedy.&lt;/li&gt;
+&lt;li&gt;The &lt;a href=&#34;http://wiki.debian.org/DebianInstaller/GUI&#34;&gt;graphical installer&lt;/a&gt; brings Debian out of the 1990s and offers tons of features.&lt;/li&gt;
+&lt;li&gt;As usual, Debian&amp;#8217;s package repository is &lt;em&gt;huge&lt;/em&gt;. Forget vendor-supplied RPMs or custom installers, if its not in Debian&amp;#8217;s repository (or Debian Multimedia), you probably don&amp;#8217;t need it. 😉&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Some downsides:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Relatively ancient version of the standard C library (2.3.6) means &lt;a href=&#34;http://thomas.apestaart.org/log/?p=457&#34;&gt;poor compatibility with 3rd party binaries&lt;/a&gt; (which Debian has always hated anyway).&lt;/li&gt;
+&lt;li&gt;Gnome is 2 stable versions behind in Debian (2.14 vs. 2.18). This is very frustrating as Gnome constantly produces nice incremental improvements.&lt;/li&gt;
+&lt;li&gt;Debian just isn&amp;#8217;t as easy to use by default as Ubuntu. Debian needs to install and integrate some of the more cutting edge desktop apps like &lt;a href=&#34;http://beagle-project.org&#34;&gt;Beagle&lt;/a&gt;, &lt;a href=&#34;http://www.gnome.org/projects/tomboy/&#34;&gt;Tomboy&lt;/a&gt;, &lt;a href=&#34;http://raphael.slinckx.net/deskbar/&#34;&gt;Deskbar&lt;/a&gt;, and Ubuntu&amp;#8217;s nicer package management interfaces.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://wiki.debian.org/SecureApt&#34;&gt;Secure APT&lt;/a&gt; is a &lt;em&gt;great&lt;/em&gt; feature, but the error messages it can produce are going to scare the pants off of new users. More effort needs to be made to integrate all of the various places user&amp;#8217;s encounter public key crypto. Right now its very schizophrenic and confusing: GPG errors are too common, and command line magic that even confuses me is necessary to add new repositories.&lt;/li&gt;
+&lt;li&gt;Not related to the release, Debian&amp;#8217;s support system is a confusing jumble of web interfaces, mailing lists, IRC channels, and &lt;a href=&#34;http://wiki.debian.org&#34;&gt;an excellent wiki&lt;/a&gt; (that I rarely remember to use). Hopefully this is something a new [Debian DPL][20] will address.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;[20]: &lt;a href=&#34;http://wiki.debian.org/DebianProjectLeader?action=show&amp;amp;redirect=DPL&#34;&gt;http://wiki.debian.org/DebianProjectLeader?action=show&amp;amp;redirect=DPL&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Even Python Coders Love Drupal</title>
+      <link>/2007/02/23/even-python-coders-love-drupal/</link>
+      <pubDate>Fri, 23 Feb 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/2007/02/23/even-python-coders-love-drupal/</guid>
+      <description>&lt;p&gt;Its no secret that I&amp;#8217;ve been trying to kick my &lt;a href=&#34;http://php.net&#34;&gt;PHP&lt;/a&gt; habit in favor of &lt;a href=&#34;http://python.org/&#34;&gt;Python.&lt;/a&gt;Â  However, I started using [Drupal]&lt;a href=&#34;a PHP content management system&#34;&gt;3&lt;/a&gt; around 4.4 or 4.5 and haven&amp;#8217;t found any Python solutions that can even begin to compete with its ease of use and features.&lt;/p&gt;
+
+&lt;p&gt;With that in mind, I found it funny today when I ran across &lt;a href=&#34;http://www.enterpriseblacklist.org/&#34; style=&#34;font-weight: bold&#34;&gt;a site prominently displaying a &amp;#8220;powered by python&amp;#8221; logo, when its obviously powered by Drupal&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;m guessing the &amp;#8220;powered by python&amp;#8221; actually refers to the spiders that the site uses to build its blacklist, but its still a bit misleading, if not outright disingenuous to credit Python without mentioning Drupal.&lt;/p&gt;
+
+&lt;p&gt;To be fair the site does look like a useful project.Â  I&amp;#8217;m in favor of anything that reduces the monetary incentive to domain park!&lt;/p&gt;
+
+&lt;p&gt;[3]: &lt;a href=&#34;http://drupal.org/&#34;&gt;http://drupal.org/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>What did WordPress do with Firefox’s Spell Check?</title>
+      <link>/2007/02/23/what-did-wordpress-do-with-firefoxs-spell-check/</link>
+      <pubDate>Fri, 23 Feb 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/2007/02/23/what-did-wordpress-do-with-firefoxs-spell-check/</guid>
+      <description>&lt;p&gt;I upgraded to &lt;a href=&#34;http://wordpress.org/development/2007/02/new-releases/&#34;&gt;WordPress 2.1.1&lt;/a&gt; last night, and now WordPress wants me to use its spell checker instead of &lt;a href=&#34;http://www.getfirefox.com&#34;&gt;Firefox&lt;/a&gt;&amp;#8216;s.&lt;/p&gt;
+
+&lt;p&gt;This is really annoying as I don&amp;#8217;t really want or need a new spell checker. Firefox&amp;#8217;s works great. WordPress&amp;#8217;s is just slow and laggy because it uses AJAX.&lt;/p&gt;
+
+&lt;p&gt;Also, the whole auto-save feature of WordPress would be nice if Firefox didn&amp;#8217;t already have the Session Restore feature.&lt;/p&gt;
+
+&lt;p&gt;Its as if WordPress&amp;#8217;s 2.1 roadmap consisted of reimplementing Firefox 2.0 features in AJAX&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;I like WordPress alot, but these new features are just a nuisance.&lt;/p&gt;
+
+&lt;p&gt;Anyone know how to turn these features off?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; My friend &lt;a href=&#34;http://dancoulter.com/&#34;&gt;Dan&lt;/a&gt; pointed out that [someone has submitted a bug to WordPress for the Firefox spellcheck issue][4].&lt;/p&gt;
+
+&lt;p&gt;[4]: &lt;a href=&#34;http://trac.wordpress.org/ticket/3847&#34;&gt;http://trac.wordpress.org/ticket/3847&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Lost in a Sea of Web Frameworks</title>
+      <link>/2007/02/07/lost-in-a-sea-of-web-frameworks/</link>
+      <pubDate>Wed, 07 Feb 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/2007/02/07/lost-in-a-sea-of-web-frameworks/</guid>
+      <description>&lt;p&gt;So I&amp;#8217;ve been trying to learn Python and have successfully written a couple small scripts. For the couple of small web sites/services I&amp;#8217;ve written, I used CherryPy mostly because I know someone who is active in the CherryPy community.Coming from PHP and ASP.NET, Python&amp;#8217;s offerings of web frameworks are a bit confusing. Here is my impression of the general landscape of the 3 platforms:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://php.net/&#34;&gt;PHP&lt;/a&gt; &amp;#8211; A language which survived without widely adopted frameworks for many years. While many frameworks are gaining popularity, most major PHP applications are their own framework.&lt;/p&gt;
+
+&lt;p&gt;Examples: &lt;a href=&#34;http://drupal.org&#34;&gt;Drupal&lt;/a&gt; (a CMS) and &lt;a href=&#34;http://www.horde.org/&#34;&gt;Horde&lt;/a&gt; (a framework and suite of web applications)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://asp.net&#34;&gt;ASP.NET&lt;/a&gt; &amp;#8211; The web framework bundled with Microsoft&amp;#8217;s monolithic .NET platform. Supports multiple languages and even implementations (&lt;a href=&#34;http://www.mono-project.com/&#34;&gt;go Mono!&lt;/a&gt;). A few alternative web frameworks exist for .NET (&lt;a href=&#34;http://www.castleproject.org/&#34;&gt;Castle Project&lt;/a&gt;), but it seems much more popular to just build components on top of ASP.NET.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.python.org/&#34;&gt;Python&lt;/a&gt; &amp;#8211; While I&amp;#8217;m still learning a lot about Python, it seems Python has a wide variety of frameworks which range from a complete web application stack including database and kitchen sink (&lt;a href=&#34;http://www.zope.org/&#34;&gt;Zope&lt;/a&gt;) to just a widgets toolkit (&lt;a href=&#34;http://toscawidgets.org/&#34;&gt;ToscaWidgets&lt;/a&gt;) or just an HTTP/object-dispatching framework (&lt;a href=&#34;http://www.cherrypy.org/&#34;&gt;CherryPy&lt;/a&gt;).&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Then there are the various Javascript/DHTML/AJAX client side frameworks which can replace the interface portions of the above platforms and frameworks. It seems to me these UI frameworks have caused PHP-sans-a-framework to remain popular because the server-side code becomes a simple data broker for the complex UI widgets.&lt;/p&gt;
+
+&lt;p&gt;Python is obviously a bit different than PHP and ASP.NET. While using a framework seems the norm (unlike constantly rolling your own in PHP), there&amp;#8217;s no 1-framework-to-rule-them-all like ASP.NET.&lt;/p&gt;
+
+&lt;p&gt;Luckily my web applications have been very simple, so CherryPy by itself has worked fine. I may even go the hackish route of just using a Javascript UI framework to keep my Python code simple. I&amp;#8217;ve been trying to learn a little more about [TurboGears][11] and ToscaWidgets as well, but so far I haven&amp;#8217;t needed a full framework.&lt;/p&gt;
+
+&lt;p&gt;[11]: &lt;a href=&#34;http://www.turbogears.org/&#34;&gt;http://www.turbogears.org/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mongodb on </title>
+    <link>/tags/mongodb/</link>
+    <description>Recent content in Mongodb on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 05 Nov 2011 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/mongodb/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Failing with MongoDB</title>
+      <link>/2011/11/05/failing-with-mongodb/</link>
+      <pubDate>Sat, 05 Nov 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/2011/11/05/failing-with-mongodb/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Sorry this isn&amp;#8217;t my best piece of writing and there seems to be some confusion. The dataset in question was first in a 1.8 master/slave pair and then migrated to sharded replica sets and 2.0.0.&lt;/p&gt;
+
+&lt;p&gt;For a bit of history of my dealings with MongoDB at Urban Airship, I gave a couple versions of a Scaling with MongoDB talk:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://opensourcebridge.org/2011/wiki/Scaling_with_MongoDB&#34;&gt;at Open Source Bridge (latest &amp;amp; greatest)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/2011/02/02/schmongodb-slides-from-update-portland/&#34;&gt;at Update Portland (original, less polished version)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;My coworker Adam Lowry even gave a follow-up talk of sorts at &lt;a href=&#34;http://postgresopen.org/2011/schedule/presentations/98/&#34;&gt;Postgres Open 2011&lt;/a&gt; (&lt;a href=&#34;http://wiki.postgresql.org/images/7/7f/Adam-lowry-postgresopen2011.pdf&#34;&gt;slides&lt;/a&gt;) about migrating one of our datasets off of MongoDB and (back) on to PostgreSQL.&lt;/p&gt;
+
+&lt;p&gt;After reading through those slides you&amp;#8217;re probably wondering why we&amp;#8217;re still dealing with MongoDB at all. We fully intended to migrate our data out of it by now, but priorities change, deadlines slip, and we never expected one of our last uses of MongoDB to experience a surge in growth.&lt;/p&gt;
+
+&lt;p&gt;The dataset in question seemed ideal for MongoDB:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ephemeral &amp;#8211; if we lose it we experience service degradation for a short while, but nothing catastrophic&lt;/li&gt;
+&lt;li&gt;Small &amp;#8211; easily fits into memory (~15 GB)&lt;/li&gt;
+&lt;li&gt;Secondary index &amp;#8211; In a key/value store we would have had to manage a secondary index manually&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So this dataset dodged a lot of the previous problems we had with MongoDB and seemed safe to migrate at our leisure.&lt;/p&gt;
+
+&lt;p&gt;&lt;a name=&#34;global_write_lock&#34;&gt;&lt;b&gt;Global Write Lock&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.mongodb.org/display/DOCS/How+does+concurrency+work#Howdoesconcurrencywork-Read%2FWriteLock&#34;&gt;MongoDB has a global write lock.&lt;/a&gt; This means that while applying an insert or update, a single mongod instance can&amp;#8217;t respond to other queries.&lt;/p&gt;
+
+&lt;p&gt;Our dataset may be small but it has a heavy read and write load. When the service it backed experienced a surge in usage, MongoDB quickly became CPU bound. This was especially frustrating considering mongod was running in a simple master/slave setup on two servers: each with 16 cores and enough memory to hold all the data a few times over again.&lt;/p&gt;
+
+&lt;p&gt;Because of the global write lock and heavy write load, operations are effectively serialized and executed on a single core. Meaning our servers didn&amp;#8217;t even look loaded, as just 1 core would be 100% utilized by mongod.&lt;/p&gt;
+
+&lt;p&gt;&lt;a name=&#34;sharding&#34;&gt;&lt;b&gt;Let the Sharding Begin&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;So we need to utilize multiple cores&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;To do that we need multiple write locks&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;There&amp;#8217;s 1 write lock per mongod. So&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;&amp;#8230;multiple mongods per server?&lt;/p&gt;
+
+&lt;p&gt;We&amp;#8217;d been avoiding sharding after having no luck getting it working in the 1.5.x dev series, but it&amp;#8217;s our only choice now to get multiple mongods. I ran some tests and it seemed like we could turn our master/slave setup into a 2 shard setup with 2 mongods and 1 arbiter per shard with downtime in the seconds or low minutes.&lt;/p&gt;
+
+&lt;p&gt;The operational complexity of configuring a MongoDB cluster is daunting with each component bringing its own caveats:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;mongod config servers&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;You need &lt;em&gt;exactly&lt;/em&gt; 3 config mongods (1 is fine for testing, which makes things appear simpler than they really are).&lt;/li&gt;
+&lt;li&gt;There are lots of caveats with the config servers, so read &lt;a href=&#34;http://www.mongodb.org/display/DOCS/Changing+Config+Servers&#34;&gt;Changing Config Servers&lt;/a&gt; carefully before configuring your cluster.&lt;/li&gt;
+&lt;li&gt;Otherwise these mongod instances are fairly blackboxish to me. Despite being mongod processes you administer them completely differently.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;mongos routers&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;1 per app server. This wouldn&amp;#8217;t be a big deal &lt;a href=&#34;http://www.mongodb.org/display/DOCS/flushRouterConfig+command&#34;&gt;except that our mongoses often start failing and require flushRouterConfig to be run on them&lt;/a&gt;. [2.0.1 supposedly fixes this][8], but we haven&amp;#8217;t tested that yet (and trading known problems for new unknown ones is always scary).&lt;/li&gt;
+&lt;li&gt;mongos instances can use a lot of CPU and seem to have random spikes where they fully utilize every core very briefly. Keep this in mind if your application servers are already CPU bound.&lt;/li&gt;
+&lt;li&gt;On the bright side mongos balanced our data rather quickly. Our shard key is a uuid, and it properly setup reasonable ranges in very short order without having to preconfigure them.&lt;/li&gt;
+&lt;li&gt;&amp;#8220;mongos&amp;#8221; is a terribly confusing name. It sounds like multiple mongo instances. We&amp;#8217;ve taken to calling them mongooses internally due to frequent typos and confusion.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;arbiters&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;You need at least 3 members in a replica set in order to complete an election if 1 member goes down.&lt;/li&gt;
+&lt;li&gt;We haven&amp;#8217;t had any issues with arbiters&amp;#8230; not sure what we&amp;#8217;d do if one broke somehow but since they have no persistent data they&amp;#8217;re safe to restart at any time.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;mongods&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Early on we ran into a problem where changing replica set member entries wasn&amp;#8217;t propagated to the config servers&amp;#8217; shard configuration. Restarting every mongos fixed it.&lt;/li&gt;
+&lt;li&gt;As far as I can tell a new replica set member will never leave the initial RECOVERING state until all operations to that set are stopped. Even 40 updates per second was enough of a trickle to prevent a new set member from leaving RECOVERING to becoming a SECONDARY. We had to shutdown mongoses to cut off all traffic to bring up a new member. (The replication log gave every indication of being caught up and our usual update load is thousands per second.)&lt;/li&gt;
+&lt;li&gt;Setting rest in the config file doesn&amp;#8217;t seem to work. Put &amp;#8211;rest in your command line options.&lt;/li&gt;
+&lt;li&gt;Sending an HTTP request to a mongod&amp;#8217;s main port (instead of the HTTP endpoint) seems to be capable of crashing the mongod.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Client Drivers&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;While a single replica set member was in a RECOVERING state our Java services couldn&amp;#8217;t complete &lt;em&gt;any&lt;/em&gt; operations while our Python service was happily working away.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Summary&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Right now we&amp;#8217;re getting by with 2 shards on 2 dedicated servers and then mongoses and config servers spread throughout other servers. There appears to be some data loss occurring, though due to the ephemeral fast changing nature of this dataset it&amp;#8217;s very difficult to determine definitively or reproduce independently.&lt;/p&gt;
+
+&lt;p&gt;So we&amp;#8217;re trying to migrate off of MongoDB to a custom service better suited for this dataset ASAP.&lt;/p&gt;
+
+&lt;p&gt;[8]: &lt;a href=&#34;https://jira.mongodb.org/browse/SERVER-3739&#34;&gt;https://jira.mongodb.org/browse/SERVER-3739&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>schmongodb slides from Update Portland</title>
+      <link>/2011/02/02/schmongodb-slides-from-update-portland/</link>
+      <pubDate>Thu, 03 Feb 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/2011/02/02/schmongodb-slides-from-update-portland/</guid>
+      <description>&lt;p&gt;A few months ago someone in #pdxwebdev on Freenode asked an innocent &lt;a href=&#34;http://www.mongodb.org&#34;&gt;MongoDB&lt;/a&gt; question. In response I ranted seemingly endlessly about our experience with MongoDB at &lt;a href=&#34;http://urbanairship.com&#34;&gt;Urban Airship&lt;/a&gt;. After a few moments somebody (perhaps sarcastically? who can know on IRC) suggested I give a talk on my experiences with MongoDB. That led me to realize despite &lt;a href=&#34;http://calagator.org/&#34;&gt;Portland&amp;#8217;s amazing meetup culture&lt;/a&gt; there were no tech-meetups that focused on either:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Narrative talks based on experiences in production &lt;small&gt;(&lt;em&gt;not&lt;/em&gt; how-tos)&lt;/small&gt;&lt;/li&gt;
+&lt;li&gt;Database-agnostic backend systems focused groups &lt;small&gt;(&lt;em&gt;not&lt;/em&gt; just a NoSQL meetup)&lt;/small&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;So I started one: &lt;a href=&#34;http://www.meetup.com/updatepdx/&#34;&gt;Update Portland&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;And I gave my promised MongoDB talk: &lt;a href=&#34;https://docs.google.com/present/view?id=ddzswzbr_104f2sgp8dq&#34;&gt;schmongodb&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;And &lt;a href=&#34;http://twitter.com/meghanpgill/status/23455639216848896&#34;&gt;10gen sent swag&lt;/a&gt;! (Thanks to &lt;a href=&#34;http://twitter.com/meghanpgill&#34;&gt;Meghan&lt;/a&gt;! It was a big hit.)&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;And&lt;/em&gt; my brilliant coworker &lt;a href=&#34;http://twitter.com/eonnen&#34;&gt;Erik Onnen&lt;/a&gt; gave a short talk on how he&amp;#8217;s beginning to use &lt;a href=&#34;http://sna-projects.com/kafka/&#34;&gt;Kafka&lt;/a&gt; at Urban Airship. (Expect a long form talk on that in the future!)&lt;/p&gt;
+
+&lt;p&gt;Thanks to everyone who showed up. I had a great time and have high hopes for the upcoming meetings. (Sign up for the &lt;a href=&#34;http://groups.google.com/group/update-pdx&#34;&gt;mailing list&lt;/a&gt;!)&lt;/p&gt;
+
+&lt;p&gt;The slides may come across as overly negative. After all Urban Airship is actively moving away from MongoDB for our largest and busiest pieces of data. So I want to make 2 things very clear:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;I like MongoDB and would like to use it again in the future. There&amp;#8217;s a lot I don&amp;#8217;t like about it, but I can&amp;#8217;t think of any &amp;#8220;perfect&amp;#8221; piece of software.&lt;/li&gt;
+&lt;li&gt;The IO situation in EC2, particularly EBS&amp;#8217;s poor performance (RAIDing really doesn&amp;#8217;t help) made life with MongoDB miserable. This story may have been very different if we were running MongoDB on bare metal with fast disks.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;[Mike Herrick, the VP of Engineering at Urban Airship][11], put me on the spot at the end of my talk by asking me by asking me: &lt;strong&gt;&amp;#8220;Knowing what you know now, what would you have done differently?&amp;#8221;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I didn&amp;#8217;t have a good answer, and I still don&amp;#8217;t. Despite all of the misadventures, MongoDB wasn&amp;#8217;t the wrong choice. Scaling systems is just hard, and if you want something to work under load, you&amp;#8217;re going to have to learn all of its ins and outs. We initially started moving to Cassandra, and while it has tons of wonderful attributes, we&amp;#8217;re running into plenty of problems with it as well.&lt;/p&gt;
+
+&lt;p&gt;So I think the answer is &lt;em&gt;knowing then what I know now&lt;/em&gt;. In other words: &lt;strong&gt;Do your homework&lt;/strong&gt;. That way we could have avoided these shortcomings and perhaps still be happy with MongoDB today. Hopefully these slides will help others in how they plan to use MongoDB so they can use it properly and happily.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; I added lots of comments to the speaker notes, so you&amp;#8217;ll probably want to view those while looking at the slides.&lt;/p&gt;
+
+&lt;p&gt;[11]: &lt;a href=&#34;http://www.mikeherrick.com/&#34;&gt;http://www.mikeherrick.com/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Less Pagination, More More</title>
+      <link>/2010/07/16/less-pagination-more-more/</link>
+      <pubDate>Sat, 17 Jul 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/2010/07/16/less-pagination-more-more/</guid>
+      <description>&lt;p&gt;We live in a brave new (to some) world of databases other than a relational database with a SQL interface. Normally end users never notice a difference, but the astute viewer may notice the slow demise of an old friend: pagination.&lt;/p&gt;
+
+&lt;p&gt;Traditionally with SQL databases pagination has looked something like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://schmichael.com/files/pagination.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;There are previous and next links as well as links for jumping right to the beginning and end. Pretty boring stuff.&lt;/p&gt;
+
+&lt;p&gt;What&amp;#8217;s interesting is that this standard interface is disappearing in favor of something like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Twitter&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://schmichael.com/files/twitter-more.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Facebook&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://schmichael.com/files/facebook-more.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And soon beta testers of &lt;a href=&#34;http://blog.urbanairship.com/2010/05/25/android-delivers-push-notifications-are-here-to-stay/&#34;&gt;Urban Airship&amp;#8217;s push service for Android&lt;/a&gt; will see a More link on the page that lists devices associated with their app:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://schmichael.com/files/apids-more.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The simplest possible explanation for this dumbing down of pagination is that &lt;strong&gt;count (for total pages) and skip/offset are expensive operations.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Not only are those operations expensive, but in eventually consistent databases, which many modern non-relational databases are, they&amp;#8217;re extremely expensive, if not impossible, to perform.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cassandra&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;At Urban Airship we, like Facebook, use &lt;a href=&#34;http://cassandra.apache.org/&#34;&gt;Cassandra&lt;/a&gt;: a distributed column-based database. This deals two deadly blows to traditional pagination:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;No way to count columns in a row (without reading every column).&lt;/li&gt;
+&lt;li&gt;No way to skip by numeric offset (so you can&amp;#8217;t say, skip to page 5).&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;In Cassandra columns are ordered, so you start reading from the beginning and read N+1 columns where N is the number of items you&amp;#8217;d like to display. The last column&amp;#8217;s key is then used to determine whether the More link is enabled, and if so, what key to start the next &amp;#8220;page&amp;#8221; at.&lt;/p&gt;
+
+&lt;p&gt;Both of those are solvable problems if you really need them, but I would suspect you would end up creating a column count cache as well as some sort of table of contents for the various page offsets. Not what I want to spend my time implementing.&lt;/p&gt;
+
+&lt;p&gt;The fact of the matter is that for many use cases, a simple More button works just as well (if not better) than traditional pagination. It&amp;#8217;s also far cheaper to implement, which means more developer time free to work on features and more hardware resources available to push your 140 character insights around the web.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;MongoDB&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I should note that MongoDB is fairly unique in the non-relational database world as its dynamic querying features include &lt;a href=&#34;http://www.mongodb.org/display/DOCS/Aggregation#Aggregation-Count&#34;&gt;count&lt;/a&gt; and [skip][8] operations. However, as with any database, you&amp;#8217;ll want to make sure these queries hit indexes.&lt;/p&gt;
+
+&lt;p&gt;Sadly MongoDB currently doesn&amp;#8217;t have the distributed features necessary to automatically handle data too big for a single server.&lt;/p&gt;
+
+&lt;p&gt;[8]: &lt;a href=&#34;http://www.mongodb.org/display/DOCS/Advanced+Queries#AdvancedQueries-%7B%7Bskip%28%29%7D%7D&#34;&gt;http://www.mongodb.org/display/DOCS/Advanced+Queries#AdvancedQueries-%7B%7Bskip%28%29%7D%7D&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Making Server-Side MongoDB Functions Less Awkward</title>
+      <link>/2010/01/11/making-server-side-mongodb-functions-less-awkward/</link>
+      <pubDate>Tue, 12 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/2010/01/11/making-server-side-mongodb-functions-less-awkward/</guid>
+      <description>&lt;p&gt;I&amp;#8217;ve recently switched my project at work to use MongoDB for the user database and a few other datasets.&lt;/p&gt;
+
+&lt;p&gt;Currently I don&amp;#8217;t use many JavaScript functions, but when I do I like to store them on the server so that they&amp;#8217;re accessible when I&amp;#8217;m poking around in a console.&lt;/p&gt;
+
+&lt;p&gt;I use something similar to the following function to load all of my JS functions onto the server when my app starts:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;import os
+import pymongo
+import pkg_resources
+
+# Relative to distribution&#39;s root
+SCRIPT_DIR = os.path.join(&#39;model&#39;, &#39;js&#39;)
+
+def init_js(db):
+    &#39;&#39;&#39;Initializes server-side javascript functions&#39;&#39;&#39;
+    scripts = filter(
+            lambda f: f.endswith(&#39;.js&#39;),
+            pkg_resources.resource_listdir(__name__, SCRIPT_DIR)
+        )
+    for script in scripts:
+        # Name the function after the script name
+        func_name, _ = script.split(&#39;.&#39;, 1)
+        script_path = os.path.join(SCRIPT_DIR, script)
+
+        # Create a pymongo Code object
+        # otherwise it will be stored as a string
+        code = pymongo.code.Code(
+                pkg_resources.resource_string(__name__, script_path))
+
+        # Upsert the function
+        db.system.js.save({ &#39;_id&#39;: func_name, &#39;value&#39;: code, })
+&lt;/pre&gt;
+
+&lt;p&gt;However, using server-side functions from Python is awkward at best. Say I have the JavaScript function:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;add.js&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre lang=&#34;javascript&#34;&gt;function(x, y) {
+    return x + y;
+}
+&lt;/pre&gt;
+
+&lt;p&gt;To run that function via PyMongo requires wrapping the function call with placeholder parameters in a Code object and passing in values as a dict:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;var1 = 1
+var2 = 2
+result = db.eval(pymongo.code.Code(&#39;add(a, b)&#39;, {&#39;a&#39;: var1, &#39;b&#39;: var2,}))
+assert result == 3
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; See [MongoDB dev Mike Dirolf comment][1] to see a much more concise way of executing server-side functions.&lt;/p&gt;
+
+&lt;p&gt;Bearable for simple functions, but having to manually map parameters to values is tiresome and error prone with longer function signatures.&lt;/p&gt;
+
+&lt;p&gt;What I wanted was something more natural like:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;var1 = 1
+var2 = 2
+result = db.add(var1, var2)
+assert result == 3
+&lt;/pre&gt;
+
+&lt;p&gt;I use a simple PyMongo Database object wrapper to make my life easier:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;import string
+
+from pymongo.code import Code
+
+class ServerSideFunctions(object):
+    def __init__(self, db):
+        self.db = db
+
+    def func_wrapper(self, func):
+        &#39;&#39;&#39;Returns a closure for calling a server-side function.&#39;&#39;&#39;
+        params = [] # To keep params ordered
+        kwargs = {}
+        def server_side_func(*args):
+            &#39;&#39;&#39;Calls server side function with positional arguments.&#39;&#39;&#39;
+            # Could be removed with better param generating logic
+            if len(args) &gt; len(string.letters):
+                raise TypeError(&#39;%s() takes at most %d arguments (%d given)&#39;
+                        % (func, len(string.letters), len(args)))
+            
+            # Prepare arguments
+            for k, v in zip(string.letters, args):
+                kwargs[k] = v
+                params.append(k) 
+
+            # Prepare code object
+            code = Code(&#39;%s(%s)&#39; % (func, &#39;, &#39;.join(params)), kwargs)
+                
+            # Return result of server-side function
+            return self.db.eval(code)
+        return server_side_func
+
+    def __getattr__(self, func):
+        &#39;&#39;&#39;Return a closure for calling server-side function named `func`&#39;&#39;&#39;
+        return self.func_wrapper(func)
+
+dbjs = ServerSideFunctions(&#39;foo&#39;)
+var1 = 1
+var2 = 2
+result = dbjs.add(var1, var2)
+assert result == 3
+&lt;/pre&gt;
+
+&lt;p&gt;I&amp;#8217;m tempted to monkey-patch PyMongo&amp;#8217;s Database class to add a ServerSideFunctions instance directly as a js attribute, so then I could drop the confusing &lt;code&gt;dbjs&lt;/code&gt; variable and just use:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;assert db.js.add(1,2) == 3
+&lt;/pre&gt;
+
+&lt;p&gt;If someone knows of a better way to access server-side MongoDB functions from Python, please let me know!&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;I modified this code to remove code specific to my project, so please let me know if there are errors.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;[1]: &lt;a href=&#34;http://michael.susens-schurter.com/blog/2010/01/11/making-server-side-mongodb-functions-less-awkward/comment-page-1/#comment-68027&#34;&gt;http://michael.susens-schurter.com/blog/2010/01/11/making-server-side-mongodb-functions-less-awkward/comment-page-1/#comment-68027&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

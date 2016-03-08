@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pymongo on </title>
+    <link>/tags/pymongo/</link>
+    <description>Recent content in Pymongo on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 12 Jan 2010 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/pymongo/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Making Server-Side MongoDB Functions Less Awkward</title>
+      <link>/2010/01/11/making-server-side-mongodb-functions-less-awkward/</link>
+      <pubDate>Tue, 12 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/2010/01/11/making-server-side-mongodb-functions-less-awkward/</guid>
+      <description>&lt;p&gt;I&amp;#8217;ve recently switched my project at work to use MongoDB for the user database and a few other datasets.&lt;/p&gt;
+
+&lt;p&gt;Currently I don&amp;#8217;t use many JavaScript functions, but when I do I like to store them on the server so that they&amp;#8217;re accessible when I&amp;#8217;m poking around in a console.&lt;/p&gt;
+
+&lt;p&gt;I use something similar to the following function to load all of my JS functions onto the server when my app starts:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;import os
+import pymongo
+import pkg_resources
+
+# Relative to distribution&#39;s root
+SCRIPT_DIR = os.path.join(&#39;model&#39;, &#39;js&#39;)
+
+def init_js(db):
+    &#39;&#39;&#39;Initializes server-side javascript functions&#39;&#39;&#39;
+    scripts = filter(
+            lambda f: f.endswith(&#39;.js&#39;),
+            pkg_resources.resource_listdir(__name__, SCRIPT_DIR)
+        )
+    for script in scripts:
+        # Name the function after the script name
+        func_name, _ = script.split(&#39;.&#39;, 1)
+        script_path = os.path.join(SCRIPT_DIR, script)
+
+        # Create a pymongo Code object
+        # otherwise it will be stored as a string
+        code = pymongo.code.Code(
+                pkg_resources.resource_string(__name__, script_path))
+
+        # Upsert the function
+        db.system.js.save({ &#39;_id&#39;: func_name, &#39;value&#39;: code, })
+&lt;/pre&gt;
+
+&lt;p&gt;However, using server-side functions from Python is awkward at best. Say I have the JavaScript function:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;add.js&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre lang=&#34;javascript&#34;&gt;function(x, y) {
+    return x + y;
+}
+&lt;/pre&gt;
+
+&lt;p&gt;To run that function via PyMongo requires wrapping the function call with placeholder parameters in a Code object and passing in values as a dict:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;var1 = 1
+var2 = 2
+result = db.eval(pymongo.code.Code(&#39;add(a, b)&#39;, {&#39;a&#39;: var1, &#39;b&#39;: var2,}))
+assert result == 3
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; See [MongoDB dev Mike Dirolf comment][1] to see a much more concise way of executing server-side functions.&lt;/p&gt;
+
+&lt;p&gt;Bearable for simple functions, but having to manually map parameters to values is tiresome and error prone with longer function signatures.&lt;/p&gt;
+
+&lt;p&gt;What I wanted was something more natural like:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;var1 = 1
+var2 = 2
+result = db.add(var1, var2)
+assert result == 3
+&lt;/pre&gt;
+
+&lt;p&gt;I use a simple PyMongo Database object wrapper to make my life easier:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;import string
+
+from pymongo.code import Code
+
+class ServerSideFunctions(object):
+    def __init__(self, db):
+        self.db = db
+
+    def func_wrapper(self, func):
+        &#39;&#39;&#39;Returns a closure for calling a server-side function.&#39;&#39;&#39;
+        params = [] # To keep params ordered
+        kwargs = {}
+        def server_side_func(*args):
+            &#39;&#39;&#39;Calls server side function with positional arguments.&#39;&#39;&#39;
+            # Could be removed with better param generating logic
+            if len(args) &gt; len(string.letters):
+                raise TypeError(&#39;%s() takes at most %d arguments (%d given)&#39;
+                        % (func, len(string.letters), len(args)))
+            
+            # Prepare arguments
+            for k, v in zip(string.letters, args):
+                kwargs[k] = v
+                params.append(k) 
+
+            # Prepare code object
+            code = Code(&#39;%s(%s)&#39; % (func, &#39;, &#39;.join(params)), kwargs)
+                
+            # Return result of server-side function
+            return self.db.eval(code)
+        return server_side_func
+
+    def __getattr__(self, func):
+        &#39;&#39;&#39;Return a closure for calling server-side function named `func`&#39;&#39;&#39;
+        return self.func_wrapper(func)
+
+dbjs = ServerSideFunctions(&#39;foo&#39;)
+var1 = 1
+var2 = 2
+result = dbjs.add(var1, var2)
+assert result == 3
+&lt;/pre&gt;
+
+&lt;p&gt;I&amp;#8217;m tempted to monkey-patch PyMongo&amp;#8217;s Database class to add a ServerSideFunctions instance directly as a js attribute, so then I could drop the confusing &lt;code&gt;dbjs&lt;/code&gt; variable and just use:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;assert db.js.add(1,2) == 3
+&lt;/pre&gt;
+
+&lt;p&gt;If someone knows of a better way to access server-side MongoDB functions from Python, please let me know!&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;I modified this code to remove code specific to my project, so please let me know if there are errors.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;[1]: &lt;a href=&#34;http://michael.susens-schurter.com/blog/2010/01/11/making-server-side-mongodb-functions-less-awkward/comment-page-1/#comment-68027&#34;&gt;http://michael.susens-schurter.com/blog/2010/01/11/making-server-side-mongodb-functions-less-awkward/comment-page-1/#comment-68027&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

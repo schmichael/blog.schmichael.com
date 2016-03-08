@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rant on </title>
+    <link>/tags/rant/</link>
+    <description>Recent content in Rant on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 22 Sep 2008 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/rant/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>APIs FTW</title>
+      <link>/2008/09/21/apis-ftw/</link>
+      <pubDate>Mon, 22 Sep 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/09/21/apis-ftw/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://www.theregister.co.uk/2008/09/22/dziuba_anti_revolution/&#34;&gt;Thanks to El Reg for reminding us that new APIs really aren&amp;#8217;t any reason to get excited.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;My $0.02 (because everyone is &lt;em&gt;dying&lt;/em&gt; to know):&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://gears.google.com/&#34;&gt;Google Gears&lt;/a&gt;* &amp;#8211; A SQL database client-side? Aren&amp;#8217;t we trying to get away from SQL as the de facto data persistence backend? Isn&amp;#8217;t Google the one leading the charge (see [MapReduce][3])? I&amp;#8217;m so confused&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;Ironically this tech stands a chance to survive because (1) its Google, the Microsoft of the web, and (2) nothing else can offer offline capabilities like it can.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;OpenID &amp;#8211; The API that tried to make Internet accounts less annoying and did the opposite. Good job guys.&lt;/p&gt;
+
+&lt;p&gt;The only time I&amp;#8217;ve successfully used it was at stackoverflow.com, and thats because they &lt;em&gt;forced me.&lt;/em&gt; It took me many failed attempts, setting up a technorati account just to fail with it, and finally succeeding because I had been entering Yahoo&amp;#8217;s OpenID URL slightly wrong (its just &lt;a href=&#34;http://yahoo.com?!&#34;&gt;http://yahoo.com?!&lt;/a&gt;). Yeah, I expect to see my non-techie friends use this just as soon as they start using vim and latex.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;OpenSocial &amp;#8211; I don&amp;#8217;t even care enough to read up on this to make fun of it.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;small&gt;* I hear WordPress&amp;#8217;s new admin interface can use Google Gears&amp;#8230; why? It seems to work fine without Gears installed. I guess offline blog editing might be handy, but vim can do that just fine&amp;#8230;&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;[3]: &lt;a href=&#34;http://labs.google.com/papers/mapreduce.html&#34;&gt;http://labs.google.com/papers/mapreduce.html&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

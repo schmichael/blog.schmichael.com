@@ -1,0 +1,803 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on </title>
+    <link>/tags/python/</link>
+    <description>Recent content in Python on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 03 Oct 2012 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>MmStats in Scripts</title>
+      <link>/2012/10/03/mmstats-in-scripts/</link>
+      <pubDate>Wed, 03 Oct 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/2012/10/03/mmstats-in-scripts/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://mmstats.readthedocs.org/&#34;&gt;MmStats&lt;/a&gt; is a library I created to expose and read statistics, metrics, and debugging information from running Python processes without the overhead of syscalls (eg writing to a socket or file) or threads, and to make sure that as many utilities as you want can read those metrics without affecting the performance of the main process exposing stats.&lt;/p&gt;
+
+&lt;p&gt;I &lt;a href=&#34;http://pypi.python.org/pypi/mmstats/0.7.0&#34;&gt;released 0.7&lt;/a&gt; today to ease integration into multithreaded apps, but it made me realize a simpler tutorial would probably be helpful.&lt;/p&gt;
+
+&lt;p&gt;While I had web apps, job consumers, and other long running daemons in mind when I wrote mmstats, it turns out it&amp;#8217;s also excellent for long running scripts.&lt;/p&gt;
+
+&lt;p&gt;You know the scripts: maintenance scripts, &amp;#8220;fixer&amp;#8221; scripts, slow build or deployment scripts, data migration scripts, etc.&lt;/p&gt;
+
+&lt;p&gt;If you&amp;#8217;re like me, you always forget 2 things every time you write and run one of these scripts:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Run it in &lt;code&gt;screen&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Periodic progress output&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Luckily for #1 there&amp;#8217;s already [disown][3].&lt;/p&gt;
+
+&lt;p&gt;For #2 we need an example script. Let&amp;#8217;s pretend you have a Django app with users and you need to update their email addresses in a different system with something like this:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;import otherdb
+from django.contrib.auth import models
+
+for user in models.User.objects.all():
+    otherdb.update(user.username, email=user.email)
+&lt;/pre&gt;
+
+&lt;p&gt;After forgetting to run it in screen, I&amp;#8217;d restart it &amp;#8230; and sit there &amp;#8230; staring at my terminal &amp;#8230; hating myself for not having it output anything.&lt;/p&gt;
+
+&lt;p&gt;But then these scripts never work the first time, so it&amp;#8217;d probably die in flames on the first user without an email or similar exceptional condition I forgot to take into account.&lt;/p&gt;
+
+&lt;p&gt;So on my second attempt I&amp;#8217;d probably quickly try to cobble together some progress indicator:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;import otherdb
+from django.contrib.auth import models
+
+BATCH = ...
+
+for i, user in enumerate(models.User.objects.all()):
+    if i % BATCH == 0:
+        print &#39;{0} done&#39;.format(i)
+
+    # Only update users who have emails! Otherwise otherdb dies.
+    if user.email:
+        otherdb.update(user.username, email=user.email)
+&lt;/pre&gt;
+
+&lt;p&gt;But what should &lt;code&gt;BATCH&lt;/code&gt; be? If I have 10,000 users, &lt;code&gt;BATCH = 1000&lt;/code&gt; seems reasonable, but what if &lt;code&gt;otherdb&lt;/code&gt; is &lt;em&gt;really&lt;/em&gt; slow? In that case a smaller batch like 100 or 50 might be appropriate, so I don&amp;#8217;t have to worry if &lt;code&gt;otherdb&lt;/code&gt; just became unresponsive or something.&lt;/p&gt;
+
+&lt;p&gt;The best option is to &lt;strong&gt;always have your precise progress available at your request.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;using-mmstats-in-scripts:2b040d130819a568375b3099f6ca400e&#34;&gt;Using MmStats in Scripts&lt;/h1&gt;
+
+&lt;p&gt;I&amp;#8217;ve found mmstats fits this use case beautifully. No more guessing at what might be an appropriate batch size or using the wrong format string in an uncommon case and crashing my script halfway through.&lt;/p&gt;
+
+&lt;p&gt;Integrating mmstats is as easy as:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;import time
+import mmstats
+import otherdb
+from django.contrib.auth import models
+
+# Define your stats in a model
+class S(mmstats.MmStats):
+    done = mmstats.CounterField(label=&#34;done&#34;)
+    missing_email = mmstats.CounterField(label=&#34;missing_email&#34;)
+    otherdb_timer = mmstats.TimerField(label=&#34;otherdb_timer&#34;)
+    last_user = mmstats.StringField(label=&#34;user&#34;)
+
+# Instantiate the stats model
+stats = S(filename=&#34;update-emails-{0}.mmstats&#34;.format(time.time()), path=&#34;.&#34;)
+
+for i, user in enumerate(models.User.objects.all()):
+    # Update the username for readers to see
+    stats.last_user = user.username
+
+    # Only update users who have emails! Otherwise otherdb dies.
+    if user.email:
+        with stats.otherdb_timer:
+            # Actually do the migration work
+            otherdb.update(user.username, email=user.email)
+    else:
+        stats.missing_email.inc()
+
+    # Increment the done counter to show another user has been processed
+    stats.done.inc()
+&lt;/pre&gt;
+
+&lt;p&gt;That&amp;#8217;s it! Now just re-run in screen, pop back into a shell and check on the progress with &lt;code&gt;slurpstats&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre lang=&#34;bash&#34;&gt;schmichael@prod9000:~$ slurpstats *.mmstats
+==&gt; ./update-emails-1234567890.mmstats
+  done               113
+  missing_email      12
+  otherdb_timer      0.3601293582
+  user               rob
+  sys.created        1346884490.7
+  sys.pid            10298
+  sys.gid            549
+  ...
+&lt;/pre&gt;
+
+&lt;p&gt;This output would indicate 113 users have been checked, 12 of them had no email, &amp;#8220;rob&amp;#8221; is the current user being processed, and that &lt;code&gt;otherdb.update(...)&lt;/code&gt; takes on average 360ms to complete. &lt;small&gt;By default timers average the last 100 values, but that&amp;#8217;s customizable via the size keyword argument.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;That&amp;#8217;s nice and all, but it&amp;#8217;d be more fun to see &lt;strong&gt;how many users were updated per second.&lt;/strong&gt; &lt;code&gt;pollstats&lt;/code&gt; is a simple tool for doing just that:&lt;/p&gt;
+
+&lt;pre lang=&#34;bash&#34;&gt;schmichael@prod9000:~$ pollstats done,missing_email *.mmstats
+       done         |      missing_email
+                213 |                 20
+                  3 |                  0
+                  5 |                  1
+                  1 |                  0
+...
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;pollstats&lt;/code&gt; will print out the current value of the given counters initially, and then once per second print the delta. So in our contrived example we&amp;#8217;d be processing somewhere between 1 and 5 users per second and less than 1 missing email per second.&lt;/p&gt;
+
+&lt;p&gt;Sadly &lt;code&gt;pollstats&lt;/code&gt; is extremely simplistic at the moment and lacks the ability to intelligently display non-counter fields. (Patches welcome!)&lt;/p&gt;
+
+&lt;p&gt;Even better: if you&amp;#8217;re script dies the mmstats file will be left for you to inspect. (Although if you want it perfectly in sync you should probably &lt;code&gt;stats.flush()&lt;/code&gt; on each iteration.)&lt;/p&gt;
+
+&lt;p&gt;mmstats is still young (pre-1.0 for a reason) and simplistic, but I already find it extremely useful not only in web apps and other daemons, but also in simple &amp;#8211; or not so simple &amp;#8211; one-off scripts. I hope you find it useful as well!&lt;/p&gt;
+
+&lt;p&gt;[3]: &lt;a href=&#34;http://playingwithsid.blogspot.com/2007/10/disown-nohup-bash-commands.html&#34;&gt;http://playingwithsid.blogspot.com/2007/10/disown-nohup-bash-commands.html&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Sharing Python data between processes using mmap</title>
+      <link>/2011/05/15/sharing-python-data-between-processes-using-mmap/</link>
+      <pubDate>Mon, 16 May 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/2011/05/15/sharing-python-data-between-processes-using-mmap/</guid>
+      <description>&lt;p&gt;I&amp;#8217;ve been toying with an idea of exposing statistics for a Python application via shared memory to keep the performance impact on the application as low as possible. The goal being an application could passively expose a number of metrics that could either be periodically polled via &lt;a href=&#34;http://munin-monitoring.org/&#34;&gt;munin&lt;/a&gt;/&lt;a href=&#34;http://www.icinga.org/&#34;&gt;Icinga&lt;/a&gt;/etc plugins or interactive tools when diagnosing issues on a system.&lt;/p&gt;
+
+&lt;p&gt;But first things first: I need to put data into &lt;a href=&#34;http://en.wikipedia.org/wiki/Shared_memory&#34;&gt;shared memory&lt;/a&gt; from Python. &lt;a href=&#34;http://en.wikipedia.org/wiki/Mmap&#34;&gt;mmap&lt;/a&gt; is an excellent widely-implemented POSIX system call for creating a shared memory space backed by an on-disk file.&lt;/p&gt;
+
+&lt;p&gt;Usually in the UNIX world you have 2 ways of accessing/manipulating data: memory addresses or streams (files). Manipulating data via memory addresses means &lt;a href=&#34;http://en.wikipedia.org/wiki/Pointer_%28computing%29&#34;&gt;pointers&lt;/a&gt;, offsets, &lt;a href=&#34;http://en.wikipedia.org/wiki/Malloc&#34;&gt;malloc/free&lt;/a&gt;, etc. Stream interfaces manipulate data via &lt;a href=&#34;http://en.wikipedia.org/wiki/System_call&#34;&gt;read/write/seek system calls&lt;/a&gt; for files and &lt;a href=&#34;http://en.wikipedia.org/wiki/Berkeley_sockets&#34;&gt;send/recv/etc for sockets&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;mmap gives you both interfaces. A memory mapped file can be manipulated via read/write/seek or by directly accessing its mapped memory region. The advantage of the latter is that this memory region is in userspace &amp;#8212; meaning you can manipulate a file without incurring the overhead of write system calls for every manipulation.&lt;/p&gt;
+
+&lt;p&gt;Anyway, enough exposition, let&amp;#8217;s see some code. &lt;small&gt;(Despite mmap&amp;#8217;s nice featureset, I&amp;#8217;m only using it as a simple memory sharing mechanism anyway.)&lt;/small&gt; The following code shares a tiny bit of data between 2 Python processes using the excellent &lt;a href=&#34;http://docs.python.org/library/mmap&#34;&gt;mmap module in the stdlib&lt;/a&gt;. &lt;code&gt;a.py&lt;/code&gt; writes to the memory mapped region, and &lt;code&gt;b.py&lt;/code&gt; reads the data out. [ctypes][10] allows for an easy way to create values in a memory mapped region and manipulate them like &amp;#8220;normal&amp;#8221; Python objects.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;These code samples were written using Python 2.7 on Linux. They should work fine on any POSIX system, but Windows users will have to change the mmap calls to match the Windows API.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;a.py&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;#!/usr/bin/env python
+import ctypes
+import mmap
+import os
+import struct
+
+
+def main():
+    # Create new empty file to back memory map on disk
+    fd = os.open(&#39;/tmp/mmaptest&#39;, os.O_CREAT | os.O_TRUNC | os.O_RDWR)
+
+    # Zero out the file to insure it&#39;s the right size
+    assert os.write(fd, &#39;\x00&#39; * mmap.PAGESIZE) == mmap.PAGESIZE
+
+    # Create the mmap instace with the following params:
+    # fd: File descriptor which backs the mapping or -1 for anonymous mapping
+    # length: Must in multiples of PAGESIZE (usually 4 KB)
+    # flags: MAP_SHARED means other processes can share this mmap
+    # prot: PROT_WRITE means this process can write to this mmap
+    buf = mmap.mmap(fd, mmap.PAGESIZE, mmap.MAP_SHARED, mmap.PROT_WRITE)
+
+    # Now create an int in the memory mapping
+    i = ctypes.c_int.from_buffer(buf)
+
+    # Set a value
+    i.value = 10
+
+    # And manipulate it for kicks
+    i.value += 1
+    
+    assert i.value == 11
+
+    # Before we create a new value, we need to find the offset of the next free
+    # memory address within the mmap
+    offset = struct.calcsize(i._type_)
+
+    # The offset should be uninitialized (&#39;\x00&#39;)
+    assert buf[offset] == &#39;\x00&#39;
+
+    # Now ceate a string containing &#39;foo&#39; by first creating a c_char array
+    s_type = ctypes.c_char * len(&#39;foo&#39;)
+
+    # Now create the ctypes instance
+    s = s_type.from_buffer(buf, offset)
+
+    # And finally set it
+    s.raw = &#39;foo&#39;
+
+    print &#39;First 10 bytes of memory mapping: %r&#39; % buf[:10]
+    raw_input(&#39;Now run b.py and press ENTER&#39;)
+
+    print
+    print &#39;Changing i&#39;
+    i.value *= i.value
+
+    print &#39;Changing s&#39;
+    s.raw = &#39;bar&#39;
+
+    new_i = raw_input(&#39;Enter a new value for i: &#39;)
+    i.value = int(new_i)
+
+
+if __name__ == &#39;__main__&#39;:
+    main()
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;b.py&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;import mmap
+import os
+import struct
+import time
+
+def main():
+    # Open the file for reading
+    fd = os.open(&#39;/tmp/mmaptest&#39;, os.O_RDONLY)
+
+    # Memory map the file
+    buf = mmap.mmap(fd, mmap.PAGESIZE, mmap.MAP_SHARED, mmap.PROT_READ)
+
+    i = None
+    s = None
+
+    while 1:
+        new_i, = struct.unpack(&#39;i&#39;, buf[:4])
+        new_s, = struct.unpack(&#39;3s&#39;, buf[4:7])
+
+        if i != new_i or s != new_s:
+            print &#39;i: %s =&gt; %d&#39; % (i, new_i)
+            print &#39;s: %s =&gt; %s&#39; % (s, new_s)
+            print &#39;Press Ctrl-C to exit&#39;
+            i = new_i
+            s = new_s
+
+        time.sleep(1)
+
+
+if __name__ == &#39;__main__&#39;:
+    main()
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;small&gt;(Note that I cruelly don&amp;#8217;t clean up /tmp/mmaptest after the scripts finished. Consider it a 4KB tax for anyone who runs arbitrary code they found on the Internet without reading it first.)&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;[10]: &lt;a href=&#34;http://docs.python.org/library/ctypes&#34;&gt;http://docs.python.org/library/ctypes&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Switched tc-rest to webob</title>
+      <link>/2009/08/10/switched-tc-est-to-webob/</link>
+      <pubDate>Tue, 11 Aug 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/08/10/switched-tc-est-to-webob/</guid>
+      <description>&lt;p&gt;Small update on my toy tc-rest project: I switched to using &lt;a href=&#34;http://pythonpaste.org/webob/&#34;&gt;WebOb&lt;/a&gt; for creating HTTP Request and Response objects. Cleaned up the code a bit, but a real dispatcher is what&amp;#8217;s needed to really remove the cruft.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;m anxious to extend the API and add features, but I have no clue when I&amp;#8217;ll have time to touch it again. In the mean time I&amp;#8217;ve [pushed tc-rest to bitbucket.org if you want to take a look][2].&lt;/p&gt;
+
+&lt;p&gt;[2]: &lt;a href=&#34;http://bitbucket.org/schmichael/tc-rest/overview/&#34;&gt;http://bitbucket.org/schmichael/tc-rest/overview/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>TokyoCabinet &#43; fapws3 = tc-rest</title>
+      <link>/2009/08/08/tokyocabinet-fapws3-tc-rest/</link>
+      <pubDate>Sun, 09 Aug 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/08/08/tokyocabinet-fapws3-tc-rest/</guid>
+      <description>&lt;p&gt;Have you ever wondered how hard it would be to tack a RESTful HTTP interface on top of a fast key/value database like TokyoCabinet?&lt;/p&gt;
+
+&lt;p&gt;Probably not, but I did: &lt;a href=&#34;/files/tc-rest.tar.gz&#34;&gt;tc-rest.tar.gz&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Components:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://tokyocabinet.sourceforge.net/&#34;&gt;TokyoCabinet&lt;/a&gt; &amp;#8211; my favorite persistent key/value database&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://pypi.python.org/pypi/pytc/&#34;&gt;pytc&lt;/a&gt; &amp;#8211; a wonderful Python wrapper for TC&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://github.com/william-os4y/fapws3/tree/master&#34;&gt;fapws3&lt;/a&gt; &amp;#8211; a fast libev based HTTP/&lt;a href=&#34;http://www.python.org/dev/peps/pep-0333/&#34;&gt;WSGI&lt;/a&gt; server&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://code.google.com/p/simplejson/&#34;&gt;simpleson&lt;/a&gt; &amp;#8211; (or Python &amp;gt;= 2.6) for encapsulating HTTP responses&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.aminus.net/wiki/Okapi&#34;&gt;okapi&lt;/a&gt; &amp;#8211; a fantastic little static HTML page for testing HTTP APIs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Getting TokyoCabinet+pytc to work inside a &lt;a href=&#34;http://pypi.python.org/pypi/virtualenv/&#34;&gt;virtualenv&lt;/a&gt; was a bit tricky, so check out my &lt;code&gt;run.sh&lt;/code&gt; script if you&amp;#8217;re having trouble getting it to start.&lt;/p&gt;
+
+&lt;p&gt;Once you get it started, load okapi in your browser:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://localhost:8080/static/okapi.html&#34;&gt;http://localhost:8080/static/okapi.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;And then create a database by doing a POST like:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;http://localhost:8080/foo/&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;And finally store/get keys and values using GET and POST requests like:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;http://localhost:8080/foo/bar/&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;http://localhost:8080/foo/baz/&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Doing a GET request to a database URL lists keys.&lt;/p&gt;
+
+&lt;p&gt;At any rate, I had big dreams for building a system where you would store JSON, specify indexes on certain keys, and the server would maintain those indexes for you by creating ad hoc TokyoCabinet databases.&lt;/p&gt;
+
+&lt;p&gt;Instead I ended up wasting most of my time learning how to write a low-level WSGI app. I should have just used CherryPy or Django from the beginning, but I had never written a pure WSGI app before. It was a good lesson even if it meant not getting some of my features implemented.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;ll probably keep playing with this idea, but the next version will probably be based on some existing framework. Parsing &lt;code&gt;environ[&#39;PATH_INFO&#39;]&lt;/code&gt; and running &lt;code&gt;start_response(...)&lt;/code&gt; manually gets old fast.&lt;/p&gt;
+
+&lt;p&gt;fapws3 is pretty neat, but had lots of annoying rough edges. I had to manually create a &lt;code&gt;README&lt;/code&gt; file because its setup.py expects one to exist. Then I had to manually allow DELETE HTTP methods in fapws/base.py, otherwise it would return an HTML error message for me! That was a bit shocking since I was working under the assumption fapws3 is just a low-level HTTP/WSGI server.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Update&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;[If you&amp;#8217;re new to TokyoCabinet, I posted my presentation on it that I did at Portland Python meetup][9].&lt;/li&gt;
+&lt;li&gt;Someone want to benchmark this for me? Might be interesting since its made with the fastest libs available in Python for their respective tasks. I&amp;#8217;m just feeling lazy at this point. &lt;img src=&#34;http://localhost/wp-includes/images/smilies/simple-smile.png&#34; alt=&#34;:-)&#34; class=&#34;wp-smiley&#34; style=&#34;height: 1em; max-height: 1em;&#34; /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;[9]: &lt;a href=&#34;http://michael.susens-schurter.com/blog/2009/03/11/tokyo-cabinet-pytyrant-talk/&#34;&gt;http://michael.susens-schurter.com/blog/2009/03/11/tokyo-cabinet-pytyrant-talk/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Tokyo {Cabinet, [Py]Tyrant} Talk</title>
+      <link>/2009/03/11/tokyo-cabinet-pytyrant-talk/</link>
+      <pubDate>Wed, 11 Mar 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/03/11/tokyo-cabinet-pytyrant-talk/</guid>
+      <description>&lt;p&gt;I did an introductory talk on &lt;a href=&#34;http://tokyocabinet.sourceforge.net/index.html&#34;&gt;Tokyo Cabinet&lt;/a&gt;, &lt;a href=&#34;http://tokyocabinet.sourceforge.net/tyrantdoc/&#34;&gt;Tokyo Tyrant&lt;/a&gt;, &lt;a href=&#34;http://pypi.python.org/pypi/pytc/&#34;&gt;pytc&lt;/a&gt;, and &lt;a href=&#34;http://code.google.com/p/pytyrant/&#34;&gt;PyTyrant&lt;/a&gt; at the &lt;a href=&#34;http://www.pdxpython.org&#34;&gt;Portland Python User Group&lt;/a&gt; meeting last night.&lt;/p&gt;
+
+&lt;p&gt;It was definitely just an introductory talk, so if you&amp;#8217;re already familiar with these projects it probably won&amp;#8217;t be very interesting.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/tokyotalk/&#34;&gt;Slides (html)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tokyotalk/tokyotalk.html&#34;&gt;Single page (HTML version)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/tokyotalk/tokyotalk.pdf&#34;&gt;Single page (PDF version)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;[reStructuredText (rst) source][9]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Errata:&lt;/strong&gt; My slides state PyTyrant 1.1.11 doesn&amp;#8217;t work with Tokyo Tyrant 1.1.17 &amp;#8212; this is &lt;em&gt;wrong.&lt;/em&gt; I don&amp;#8217;t know what I was doing yesterday, but today all my tests &lt;em&gt;work on Tokyo Tyrant 1.1.17&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;[9]: /tokyotalk/tokyotalk.txt&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>(Yet Another) Deploying Django with CherryPy Script</title>
+      <link>/2009/02/18/deploying-django-with-cherrypy/</link>
+      <pubDate>Wed, 18 Feb 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/02/18/deploying-django-with-cherrypy/</guid>
+      <description>&lt;p&gt;Recently I deployed a &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; project on an OSX server. I foolishly thought this would be as easy as on Linux until I ran into the mess that is _x86&lt;em&gt;64&lt;/em&gt; Apache + &lt;a href=&#34;http://www.modwsgi.org/&#34;&gt;mod_wsgi&lt;/a&gt;* + Django + psycopg2 + &lt;em&gt;i386&lt;/em&gt; PostgreSQL. After wasting far too much time googling and recompiling various bits trying to get everything happy, I followed &lt;a href=&#34;http://www.eflorenzano.com/blog/post/hosting-django-site-pure-python/&#34;&gt;Eric Florenzano&amp;#8217;s post&lt;/a&gt; on deploying Django using &lt;a href=&#34;http://www.cherrypy.org/&#34;&gt;CherryPy&lt;/a&gt;&amp;#8216;s** [wsgiserver][5].&lt;/p&gt;
+
+&lt;p&gt;Here&amp;#8217;s my lightly modified version of Eric&amp;#8217;s script:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;import wsgiserver
+import sys
+import os
+import django.core.handlers.wsgi
+
+if __name__ == &#34;__main__&#34;:
+    # Setup paths - a bit hackish, but works for me.
+    # Assumes an absolute path is stored in &amp;lt;project&gt;.local_settings.ROOT
+    sys.path.append(os.path.realpath(os.path.dirname(__file__)))
+    from foo.local_settings import ROOT
+    sys.path.append(ROOT)
+
+    # Startup Django
+    os.environ[&#39;DJANGO_SETTINGS_MODULE&#39;] = &#39;foo.settings&#39;
+    server = wsgiserver.CherryPyWSGIServer(
+        (&#39;0.0.0.0&#39;, 8888),  # Use &#39;127.0.0.1&#39; to only bind to the localhost
+        django.core.handlers.wsgi.WSGIHandler()
+    )
+    try:
+        server.start()
+    except KeyboardInterrupt:
+        print &#39;Stopping&#39;
+        server.stop()
+&lt;/pre&gt;
+
+&lt;p&gt;I also went with the latest stable version of CherryPy&amp;#8217;s wsgiserver instead of checking out trunk like Eric&amp;#8217;s post suggested.&lt;/p&gt;
+
+&lt;p&gt;Then I just enabled &lt;code&gt;mod_proxy&lt;/code&gt; in Apache and setup the following VirtualHost:&lt;/p&gt;
+
+&lt;pre lang=&#34;apache&#34;&gt;&amp;lt;Proxy *&gt;
+    Order allow,deny
+    Allow from all
+&amp;lt;/Proxy&gt;
+&amp;lt;Location &#34;/&#34;&gt;
+    ProxyPass http://127.0.0.1:8888/
+    ProxyPassReverse http://127.0.0.1:8888/
+&amp;lt;/Location&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;If you&amp;#8217;re cool you&amp;#8217;ll write some sort of system specific script to launch your web app on boot. In a pinch, you can always use a crontab:&lt;/p&gt;
+
+&lt;pre lang=&#34;bash&#34;&gt;@reboot /usr/bin/python /path/to/app.py &amp;#038;
+&lt;/pre&gt;
+
+&lt;p&gt;YMMV 😉&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;br /&gt; * To mod_wsgi&amp;#8217;s credit, it took about 10 seconds to compile, generated a Universal binary, and in general Just Worked.&lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;
+  ** I&amp;#8217;m already a CherryPy fan thanks to &lt;a href=&#34;http://www.dowski.com/&#34;&gt;dowski&lt;/a&gt;, so it wasn&amp;#8217;t a hard decision.&lt;br /&gt; &lt;/small&gt;
+&lt;/p&gt;
+
+&lt;p&gt;[5]: &lt;a href=&#34;http://www.cherrypy.org/wiki/CherryPyDownload#StandaloneWSGIserver&#34;&gt;http://www.cherrypy.org/wiki/CherryPyDownload#StandaloneWSGIserver&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Web Server Quandary</title>
+      <link>/2008/12/27/web-server-quandary/</link>
+      <pubDate>Sat, 27 Dec 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/12/27/web-server-quandary/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://httpd.apache.org/&#34;&gt;Apache&lt;/a&gt; was probably the first Linux application I learned how to configure. However, I&amp;#8217;ve gotten a bit frustrated with it recently&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The Problem&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;A memory leak.&lt;/em&gt; Apache is eating up memory so quickly that I need to restart it every couple days or risk my entire server grinding to a halt as it starts swapping wildly. I&amp;#8217;ve poured over log files and &lt;code&gt;pmap&lt;/code&gt; output, but I still can&amp;#8217;t figure out where the problem lies. Curse you monolithic in-process architecture!&lt;/p&gt;
+
+&lt;p&gt;Actually I know what my problem is, I&amp;#8217;m running a mess of modules:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ssl&lt;/code&gt; &amp;#8211; 2 certificates on 2 ports&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;php5&lt;/code&gt; &amp;#8211; blerg, who doesn&amp;#8217;t have to run this?&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;suphp&lt;/code&gt; &amp;#8211; I suspect this is my problem, but I can&amp;#8217;t prove it. A client&amp;#8217;s 3rd party web application &lt;em&gt;requires&lt;/em&gt; it, but I think its easily replaceable with FastCGI.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;wsgi&lt;/code&gt; &amp;#8211; No complaints. Python apps are out-of-process thankfully.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;proxy&lt;/code&gt; &amp;#8211; Again no complaints. Can&amp;#8217;t imagine how this module could cause any problems except it does proxy some large (multi-megabyte, not huge) POSTs at times. I can&amp;#8217;t imagine a memory leak could slip into this module without a lot of people noticing.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution A: Apache+FastCGI&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I love the idea of putting each web application in its own process and letting Apache just act as an HTTP router. FastCGI seems to have all the features I need, and I&amp;#8217;m not really worried about the CPU overhead incurred by IPC.&lt;/p&gt;
+
+&lt;p&gt;However, there are 2 competing FastCGI modules for Apache, and I have no idea what to choose. Anecdotally the official &lt;a href=&#34;http://www.fastcgi.com/drupal/node/3&#34;&gt;mod_fastcgi&lt;/a&gt; is buggy and &lt;a href=&#34;http://www.fastcgi.com/drupal/node/2&#34;&gt;fastcgi.com is a spam infested wasteland&lt;/a&gt;. However, I&amp;#8217;ve found no authoritative source saying: &lt;em&gt;&amp;#8220;fastcgi is dead, long live &lt;a href=&#34;http://fastcgi.coremail.cn/&#34;&gt;fcgid&lt;/a&gt;!&amp;#8221;&lt;/em&gt; (Lame excuse, I know.)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution B: &lt;a href=&#34;http://www.lighttpd.net/&#34;&gt;Lighttpd&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I know Lighty is the darling of Rails sites, but whenever I stop by its site I&amp;#8217;m greeted with a list of recently fixed &lt;a href=&#34;http://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=lighttpd&#34;&gt;security bugs&lt;/a&gt;, and now it seems as though &lt;a href=&#34;http://blog.lighttpd.net/articles/2008/12/02/a-little-heads-up&#34;&gt;they&amp;#8217;re rewriting the core&lt;/a&gt;!&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;m sure Lighty is a high quality intelligently engineered project, but it seems to be the definition of immature. Not necessarily bad (in fact it usually means its progressing quickly!), but perhaps not as reliable as good old workhorses like Apache.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution C: &lt;a href=&#34;http://www.cherokee-project.com/&#34;&gt;Cherokee&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;ve been following Cherokee for some time now and running it locally on my workstation. I &lt;em&gt;love&lt;/em&gt; the web interface. I&amp;#8217;m usually a very anti-webmin, pro-vim kind of guy, but I&amp;#8217;m sick of editing Apache&amp;#8217;s config files. I do it about once a month and therefore it always takes lots of double-checking the docs. I don&amp;#8217;t know why, but its configuration has just never felt natural to me.&lt;/p&gt;
+
+&lt;p&gt;However, the lead Cherokee developer&amp;#8217;s bravado is by the most off-putting aspect of the project. &lt;a href=&#34;http://lists.octality.com/pipermail/cherokee/2008-December/009437.html&#34;&gt;He mocks modwsgi&lt;/a&gt; and posts simplistic benchmarks showing Cherokee to be the fastest web server, but meanwhile Cherokee churns out numerous bug patch releases in-between feature releases and has yet to reach 1.0 status.&lt;/p&gt;
+
+&lt;p&gt;It seems like an excellent project technically, but I&amp;#8217;m afraid there will be negative consequences for the lead developers hubris. &lt;small&gt;(I&amp;#8217;m not meaning to insult the guy. He&amp;#8217;s probably a far better hacker than I&amp;#8217;ll ever be. Self-promotion just makes me uncomfortable.)&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution D: [nginx][10]&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I don&amp;#8217;t know much about nginx except that it works. Basically all I&amp;#8217;ve heard about it is:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;It works.&lt;/li&gt;
+&lt;li&gt;Its fast. &lt;em&gt;Really&lt;/em&gt; fast.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;While &amp;#8220;working&amp;#8221; is definitely my primary objective, nginx seems a bit bare bones for me. I just don&amp;#8217;t think I&amp;#8217;m the target demographic. I&amp;#8217;d kind of like for my web server to handle spawning and kill of FastCGI processes.&lt;/p&gt;
+
+&lt;p&gt;nginx feels like git to me. Those who know it: use it and love it. Those who don&amp;#8217;t: stand in fear and awe of its unbridled power.&lt;/p&gt;
+
+&lt;p&gt;&amp;#8230;or maybe its just a nice simple barebones HTTP server&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Conclusions?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I think &lt;strong&gt;Solution A: FastCGI&lt;/strong&gt; is the most sensible. Apache has always served me well, and the memory leak is most likely due to that shoddy suphp module.&lt;/p&gt;
+
+&lt;p&gt;Moving my web applications to FastCGI is also the best way to prepare to move to one of these 2nd generation web servers.&lt;/p&gt;
+
+&lt;p&gt;However, I&amp;#8217;m getting kind of sick of Apache, and the ambiguousness of which FastCGI solution to choose is fairly annoying.&lt;/p&gt;
+
+&lt;p&gt;So dear lazyweb, for your everyday web developer consultant looking to run a bunch of PHP and Python web applications, what HTTP server stack should I use? (Debian Lenny packages are a plus.)&lt;/p&gt;
+
+&lt;p&gt;[10]: &lt;a href=&#34;http://nginx.net/&#34;&gt;http://nginx.net/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Fixing Gnome Notification’s Popup Location</title>
+      <link>/2008/12/01/fixing-gnome-notifications-popup-location/</link>
+      <pubDate>Tue, 02 Dec 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/12/01/fixing-gnome-notifications-popup-location/</guid>
+      <description>&lt;p&gt;Gnome notifications popup in the lower left corner of your desktop by default* which constantly annoys me. I usually have a terminal open in the lower left corner, and having my work covered by notifications is quite annoying.&lt;/p&gt;
+
+&lt;p&gt;Luckily the fix is easy:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Open Applications &amp;gt; System Tools &amp;gt; Configuration Editor**&lt;/li&gt;
+&lt;li&gt;Navigate to &lt;code&gt;apps&lt;/code&gt; &amp;gt; &lt;code&gt;notification-daemon&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Edit the &lt;code&gt;popup_location&lt;/code&gt; to be something less annoying. I prefer &lt;strong&gt;&lt;code&gt;top_right&lt;/code&gt;&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Close Configuration Editor. Changes will take effect next time you login &lt;em&gt;or&lt;/em&gt; just restart the notification-daemon: &lt;pre lang=&#34;bash&#34;&gt;~$ killall notification-daemon
+~$ /usr/lib/notification-daemon/notification-daemon &amp;#038;
+&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Note that the notifications will actually show up over the top of your panel which seems a bit strange. However, I&amp;#8217;d rather the notification covered the panel than take up any more precious application space than is necessary.&lt;/p&gt;
+
+&lt;p&gt;Luckily you can easily test notifications if you have Python and python-notify installed:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;&gt;&gt;&gt; import pynotify
+&gt;&gt;&gt; pynotify.init(&#39;foo&#39;)
+True
+&gt;&gt;&gt; pynotify.Notification(&#39;foo&#39;, &#39;bar&#39;).show()
+True
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;/files/notification-top_right.png&#34; alt=&#34;Notification in the upper right.&#34; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;at least on Gnome 2.22.3 on Debian Sid with notification-daemon 0.3.7-1+b1&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;** aka &lt;a href=&#34;http://projects.gnome.org/gconf/&#34;&gt;gconf-editor&lt;/a&gt; from the [gconf-editor package][3] which should be installed with Gnome.&lt;/p&gt;
+
+&lt;p&gt;[3]: &lt;a href=&#34;http://packages.debian.org/search?keywords=gconf-editor&amp;amp;searchon=names&amp;amp;suite=all&amp;amp;section=all&amp;amp;sourceid=mozilla-search&#34;&gt;http://packages.debian.org/search?keywords=gconf-editor&amp;amp;searchon=names&amp;amp;suite=all&amp;amp;section=all&amp;amp;sourceid=mozilla-search&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Listing All Passwords Stored in Gnome Keyring</title>
+      <link>/2008/10/30/listing-all-passwords-stored-in-gnome-keyring/</link>
+      <pubDate>Fri, 31 Oct 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/10/30/listing-all-passwords-stored-in-gnome-keyring/</guid>
+      <description>&lt;p&gt;I was toying with writing my first desktop application in years and got distracted by how cool &lt;a href=&#34;http://live.gnome.org/GnomeKeyring&#34;&gt;Gnome Keyring&lt;/a&gt; is. Of course storing and retrieving passwords is pretty mundane, so here&amp;#8217;s a fun example that dumps all of the current user&amp;#8217;s passwords:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;#!/usr/bin/env python
+
+import pygtk
+pygtk.require(&#39;2.0&#39;)
+import gtk # sets app name
+import gnomekeyring
+
+def hack():
+    for keyring in gnomekeyring.list_keyring_names_sync():
+        for id in gnomekeyring.list_item_ids_sync(keyring):
+            item = gnomekeyring.item_get_info_sync(keyring, id)
+            print &#39;[%s] %s = %s&#39; % (
+                    keyring, item.get_display_name(), item.get_secret())
+        else:
+            if len(gnomekeyring.list_item_ids_sync(keyring)) == 0:
+                print &#39;[%s] --empty--&#39; % keyring
+
+if __name__ == &#39;__main__&#39;:
+    hack()
+&lt;/pre&gt;
+
+&lt;p&gt;Sample output with the interesting bits removed:&lt;/p&gt;
+
+&lt;pre&gt;[default] Local password for user root = *******
+[login] michael.schurter@Work = *******
+[login] Google Account = *******
+[login] Passphrase for wireless network 2WIRE939 = *******
+[login] Unlock password for default keyring = *******
+[login] schmichael@twitter.com = *******
+[session] --empty--
+&lt;/pre&gt;
+
+&lt;p&gt;Its not meant to be any sort of real hacking tool. After all you can view all of this information via [Seahorse][2] anyway.&lt;/p&gt;
+
+&lt;p&gt;But what fun is a &lt;em&gt;GUI&lt;/em&gt; tool? 😉&lt;/p&gt;
+
+&lt;p&gt;[2]: &lt;a href=&#34;http://live.gnome.org/Seahorse&#34;&gt;http://live.gnome.org/Seahorse&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Kyle Waremburg</title>
+      <link>/2008/09/02/kyle-waremburg/</link>
+      <pubDate>Tue, 02 Sep 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/09/02/kyle-waremburg/</guid>
+      <description>&lt;p&gt;When I worked at Tremont Community Schools, Kyle was still a student, but he helped build &lt;a href=&#34;http://code.google.com/p/firewall-admin/&#34;&gt;Firewall Admin&lt;/a&gt;, a Linux desktop that spanned 9 monitors, and many robots. [He&amp;#8217;s now blogging, and I can almost guarantee he&amp;#8217;ll always be doing something wilder and more interesting than me!][2]&lt;/p&gt;
+
+&lt;p&gt;[2]: &lt;a href=&#34;http://blog.kython.org/&#34;&gt;http://blog.kython.org/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Introducing Hzzah!</title>
+      <link>/2008/07/15/introducing-hzzah/</link>
+      <pubDate>Tue, 15 Jul 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/07/15/introducing-hzzah/</guid>
+      <description>&lt;p&gt;&lt;small&gt;from the I-can-haz-a-search-engine department&amp;#8230;&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Sorry about the tacky donate link all. I tried to hide it from feed readers with WordPress&amp;#8217;s &amp;lt;!&amp;#8211;more&amp;gt; feature, but evidently that doesn&amp;#8217;t apply to feeds. &lt;img src=&#34;http://localhost/wp-includes/images/smilies/frownie.png&#34; alt=&#34;:(&#34; class=&#34;wp-smiley&#34; style=&#34;height: 1em; max-height: 1em;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;When it comes to market share, Google is to Searching as Microsoft is to Operating Systems. Thankfully Google has won their dominant position by creating a really amazing product &lt;small&gt;(you can find plenty of discussions on &lt;a href=&#34;http://en.wikipedia.org/wiki/Criticism_of_Microsoft#Business_practices&#34;&gt;why Microsoft is on top elsewhere)&lt;/a&gt;&lt;/small&gt;.&lt;/p&gt;
+
+&lt;p&gt;Recently &lt;a href=&#34;http://developer.yahoo.com/search/boss/&#34;&gt;Yahoo! opened up their search APIs&lt;/a&gt; for anyone to use along with &lt;a href=&#34;http://developer.yahoo.com/search/boss/mashup.html&#34;&gt;a handy Python library&lt;/a&gt;. In a time when Yahoo&amp;#8217;s very existence is being threatened, I felt a pang of nostalgia for the search engine that fed me decent results for &amp;#8220;free dos games&amp;#8221; throughout the mid-90s.&lt;/p&gt;
+
+&lt;p&gt;So last night I whipped up a little search engine called &lt;a href=&#34;http://hzzah.com&#34;&gt;Hzzah!&lt;/a&gt;*&lt;/p&gt;
+
+&lt;div style=&#34;clear: both; line-height: 0px; font-size: 0px;&#34;&gt;
+  &amp;nbsp;
+&lt;/div&gt;
+
+&lt;div style=&#34;float: right; clear: both;&#34;&gt;
+  &lt;a href=&#34;http://creativecommons.org/licenses/BSD/&#34;&gt;&lt;img src=&#34;http://michael.susens-schurter.com/files/40bsd.png&#34; alt=&#34;BSDtastic!&#34; /&gt;&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Features:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Simple&lt;/li&gt;
+&lt;li&gt;No ads, cookies, or even JavaScript &lt;small&gt;(at the moment at least)&lt;/small&gt;&lt;/li&gt;
+&lt;li&gt;Open Source! &lt;a href=&#34;http://creativecommons.org/licenses/BSD/&#34;&gt;BSD to be precise&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Did I mention simple? That&amp;#8217;s really all it has going for it&amp;#8230;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you have &lt;a href=&#34;http://bazaar-vcs.org/&#34;&gt;Bazaar&lt;/a&gt; installed you can grab the code a variety of ways:&lt;/p&gt;
+
+&lt;pre lang=&#34;bash&#34;&gt;# If you know Subversion, use this method.  `bzr up` will keep you up to date
+bzr checkout http://michael.susens-schurter.com/code/hzzah-public
+
+# If you want to hack on Hzzah or are comfortable with bzr, feel free to branch
+bzr branch http://michael.susens-schurter.com/code/hzzah-public hzzah-steve
+&lt;/pre&gt;
+
+&lt;p&gt;You can also &lt;a href=&#34;http://michael.susens-schurter.com/code/hzzah-public-r5.zip&#34;&gt;grab a zip&lt;/a&gt;, but its probably going to become out of date quickly.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Read the README file for help setting it up.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;And like I say in the README, if you&amp;#8217;re feeling generous, feel free to toss some cash this way:&lt;/p&gt;
+
+&lt;p&gt;[&lt;img src=&#34;https://www.paypal.com/en_US/i/btn/btn_donate_SM.gif&#34; border=&#34;0&#34; alt=&#34;PayPal - The safer, easier way to pay online!&#34; /&gt;][7]&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;* Make fun of the name all you like&amp;#8230; there&amp;#8217;s no good domain names left. The name is inspired by a friend from college for whom &lt;em&gt;huzzah&lt;/em&gt; was her exclamation of choice.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;[7]: &lt;a href=&#34;https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;amp;business=mschurter%40yahoo%2ecom&amp;amp;item_name=hzzah%2ecom%20by%20Michael%20Schurter&amp;amp;item_number=1337&amp;amp;no_shipping=0&amp;amp;no_note=1&amp;amp;tax=0&amp;amp;currency_code=USD&amp;amp;lc=US&amp;amp;bn=PP%2dDonationsBF&amp;amp;charset=UTF%2d8&#34;&gt;https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;amp;business=mschurter%40yahoo%2ecom&amp;amp;item_name=hzzah%2ecom%20by%20Michael%20Schurter&amp;amp;item_number=1337&amp;amp;no_shipping=0&amp;amp;no_note=1&amp;amp;tax=0&amp;amp;currency_code=USD&amp;amp;lc=US&amp;amp;bn=PP%2dDonationsBF&amp;amp;charset=UTF%2d8&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>WordPress Rocks at Updates</title>
+      <link>/2008/07/15/wordpress-rocks-at-updates/</link>
+      <pubDate>Tue, 15 Jul 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/07/15/wordpress-rocks-at-updates/</guid>
+      <description>&lt;p&gt;I feel I owe it to my friends who put up with my senseless Python fanboying to admit &lt;a href=&#34;http://wordpress.org&#34;&gt;WordPress&lt;/a&gt; is not only a great blog engine, but rocks at updates.&lt;/p&gt;
+
+&lt;p&gt;I just upgraded from 2.5 to 2.6 by doing a simple &lt;code&gt;svn switch http://...&lt;/code&gt; and then logging into the web admin interface. It took about 30 seconds to complete.&lt;/p&gt;
+
+&lt;p&gt;Now compare that to my last experience upgrading [Trac][2] from 0.10 to 0.11&amp;#8230; ugh.&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;I love you Trac. Python just lacks an easy and efficient web app deployment method.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;[2]: &lt;a href=&#34;http://trac.edgewall.org/&#34;&gt;http://trac.edgewall.org/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Common Django Typo in URLconf</title>
+      <link>/2008/03/10/common-django-typo-in-urlconf/</link>
+      <pubDate>Mon, 10 Mar 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/03/10/common-django-typo-in-urlconf/</guid>
+      <description>&lt;p&gt;If you&amp;#8217;re hacking Django and get this&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ImproperlyConfigured: Error while importing URLconf &#39;proj.app.urls&#39;: &#39;tuple&#39; object is not callable&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;#8230;you&amp;#8217;re probably [missing a comma in your URL configuration as Rajesh Dhawan pointed out][1].&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;Django pros can move along, I know you never make typos. 😉&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;[1]: &lt;a href=&#34;http://groups.google.com/group/django-users/browse_thread/thread/517ea56bece07c86?hide_quotes=no#msg_f6f321e7997ce992&#34;&gt;http://groups.google.com/group/django-users/browse_thread/thread/517ea56bece07c86?hide_quotes=no#msg_f6f321e7997ce992&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Fun with Django and modwsgi</title>
+      <link>/2008/02/05/fun-with-django-and-modwsgi/</link>
+      <pubDate>Wed, 06 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/02/05/fun-with-django-and-modwsgi/</guid>
+      <description>&lt;p&gt;Today I deployed my first &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; application for a client. Its yet-another-blog, so I&amp;#8217;ll refrain from posting the code and cluttering up the django-*blog* namespace on Google Code. Before you roll your eyes and complain about why I didn&amp;#8217;t use an existing solution, I think I have 2 somewhat valid reasons:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The client actually needed a _sub_set of the features most blogs offer, so I wouldn&amp;#8217;t really have anything to contribute back to an existing project.&lt;/li&gt;
+&lt;li&gt;Blogs are one of the simplest content driven web applications in existence. Wikis are just a bit simpler perhaps. At any rate, creating a blog app is an excellent way to learn a framework.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Python Deployment Decisions&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;In the past I&amp;#8217;ve used &lt;a href=&#34;http://michael.susens-schurter.com/blog/2007/08/16/deploying-cherrypy-on-apache-2-using-mod_proxy/&#34;&gt;CherryPy as my framework and a simple mod_proxy configuration to run the applications behind Apache&lt;/a&gt;. &lt;a href=&#34;http://www.djangoproject.com/documentation/django-admin/#runserver-optional-port-number-or-ipaddr-port&#34;&gt;Django considers its built-in web server a development tool only&lt;/a&gt;, so I figured it was time to explore the myriad of Python web app deployment alternatives: &lt;a href=&#34;http://www.modpython.org&#34;&gt;mod_python&lt;/a&gt;, &lt;a href=&#34;http://www.fastcgi.com/&#34;&gt;FastCGI&lt;/a&gt;, &lt;a href=&#34;http://www.modwsgi.org&#34;&gt;modwsgi&lt;/a&gt;. I&amp;#8217;m sure there are many more, but I&amp;#8217;d say those are the big 3.&lt;/p&gt;
+
+&lt;p&gt;I had tried to deploy Python web applications on DreamHost using FastCGI before and entered &lt;a href=&#34;http://www.al3x.net/2008/01/shared-hosting-is-ghetto.html&#34;&gt;the hell that is deploying Python web apps on shared hosts&lt;/a&gt;. &lt;em&gt;So FastCGI wasn&amp;#8217;t my first choice this time.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;I had also tried mod_python for deploying &lt;a href=&#34;http://www.cherrypy.org/&#34;&gt;CherryPy&lt;/a&gt; apps on my &lt;a href=&#34;http://www.linode.com/&#34;&gt;Linode&lt;/a&gt; before and for whatever reason just found &lt;a href=&#34;http://httpd.apache.org/docs/2.2/mod/mod_proxy.html&#34;&gt;mod_proxy&lt;/a&gt; to be &lt;em&gt;much&lt;/em&gt; easier to setup and manage.&lt;/p&gt;
+
+&lt;p&gt;I was kind of eager to try out modwsgi because its been getting a lot of attention lately, so I downloaded the source and compiled it on my &lt;a href=&#34;http://www.debian.org/&#34;&gt;Debian&lt;/a&gt; &lt;a href=&#34;http://www.debian.org/releases/etch/&#34;&gt;Etch&lt;/a&gt; server.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Deploying a Django App via modwsgi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;modwsgi was quite easy to setup as long as you follow the instructions in their wiki for Django integration. I was hit by &lt;a href=&#34;http://code.djangoproject.com/ticket/3762&#34;&gt;bug #3762&lt;/a&gt;, but the modwsgi documentation got me through it. &lt;small&gt;(For what its worth the attached wsgi.patch also worked, but I don&amp;#8217;t really want to run a patched version of Django.)&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;One big problem I ran into was &lt;a href=&#34;http://docs.python.org/lib/module-sqlite3.html&#34;&gt;sqlite3&lt;/a&gt; gave me &lt;code&gt;OperationalError: unable to open database file&lt;/code&gt; whenever I did anything that would write to the database. My database file was owned by &lt;code&gt;www-data&lt;/code&gt; (the Apache process owner) and had the permissions &lt;code&gt;664&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;I switched to &lt;a href=&#34;http://www.postgresql.org/&#34;&gt;PostgreSQL&lt;/a&gt;, ran [&lt;code&gt;syncdb&lt;/code&gt;][16], and everything worked beautifully.&lt;/p&gt;
+
+&lt;p&gt;My wsgi script file /srv/spam/eggs/eggs.wsgi:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;import os, sys
+sys.path.append(&#39;/srv/spam&#39;)
+sys.path.append(&#39;/srv/spam/eggs&#39;)
+os.environ[&#39;DJANGO_SETTINGS_MODULE&#39;] = &#39;eggs.wsgi_settings&#39;
+
+import django.core.handlers.wsgi
+
+_application = django.core.handlers.wsgi.WSGIHandler()
+
+def application(environ, start_response):
+    environ[&#39;PATH_INFO&#39;] = environ[&#39;SCRIPT_NAME&#39;] + environ[&#39;PATH_INFO&#39;]
+    return _application(environ, start_response)
+&lt;/pre&gt;
+
+&lt;p&gt;Note I use &lt;code&gt;wsgi_settings&lt;/code&gt; instead of my usual settings file. wsgi_settings just imports my main settings file and changes some to their production values.&lt;/p&gt;
+
+&lt;p&gt;My Django application actually drops into the &lt;code&gt;/blog/&lt;/code&gt; and &lt;code&gt;/accounts/&lt;/code&gt; folders under a VirtualHost otherwise occupied by static files and some PHP scripts. modwsgi made this easy by putting this in my existing VirtualHost:&lt;/p&gt;
+
+&lt;pre lang=&#34;apache&#34;&gt;WSGIScriptAliasMatch /(blog|accounts)/.* /srv/spam/eggs/eggs.wsgi
+
+# A simple Alias directive handles my static files
+Alias /static/ /srv/spam/eggs/static/
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Bottom Line&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I highly recommend using modwsgi for deploying Python web applications. sqlite3 may work for you. In my case its probably best I use PostgreSQL for a number of reasons.&lt;/p&gt;
+
+&lt;p&gt;[16]: &lt;a href=&#34;http://www.djangoproject.com/documentation/django-admin/#syncdb&#34;&gt;http://www.djangoproject.com/documentation/django-admin/#syncdb&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Fun with SQLObject and mxDateTime</title>
+      <link>/2007/11/29/fun-with-sqlobject-and-mxdatetime/</link>
+      <pubDate>Fri, 30 Nov 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/2007/11/29/fun-with-sqlobject-and-mxdatetime/</guid>
+      <description>&lt;p&gt;I&amp;#8217;m working on a small &lt;a href=&#34;http://cherrypy.org&#34;&gt;CherryPy&lt;/a&gt; web service that among other things saves timestamps to a database. The timestamp is in &lt;a href=&#34;http://www.ietf.org/rfc/rfc3339.txt&#34;&gt;RFC 3339&lt;/a&gt; format (like &lt;code&gt;2007-07-31T16:05:00.000-05:00&lt;/code&gt;), and I needed to store the timezone.&lt;/p&gt;
+
+&lt;p&gt;Luckily &lt;a href=&#34;http://www.egenix.com/products/python/mxBase/mxDateTime/&#34;&gt;mxDateTime&lt;/a&gt; and SQLObject&amp;#8217;s DateTimeCol both support full dates with times and time zone. Unfortunately its not immediately obvious from &lt;a href=&#34;http://sqlobject.org/SQLObject.html&#34;&gt;SQLObject&amp;#8217;s lackluster documentation&lt;/a&gt; how to use mxDateTime instead of Python&amp;#8217;s built-in datetime.&lt;/p&gt;
+
+&lt;p&gt;A little searching brought me to a mailing list post about [how to use mxDateTime by default in SQLObject][5]. (I don&amp;#8217;t know why the sample code includes the conditional as I would think you&amp;#8217;d want your code to outright fail if you&amp;#8217;re unable to use the datetime library you expect.)&lt;/p&gt;
+
+&lt;p&gt;So my model&amp;#8217;s code looks something like this:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;from sqlobject import *
+from sqlobject import col
+
+col.default_datetime_implementation = MXDATETIME_IMPLEMENTATION
+
+class Foo(SQLObject):
+    timestamp = DateTimeCol(default=DateTimeCol.now)
+&lt;/pre&gt;
+
+&lt;p&gt;Then my parsing code looks something like this:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;import model
+from mx import DateTime
+
+timestamp = &#39;2007-07-31T16:05:00.000-05:00&#39;
+bar = model.Foo(timestamp=DateTime.DateTimeFrom(timestamp))
+print &#39;UTC Timestamp:&#39;, bar.timestamp
+print &#39;Local Timestamp:&#39;, bar.timestamp.localtime()
+&lt;/pre&gt;
+
+&lt;p&gt;Basically once you use the magic line &lt;code&gt;col.default_datetime_implementation = MXDATETIME_IMPLEMENTATION&lt;/code&gt;, everything Just Works.&lt;/p&gt;
+
+&lt;p&gt;[5]: &lt;a href=&#34;http://pythonpaste.org/archives/message/20070410.064412.fa195fb7.en.html&#34;&gt;http://pythonpaste.org/archives/message/20070410.064412.fa195fb7.en.html&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

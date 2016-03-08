@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ubuntu on </title>
+    <link>/tags/ubuntu/</link>
+    <description>Recent content in Ubuntu on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 02 Apr 2014 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Debugging Go 1.2 on Ubuntu 13.10 with GDB</title>
+      <link>/2014/04/02/debugging-go-1-2-on-ubuntu-13-10-with-gdb/</link>
+      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/2014/04/02/debugging-go-1-2-on-ubuntu-13-10-with-gdb/</guid>
+      <description>&lt;p&gt;While the &lt;a href=&#34;http://golang.org/doc/gdb&#34;&gt;Debugging Go Code with GDB&lt;/a&gt; documentation is fantastic, it unfortunately doesn&amp;#8217;t work out of the box with Ubuntu 13.10. If you try it you&amp;#8217;ll probably see an error similar to:&lt;/p&gt;
+
+&lt;p&gt;The problem is that Ubuntu 13.10 links GDB against Python 3.3 while the script golang ships is for Python 2. &lt;a href=&#34;https://code.google.com/p/go/issues/detail?id=6698&#34;&gt;Someone has already filed an issue, and it appears to be fixed&lt;/a&gt; upstream (so expect Go 1.3 to Just Work).&lt;/p&gt;
+
+&lt;p&gt;Luckily backporting the fix is easy. Simply move your existing &lt;code&gt;runtime-gdb.py&lt;/code&gt; out of the way and [download the upstream version][3] in its place.&lt;/p&gt;
+
+&lt;p&gt;If your &lt;code&gt;$GOROOT&lt;/code&gt; is &lt;code&gt;/usr/local/go&lt;/code&gt; the following should Just Work:&lt;/p&gt;
+
+&lt;p&gt;[3]: &lt;a href=&#34;https://go.googlecode.com/hg/src/pkg/runtime/runtime-gdb.py&#34;&gt;https://go.googlecode.com/hg/src/pkg/runtime/runtime-gdb.py&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu 9.10 on a Thinkpad T400</title>
+      <link>/2009/11/11/ubuntu-9-10-on-a-thinkpad-t400/</link>
+      <pubDate>Thu, 12 Nov 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/11/11/ubuntu-9-10-on-a-thinkpad-t400/</guid>
+      <description>&lt;p&gt;I upgraded from Ubuntu 9.04 to &lt;a href=&#34;http://www.ubuntu.com/products/whatisubuntu/910features&#34;&gt;9.10&lt;/a&gt; on my Lenovo Thinkpad T400 about a week ago, and thought I&amp;#8217;d write down some of my impressions.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Good news&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ATI graphics card with proprietary binary driver &amp;#8211; just works (much better than 9.04 as well).&lt;/li&gt;
+&lt;li&gt;Suspend &amp;amp; hibernate work flawlessly.&lt;/li&gt;
+&lt;li&gt;Boots fast.&lt;/li&gt;
+&lt;li&gt;Upgrade worked flawlessly.&lt;/li&gt;
+&lt;li&gt;Sound (better volume panel!), wifi, USB, network printer, bluetooth (option to turn it on/off!), webcam, etc. all still work.&lt;/li&gt;
+&lt;li&gt;New theme is nice.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;I manually &lt;a href=&#34;http://ext4.wiki.kernel.org/index.php/Ext4_Howto#Converting_an_ext3_filesystem_to_ext4&#34;&gt;upgraded my filesystem to ext4&lt;/a&gt; and &lt;a href=&#34;https://wiki.ubuntu.com/KernelTeam/Grub2Testing&#34;&gt;grub from version 1 to 2&lt;/a&gt;. It was a bit scary but worked out fine. Can&amp;#8217;t really feel a difference, but my laptop is mainly a dumb terminal for running web browsers and ssh. &lt;/ul&gt;
+&lt;strong&gt;&lt;a href=&#34;http://live.gnome.org/Empathy&#34;&gt;Empathy&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Ubuntu replaced Pidgin with Empathy as the default IM client in Ubuntu 9.10. I think because Empathy supports voice/video chat and Pidgin doesn&amp;#8217;t? I&amp;#8217;ve used video chat once in my life and that was through Skype on Linux. It worked great, but it&amp;#8217;s really not a feature I care about.&lt;/p&gt;
+
+&lt;p&gt;So for someone like me who doesn&amp;#8217;t care about Empathy&amp;#8217;s singular advantage over Pidgin, Empathy is a major step backward. At first it was extremely crashy, but a recent update seems to have fixed that. However, now it mysteriously loses messages. I&amp;#8217;m a very light IM user, but it would start silently missing messages a few hours into the day every day.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;ve switched back to Pidgin and couldn&amp;#8217;t be happier.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Message Notification applet deal&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Empathy integrates with the message notification applet deal along with Evolution. Other apps may as well, but evidently I don&amp;#8217;t use any of them. My top panel is 75% whitespace, so the singular benefit of Ubuntu&amp;#8217;s consolidated message notification applet was completely lost on me.&lt;/p&gt;
+
+&lt;p&gt;So much like Empathy, I removed this specialized applet as well. I&amp;#8217;m much happier with per-application icons anyway and fail to see what the benefit of consolidating them is (unless you have a really cramped top panel).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;New Theme&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I like it, but then I installed Chromium. Now the bold window titles and expansive title bars in Metacity look bulky and antiquated. Gnome really needs to evolve their window manager and default UI. Chrome is an excellent example of how to design a compact, minimal, yet still pleasant and intuitive user interface.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://wiki.ubuntu.com/SoftwareCenter&#34;&gt;Ubuntu Software Center&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;What a curious little replacement for the old Add/Remove Applications program. I think I see the direction they&amp;#8217;re headed, but it definitely feels like rolled out a beta program to replace a perfectly functional and stable one.&lt;/p&gt;
+
+&lt;p&gt;The left pane with expansive whitespace and 2 options &lt;em&gt;hints&lt;/em&gt; that there might be more categories in the future, but right now it just looks like a mistake. Like maybe something isn&amp;#8217;t working properly, and I&amp;#8217;m not seeing all the options I should see.&lt;/p&gt;
+
+&lt;p&gt;At any rate, I hope Ubuntu adds an App Store that even includes evil proprietary software. I&amp;#8217;d love to be able to plunk down a few bucks for a game like [Braid][6] directly from Ubuntu Software Center. That&amp;#8217;d be great! Maybe Canonical could even pocket a few pennies and start making Linux-on-the-desktop profitable. Now I&amp;#8217;m just dreaming though&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Bottom Line&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;9.10 is a solid and safe upgrade for any users of previous versions. Not sure there&amp;#8217;s anything new to win over users from OS X or Windows though.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;[6]: &lt;a href=&#34;http://braid-game.com/&#34;&gt;http://braid-game.com/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>New Laptop: Acer Extensa 4630Z</title>
+      <link>/2009/03/22/new-laptop-acer-extensa-4630z/</link>
+      <pubDate>Mon, 23 Mar 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/03/22/new-laptop-acer-extensa-4630z/</guid>
+      <description>&lt;p&gt;I bought a laptop recently because being a web consultant and tied to a desktop is not only embarrassing, but is a quick way to lose (or at least frustrate) clients who&amp;#8217;d love to see my hairy hacker face on-site.&lt;/p&gt;
+
+&lt;p&gt;I use Linux, Firefox, and vim for work so my requirements for a laptop basically came down to WiFi. I also didn&amp;#8217;t want something big and clunky because I&amp;#8217;m looking to augment my desktop, not replace it.&lt;/p&gt;
+
+&lt;p&gt;I finally settled on searching in the 13&amp;#8243;-14&amp;#8243; range for anything with dual cores (so Flash can destroy 1 core while the other lets me continue to work unphased) and 2 GB of RAM (that usually gives me &amp;gt; 1 GB for harddrive caching which speeds things up a lot &amp;#8212; plenty of room to run an XP VM as well).&lt;/p&gt;
+
+&lt;p&gt;Despite affectionately nicknaming my aging Thinkpad a &amp;#8220;Brickpad&amp;#8221; due to its big-black-box design, I love Thinkpads and have found them to be exceptionally well made and reliable. Unfortunately they just weren&amp;#8217;t in the budget this around around.&lt;/p&gt;
+
+&lt;p&gt;At this point my search had narrowed down a bit, and I began searching for the easiest way to get the most bang for my buck: getting a laptop without Microsoft Windows. Even if Windows only adds $50 to the purchase price, that&amp;#8217;s a significant amount of money when you&amp;#8217;re shopping in the $500-600 range. That and I can remote into the XP VM on my desktop for cross-browser testing (my only use for Windows).&lt;/p&gt;
+
+&lt;p&gt;Unfortunately with the exception of tiny netbooks, there aren&amp;#8217;t many Windowless laptops out there (not paying extra for an Apple either, sorry). Dell has one (or a few?), but I&amp;#8217;ve had too many bad experiences with Dells dying prematurely (IMHO, YMMV, etc). HP lets you get Windowless laptops, but only if you pay extra to customize your laptop. Oh well.&lt;/p&gt;
+
+&lt;p&gt;So once I gave up on that dream, I just went for cheap and found an &lt;a href=&#34;http://us.acer.com/acer/productv.do?link=oln15e.redirect&amp;amp;changedAlts=&amp;amp;CRC=1511809838&#34;&gt;Acer Extensa 4630Z&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Linux on an Acer Extensa 4630Z&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I decided to go with Ubuntu 8.10 instead of my usual choice of Debian and fought around with getting /home and my swap partition encrypted. I&amp;#8217;ll probably keep using Debian on servers, but its politics have just gotten so annoying as to convince me I never really want to work to become a member of that community.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;#8217;s the rundown of what works, what doesn&amp;#8217;t:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ralink RT2860 802.11b/g/Draft-N WiFi adapter &amp;#8211; Ugh. Its &amp;#8220;working&amp;#8221; using [Ralink&amp;#8217;s drivers][2], but not with Network Manager. I&amp;#8217;ll have to keep playing around with it, but for now its working adequately.&lt;/li&gt;
+&lt;li&gt;Crazy &amp;euro; and $ keys above the arrow keys do &lt;em&gt;not&lt;/em&gt; work, but I&amp;#8217;m not sure what purpose they serve.&lt;/li&gt;
+&lt;li&gt;Intel graphics card works fine with Compiz (although I just use Metacity).&lt;/li&gt;
+&lt;li&gt;Suspend but &lt;em&gt;not&lt;/em&gt; hibernate. Argh! Does hibernate work for any Linux users? I haven&amp;#8217;t even tried in years.&lt;/li&gt;
+&lt;li&gt;Webcam, speakers, mic, &amp;amp; screen dimming work&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It will interesting to see how I like moving from a Debian desktop to an Ubuntu laptop.&lt;/p&gt;
+
+&lt;p&gt;[2]: &lt;a href=&#34;http://www.ralinktech.com/ralink/Home/Support/Linux.html&#34;&gt;http://www.ralinktech.com/ralink/Home/Support/Linux.html&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Fedora’s Crypto Consolidation</title>
+      <link>/2008/10/20/fedoras-crypto-consolidation/</link>
+      <pubDate>Mon, 20 Oct 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/10/20/fedoras-crypto-consolidation/</guid>
+      <description>&lt;p&gt;I just found out Fedora is attempting to consolidate on &lt;a href=&#34;http://developer.mozilla.org/en/NSS&#34;&gt;Mozilla&amp;#8217;s NSS&lt;/a&gt; for &lt;a href=&#34;http://fedoraproject.org/wiki/FedoraCryptoConsolidation&#34;&gt;system-wide cryptography&lt;/a&gt;. I love the idea and hope it succeeds as it will make using crypto so much easier for system administrators and users.&lt;/p&gt;
+
+&lt;p&gt;Since humans are the weakest link in the security chain, improving the human interaction with crypto is a much bigger security win than the latest impossible-to-crack-by-the-NSA-in-a-bajillion-years algorithm. While switching libraries isn&amp;#8217;t exactly a huge UI win, having a single application to manage all of your certificates, keys, passwords, etc. would be.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;d love to see Debian, Ubuntu, Suse, et al, get on board as well because this is the sort of initiative that simply won&amp;#8217;t happen upstream. Upstream developers have already chosen a crypto library and probably like it. The burden of tight integration is definitely the job of system engineers and packagers.&lt;/p&gt;
+
+&lt;p&gt;I submitted an Ubuntu Brainstorm Idea, so please feel free to vote on it if you&amp;#8217;re so inclined:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://brainstorm.ubuntu.com/idea/14632/&#34;&gt;&lt;img src=&#34;http://brainstorm.ubuntu.com/idea/14632/image/1/&#34; alt=&#34;&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I would love to submit this idea to Debian as well, but I have no idea where to even start. Probably a mailing list, but I don&amp;#8217;t exactly have the skills to defend this proposition. Eventually bugs would need to be filed against every package that needs to be converted to NSS, but I&amp;#8217;m afraid doing that as just-another-end-user might just anger a bunch of maintainers&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Looks like the [LSB is standardizing on NSS][5] as well.&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;I &lt;em&gt;really&lt;/em&gt; need to learn deb packaging&amp;#8230;&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;[5]: &lt;a href=&#34;http://ldn.linuxfoundation.org/article/lsb-beta-reveals-new-tools-features-developers&#34;&gt;http://ldn.linuxfoundation.org/article/lsb-beta-reveals-new-tools-features-developers&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

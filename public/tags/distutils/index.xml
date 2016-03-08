@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Distutils on </title>
+    <link>/tags/distutils/</link>
+    <description>Recent content in Distutils on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 09 Sep 2009 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/distutils/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Python Packaging Talk</title>
+      <link>/2009/09/09/python-packaging-talk/</link>
+      <pubDate>Wed, 09 Sep 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/09/09/python-packaging-talk/</guid>
+      <description>&lt;p&gt;I gave a talk at &lt;a href=&#34;http://pdxpython.org/&#34;&gt;PDX Python&lt;/a&gt; last night on Python Packaging. It&amp;#8217;s just an overview and introduction completely lacking in any practical examples.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/files/packaging.odp&#34;&gt;Python Packaging slides (ODP)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/files/packaging-2.pdf&#34;&gt;Python Packaging slides (PDF)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;small&gt;Let me know if the ODP source is messed up. OpenOffice.org liked randomly losing background images and forgetting other formatting.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;So as penance I quick hacked up a silly little command line utility and uploaded it to PyPI to serve as a simple packaging example:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://pypi.python.org/pypi/whereampy&#34;&gt;whereampy on PyPI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://bitbucket.org/schmichael/whereampy/&#34;&gt;whereampy on bitbucket&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It&amp;#8217;d be nice to add some more advanced features like test running, including package data, and building C extensions. If you feel adventurous please &lt;a href=&#34;http://bitbucket.org/schmichael/whereampy/fork/&#34;&gt;fork&lt;/a&gt; it and send me a &lt;a href=&#34;http://bitbucket.org/schmichael/whereampy/pull/&#34;&gt;pull request&lt;/a&gt; on BitBucket.&lt;/p&gt;
+
+&lt;p&gt;Thanks to everyone who came to PDX Python last night! Especially &lt;a href=&#34;http://lucumr.pocoo.org/&#34;&gt;Armin Ronacher&lt;/a&gt; who was able to clarify and elaborate on a number of different distutils/setuptools topics!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Just spotted &lt;a href=&#34;http://tarekziade.wordpress.com/2009/09/12/static-metadata-for-distutils/&#34;&gt;an excellent post on distutils and setuptools by Tarek ZiadÃ©.&lt;/a&gt; Make sure to [read his blog if you&amp;#8217;re interested in packaging in Python.][10]&lt;/p&gt;
+
+&lt;p&gt;[10]: &lt;a href=&#34;http://tarekziade.wordpress.com/&#34;&gt;http://tarekziade.wordpress.com/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

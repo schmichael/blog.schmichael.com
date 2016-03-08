@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Chrome Frame on </title>
+    <link>/tags/chrome-frame/</link>
+    <description>Recent content in Chrome Frame on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 22 Sep 2009 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/chrome-frame/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Google Chrome Frame</title>
+      <link>/2009/09/22/google-chrome-frame/</link>
+      <pubDate>Tue, 22 Sep 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/09/22/google-chrome-frame/</guid>
+      <description>&lt;p&gt;I maintain a web application that must support Internet Explorer 6, so I was delighted to hear about [Google Chrome Frame][1].&lt;/p&gt;
+
+&lt;p&gt;Unfortunately their warnings of its alpha status seem to be well founded. The 2 show-stoppers I ran into fairly quickly were:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Flash is difficult to install. (Tip: Try visiting: &lt;a href=&#34;cf:http://www.adobe.com/software/flash/about/&#34;&gt;cf:http://www.adobe.com/software/flash/about/&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;The Location bar did not always change to reflect the current page.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;I&amp;#8217;ll definitely be following this project closely as it may allow corporate users stuck on IE to use a different browser relatively easily.&lt;/p&gt;
+
+&lt;p&gt;[1]: &lt;a href=&#34;http://code.google.com/chrome/chromeframe/&#34;&gt;http://code.google.com/chrome/chromeframe/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

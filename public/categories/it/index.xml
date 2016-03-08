@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>It on </title>
+    <link>/categories/it/</link>
+    <description>Recent content in It on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 31 Oct 2008 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/categories/it/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Join #webdevpdx on Freenode</title>
+      <link>/2008/10/31/join-webdevpdx-on-freenode/</link>
+      <pubDate>Fri, 31 Oct 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/10/31/join-webdevpdx-on-freenode/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://twitter.com/chrispitzer/status/983462380&#34;&gt;Chris just created a channel for web developers in Portland, OR&lt;/a&gt; on Freenode, so if you&amp;#8217;re a web developer (or sysadmin or dba or designer or manager forced to deal with us webdevs) come on in!&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;irc://irc.freenode.net/webdevpdx&#34;&gt;#webdevpdx on irc.freenode.net&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;New to IRC? Try one of these clients:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://pidgin.im/&#34;&gt;Pidgin&lt;/a&gt; (but not really &lt;a href=&#34;http://trac.adiumx.com/wiki/InternetRelayChat&#34;&gt;Adium&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://addons.mozilla.org/en-US/firefox/addon/16&#34;&gt;Chatzilla&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;and of course &lt;em&gt;The Client of the Future:&lt;/em&gt; &lt;strong&gt;[irssi][6]&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;strong&gt;Update:&lt;/strong&gt; I should have mentioned I&amp;#8217;m &lt;em&gt;schmichael&lt;/em&gt; on IRC.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;[6]: &lt;a href=&#34;http://www.irssi.org&#34;&gt;http://www.irssi.org&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Summer of Hacks</title>
+      <link>/2008/05/13/summer-of-hacks/</link>
+      <pubDate>Tue, 13 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/05/13/summer-of-hacks/</guid>
+      <description>&lt;p&gt;My &lt;a href=&#34;http://www.linode.com/&#34;&gt;Linode&lt;/a&gt; has been experiencing a huge number of brute force login attempts in the past week. I don&amp;#8217;t keep detailed statistics, but I would guess there have been &lt;strong&gt;300 attempts in the past week&lt;/strong&gt; as opposed to &lt;em&gt;the usual rate of about 500 attempts over 200 days (2-3 attempts per day)&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://denyhosts.sourceforge.net/&#34;&gt;Denyhosts&lt;/a&gt; has been doing its job perfectly. It should be illegal to run a Internet exposed SSH server without it or a similar tool.*&lt;/p&gt;
+
+&lt;p&gt;Thanks to HoopyCat in #linode for pointing me to a [SANS Internet Storm Center article explaining the &lt;em&gt;Summer of Hacks&lt;/em&gt;][3] phenomenon.&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;* Unless of course you only accept key based logins.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;[3]: &lt;a href=&#34;http://isc.sans.org/diary.html?storyid=4408&#34;&gt;http://isc.sans.org/diary.html?storyid=4408&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Easy Rsync Remote Backups Using SSH Keys</title>
+      <link>/2008/03/19/easy-rsync-remote-backups-using-ssh-keys/</link>
+      <pubDate>Thu, 20 Mar 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/03/19/easy-rsync-remote-backups-using-ssh-keys/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://www.samba.org/rsync/&#34;&gt;Rsync&lt;/a&gt; is an excellent file transfer utility thats especially well suited for backing up files over the Internet because it only transfers the data that has changed. A friend asked me how to set it up, so I thought I&amp;#8217;d post what I sent him here.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; Backup a directory from computer &lt;code&gt;Zim&lt;/code&gt; to computer &lt;code&gt;Ark&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Details:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Both &lt;code&gt;Zim&lt;/code&gt; and &lt;code&gt;Ark&lt;/code&gt; are subdomains of &lt;code&gt;example.com&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;The user on &lt;code&gt;Ark&lt;/code&gt; which receives the backup files is named &lt;code&gt;backupuser&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;The user on &lt;code&gt;Zim&lt;/code&gt; with access to the files you want to backup is named &lt;code&gt;steve&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Prerequisites:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://openssh.org/&#34;&gt;ssh&lt;/a&gt; installed on both hosts&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.samba.org/rsync/download.html&#34;&gt;rsync&lt;/a&gt; installed on both hosts&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Login to &lt;code&gt;Zim&lt;/code&gt; via &lt;code&gt;ssh&lt;/code&gt;: &lt;pre lang=&#34;bash&#34;&gt;ssh steve@zim.example.com&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Generate a &lt;code&gt;ssh&lt;/code&gt; key pair using: &lt;pre lang=&#34;bash&#34;&gt;ssh-keygen -t rsa
+&amp;lt;press enter when prompted where to save the key&amp;gt;
+&amp;lt;press enter twice when asked for a passphrase&amp;gt;&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;To use the key to login to &lt;code&gt;Ark&lt;/code&gt; remotely without manually entering a password you need to copy the public key from &lt;code&gt;Zim&lt;/code&gt; to &lt;code&gt;Ark&lt;/code&gt; using: &lt;pre lang=&#34;bash&#34;&gt;ssh-copy-id -i .ssh/id_rsa.pub backupuser@ark.example.com&lt;/pre&gt;&lt;/p&gt;
+
+&lt;p&gt;If you don&amp;#8217;t have &lt;code&gt;ssh-copy-id&lt;/code&gt; on your system, get a new system. 😉 If thats not possible you can download the script with:&lt;/p&gt;
+
+&lt;pre lang=&#34;bash&#34;&gt;wget -O ssh-copy-id http://cvsweb.mindrot.org/index.cgi/~checkout~/openssh/contrib/ssh-copy-id?rev=1.6;content-type=text%2Fplain &amp;#038;&amp;#038; chmod +x ssh-copy-id&lt;/pre&gt;
+
+&lt;p&gt;Then retry the above command only you&amp;#8217;ll need to prepend a &amp;#8220;./&amp;#8221;:&lt;/p&gt;
+
+&lt;pre lang=&#34;bash&#34;&gt;./ssh-copy-id -i .ssh/id_rsa.pub backupuser@ark.example.com&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Verify the key copied properly by attempting to login to &lt;code&gt;Ark&lt;/code&gt;. You should &lt;em&gt;not&lt;/em&gt; be prompted for a password: &lt;pre lang=&#34;bash&#34;&gt;ssh backupuser@ark.example.com&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Logout of &lt;code&gt;Ark&lt;/code&gt;. The key is setup, so you&amp;#8217;re now ready to rsync files without having to manually enter a password.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Test rsync by choosing a small file to backup and using: &lt;pre lang=&#34;bash&#34;&gt;rsync -tP /some/small/testfile backupuser@ark.example.com:/tmp&lt;/pre&gt;&lt;/p&gt;
+
+&lt;p&gt;A nice little progress bar should be displayed as the file is transferred. Confirm that &amp;#8220;testfile&amp;#8221; is now in &lt;code&gt;/tmp&lt;/code&gt; on &lt;code&gt;Ark&lt;/code&gt;.&lt;/li&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;You&amp;#8217;re finally ready to do a real rsync like: &lt;pre lang=&#34;bash&#34;&gt;rsync -t /directory/to/backup/* backupuser@ark.example.com:/existing/backup/directory&lt;/pre&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; There are several useful options for rsync. Check &lt;code&gt;man rsync&lt;/code&gt; to find out more.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-p&lt;/code&gt; &amp;#8212; preserve permissions (useful for backups, use -E if you only care about the executable bit)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-r&lt;/code&gt; &amp;#8212; recursively backup directories.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-z&lt;/code&gt; &amp;#8212; compressed uncompressed files&lt;/li&gt;
+&lt;li&gt;And just FYI: &lt;code&gt;-t&lt;/code&gt; tells rsync to use the last modified timestamp to determine whether or not to transfer files. It makes rsync a &lt;em&gt;lot&lt;/em&gt; faster at determining whether or not files have changed.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;To schedule the backup to take place nightly at 1:13 AM edit your crontab using &lt;code&gt;crontab -e&lt;/code&gt; and insert the following line: &lt;pre lang=&#34;bash&#34;&gt;13 1 * * * rsync -qt /directory/to/backup/* backupuser@ark.example.com:/existing/backup/directory&lt;/pre&gt;&lt;/ol&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Caveats:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;These instructions will &lt;em&gt;push&lt;/em&gt; files from &lt;code&gt;Zim&lt;/code&gt; to &lt;code&gt;Ark&lt;/code&gt;. There&amp;#8217;s no reason why &lt;code&gt;Ark&lt;/code&gt; couldn&amp;#8217;t &lt;em&gt;pull&lt;/em&gt; files from &lt;code&gt;Zim&lt;/code&gt;. In fact, this is often &lt;strong&gt;more secure&lt;/strong&gt; if &lt;code&gt;Zim&lt;/code&gt; is a web server with a larger attack surface than &lt;code&gt;Ark&lt;/code&gt;. Mea culpa.&lt;/li&gt;
+&lt;li&gt;If the IP address of &lt;code&gt;Ark&lt;/code&gt; is dynamic, use a service like [dyndns.com][4]. Otherwise SSH will give you errors.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Major security warning:&lt;/em&gt; If someone breaks into &lt;code&gt;Zim&lt;/code&gt;, they can also delete all of your backups on &lt;code&gt;Ark&lt;/code&gt;. Never ever ever use the &lt;code&gt;root&lt;/code&gt; user for backups on &lt;code&gt;Ark&lt;/code&gt;. You can use the &lt;code&gt;root&lt;/code&gt; user on &lt;code&gt;Zim&lt;/code&gt; to send the backups, but its best to have a special backup user setup on &lt;code&gt;Ark&lt;/code&gt; to receive the backup.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;[4]: &lt;a href=&#34;http://www.dyndns.com&#34;&gt;http://www.dyndns.com&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Permanent home for firewall-admin</title>
+      <link>/2008/02/17/permanent-home-for-firewall-admin/</link>
+      <pubDate>Sun, 17 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/02/17/permanent-home-for-firewall-admin/</guid>
+      <description>&lt;p&gt;The &lt;a href=&#34;http://michael.susens-schurter.com/blog/2007/11/06/recipe-for-a-transparent-linux-firewall-and-cherrypy-control-panel/&#34;&gt;little recipe I posted&lt;/a&gt; for a dedicated Linux firewall with a CherryPy powered administrative interface finally has a [permanent home over at Google Code][2].&lt;/p&gt;
+
+&lt;p&gt;Many thanks to Kyle Waremburg for creating the project page and helping me develop [firewall-admin][2]! I hope other people find it useful.&lt;/p&gt;
+
+&lt;p&gt;[2]: &lt;a href=&#34;http://code.google.com/p/firewall-admin/&#34;&gt;http://code.google.com/p/firewall-admin/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Hostname Tab-Completion for OpenSSH</title>
+      <link>/2008/01/30/hostname-tab-completion-for-openssh/</link>
+      <pubDate>Wed, 30 Jan 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/01/30/hostname-tab-completion-for-openssh/</guid>
+      <description>&lt;p&gt;I use &lt;a href=&#34;http://openssh.org/&#34;&gt;OpenSSH&lt;/a&gt; daily. In fact the only app I probably use more is &lt;a href=&#34;http://www.vim.org/&#34;&gt;vim&lt;/a&gt;. However, until yesterday I was typing out the full username and hostname when using ssh:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;ssh username@ridiculouslylong.domain.com&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Ugh&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Using the same username makes life a bit simpler:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;ssh ridiculouslylong.domain.com&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Meh&lt;/strong&gt;, better, but I&amp;#8217;m &lt;em&gt;really&lt;/em&gt; lazy!&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;d heard about tab-completion for hostnames from various blogs, but never knew how to do it. I hopped into #debian and thirty seconds later someone had kindly told me about &lt;code&gt;&amp;lt;b&amp;gt;~/.ssh/config&amp;lt;/b&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Not only is any host listed in your &lt;code&gt;~/.ssh/config&lt;/code&gt; auto-completed on the command line by hitting tab, but you can also specify what username to connect as! So my .ssh/config file looks something like:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Host host1.domain.com&amp;lt;br /&amp;gt;
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;User randomuser&amp;lt;br /&amp;gt;
+Host www.somewhereelse.com&amp;lt;br /&amp;gt;
+&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;User someotheruser&amp;lt;br /&amp;gt;
+Host mail.domain2.com&amp;lt;br /&amp;gt;
+Host domain3.com&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Now I can just type:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;ssh h&amp;lt;TAB&amp;gt;&amp;lt;ENTER&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;to connect to &lt;em&gt;host1.domain.com&lt;/em&gt; as &lt;em&gt;randomuser&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Beautiful.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Check out &lt;code&gt;man ssh_config&lt;/code&gt; for details and other options.&lt;/p&gt;
+
+&lt;p&gt;Also, if you&amp;#8217;re not using &lt;a href=&#34;http://en.wikipedia.org/wiki/Ssh-agent&#34;&gt;ssh keys&lt;/a&gt; instead of passwords, you&amp;#8217;re doing too much work. [Seahorse][4] makes SSH keys simple.&lt;/p&gt;
+
+&lt;p&gt;[4]: &lt;a href=&#34;http://www.gnome.org/projects/seahorse/&#34;&gt;http://www.gnome.org/projects/seahorse/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Wireless Bridges are a Scam</title>
+      <link>/2007/12/18/wireless-bridges-are-a-scam/</link>
+      <pubDate>Tue, 18 Dec 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/2007/12/18/wireless-bridges-are-a-scam/</guid>
+      <description>&lt;p&gt;Disclaimer: I am not a hardware guy. The days when I enjoyed cracking open a computer case and poking around are long since past. These days if I can&amp;#8217;t fix something via keyboard, I want no part of it.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately, for a client I needed to extend a LAN from Building A across 30 feet of asphalt to Building B. Time to don my Net Admin hat to install a nice straightforward WiFi bridge.&lt;/p&gt;
+
+&lt;p&gt;Despite already owning a &lt;a href=&#34;http://en.wikipedia.org/wiki/WRT54G&#34;&gt;Linksys WRT54G series router&lt;/a&gt;, I decided to just pickup 2 Linksys &lt;a href=&#34;http://www.linksys.com/servlet/Satellite?c=L_Product_C2&amp;amp;childpagename=US%2FLayout&amp;amp;cid=1134692497433&amp;amp;pagename=Linksys%2FCommon%2FVisitorWrapper&amp;amp;lid=9743339789B32&#34;&gt;WET54G&lt;/a&gt; wireless bridges (version 3.1). The &lt;strong&gt;bridges are actually &lt;em&gt;more&lt;/em&gt; expensive than routers.&lt;/strong&gt; But that just means they&amp;#8217;re better suited for their simple task, right? Wrong&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;The 2 WET54Gs have been nothing but trouble for me. Their web interface sometimes redirects to the hardcoded IP address. They drop their connection and require resetting a lot. They just don&amp;#8217;t work reliably.&lt;/p&gt;
+
+&lt;p&gt;So I flashed the WRT54G with Tomato firmware to replace one of the WET54Gs, and so far things are working much better.&lt;/p&gt;
+
+&lt;p&gt;If I&amp;#8217;ve never mentioned it before: &lt;strong&gt;I love &lt;a href=&#34;http://www.polarcloud.com/tomato&#34;&gt;Tomato&lt;/a&gt; firmware.&lt;/strong&gt; I&amp;#8217;ve been using it at home for ages and &lt;strong&gt;never&lt;/strong&gt; have to reset it. The [features][4] are outstanding (QoS with ACK Prioritization is a lifesaver when working over SSH).&lt;/p&gt;
+
+&lt;p&gt;From now on anytime I need a WiFi router, access point, or bridge, I&amp;#8217;m going to buy a WRT54G and put Tomato on it. Its cheaper than buying specialized Access Points or Bridges and has lots more features.&lt;/p&gt;
+
+&lt;p&gt;Did I mention Tomato generates sexy real-time graphs in SVG? Have a screenshot:&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;a href=&#34;http://michael.susens-schurter.com/files/tomato-firmware.png&#34;&gt;&lt;img src=&#34;http://michael.susens-schurter.com/files/tomato-firmware.thumb.png&#34; alt=&#34;Tomato Firmware Bandwidth Graph&#34; /&gt;&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;p&gt;[4]: &lt;a href=&#34;http://en.wikibooks.org/wiki/Tomato_Firmware#Features&#34;&gt;http://en.wikibooks.org/wiki/Tomato_Firmware#Features&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Recipe for a Transparent Linux Firewall and CherryPy Control Panel</title>
+      <link>/2007/11/06/recipe-for-a-transparent-linux-firewall-and-cherrypy-control-panel/</link>
+      <pubDate>Tue, 06 Nov 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/2007/11/06/recipe-for-a-transparent-linux-firewall-and-cherrypy-control-panel/</guid>
+      <description>&lt;div style=&#34;float: right; padding: 10px;&#34;&gt;
+  &lt;a href=&#34;http://michael.susens-schurter.com/files/firewalladmin.png&#34;&gt;&lt;img alt=&#34;firewalladmin screenshot&#34; src=&#34;http://michael.susens-schurter.com/files/firewalladmin-small.png&#34; /&gt;&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;p&gt;At my previous job I built a transparent firewall with the help of a student. He hacked up some iptables scripts, and I hacked up a CherryPy application to control the firewall. It turned out to be pretty handy, so I&amp;#8217;m finally getting around to posting it somewhere&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Recipe:&lt;/strong&gt; A transparent firewall to block certain IP addresses and a nice web based control panel to edit the blacklist.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Ingredients:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Old computer (preferably a PIII) with 3 NICs&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.debian.org/releases/etch/&#34;&gt;Debian Etch&lt;/a&gt; (or your Linux flavor of choice)&lt;/li&gt;
+&lt;li&gt;Packages: &lt;a href=&#34;http://packages.debian.org/etch/iptables&#34;&gt;iptables&lt;/a&gt;, &lt;a href=&#34;http://packages.debian.org/etch/bridge-utils&#34;&gt;bridge-utils&lt;/a&gt;, &lt;a href=&#34;http://packages.debian.org/etch/python/python&#34;&gt;Python&lt;/a&gt;, &lt;a href=&#34;http://packages.debian.org/etch/python/python-setuptools&#34;&gt;setuptools&lt;/a&gt;, CherryPy 3 (use easy_install), Genshi (use easy_install), &lt;a href=&#34;http://packages.debian.org/etch/python/python-adns&#34;&gt;Python-ADNS&lt;/a&gt;, &lt;a href=&#34;http://packages.debian.org/etch/python/python-sqlobject&#34;&gt;SQLObject&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://michael.susens-schurter.com/code/firewall-admin.tar.gz&#34;&gt;firewall-admin.tar.gz&lt;/a&gt; &amp;#8211; my exceedingly creatively named firewall administration CherryPy web app&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Directions:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Extract firewall-admin.tar.gz and change to the base directory. By default its setup to be in /srv/firewall-admin&lt;/li&gt;
+&lt;li&gt;If you didn&amp;#8217;t extract to &lt;code&gt;/srv/firewall-admin&lt;/code&gt;, edit etc/rc.local and &lt;em&gt;basedir&lt;/em&gt; in &lt;code&gt;firewalladmin.config&lt;/code&gt; to reflect the current directory.&lt;/li&gt;
+&lt;li&gt;By default &lt;code&gt;firewalladmin/lib/bridge.py&lt;/code&gt; [bridges][9] &lt;em&gt;eth1&lt;/em&gt; and &lt;em&gt;eth2&lt;/em&gt;, and &lt;em&gt;eth0&lt;/em&gt; should be attached to your LAN to access SSH and the web control panel.&lt;/li&gt;
+&lt;li&gt;Edit firewalladmin.config to run on the IP address assigned to your administrative NIC and remember what port its set to run on.&lt;/li&gt;
+&lt;li&gt;Add the commands from &lt;code&gt;etc/rc.local&lt;/code&gt; to your system&amp;#8217;s existing &lt;code&gt;/etc/rc.local&lt;/code&gt; script. This will start the transparent firewall and web control panel on boot.&lt;/li&gt;
+&lt;li&gt;Next you&amp;#8217;ll need to setup the database. Edit line 28 in &lt;code&gt;firewalladmin/model.py&lt;/code&gt; to set a default password and then run &lt;code&gt;createdb.py&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;You&amp;#8217;re now ready to start the firewall and control panel simply by running &lt;code&gt;sudo etc/rc.local&lt;/code&gt; (see &lt;em&gt;Caveats&lt;/em&gt; below). You can always test out just the web interface by running &lt;code&gt;start-firewalladmin.py&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Browse to the web interface using the IP and Port setup in step 4, login using the username and password setup in step 6, and start configuring your transparent firewall!&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The firewall allows creating multiple blacklists (aka Categories) which can be edited/paused/deleted individually. It has has &lt;em&gt;allow lists&lt;/em&gt; (aka Whitelists) which can be used to allow specific internal IPs access to specific sites that might otherwise be blocked by a blacklist.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Important:&lt;/strong&gt; When a user visits a blocked site they are redirected to the IP and Port specified on line 10 of &lt;code&gt;firewalladmin/lib/iptables.py&lt;/code&gt;. We setup Apache to listen on that port and serve up a generic &lt;em&gt;You&amp;#8217;ve been blocked&lt;/em&gt; page, but you could be even more clever. You&amp;#8217;ll need a &lt;code&gt;.htaccess&lt;/code&gt; file like the following to properly map all blocked traffic to your block page:&lt;/p&gt;
+
+&lt;pre lang=&#34;htaccess&#34;&gt;RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.html [L,QSA]
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Caveats&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;All scripts as well as the web control panel are &lt;strong&gt;executed as root&lt;/strong&gt;. This setup should only be run on dedicated hardware and not on a server with other services.&lt;/li&gt;
+&lt;li&gt;No test suite. Mea culpa.&lt;/li&gt;
+&lt;li&gt;Little to no error handling. You&amp;#8217;ve been warned. 😉&lt;/li&gt;
+&lt;li&gt;Basically this is a quick hack and should not be used in the same way you use tested and maintained software. YMMV&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This little setup has proved very useful at the school for augmenting their existing content filtering system, and all web traffic passes through it without trouble. An old PIII can run a 3,000 domain blacklist at wirespeed on a 10 Mbps link while using less than 10% of the CPU.&lt;/p&gt;
+
+&lt;p&gt;[9]: &lt;a href=&#34;http://www.linux-foundation.org/en/Net:Bridge&#34;&gt;http://www.linux-foundation.org/en/Net:Bridge&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>I Love Linode</title>
+      <link>/2007/08/15/i-love-linode/</link>
+      <pubDate>Thu, 16 Aug 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/2007/08/15/i-love-linode/</guid>
+      <description>&lt;p&gt;I just signed up for a new &lt;a href=&#34;http://www.linode.com/&#34;&gt;Linode&lt;/a&gt; account. This is the fourth account I&amp;#8217;ve created with them over the years, and I&amp;#8217;ve always been very pleased. I wish I do a side-by-side comparison with another &lt;a href=&#34;http://en.wikipedia.org/wiki/Vps&#34;&gt;VPS&lt;/a&gt; host, but I&amp;#8217;ve never had any reason to shop around.&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;I guess I did administer a Windows 2003 VPS on &lt;a href=&#34;http://www.godaddy.com/&#34;&gt;GoDaddy&lt;/a&gt; for a while. The experience was too horrific to even try to compare to Linode. Why anyone would want a Windows web server is beyond me. At the time we had been fooled into using ASP.NET to build a huge web application. I&amp;#8217;ll never make that mistake again.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;Linode is a VPS provider which uses &lt;a href=&#34;http://user-mode-linux.sourceforge.net/&#34;&gt;User Mode Linux&lt;/a&gt; to create virtual Linux servers which run as a process on top of a physical Linux server. While &lt;a href=&#34;http://www.xensource.com&#34;&gt;Xen&lt;/a&gt; seems to be the one getting all of the hype these days, UML is extremely stable, secure, and mature. Each user is allocated a pool of &lt;a href=&#34;http://www.linode.com/wiki/index.php/IO_Tokens&#34;&gt;IO tokens&lt;/a&gt; which refills at a static rate. This allows servers to have high burst IO rates while preventing any single virtual server from hogging the IO. It seems to work quite well.&lt;/p&gt;
+
+&lt;p&gt;Registration was quick and easy. My only minor complaint is that there&amp;#8217;s about an hour wait between when you&amp;#8217;re billed and when you&amp;#8217;re account is activated. When I asked their support about this I got a fast reply from Thomas Asaro:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Every signup is manually reviewed and approved by staff. This is to prevent fraudulent signups, protect the credit card holders, and protect our network. Our average activation time is 1 hour.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;That&amp;#8217;s probably my favorite thing about Linode: &lt;strong&gt;excellent support.&lt;/strong&gt; Whether its via e-mail, their &lt;a href=&#34;http://www.linode.com/wiki/index.php/IO_Tokens&#34;&gt;wiki&lt;/a&gt;, &lt;a href=&#34;http://www.linode.com/irc/&#34;&gt;IRC&lt;/a&gt;, or &lt;a href=&#34;http://www.linode.com/forums&#34;&gt;forums&lt;/a&gt;, the Linode staff and users have always been quick to help.&lt;/p&gt;
+
+&lt;p&gt;I started using Linode years ago when I worked for &lt;a href=&#34;http://www.synthesyssolutions.com/&#34;&gt;Synthesys Solutions&lt;/a&gt;. At the time we were using some terrible shared hosting provider that was constantly having problems. We decided not to risk our luck with another shared hosting provider, and I configured a Linode for hosting our web sites and e-mail.&lt;/p&gt;
+
+&lt;p&gt;The only performance issues I had with Linode were caused by spam. We scanned all of our e-mail for viruses with [ClamAV][9]. While ClamAV is a fantastic solution, like all virus scanners its very resource intensive. So a spam bomb would hit our server and bring it to an unusable crawl for anywhere from 30 minutes to over an hour. A faster Linode would have helped, but administering an e-mail server is always going to be a constant battle (unless you don&amp;#8217;t care about your users).&lt;/p&gt;
+
+&lt;p&gt;For now I plan on still using DreamHost for e-mail hosting to avoid the spam battle. While the stability isn&amp;#8217;t what I would like, POP3 users rarely, if ever, notice. And right now I don&amp;#8217;t host enough e-mail addresses to warrant the headache of managing it myself.&lt;/p&gt;
+
+&lt;p&gt;I highly recommend Linode to anyone looking for an extremely reliable Linux hosting service who doesn&amp;#8217;t want to spend a lot on a dedicated server.&lt;/p&gt;
+
+&lt;p&gt;[9]: &lt;a href=&#34;http://www.clamav.net/&#34;&gt;http://www.clamav.net/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Handy .Net Service Template</title>
+      <link>/2007/02/15/handy-net-service-template/</link>
+      <pubDate>Thu, 15 Feb 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/2007/02/15/handy-net-service-template/</guid>
+      <description>&lt;p&gt;I love .Net Services. Its a handy way to create background processes, and they work beautifully in both Windows and Linux (thanks to Mono!).&lt;/p&gt;
+
+&lt;p&gt;However, every time I create one I find myself writing a lot of the same code with minor variations:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;OnStart: start a worker thread, make it sure it didn&amp;#8217;t die, exit&lt;/li&gt;
+&lt;li&gt;OnStop: try to stop the worker thread nicely, wait, abort it, exit&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Depending on how &amp;#8220;nice&amp;#8221; you want to be to your worker thread, you can come up with some pretty crazy code to deal with your worker thread (volatile class variables, wait loops, etc.).&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;ve created a basic template for new .Net Services:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://michael.susens-schurter.com/blog/wp-content/uploads/2007/02/servicetemplate-20070215.zip&#34;&gt;ServiceTemplate (2007-02-15)&lt;/a&gt;{#p186}&lt;/p&gt;
+
+&lt;p&gt;It was inspired by a service I wrote to read a firewall log file into a database:&lt;/p&gt;
+
+&lt;p&gt;[Lumberjack (2007-02-15)][2]{#p187}&lt;/p&gt;
+
+&lt;p&gt;The template doesn&amp;#8217;t contain any complex worker thread stopping code. &lt;em&gt;Lumberjack&lt;/em&gt; uses a mess of methods to try and nicely stop the worker. I&amp;#8217;m not sure what Lumberjack does is really any more useful than just using Abort(), but I didn&amp;#8217;t want to leave a database connection open.&lt;/p&gt;
+
+&lt;p&gt;Both zips contain MonoDevelop solution files, although Main.cs is the only important file in both of them.&lt;/p&gt;
+
+&lt;p&gt;The other highlight of both the template and Lumberjack is the &lt;em&gt;SmartLog()&lt;/em&gt; method which logs to syslog in Linux and the Event Log in Windows. Although you probably have to comment out the syslog reference to build the source in Windows.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;m sure I&amp;#8217;ll update and keep using this code in the future&amp;#8230; I need to find some way to manage my mini-projects and code snippets&amp;#8230; any ideas?&lt;/p&gt;
+
+&lt;p&gt;[2]: &lt;a href=&#34;http://michael.susens-schurter.com/blog/wp-content/uploads/2007/02/lumberjack-20070215.zip&#34;&gt;http://michael.susens-schurter.com/blog/wp-content/uploads/2007/02/lumberjack-20070215.zip&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>System Information for Windows on Linux</title>
+      <link>/2007/02/15/system-information-for-windows-on-linux/</link>
+      <pubDate>Thu, 15 Feb 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/2007/02/15/system-information-for-windows-on-linux/</guid>
+      <description>&lt;p&gt;I saw &lt;a href=&#34;http://www.gtopala.com/&#34;&gt;System Information for Windows&lt;/a&gt; posted on &lt;a href=&#34;http://lifehacker.com/software/information/screenshot-tour-learn-everything-about-your-pc-with-siw-236760.php&#34;&gt;Lifehacker&lt;/a&gt; and couldn&amp;#8217;t resist:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://michael.susens-schurter.com/blog/wp-content/uploads/2007/02/siw-screenshot.png&#34; title=&#34;SIW on Linux&#34;&gt;&lt;img alt=&#34;SIW on Linux&#34; id=&#34;image189&#34; src=&#34;http://michael.susens-schurter.com/blog/wp-content/uploads/2007/02/siw-screenshot.thumbnail.png&#34; /&gt;&lt;/a&gt;{.imagelink}&lt;/p&gt;
+
+&lt;p&gt;System Information &lt;strong&gt;for Windows&lt;/strong&gt; &lt;em&gt;&lt;strong&gt;works on Linux.&lt;/strong&gt;&lt;/em&gt; &lt;img src=&#34;http://localhost/wp-includes/images/smilies/simple-smile.png&#34; alt=&#34;:)&#34; class=&#34;wp-smiley&#34; style=&#34;height: 1em; max-height: 1em;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;For the record I&amp;#8217;m running &lt;a href=&#34;http://www.us.debian.org/releases/sid/&#34;&gt;Debian Sid&lt;/a&gt; and [Wine][5] 0.9.30.&lt;/p&gt;
+
+&lt;p&gt;[5]: &lt;a href=&#34;http://winehq.com/&#34;&gt;http://winehq.com/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>BBC Article Comparing Vista, OSX, and Linux</title>
+      <link>/2007/01/29/bbc-article-comparing-vista-osx-and-linux/</link>
+      <pubDate>Tue, 30 Jan 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/2007/01/29/bbc-article-comparing-vista-osx-and-linux/</guid>
+      <description>&lt;p&gt;The BBC has &lt;a href=&#34;http://news.bbc.co.uk/1/hi/technology/6309425.stm&#34;&gt;an excellent article where 4 users describe their favorite operating system&lt;/a&gt;. It seems extremely balanced and accurate to me. Although I can&amp;#8217;t help but point out one Windows user&amp;#8217;s admission that OSX is better:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;I really think that this one&amp;#8217;s going to give Apple Macs a run for their money.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;It appears Office 2007 and Vista come with my school&amp;#8217;s Volume Licensing package, so I plan on dual-booting into my Windows XP partition for the first time in months to try them out. I&amp;#8217;m sure they&amp;#8217;re both improvements over their predecessors, but at this point I&amp;#8217;m just more comfortable with Linux and OpenOffice.org.&lt;/p&gt;
+
+&lt;p&gt;Also, spending half of my day running Windows Update and various spyware removal tools has made me despise the platform more than [Steve Ballmer&amp;#8217;s ridiculous tirades][2] ever could.&lt;/p&gt;
+
+&lt;p&gt;[2]: &lt;a href=&#34;http://www.theregister.co.uk/2001/06/02/ballmer_linux_is_a_cancer/&#34;&gt;http://www.theregister.co.uk/2001/06/02/ballmer_linux_is_a_cancer/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Vista Package Manager</title>
+      <link>/2007/01/30/vista-package-manager/</link>
+      <pubDate>Tue, 30 Jan 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/2007/01/30/vista-package-manager/</guid>
+      <description>&lt;p&gt;Ars Technica has &lt;a href=&#34;http://arstechnica.com/news.ars/post/20070129-8728.html&#34;&gt;an article describing Microsoft Windows Vista&amp;#8217;s &amp;#8220;Anytime Upgrade&amp;#8221; feature&lt;/a&gt;. In the patent for the technology Microsoft describes it as &amp;#8220;modular OS updates.&amp;#8221;&lt;/p&gt;
+
+&lt;p&gt;So far it sounds like Microsoft got a clue from Linux and Apple: users want timely, incremental updates. Not years of silence followed by a monolithic change.&lt;/p&gt;
+
+&lt;p&gt;&amp;#8220;Modular OS updates&amp;#8221; sound exactly like packages and package managers in Linux distributions. Both systems even have facilities to verify the updates. However, in Microsoft&amp;#8217;s case the verification isn&amp;#8217;t to protect the user like [Linux does with checksums and GPG keys][2]. With Microsoft the verification is to make sure you&amp;#8217;ve paid for the extra bloat you&amp;#8217;re installing.&lt;/p&gt;
+
+&lt;p&gt;[2]: &lt;a href=&#34;http://wiki.debian.org/SecureApt&#34;&gt;http://wiki.debian.org/SecureApt&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Administering Multiple Linux Servers Remotely</title>
+      <link>/2007/01/26/administering-multiple-linux-servers-remotely/</link>
+      <pubDate>Fri, 26 Jan 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/2007/01/26/administering-multiple-linux-servers-remotely/</guid>
+      <description>&lt;p&gt;So I was playing around with &lt;a href=&#34;http://recordmydesktop.sourceforge.net/&#34;&gt;recordMyDesktop,&lt;/a&gt; and I decided I might as well make something useful with it.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;/files/remote_administration.ogg&#34;&gt;Administering Multiple Linux Servers Remotely&lt;/a&gt; (&lt;a href=&#34;http://www.theora.org/&#34;&gt;ogg&lt;/a&gt; format)&lt;/p&gt;
+
+&lt;p&gt;If you can&amp;#8217;t play Ogg Theora video files, [download VLC][4] &amp;#8211; it can play anything (or get Linux 😉 ).&lt;/p&gt;
+
+&lt;p&gt;Anyway, what I&amp;#8217;m demonstrating here is how I setup drawers and launchers on my Gnome panel to start Synaptic and a Terminal on the remote servers I administer. What makes this really handy is that I don&amp;#8217;t have to login as SSH support Kerberos, and since all of my Linux computers are granted tickets by Active Directory: &lt;strong&gt;Single Sign-On Nirvana&lt;/strong&gt;. (Many many thanks to &lt;em&gt;Earl Tom&lt;/em&gt; for patiently helping me get SSO setup initially.)&lt;/p&gt;
+
+&lt;p&gt;To accomplish all of this beautiful remote administration magic requires getting your Linux boxes to authenticate against Active Directory &lt;em&gt;&lt;strong&gt;or&lt;/strong&gt;&lt;/em&gt; &lt;em&gt;just using SSH keys&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Make sure you have the following settings in your /etc/ssh/sshd_config file:&lt;/p&gt;
+
+&lt;p style=&#34;font-family: monospace&#34;&gt;
+  # If you&amp;#8217;re using AD instead of key pairs:&lt;br /&gt; GSSAPIAuthentication yes&lt;br /&gt; # Make sure X Windows programs (like Synaptic) will run:&lt;br /&gt; X11Forwarding yes
+&lt;/p&gt;
+
+&lt;p&gt;Happy hacking, and let me know if I should record more videos! (Or if you know of a better video recorder than recordMyDesktop. It works perfectly, but Ogg Theora isn&amp;#8217;t a very common codec.)&lt;/p&gt;
+
+&lt;p&gt;[4]: &lt;a href=&#34;http://www.videolan.org/&#34;&gt;http://www.videolan.org/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Giving AD Domain Admins Root Access in Linux</title>
+      <link>/2007/01/26/giving-ad-domain-admins-root-access-in-linux/</link>
+      <pubDate>Fri, 26 Jan 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/2007/01/26/giving-ad-domain-admins-root-access-in-linux/</guid>
+      <description>&lt;p&gt;The &lt;a href=&#34;http://www.gratisoft.us/sudo/&#34;&gt;sudo&lt;/a&gt; command makes it very easy to give the &lt;a href=&#34;http://technet2.microsoft.com/WindowsServer/en/library/1631acad-ef34-4f77-9c2e-94a62f8846cf1033.mspx?mfr=true&#34;&gt;Domain Admins&lt;/a&gt;, or any Active Directory group, root access on Linux workstations and servers.&lt;/p&gt;
+
+&lt;p&gt;The big prerequisite is that you have to have &lt;a href=&#34;http://www.samba.org/&#34;&gt;Samba&lt;/a&gt; and Winbind properly setup to authenticate your Linux boxes against Active Directory. Read Samba&amp;#8217;s documentation[&lt;a href=&#34;http://us3.samba.org/samba/docs/man/Samba-HOWTO-Collection/domain-member.html#ads-member&#34;&gt;1&lt;/a&gt;][&lt;a href=&#34;http://us3.samba.org/samba/docs/man/Samba-HOWTO-Collection/winbind.html&#34;&gt;2&lt;/a&gt;] and refer to my [InteropWiki][6] notes for help.&lt;/p&gt;
+
+&lt;p&gt;Once you&amp;#8217;re able to login into Linux as Active Directory user, running the &lt;em&gt;id&lt;/em&gt; command should display something like this:&lt;/p&gt;
+
+&lt;p style=&#34;font-family: monospace&#34;&gt;
+  michael@mail:~$ id&lt;br /&gt; uid=13930(michael) gid=10512(domain admins) groups=10512(domain admins),10513(domain users),11006(teachers),11607(sti everyone 2),11608(sti jr. high),11609(sti high school),11610(sti grade school)
+&lt;/p&gt;
+
+&lt;p&gt;Where &lt;em&gt;groups=&amp;#8230;&lt;/em&gt; is a list of the Active Directory groups of which your user is a member.&lt;/p&gt;
+
+&lt;p&gt;Run the &lt;em&gt;visudo&lt;/em&gt; command as root:&lt;/p&gt;
+
+&lt;p style=&#34;font-family: monospace&#34;&gt;
+  michael@mail:~$ su &amp;#8211;&lt;br /&gt; Password: &lt;em&gt;&amp;#8211;root&amp;#8217;s password&amp;#8211;&lt;/em&gt;&lt;br /&gt; mail:~# visudo
+&lt;/p&gt;
+
+&lt;p&gt;In the editor (probably &lt;em&gt;vim&lt;/em&gt; or &lt;em&gt;nano&lt;/em&gt;) scroll to the end and add the following line:&lt;/p&gt;
+
+&lt;p style=&#34;font-family: monospace&#34;&gt;
+  %domain\ admins ALL= ALL
+&lt;/p&gt;
+
+&lt;p&gt;The &lt;em&gt;%&lt;/em&gt; sign means the following name is a group name, and &lt;strong&gt;you need the backslash in order to use group names with spaces&lt;/strong&gt;. Vim&amp;#8217;s syntax highlighting doesn&amp;#8217;t seem to properly parse the group name after you use a slash, but sudo will know what you&amp;#8217;re talking about.&lt;/p&gt;
+
+&lt;p&gt;Save the file, exit the editor, and now all of your Domain Admins have root access!&lt;/p&gt;
+
+&lt;p&gt;To run a command as root simply prepend the &lt;em&gt;sudo&lt;/em&gt; command:&lt;/p&gt;
+
+&lt;p style=&#34;font-family: monospace&#34;&gt;
+  michael@mail:~$ sudo aptitude
+&lt;/p&gt;
+
+&lt;p&gt;You&amp;#8217;ll be asked to enter &lt;strong&gt;&lt;em&gt;your&lt;/em&gt; password&lt;/strong&gt; (not root&amp;#8217;s!) only once as long as you continue to use &lt;em&gt;sudo&lt;/em&gt; within a specific timeout period.&lt;/p&gt;
+
+&lt;p&gt;[6]: &lt;a href=&#34;http://michael.susens-schurter.com/interop/Main_Page&#34;&gt;http://michael.susens-schurter.com/interop/Main_Page&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Setting Up Yet Another Debian Etch Server</title>
+      <link>/2007/01/25/setting-up-yet-another-debian-etch-server/</link>
+      <pubDate>Thu, 25 Jan 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/2007/01/25/setting-up-yet-another-debian-etch-server/</guid>
+      <description>&lt;p&gt;A teacher e-mailed me the other day wondering if I could setup a server with &lt;a href=&#34;http://moodle.org/&#34;&gt;Moodle&lt;/a&gt; on it for him to test. I was overjoyed at the request because the teacher had discovered Moodle, &lt;a href=&#34;http://mysql.com/&#34;&gt;MySQL,&lt;/a&gt; &lt;a href=&#34;http://php.net/&#34;&gt;PHP,&lt;/a&gt; and Linux (as well as their freeness) all by himself!&lt;/p&gt;
+
+&lt;p&gt;I used the &lt;a href=&#34;http://www.debian.org/&#34;&gt;Debian&lt;/a&gt; &lt;a href=&#34;http://www.debian.org/releases/etch/&#34;&gt;Etch&lt;/a&gt; &lt;a href=&#34;http://cdimage.debian.org/cdimage/daily-builds/daily/arch-latest/i386/iso-cd/debian-testing-i386-netinst.iso&#34;&gt;Net Install Daily Image&lt;/a&gt; for today (1/25/2007), and everything went pretty smoothly.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Installation&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I thought I had entered &amp;#8220;installgui&amp;#8221; at the boot prompt, but I still got the old text based setup. Everything went smoothly, so I have no complaints. Perhaps the net installation doesn&amp;#8217;t have the GUI installer?&lt;/p&gt;
+
+&lt;p&gt;One scary thing did happen during installation: after the initial reboot Linux ran fsck on the new installation and found a number of errors! After another reboot everything appears to be working normally. This is an old PIII computer, so I&amp;#8217;m immediately installing smartmontools.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Setup&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;GDM came up with a few colored vertical lines. One &lt;a href=&#34;http://michael.susens-schurter.com/blog/xorg%20intel%2082815&#34;&gt;Google search later&lt;/a&gt; &lt;a href=&#34;http://www.linuxquestions.org/hcl/showproduct.php/product/2851&#34;&gt;I discovered that the i810 Intel driver might do that at higher resolutions&lt;/a&gt;. I lowered my resolution to 1024 x 768 and everything works beautifully.&lt;/p&gt;
+
+&lt;p&gt;Upon updating my package lists in Synaptic, I got some strange errors from gpg, so Debian can&amp;#8217;t validate a number of packages. A bit strange, but it doesn&amp;#8217;t hurt anything.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;apt-zeroconf&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Thanks to &lt;a href=&#34;http://trac.phidev.org/trac/wiki/AptZeroconf&#34;&gt;apt-zeroconf&lt;/a&gt; I downloaded the 40+ megs of extra packages I needed mostly off of my other 2 local Debian boxes. Now if only I could configure the net install CD to use apt-zeroconf&amp;#8230; hm&amp;#8230; Sounds like a job for lazyweb!&lt;/p&gt;
+
+&lt;p&gt;I do get periodic 404 errors when using apt-zeroconf, but just trying again fixes it every time.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Summary&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;All things considered I didn&amp;#8217;t see any reason not to &lt;strong&gt;release Etch immediately&lt;/strong&gt;!&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;I still recommend &lt;a href=&#34;http://www.ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt; or [openSUSE][11] for normal users or people new to Linux as Debian just doesn&amp;#8217;t do enough hand holding for people not willing to spend some time learning Linux.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;[11]: &lt;a href=&#34;http://www.opensuse.org/&#34;&gt;http://www.opensuse.org/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

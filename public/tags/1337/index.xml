@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>1337 on </title>
+    <link>/tags/1337/</link>
+    <description>Recent content in 1337 on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 31 Oct 2008 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/1337/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Listing All Passwords Stored in Gnome Keyring</title>
+      <link>/2008/10/30/listing-all-passwords-stored-in-gnome-keyring/</link>
+      <pubDate>Fri, 31 Oct 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/10/30/listing-all-passwords-stored-in-gnome-keyring/</guid>
+      <description>&lt;p&gt;I was toying with writing my first desktop application in years and got distracted by how cool &lt;a href=&#34;http://live.gnome.org/GnomeKeyring&#34;&gt;Gnome Keyring&lt;/a&gt; is. Of course storing and retrieving passwords is pretty mundane, so here&amp;#8217;s a fun example that dumps all of the current user&amp;#8217;s passwords:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;#!/usr/bin/env python
+
+import pygtk
+pygtk.require(&#39;2.0&#39;)
+import gtk # sets app name
+import gnomekeyring
+
+def hack():
+    for keyring in gnomekeyring.list_keyring_names_sync():
+        for id in gnomekeyring.list_item_ids_sync(keyring):
+            item = gnomekeyring.item_get_info_sync(keyring, id)
+            print &#39;[%s] %s = %s&#39; % (
+                    keyring, item.get_display_name(), item.get_secret())
+        else:
+            if len(gnomekeyring.list_item_ids_sync(keyring)) == 0:
+                print &#39;[%s] --empty--&#39; % keyring
+
+if __name__ == &#39;__main__&#39;:
+    hack()
+&lt;/pre&gt;
+
+&lt;p&gt;Sample output with the interesting bits removed:&lt;/p&gt;
+
+&lt;pre&gt;[default] Local password for user root = *******
+[login] michael.schurter@Work = *******
+[login] Google Account = *******
+[login] Passphrase for wireless network 2WIRE939 = *******
+[login] Unlock password for default keyring = *******
+[login] schmichael@twitter.com = *******
+[session] --empty--
+&lt;/pre&gt;
+
+&lt;p&gt;Its not meant to be any sort of real hacking tool. After all you can view all of this information via [Seahorse][2] anyway.&lt;/p&gt;
+
+&lt;p&gt;But what fun is a &lt;em&gt;GUI&lt;/em&gt; tool? 😉&lt;/p&gt;
+
+&lt;p&gt;[2]: &lt;a href=&#34;http://live.gnome.org/Seahorse&#34;&gt;http://live.gnome.org/Seahorse&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

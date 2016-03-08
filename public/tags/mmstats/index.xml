@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mmstats on </title>
+    <link>/tags/mmstats/</link>
+    <description>Recent content in Mmstats on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 03 Oct 2012 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/mmstats/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>MmStats in Scripts</title>
+      <link>/2012/10/03/mmstats-in-scripts/</link>
+      <pubDate>Wed, 03 Oct 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/2012/10/03/mmstats-in-scripts/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://mmstats.readthedocs.org/&#34;&gt;MmStats&lt;/a&gt; is a library I created to expose and read statistics, metrics, and debugging information from running Python processes without the overhead of syscalls (eg writing to a socket or file) or threads, and to make sure that as many utilities as you want can read those metrics without affecting the performance of the main process exposing stats.&lt;/p&gt;
+
+&lt;p&gt;I &lt;a href=&#34;http://pypi.python.org/pypi/mmstats/0.7.0&#34;&gt;released 0.7&lt;/a&gt; today to ease integration into multithreaded apps, but it made me realize a simpler tutorial would probably be helpful.&lt;/p&gt;
+
+&lt;p&gt;While I had web apps, job consumers, and other long running daemons in mind when I wrote mmstats, it turns out it&amp;#8217;s also excellent for long running scripts.&lt;/p&gt;
+
+&lt;p&gt;You know the scripts: maintenance scripts, &amp;#8220;fixer&amp;#8221; scripts, slow build or deployment scripts, data migration scripts, etc.&lt;/p&gt;
+
+&lt;p&gt;If you&amp;#8217;re like me, you always forget 2 things every time you write and run one of these scripts:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Run it in &lt;code&gt;screen&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Periodic progress output&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Luckily for #1 there&amp;#8217;s already [disown][3].&lt;/p&gt;
+
+&lt;p&gt;For #2 we need an example script. Let&amp;#8217;s pretend you have a Django app with users and you need to update their email addresses in a different system with something like this:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;import otherdb
+from django.contrib.auth import models
+
+for user in models.User.objects.all():
+    otherdb.update(user.username, email=user.email)
+&lt;/pre&gt;
+
+&lt;p&gt;After forgetting to run it in screen, I&amp;#8217;d restart it &amp;#8230; and sit there &amp;#8230; staring at my terminal &amp;#8230; hating myself for not having it output anything.&lt;/p&gt;
+
+&lt;p&gt;But then these scripts never work the first time, so it&amp;#8217;d probably die in flames on the first user without an email or similar exceptional condition I forgot to take into account.&lt;/p&gt;
+
+&lt;p&gt;So on my second attempt I&amp;#8217;d probably quickly try to cobble together some progress indicator:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;import otherdb
+from django.contrib.auth import models
+
+BATCH = ...
+
+for i, user in enumerate(models.User.objects.all()):
+    if i % BATCH == 0:
+        print &#39;{0} done&#39;.format(i)
+
+    # Only update users who have emails! Otherwise otherdb dies.
+    if user.email:
+        otherdb.update(user.username, email=user.email)
+&lt;/pre&gt;
+
+&lt;p&gt;But what should &lt;code&gt;BATCH&lt;/code&gt; be? If I have 10,000 users, &lt;code&gt;BATCH = 1000&lt;/code&gt; seems reasonable, but what if &lt;code&gt;otherdb&lt;/code&gt; is &lt;em&gt;really&lt;/em&gt; slow? In that case a smaller batch like 100 or 50 might be appropriate, so I don&amp;#8217;t have to worry if &lt;code&gt;otherdb&lt;/code&gt; just became unresponsive or something.&lt;/p&gt;
+
+&lt;p&gt;The best option is to &lt;strong&gt;always have your precise progress available at your request.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;using-mmstats-in-scripts:2b040d130819a568375b3099f6ca400e&#34;&gt;Using MmStats in Scripts&lt;/h1&gt;
+
+&lt;p&gt;I&amp;#8217;ve found mmstats fits this use case beautifully. No more guessing at what might be an appropriate batch size or using the wrong format string in an uncommon case and crashing my script halfway through.&lt;/p&gt;
+
+&lt;p&gt;Integrating mmstats is as easy as:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;import time
+import mmstats
+import otherdb
+from django.contrib.auth import models
+
+# Define your stats in a model
+class S(mmstats.MmStats):
+    done = mmstats.CounterField(label=&#34;done&#34;)
+    missing_email = mmstats.CounterField(label=&#34;missing_email&#34;)
+    otherdb_timer = mmstats.TimerField(label=&#34;otherdb_timer&#34;)
+    last_user = mmstats.StringField(label=&#34;user&#34;)
+
+# Instantiate the stats model
+stats = S(filename=&#34;update-emails-{0}.mmstats&#34;.format(time.time()), path=&#34;.&#34;)
+
+for i, user in enumerate(models.User.objects.all()):
+    # Update the username for readers to see
+    stats.last_user = user.username
+
+    # Only update users who have emails! Otherwise otherdb dies.
+    if user.email:
+        with stats.otherdb_timer:
+            # Actually do the migration work
+            otherdb.update(user.username, email=user.email)
+    else:
+        stats.missing_email.inc()
+
+    # Increment the done counter to show another user has been processed
+    stats.done.inc()
+&lt;/pre&gt;
+
+&lt;p&gt;That&amp;#8217;s it! Now just re-run in screen, pop back into a shell and check on the progress with &lt;code&gt;slurpstats&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre lang=&#34;bash&#34;&gt;schmichael@prod9000:~$ slurpstats *.mmstats
+==&gt; ./update-emails-1234567890.mmstats
+  done               113
+  missing_email      12
+  otherdb_timer      0.3601293582
+  user               rob
+  sys.created        1346884490.7
+  sys.pid            10298
+  sys.gid            549
+  ...
+&lt;/pre&gt;
+
+&lt;p&gt;This output would indicate 113 users have been checked, 12 of them had no email, &amp;#8220;rob&amp;#8221; is the current user being processed, and that &lt;code&gt;otherdb.update(...)&lt;/code&gt; takes on average 360ms to complete. &lt;small&gt;By default timers average the last 100 values, but that&amp;#8217;s customizable via the size keyword argument.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;That&amp;#8217;s nice and all, but it&amp;#8217;d be more fun to see &lt;strong&gt;how many users were updated per second.&lt;/strong&gt; &lt;code&gt;pollstats&lt;/code&gt; is a simple tool for doing just that:&lt;/p&gt;
+
+&lt;pre lang=&#34;bash&#34;&gt;schmichael@prod9000:~$ pollstats done,missing_email *.mmstats
+       done         |      missing_email
+                213 |                 20
+                  3 |                  0
+                  5 |                  1
+                  1 |                  0
+...
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;pollstats&lt;/code&gt; will print out the current value of the given counters initially, and then once per second print the delta. So in our contrived example we&amp;#8217;d be processing somewhere between 1 and 5 users per second and less than 1 missing email per second.&lt;/p&gt;
+
+&lt;p&gt;Sadly &lt;code&gt;pollstats&lt;/code&gt; is extremely simplistic at the moment and lacks the ability to intelligently display non-counter fields. (Patches welcome!)&lt;/p&gt;
+
+&lt;p&gt;Even better: if you&amp;#8217;re script dies the mmstats file will be left for you to inspect. (Although if you want it perfectly in sync you should probably &lt;code&gt;stats.flush()&lt;/code&gt; on each iteration.)&lt;/p&gt;
+
+&lt;p&gt;mmstats is still young (pre-1.0 for a reason) and simplistic, but I already find it extremely useful not only in web apps and other daemons, but also in simple &amp;#8211; or not so simple &amp;#8211; one-off scripts. I hope you find it useful as well!&lt;/p&gt;
+
+&lt;p&gt;[3]: &lt;a href=&#34;http://playingwithsid.blogspot.com/2007/10/disown-nohup-bash-commands.html&#34;&gt;http://playingwithsid.blogspot.com/2007/10/disown-nohup-bash-commands.html&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

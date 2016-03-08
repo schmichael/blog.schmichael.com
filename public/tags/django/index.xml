@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Django on </title>
+    <link>/tags/django/</link>
+    <description>Recent content in Django on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 08 Jul 2009 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/django/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>I Love Python: ZipFile Edition</title>
+      <link>/2009/07/08/i-love-python-zipfile-edition/</link>
+      <pubDate>Wed, 08 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/07/08/i-love-python-zipfile-edition/</guid>
+      <description>&lt;p&gt;For a client web project I needed to create a zip file containing a number of generated XML files. This isn&amp;#8217;t something I need to do very often, so I briefly considered just writing the XML files to disk and running a zip command. Ugly, but surely trying to dig up a pleasant Python zip library would be more work?&lt;/p&gt;
+
+&lt;p&gt;Turns out Python has had a wonderful zip library in its standard library since 1.6! The &lt;code&gt;&amp;lt;a href=&amp;quot;http://docs.python.org/library/zipfile.html&amp;quot;&amp;gt;zipfile&amp;lt;/a&amp;gt;&lt;/code&gt; module makes creating zip files a breeze:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;import os
+from zipfile import ZipFile, ZIP_DEFLATED
+
+from django.template.defaultfilters import slugify
+
+from somewhere_else import render_spam_xml, render_egg_xml
+
+ZIP_PATH = &#34;/some/system/path/for/zips&#34;
+
+def create_zip(spam):
+    spam_slug = slugify(spam.name)
+    filename = &#34;%s.zip&#34; % spam_slug
+    abspath = os.path.join(ZIP_PATH, filename)
+
+    # Create zip
+    z = ZipFile(abspath, &#34;w&#34;, ZIP_DEFLATED)
+
+    # Write spam xml directly to zip
+    z.writestr(&#34;%s.xml&#34; % spam_slug, render_spam_xml(spam))
+
+    # Write xml files to zip
+    for egg in spam.egg_set.all():
+        egg_slug = slugify(egg.name)
+
+        # Renders the egg object to an xml string
+        xml = render_egg_xml(egg)
+
+        # Note how easy it is to specify paths in the zip file:
+        z.writestr(&#34;eggs/%s.xml&#34; % egg_slug, xml)
+
+    # Zip file must be closed to be valid
+    z.close()
+    return abspath
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;small&gt;(Sorry for the Django bits in there, but they should be easy to replace.)&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;My favorite part is that you can use either the &lt;code&gt;ZipFile.write&lt;/code&gt; method to add files to the zip or the &lt;code&gt;ZipFile.writestr&lt;/code&gt; method to write bytes (strings in my case) directly to the zip file.&lt;/p&gt;
+
+&lt;p&gt;At any rate, just wanted to blog about it, so when I need to do it again in a few years I don&amp;#8217;t do something stupid like running the zip command.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>BitBucket Project for Python FusionCharts Code</title>
+      <link>/2009/04/08/bitbucket-project-python-fusioncharts/</link>
+      <pubDate>Wed, 08 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/04/08/bitbucket-project-python-fusioncharts/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://michael.susens-schurter.com/blog/2009/04/02/image-exporter-for-fusion-charts/&#34;&gt;After my last post on FusionCharts&lt;/a&gt;, someone was nice enough to e-mail me some a &lt;a href=&#34;http://djangoproject.com&#34;&gt;Django&lt;/a&gt; snippet for exporting &lt;a href=&#34;http://fusioncharts.com&#34;&gt;FusionCharts&lt;/a&gt; as images, so I decided I might as well put the code in a public repository.&lt;/p&gt;
+
+&lt;p&gt;While I prefer Bazaar out of all the DVCSes, it seems Mercurial has captured the hearts and minds of the Python empire, so I created the &lt;a href=&#34;http://bitbucket.org/schmichael/python-fusioncharts/&#34;&gt;python-fusioncharts project&lt;/a&gt; on [BitBucket][5].&lt;/p&gt;
+
+&lt;p&gt;If you use Python and FusionCharts, I&amp;#8217;d love to add more snippets!&lt;/p&gt;
+
+&lt;p&gt;[5]: &lt;a href=&#34;http://bitbucket.org/&#34;&gt;http://bitbucket.org/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2nd OS Bridge Proposal: Django Introduction</title>
+      <link>/2009/03/30/2nd-os-bridge-proposal-django-introduction/</link>
+      <pubDate>Tue, 31 Mar 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/03/30/2nd-os-bridge-proposal-django-introduction/</guid>
+      <description>&lt;p&gt;I just posted my second talk proposal for the Open Source Bridge Conference:&lt;/p&gt;
+
+&lt;p&gt;[&lt;/p&gt;
+
+&lt;p&gt;Introduction to Django: The Who, What, and When]&lt;a href=&#34;http://opensourcebridge.org/proposals/120&#34;&gt;1&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[As with my other talk, Web Server Shootout,][2] I&amp;#8217;m not trying to convince anyone of anything. We&amp;#8217;re all already inundated with plenty of senseless marketing and fanboyism.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;d rather present my knowledge, experiences, mistakes, and opinions in an effort to help others make more intelligent decisions about the development platforms they choose to use.*&lt;/p&gt;
+
+&lt;p&gt;Let me know what you think!&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;small&gt;*If that was dripping with too much sappy altruism, do remember I get into the conference free if either proposal gets selected. 😉&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;[2]: &lt;a href=&#34;http://opensourcebridge.org/proposals/119&#34;&gt;http://opensourcebridge.org/proposals/119&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>(Yet Another) Deploying Django with CherryPy Script</title>
+      <link>/2009/02/18/deploying-django-with-cherrypy/</link>
+      <pubDate>Wed, 18 Feb 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/02/18/deploying-django-with-cherrypy/</guid>
+      <description>&lt;p&gt;Recently I deployed a &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; project on an OSX server. I foolishly thought this would be as easy as on Linux until I ran into the mess that is _x86&lt;em&gt;64&lt;/em&gt; Apache + &lt;a href=&#34;http://www.modwsgi.org/&#34;&gt;mod_wsgi&lt;/a&gt;* + Django + psycopg2 + &lt;em&gt;i386&lt;/em&gt; PostgreSQL. After wasting far too much time googling and recompiling various bits trying to get everything happy, I followed &lt;a href=&#34;http://www.eflorenzano.com/blog/post/hosting-django-site-pure-python/&#34;&gt;Eric Florenzano&amp;#8217;s post&lt;/a&gt; on deploying Django using &lt;a href=&#34;http://www.cherrypy.org/&#34;&gt;CherryPy&lt;/a&gt;&amp;#8216;s** [wsgiserver][5].&lt;/p&gt;
+
+&lt;p&gt;Here&amp;#8217;s my lightly modified version of Eric&amp;#8217;s script:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;import wsgiserver
+import sys
+import os
+import django.core.handlers.wsgi
+
+if __name__ == &#34;__main__&#34;:
+    # Setup paths - a bit hackish, but works for me.
+    # Assumes an absolute path is stored in &amp;lt;project&gt;.local_settings.ROOT
+    sys.path.append(os.path.realpath(os.path.dirname(__file__)))
+    from foo.local_settings import ROOT
+    sys.path.append(ROOT)
+
+    # Startup Django
+    os.environ[&#39;DJANGO_SETTINGS_MODULE&#39;] = &#39;foo.settings&#39;
+    server = wsgiserver.CherryPyWSGIServer(
+        (&#39;0.0.0.0&#39;, 8888),  # Use &#39;127.0.0.1&#39; to only bind to the localhost
+        django.core.handlers.wsgi.WSGIHandler()
+    )
+    try:
+        server.start()
+    except KeyboardInterrupt:
+        print &#39;Stopping&#39;
+        server.stop()
+&lt;/pre&gt;
+
+&lt;p&gt;I also went with the latest stable version of CherryPy&amp;#8217;s wsgiserver instead of checking out trunk like Eric&amp;#8217;s post suggested.&lt;/p&gt;
+
+&lt;p&gt;Then I just enabled &lt;code&gt;mod_proxy&lt;/code&gt; in Apache and setup the following VirtualHost:&lt;/p&gt;
+
+&lt;pre lang=&#34;apache&#34;&gt;&amp;lt;Proxy *&gt;
+    Order allow,deny
+    Allow from all
+&amp;lt;/Proxy&gt;
+&amp;lt;Location &#34;/&#34;&gt;
+    ProxyPass http://127.0.0.1:8888/
+    ProxyPassReverse http://127.0.0.1:8888/
+&amp;lt;/Location&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;If you&amp;#8217;re cool you&amp;#8217;ll write some sort of system specific script to launch your web app on boot. In a pinch, you can always use a crontab:&lt;/p&gt;
+
+&lt;pre lang=&#34;bash&#34;&gt;@reboot /usr/bin/python /path/to/app.py &amp;#038;
+&lt;/pre&gt;
+
+&lt;p&gt;YMMV 😉&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;br /&gt; * To mod_wsgi&amp;#8217;s credit, it took about 10 seconds to compile, generated a Universal binary, and in general Just Worked.&lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;
+  ** I&amp;#8217;m already a CherryPy fan thanks to &lt;a href=&#34;http://www.dowski.com/&#34;&gt;dowski&lt;/a&gt;, so it wasn&amp;#8217;t a hard decision.&lt;br /&gt; &lt;/small&gt;
+&lt;/p&gt;
+
+&lt;p&gt;[5]: &lt;a href=&#34;http://www.cherrypy.org/wiki/CherryPyDownload#StandaloneWSGIserver&#34;&gt;http://www.cherrypy.org/wiki/CherryPyDownload#StandaloneWSGIserver&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Introducing Hzzah!</title>
+      <link>/2008/07/15/introducing-hzzah/</link>
+      <pubDate>Tue, 15 Jul 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/07/15/introducing-hzzah/</guid>
+      <description>&lt;p&gt;&lt;small&gt;from the I-can-haz-a-search-engine department&amp;#8230;&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Sorry about the tacky donate link all. I tried to hide it from feed readers with WordPress&amp;#8217;s &amp;lt;!&amp;#8211;more&amp;gt; feature, but evidently that doesn&amp;#8217;t apply to feeds. &lt;img src=&#34;http://localhost/wp-includes/images/smilies/frownie.png&#34; alt=&#34;:(&#34; class=&#34;wp-smiley&#34; style=&#34;height: 1em; max-height: 1em;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;When it comes to market share, Google is to Searching as Microsoft is to Operating Systems. Thankfully Google has won their dominant position by creating a really amazing product &lt;small&gt;(you can find plenty of discussions on &lt;a href=&#34;http://en.wikipedia.org/wiki/Criticism_of_Microsoft#Business_practices&#34;&gt;why Microsoft is on top elsewhere)&lt;/a&gt;&lt;/small&gt;.&lt;/p&gt;
+
+&lt;p&gt;Recently &lt;a href=&#34;http://developer.yahoo.com/search/boss/&#34;&gt;Yahoo! opened up their search APIs&lt;/a&gt; for anyone to use along with &lt;a href=&#34;http://developer.yahoo.com/search/boss/mashup.html&#34;&gt;a handy Python library&lt;/a&gt;. In a time when Yahoo&amp;#8217;s very existence is being threatened, I felt a pang of nostalgia for the search engine that fed me decent results for &amp;#8220;free dos games&amp;#8221; throughout the mid-90s.&lt;/p&gt;
+
+&lt;p&gt;So last night I whipped up a little search engine called &lt;a href=&#34;http://hzzah.com&#34;&gt;Hzzah!&lt;/a&gt;*&lt;/p&gt;
+
+&lt;div style=&#34;clear: both; line-height: 0px; font-size: 0px;&#34;&gt;
+  &amp;nbsp;
+&lt;/div&gt;
+
+&lt;div style=&#34;float: right; clear: both;&#34;&gt;
+  &lt;a href=&#34;http://creativecommons.org/licenses/BSD/&#34;&gt;&lt;img src=&#34;http://michael.susens-schurter.com/files/40bsd.png&#34; alt=&#34;BSDtastic!&#34; /&gt;&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Features:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Simple&lt;/li&gt;
+&lt;li&gt;No ads, cookies, or even JavaScript &lt;small&gt;(at the moment at least)&lt;/small&gt;&lt;/li&gt;
+&lt;li&gt;Open Source! &lt;a href=&#34;http://creativecommons.org/licenses/BSD/&#34;&gt;BSD to be precise&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Did I mention simple? That&amp;#8217;s really all it has going for it&amp;#8230;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you have &lt;a href=&#34;http://bazaar-vcs.org/&#34;&gt;Bazaar&lt;/a&gt; installed you can grab the code a variety of ways:&lt;/p&gt;
+
+&lt;pre lang=&#34;bash&#34;&gt;# If you know Subversion, use this method.  `bzr up` will keep you up to date
+bzr checkout http://michael.susens-schurter.com/code/hzzah-public
+
+# If you want to hack on Hzzah or are comfortable with bzr, feel free to branch
+bzr branch http://michael.susens-schurter.com/code/hzzah-public hzzah-steve
+&lt;/pre&gt;
+
+&lt;p&gt;You can also &lt;a href=&#34;http://michael.susens-schurter.com/code/hzzah-public-r5.zip&#34;&gt;grab a zip&lt;/a&gt;, but its probably going to become out of date quickly.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Read the README file for help setting it up.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;And like I say in the README, if you&amp;#8217;re feeling generous, feel free to toss some cash this way:&lt;/p&gt;
+
+&lt;p&gt;[&lt;img src=&#34;https://www.paypal.com/en_US/i/btn/btn_donate_SM.gif&#34; border=&#34;0&#34; alt=&#34;PayPal - The safer, easier way to pay online!&#34; /&gt;][7]&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;* Make fun of the name all you like&amp;#8230; there&amp;#8217;s no good domain names left. The name is inspired by a friend from college for whom &lt;em&gt;huzzah&lt;/em&gt; was her exclamation of choice.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;[7]: &lt;a href=&#34;https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;amp;business=mschurter%40yahoo%2ecom&amp;amp;item_name=hzzah%2ecom%20by%20Michael%20Schurter&amp;amp;item_number=1337&amp;amp;no_shipping=0&amp;amp;no_note=1&amp;amp;tax=0&amp;amp;currency_code=USD&amp;amp;lc=US&amp;amp;bn=PP%2dDonationsBF&amp;amp;charset=UTF%2d8&#34;&gt;https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;amp;business=mschurter%40yahoo%2ecom&amp;amp;item_name=hzzah%2ecom%20by%20Michael%20Schurter&amp;amp;item_number=1337&amp;amp;no_shipping=0&amp;amp;no_note=1&amp;amp;tax=0&amp;amp;currency_code=USD&amp;amp;lc=US&amp;amp;bn=PP%2dDonationsBF&amp;amp;charset=UTF%2d8&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Common Django Typo in URLconf</title>
+      <link>/2008/03/10/common-django-typo-in-urlconf/</link>
+      <pubDate>Mon, 10 Mar 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/03/10/common-django-typo-in-urlconf/</guid>
+      <description>&lt;p&gt;If you&amp;#8217;re hacking Django and get this&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ImproperlyConfigured: Error while importing URLconf &#39;proj.app.urls&#39;: &#39;tuple&#39; object is not callable&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;#8230;you&amp;#8217;re probably [missing a comma in your URL configuration as Rajesh Dhawan pointed out][1].&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;Django pros can move along, I know you never make typos. 😉&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;[1]: &lt;a href=&#34;http://groups.google.com/group/django-users/browse_thread/thread/517ea56bece07c86?hide_quotes=no#msg_f6f321e7997ce992&#34;&gt;http://groups.google.com/group/django-users/browse_thread/thread/517ea56bece07c86?hide_quotes=no#msg_f6f321e7997ce992&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Fun with Django and modwsgi</title>
+      <link>/2008/02/05/fun-with-django-and-modwsgi/</link>
+      <pubDate>Wed, 06 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/02/05/fun-with-django-and-modwsgi/</guid>
+      <description>&lt;p&gt;Today I deployed my first &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; application for a client. Its yet-another-blog, so I&amp;#8217;ll refrain from posting the code and cluttering up the django-*blog* namespace on Google Code. Before you roll your eyes and complain about why I didn&amp;#8217;t use an existing solution, I think I have 2 somewhat valid reasons:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The client actually needed a _sub_set of the features most blogs offer, so I wouldn&amp;#8217;t really have anything to contribute back to an existing project.&lt;/li&gt;
+&lt;li&gt;Blogs are one of the simplest content driven web applications in existence. Wikis are just a bit simpler perhaps. At any rate, creating a blog app is an excellent way to learn a framework.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Python Deployment Decisions&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;In the past I&amp;#8217;ve used &lt;a href=&#34;http://michael.susens-schurter.com/blog/2007/08/16/deploying-cherrypy-on-apache-2-using-mod_proxy/&#34;&gt;CherryPy as my framework and a simple mod_proxy configuration to run the applications behind Apache&lt;/a&gt;. &lt;a href=&#34;http://www.djangoproject.com/documentation/django-admin/#runserver-optional-port-number-or-ipaddr-port&#34;&gt;Django considers its built-in web server a development tool only&lt;/a&gt;, so I figured it was time to explore the myriad of Python web app deployment alternatives: &lt;a href=&#34;http://www.modpython.org&#34;&gt;mod_python&lt;/a&gt;, &lt;a href=&#34;http://www.fastcgi.com/&#34;&gt;FastCGI&lt;/a&gt;, &lt;a href=&#34;http://www.modwsgi.org&#34;&gt;modwsgi&lt;/a&gt;. I&amp;#8217;m sure there are many more, but I&amp;#8217;d say those are the big 3.&lt;/p&gt;
+
+&lt;p&gt;I had tried to deploy Python web applications on DreamHost using FastCGI before and entered &lt;a href=&#34;http://www.al3x.net/2008/01/shared-hosting-is-ghetto.html&#34;&gt;the hell that is deploying Python web apps on shared hosts&lt;/a&gt;. &lt;em&gt;So FastCGI wasn&amp;#8217;t my first choice this time.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;I had also tried mod_python for deploying &lt;a href=&#34;http://www.cherrypy.org/&#34;&gt;CherryPy&lt;/a&gt; apps on my &lt;a href=&#34;http://www.linode.com/&#34;&gt;Linode&lt;/a&gt; before and for whatever reason just found &lt;a href=&#34;http://httpd.apache.org/docs/2.2/mod/mod_proxy.html&#34;&gt;mod_proxy&lt;/a&gt; to be &lt;em&gt;much&lt;/em&gt; easier to setup and manage.&lt;/p&gt;
+
+&lt;p&gt;I was kind of eager to try out modwsgi because its been getting a lot of attention lately, so I downloaded the source and compiled it on my &lt;a href=&#34;http://www.debian.org/&#34;&gt;Debian&lt;/a&gt; &lt;a href=&#34;http://www.debian.org/releases/etch/&#34;&gt;Etch&lt;/a&gt; server.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Deploying a Django App via modwsgi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;modwsgi was quite easy to setup as long as you follow the instructions in their wiki for Django integration. I was hit by &lt;a href=&#34;http://code.djangoproject.com/ticket/3762&#34;&gt;bug #3762&lt;/a&gt;, but the modwsgi documentation got me through it. &lt;small&gt;(For what its worth the attached wsgi.patch also worked, but I don&amp;#8217;t really want to run a patched version of Django.)&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;One big problem I ran into was &lt;a href=&#34;http://docs.python.org/lib/module-sqlite3.html&#34;&gt;sqlite3&lt;/a&gt; gave me &lt;code&gt;OperationalError: unable to open database file&lt;/code&gt; whenever I did anything that would write to the database. My database file was owned by &lt;code&gt;www-data&lt;/code&gt; (the Apache process owner) and had the permissions &lt;code&gt;664&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;I switched to &lt;a href=&#34;http://www.postgresql.org/&#34;&gt;PostgreSQL&lt;/a&gt;, ran [&lt;code&gt;syncdb&lt;/code&gt;][16], and everything worked beautifully.&lt;/p&gt;
+
+&lt;p&gt;My wsgi script file /srv/spam/eggs/eggs.wsgi:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;import os, sys
+sys.path.append(&#39;/srv/spam&#39;)
+sys.path.append(&#39;/srv/spam/eggs&#39;)
+os.environ[&#39;DJANGO_SETTINGS_MODULE&#39;] = &#39;eggs.wsgi_settings&#39;
+
+import django.core.handlers.wsgi
+
+_application = django.core.handlers.wsgi.WSGIHandler()
+
+def application(environ, start_response):
+    environ[&#39;PATH_INFO&#39;] = environ[&#39;SCRIPT_NAME&#39;] + environ[&#39;PATH_INFO&#39;]
+    return _application(environ, start_response)
+&lt;/pre&gt;
+
+&lt;p&gt;Note I use &lt;code&gt;wsgi_settings&lt;/code&gt; instead of my usual settings file. wsgi_settings just imports my main settings file and changes some to their production values.&lt;/p&gt;
+
+&lt;p&gt;My Django application actually drops into the &lt;code&gt;/blog/&lt;/code&gt; and &lt;code&gt;/accounts/&lt;/code&gt; folders under a VirtualHost otherwise occupied by static files and some PHP scripts. modwsgi made this easy by putting this in my existing VirtualHost:&lt;/p&gt;
+
+&lt;pre lang=&#34;apache&#34;&gt;WSGIScriptAliasMatch /(blog|accounts)/.* /srv/spam/eggs/eggs.wsgi
+
+# A simple Alias directive handles my static files
+Alias /static/ /srv/spam/eggs/static/
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Bottom Line&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I highly recommend using modwsgi for deploying Python web applications. sqlite3 may work for you. In my case its probably best I use PostgreSQL for a number of reasons.&lt;/p&gt;
+
+&lt;p&gt;[16]: &lt;a href=&#34;http://www.djangoproject.com/documentation/django-admin/#syncdb&#34;&gt;http://www.djangoproject.com/documentation/django-admin/#syncdb&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Searching for that perfect Django Blog App</title>
+      <link>/2007/12/13/searching-for-that-perfect-django-blog-app/</link>
+      <pubDate>Thu, 13 Dec 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/2007/12/13/searching-for-that-perfect-django-blog-app/</guid>
+      <description>&lt;p&gt;I need to alter a blog a bit for a client, so I went looking for a good Django-based blog to get me started. Here are my notes starting from &lt;a href=&#34;http://www.google.com/search?q=django-blog&#34;&gt;google&lt;/a&gt; and &lt;a href=&#34;http://www.google.com/search?hl=en&amp;amp;domains=code.google.com&amp;amp;q=django-+-%3Ainurl%3A%2Fsource+-inurl%3A%2Fwiki+-inurl%3A%2Fsoc+blogs&amp;amp;btnG=Search&amp;amp;sitesearch=code.google.com&#34;&gt;google code searches&lt;/a&gt;*:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://code.google.com/p/super-blog/&#34;&gt;super blog&lt;/a&gt; &amp;#8211; does it exist? Not by the looks of &lt;a href=&#34;http://www.duolequ.com/blog&#34;&gt;the link on the project page&lt;/a&gt;. &lt;em&gt;Skipping&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://launchpad.net/banjo&#34;&gt;Banjo&lt;/a&gt; &amp;#8211; great name, but as far as I can tell it doesn&amp;#8217;t exist. &lt;em&gt;Skipping&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://code.google.com/p/djog/&#34;&gt;djog&lt;/a&gt; &amp;#8211; No documentation. No commits since 2006-12-29. &lt;em&gt;Skipping&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://code.google.com/p/django-basic-blog/&#34;&gt;Django Basic Blog&lt;/a&gt; &amp;#8211; Ran into this when &lt;a href=&#34;http://www.playgroundblues.com/posts/2007/dec/02/django-basic-apps/&#34;&gt;Nathan Borror first posted it&lt;/a&gt;. Its early in development, but I think I&amp;#8217;m going to stop here and check it out.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Banjo does have code. I&amp;#8217;m just not used to Launchpad, sorry! I&amp;#8217;m also looking at &lt;a href=&#34;http://code.google.com/p/blogmaker/&#34;&gt;BlogMaker&lt;/a&gt; now at [Christian&amp;#8217;s][10] suggestion. Thanks Christian!&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;ll try to remember to post again with my results.&lt;/p&gt;
+
+&lt;p&gt;Someday I plan on whipping up a Django Apps repository site. Not to compete with Launchpad or Google Code, but rather to just index (and rank!) Django apps. Someday&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;* Thanks to &lt;code&gt;empty&lt;/code&gt; on &lt;code&gt;#django&lt;/code&gt; for the tip about that Google Code search.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;[10]: &lt;a href=&#34;http://www.dowski.com&#34;&gt;http://www.dowski.com&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hacking on </title>
+    <link>/tags/hacking/</link>
+    <description>Recent content in Hacking on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 13 May 2008 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/hacking/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Summer of Hacks</title>
+      <link>/2008/05/13/summer-of-hacks/</link>
+      <pubDate>Tue, 13 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/05/13/summer-of-hacks/</guid>
+      <description>&lt;p&gt;My &lt;a href=&#34;http://www.linode.com/&#34;&gt;Linode&lt;/a&gt; has been experiencing a huge number of brute force login attempts in the past week. I don&amp;#8217;t keep detailed statistics, but I would guess there have been &lt;strong&gt;300 attempts in the past week&lt;/strong&gt; as opposed to &lt;em&gt;the usual rate of about 500 attempts over 200 days (2-3 attempts per day)&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://denyhosts.sourceforge.net/&#34;&gt;Denyhosts&lt;/a&gt; has been doing its job perfectly. It should be illegal to run a Internet exposed SSH server without it or a similar tool.*&lt;/p&gt;
+
+&lt;p&gt;Thanks to HoopyCat in #linode for pointing me to a [SANS Internet Storm Center article explaining the &lt;em&gt;Summer of Hacks&lt;/em&gt;][3] phenomenon.&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;* Unless of course you only accept key based logins.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;[3]: &lt;a href=&#34;http://isc.sans.org/diary.html?storyid=4408&#34;&gt;http://isc.sans.org/diary.html?storyid=4408&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

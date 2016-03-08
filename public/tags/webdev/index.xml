@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Webdev on </title>
+    <link>/tags/webdev/</link>
+    <description>Recent content in Webdev on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 18 Nov 2009 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/webdev/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Web Developer Contractor Rates</title>
+      <link>/2009/11/18/web-developer-contractor-rates/</link>
+      <pubDate>Wed, 18 Nov 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/11/18/web-developer-contractor-rates/</guid>
+      <description>&lt;p&gt;We just happened* to start chatting in the #pdxdjango IRC channel on Freenode about what the rates web developer contractors charge today, and I wanted to post my experiences after leaving the contractor world a few months ago after 2 years of more or less successful contracting either individually or via &lt;a href=&#34;http://lofiart.com&#34;&gt;Lo-Fi Art&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;A really rough table of my rates as a contractor:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Language&lt;/th&gt;
+&lt;th&gt;Experience&lt;/th&gt;
+&lt;th&gt;Rate per hour&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;PHP&lt;/td&gt;
+&lt;td&gt;Entry Level&lt;/td&gt;
+&lt;td&gt;$8-20&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;PHP&lt;/td&gt;
+&lt;td&gt;Experienced&lt;/td&gt;
+&lt;td&gt;$20-65&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;PHP&lt;/td&gt;
+&lt;td&gt;Specialist&lt;/td&gt;
+&lt;td&gt;never got here with PHP (thankfully 😉 )&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Sysadmin&lt;/td&gt;
+&lt;td&gt;Slightly Experienced&lt;/td&gt;
+&lt;td&gt;$45&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Python&lt;/td&gt;
+&lt;td&gt;Entry Level&lt;/td&gt;
+&lt;td&gt;$25-35&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Python&lt;/td&gt;
+&lt;td&gt;Experienced&lt;/td&gt;
+&lt;td&gt;$35-65&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Python&lt;/td&gt;
+&lt;td&gt;Specialist (Django)&lt;/td&gt;
+&lt;td&gt;$65-85&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;However, I think I&amp;#8217;ve billed pretty cheaply, especially for Python work. If I had continued in the contracting world I think I would have been aiming for north of &lt;strong&gt;$100/hr for new contracts by the end of 2009&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Important Notes&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;All of the experience levels and rates are really rough estimates, please don&amp;#8217;t read too much into it. I just wanted to give people &lt;em&gt;some&lt;/em&gt; idea of what rates are floating around. (I also have a terrible memory, so these numbers could be way off. Mea culpa.)&lt;/li&gt;
+&lt;li&gt;The sysadmin job is a career oddity for me and consisted of mostly doing Active Directory / Exchange setup (snuck in a Debian server of course). That being said I still enjoy sysadminish type work today.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Experienced&lt;/strong&gt; means you have a few &amp;#8220;serious&amp;#8221; projects under your belt (not the meaingless &amp;#8220;5 years of experience&amp;#8221; so many job descriptions call for).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Specialist&lt;/strong&gt; is a poor term, but I needed someway to describe the shift from &amp;#8220;I&amp;#8217;ll do anything if it&amp;#8217;s PHP or Python&amp;#8221; to &amp;#8220;I&amp;#8217;m a Django&amp;#8221; developer. My guess is that &lt;em&gt;real&lt;/em&gt; specialists (contributors to major projects or popular plugin/module authors) fall into the upper end of this spectrum and can often charge well over $100/hr for highly sought after specialties (Anything + Facebook might be a good example of that right now).&lt;/li&gt;
+&lt;li&gt;I started with PHP first (2000-2006), so I was just less experienced in general.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Not only does supply &amp;amp; demand help Python devs fetch a higher rate (reasonable demand, with low supply), but also a Python developer knows how to write code.&lt;/p&gt;
+
+&lt;p&gt;A PHP &amp;#8220;developer&amp;#8221; could just be someone who has setup a few WordPress or Drupal sites and maybe done some theming. I think you&amp;#8217;d be hard pressed to find a web developer who couldn&amp;#8217;t be described as having PHP &amp;#8220;experience.&amp;#8221;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;My entire career in the &amp;#8220;Specialist (Django)&amp;#8221; range was in Portland, OR which has a vibrant web related economy (at least as far as my untrained eye can tell). All other rates fell at least partially into time periods where I lived in Illinois (and not Chicago), so that could account for some of the upward shift in the my rates.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;These numbers are also rough estimates because I&amp;#8217;ve done flat per-project billing, retainers, and a variety of other crazy ways of exchanging money for labor. Dollars per hour is still what it all comes down to in the end (like &lt;a href=&#34;http://en.wikipedia.org/wiki/Damage_per_second&#34;&gt;DPS&lt;/a&gt; for you MMORPG freaks).&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;So I&amp;#8217;m {ripping off,getting ripped off by} my clients?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I don&amp;#8217;t know, but I doubt it. If anything my rough estimates should show what an inexact science billing is. It probably varies more on project factors than on the contractor&amp;#8217;s experience.&lt;/p&gt;
+
+&lt;p&gt;Right up until I took my full time job at [YouGov][3] my &lt;em&gt;favorite&lt;/em&gt; client was still paying me at my $35/hr rate. In fact sometimes &lt;strong&gt;I wonder if there might have been an inverse relationship between hourly rate and job satisfaction.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This could be a quirk of me being a pretty neurotic person and therefore feeling more pressure when working at a higher rate. At lower rates I generally worked more hours and spent more time tweaking designs, writing tests, and doing other tasks other than putting my head down and coding. Thus at the end of the day, the more hours I worked on projects I liked, the less money I made (relative to working fewer hours on less enjoyable projects).&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;* Ok, so it looks like I brought it up&amp;#8230; but I&amp;#8217;d like to think it spawned some good discussion.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;Left off the Python category as that gets syndicated on Unofficial Planet Python, and I don&amp;#8217;t think this post is high enough quality to deserve that. &lt;img src=&#34;http://localhost/wp-includes/images/smilies/simple-smile.png&#34; alt=&#34;:)&#34; class=&#34;wp-smiley&#34; style=&#34;height: 1em; max-height: 1em;&#34; /&gt;&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;[3]: &lt;a href=&#34;http://www.yougov.com&#34;&gt;http://www.yougov.com&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Google Chrome Frame</title>
+      <link>/2009/09/22/google-chrome-frame/</link>
+      <pubDate>Tue, 22 Sep 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/09/22/google-chrome-frame/</guid>
+      <description>&lt;p&gt;I maintain a web application that must support Internet Explorer 6, so I was delighted to hear about [Google Chrome Frame][1].&lt;/p&gt;
+
+&lt;p&gt;Unfortunately their warnings of its alpha status seem to be well founded. The 2 show-stoppers I ran into fairly quickly were:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Flash is difficult to install. (Tip: Try visiting: &lt;a href=&#34;cf:http://www.adobe.com/software/flash/about/&#34;&gt;cf:http://www.adobe.com/software/flash/about/&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;The Location bar did not always change to reflect the current page.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;I&amp;#8217;ll definitely be following this project closely as it may allow corporate users stuck on IE to use a different browser relatively easily.&lt;/p&gt;
+
+&lt;p&gt;[1]: &lt;a href=&#34;http://code.google.com/chrome/chromeframe/&#34;&gt;http://code.google.com/chrome/chromeframe/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Join #webdevpdx on Freenode</title>
+      <link>/2008/10/31/join-webdevpdx-on-freenode/</link>
+      <pubDate>Fri, 31 Oct 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/10/31/join-webdevpdx-on-freenode/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://twitter.com/chrispitzer/status/983462380&#34;&gt;Chris just created a channel for web developers in Portland, OR&lt;/a&gt; on Freenode, so if you&amp;#8217;re a web developer (or sysadmin or dba or designer or manager forced to deal with us webdevs) come on in!&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;irc://irc.freenode.net/webdevpdx&#34;&gt;#webdevpdx on irc.freenode.net&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;New to IRC? Try one of these clients:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://pidgin.im/&#34;&gt;Pidgin&lt;/a&gt; (but not really &lt;a href=&#34;http://trac.adiumx.com/wiki/InternetRelayChat&#34;&gt;Adium&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://addons.mozilla.org/en-US/firefox/addon/16&#34;&gt;Chatzilla&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;and of course &lt;em&gt;The Client of the Future:&lt;/em&gt; &lt;strong&gt;[irssi][6]&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;strong&gt;Update:&lt;/strong&gt; I should have mentioned I&amp;#8217;m &lt;em&gt;schmichael&lt;/em&gt; on IRC.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;[6]: &lt;a href=&#34;http://www.irssi.org&#34;&gt;http://www.irssi.org&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>JavaScript Collation Fail</title>
+      <link>/2008/07/14/javascript-collation-fail/</link>
+      <pubDate>Mon, 14 Jul 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/07/14/javascript-collation-fail/</guid>
+      <description>&lt;p&gt;In JavaScript, the &lt;a href=&#34;https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String/localeCompare&#34;&gt;localeCompare method on Strings&lt;/a&gt; seems like a great way to properly sort strings, but its not:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://michael.susens-schurter.com/files/localecompare-x-browser.png&#34;&gt;&lt;img src=&#34;http://michael.susens-schurter.com/files/localecompare-x-browser.png&#34; alt=&#34;localeCompare Javasript method in 4 browsers&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Hint: The last line should all look the same.&lt;/em&gt; At least I expect Firefox and Opera to agree. You can&amp;#8217;t expect much from IE6.&lt;/p&gt;
+
+&lt;p&gt;For kicks [try out other browsers][3] and post the final sorted list in the comments (hopefully my blog supports unicode).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Updated 2012-05-16:&lt;/strong&gt; Hilariously a coworker stumbled across this page, so I updated the MDN link as Mozilla had broken it.&lt;/p&gt;
+
+&lt;p&gt;[3]: &lt;a href=&#34;http://michael.susens-schurter.com/files/localecompare.html&#34;&gt;http://michael.susens-schurter.com/files/localecompare.html&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Apache on </title>
+    <link>/tags/apache/</link>
+    <description>Recent content in Apache on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 26 Apr 2009 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/apache/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Web Server Shootout Talk Accepted at OS Bridge Conference</title>
+      <link>/2009/04/26/web-server-shootout-talk-accepted-at-os-bridge-conference/</link>
+      <pubDate>Sun, 26 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/04/26/web-server-shootout-talk-accepted-at-os-bridge-conference/</guid>
+      <description>&lt;p&gt;My talk, &lt;a href=&#34;http://opensourcebridge.org/sessions/119&#34;&gt;Web Server Shootout&lt;/a&gt;, was accepted by the Open Source Bridge Conference! I&amp;#8217;m terribly excited, but also nervous because there&amp;#8217;s a lot I need to do between now and the conference. Expect regular updates on how my talk is progressing (always tagged with osbridge [feed]).&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href=&#34;http://opensourcebridge.org/2009/04/open-source-bridge-conference-confirmed-speakers/&#34;&gt;full list of sessions is up&lt;/a&gt; (or &lt;a href=&#34;http://opensourcebridge.org/events/2009/sessions&#34;&gt;here&lt;/a&gt;), and I&amp;#8217;m very excited just to be attending the conference. Congratulations to all of the speakers!&lt;/p&gt;
+
+&lt;p&gt;Some of the sessions I&amp;#8217;m particularly excited to attend are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://opensourcebridge.org/sessions/20&#34;&gt;An Introduction to Machine Learning by John Melesky&lt;/a&gt; &amp;#8211; A Portland Python User Group regular and really smart guy in general. Looking forward to getting my feet wet with machine learning.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://opensourcebridge.org/sessions/100&#34;&gt;Drop ACID and think about data by Bob Ippolito&lt;/a&gt; &amp;#8211; I think the Portland Python crew that went to Pycon helped convince Bob to bring his presentation to OS Bridge, and I&amp;#8217;m glad they did! I work with non-relational databases everyday, but I still design my apps with a relational data model in mind. This should be interesting.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://opensourcebridge.org/sessions/33&#34;&gt;The Linux Kernel Development model by Greg Kroah-Hartman&lt;/a&gt; &amp;#8211; Its &lt;a href=&#34;http://en.wikipedia.org/wiki/Greg_Kroah-Hartman&#34;&gt;Greg KH&lt;/a&gt;! Come on!&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://opensourcebridge.org/sessions/95&#34;&gt;How Idealist.org uses technology to change the world by Michel Pelletier&lt;/a&gt; &amp;#8211; Another Portland Pythoneer and really smart guy. Eager to here more about open source at work in an organization. Its always fun to watch Michel present anyway.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://opensourcebridge.org/sessions/36&#34;&gt;Web Testing with Windmill by Mikeal Rogers&lt;/a&gt; &amp;#8211; Hardly a day goes by that I don&amp;#8217;t tell myself I&amp;#8217;m going to improve my test coverage and skills. Windmill looks like an excellent testing tool to help me accomplish that.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There are many many more sessions I&amp;#8217;m excited about, but I&amp;#8217;m too sick of copying and pasting to mention anymore right now.&lt;/p&gt;
+
+&lt;p&gt;So [sign up to attend the Open Source Bridge Conference in Portland, OR this June!][10]&lt;/p&gt;
+
+&lt;p&gt;[10]: &lt;a href=&#34;http://opensourcebridge.org/attend/&#34;&gt;http://opensourcebridge.org/attend/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Web Server Quandary</title>
+      <link>/2008/12/27/web-server-quandary/</link>
+      <pubDate>Sat, 27 Dec 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/12/27/web-server-quandary/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://httpd.apache.org/&#34;&gt;Apache&lt;/a&gt; was probably the first Linux application I learned how to configure. However, I&amp;#8217;ve gotten a bit frustrated with it recently&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The Problem&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;A memory leak.&lt;/em&gt; Apache is eating up memory so quickly that I need to restart it every couple days or risk my entire server grinding to a halt as it starts swapping wildly. I&amp;#8217;ve poured over log files and &lt;code&gt;pmap&lt;/code&gt; output, but I still can&amp;#8217;t figure out where the problem lies. Curse you monolithic in-process architecture!&lt;/p&gt;
+
+&lt;p&gt;Actually I know what my problem is, I&amp;#8217;m running a mess of modules:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ssl&lt;/code&gt; &amp;#8211; 2 certificates on 2 ports&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;php5&lt;/code&gt; &amp;#8211; blerg, who doesn&amp;#8217;t have to run this?&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;suphp&lt;/code&gt; &amp;#8211; I suspect this is my problem, but I can&amp;#8217;t prove it. A client&amp;#8217;s 3rd party web application &lt;em&gt;requires&lt;/em&gt; it, but I think its easily replaceable with FastCGI.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;wsgi&lt;/code&gt; &amp;#8211; No complaints. Python apps are out-of-process thankfully.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;proxy&lt;/code&gt; &amp;#8211; Again no complaints. Can&amp;#8217;t imagine how this module could cause any problems except it does proxy some large (multi-megabyte, not huge) POSTs at times. I can&amp;#8217;t imagine a memory leak could slip into this module without a lot of people noticing.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution A: Apache+FastCGI&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I love the idea of putting each web application in its own process and letting Apache just act as an HTTP router. FastCGI seems to have all the features I need, and I&amp;#8217;m not really worried about the CPU overhead incurred by IPC.&lt;/p&gt;
+
+&lt;p&gt;However, there are 2 competing FastCGI modules for Apache, and I have no idea what to choose. Anecdotally the official &lt;a href=&#34;http://www.fastcgi.com/drupal/node/3&#34;&gt;mod_fastcgi&lt;/a&gt; is buggy and &lt;a href=&#34;http://www.fastcgi.com/drupal/node/2&#34;&gt;fastcgi.com is a spam infested wasteland&lt;/a&gt;. However, I&amp;#8217;ve found no authoritative source saying: &lt;em&gt;&amp;#8220;fastcgi is dead, long live &lt;a href=&#34;http://fastcgi.coremail.cn/&#34;&gt;fcgid&lt;/a&gt;!&amp;#8221;&lt;/em&gt; (Lame excuse, I know.)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution B: &lt;a href=&#34;http://www.lighttpd.net/&#34;&gt;Lighttpd&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I know Lighty is the darling of Rails sites, but whenever I stop by its site I&amp;#8217;m greeted with a list of recently fixed &lt;a href=&#34;http://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=lighttpd&#34;&gt;security bugs&lt;/a&gt;, and now it seems as though &lt;a href=&#34;http://blog.lighttpd.net/articles/2008/12/02/a-little-heads-up&#34;&gt;they&amp;#8217;re rewriting the core&lt;/a&gt;!&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;m sure Lighty is a high quality intelligently engineered project, but it seems to be the definition of immature. Not necessarily bad (in fact it usually means its progressing quickly!), but perhaps not as reliable as good old workhorses like Apache.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution C: &lt;a href=&#34;http://www.cherokee-project.com/&#34;&gt;Cherokee&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;ve been following Cherokee for some time now and running it locally on my workstation. I &lt;em&gt;love&lt;/em&gt; the web interface. I&amp;#8217;m usually a very anti-webmin, pro-vim kind of guy, but I&amp;#8217;m sick of editing Apache&amp;#8217;s config files. I do it about once a month and therefore it always takes lots of double-checking the docs. I don&amp;#8217;t know why, but its configuration has just never felt natural to me.&lt;/p&gt;
+
+&lt;p&gt;However, the lead Cherokee developer&amp;#8217;s bravado is by the most off-putting aspect of the project. &lt;a href=&#34;http://lists.octality.com/pipermail/cherokee/2008-December/009437.html&#34;&gt;He mocks modwsgi&lt;/a&gt; and posts simplistic benchmarks showing Cherokee to be the fastest web server, but meanwhile Cherokee churns out numerous bug patch releases in-between feature releases and has yet to reach 1.0 status.&lt;/p&gt;
+
+&lt;p&gt;It seems like an excellent project technically, but I&amp;#8217;m afraid there will be negative consequences for the lead developers hubris. &lt;small&gt;(I&amp;#8217;m not meaning to insult the guy. He&amp;#8217;s probably a far better hacker than I&amp;#8217;ll ever be. Self-promotion just makes me uncomfortable.)&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution D: [nginx][10]&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I don&amp;#8217;t know much about nginx except that it works. Basically all I&amp;#8217;ve heard about it is:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;It works.&lt;/li&gt;
+&lt;li&gt;Its fast. &lt;em&gt;Really&lt;/em&gt; fast.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;While &amp;#8220;working&amp;#8221; is definitely my primary objective, nginx seems a bit bare bones for me. I just don&amp;#8217;t think I&amp;#8217;m the target demographic. I&amp;#8217;d kind of like for my web server to handle spawning and kill of FastCGI processes.&lt;/p&gt;
+
+&lt;p&gt;nginx feels like git to me. Those who know it: use it and love it. Those who don&amp;#8217;t: stand in fear and awe of its unbridled power.&lt;/p&gt;
+
+&lt;p&gt;&amp;#8230;or maybe its just a nice simple barebones HTTP server&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Conclusions?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I think &lt;strong&gt;Solution A: FastCGI&lt;/strong&gt; is the most sensible. Apache has always served me well, and the memory leak is most likely due to that shoddy suphp module.&lt;/p&gt;
+
+&lt;p&gt;Moving my web applications to FastCGI is also the best way to prepare to move to one of these 2nd generation web servers.&lt;/p&gt;
+
+&lt;p&gt;However, I&amp;#8217;m getting kind of sick of Apache, and the ambiguousness of which FastCGI solution to choose is fairly annoying.&lt;/p&gt;
+
+&lt;p&gt;So dear lazyweb, for your everyday web developer consultant looking to run a bunch of PHP and Python web applications, what HTTP server stack should I use? (Debian Lenny packages are a plus.)&lt;/p&gt;
+
+&lt;p&gt;[10]: &lt;a href=&#34;http://nginx.net/&#34;&gt;http://nginx.net/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The Mojave Experiment Hosted on Linux &amp; Apache</title>
+      <link>/2008/07/28/the-mojave-experiment-hosted-on-linux-apache/</link>
+      <pubDate>Mon, 28 Jul 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/07/28/the-mojave-experiment-hosted-on-linux-apache/</guid>
+      <description>&lt;p&gt;The Mojave Experiment is a silly Microsoft marketing ploy designed to convince people they really do like Windows Vista.&lt;/p&gt;
+
+&lt;p&gt;Regardless, [I find it hilarious that they don&amp;#8217;t use IIS to host their web site.][1]&lt;/p&gt;
+
+&lt;p&gt;According to the Server field of the response headers they&amp;#8217;re using Apache/2.2.3 on &lt;strong&gt;CentOS&lt;/strong&gt;!&lt;/p&gt;
+
+&lt;p&gt;[1]: &lt;a href=&#34;http://www.mojaveexperiment.com/oh-noes-this-doesnt-exist-404&#34;&gt;http://www.mojaveexperiment.com/oh-noes-this-doesnt-exist-404&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Can you get any more private?</title>
+      <link>/2008/07/15/can-you-get-any-more-private/</link>
+      <pubDate>Wed, 16 Jul 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/07/15/can-you-get-any-more-private/</guid>
+      <description>&lt;p&gt;I just switched [Hzzah.com][1]&amp;#8216;s Apache configuration to use this line for logging:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;CustomLog /srv/hzzah/log/access.log &amp;quot;0.0.0.0 %l %u %t \&amp;quot;%r\&amp;quot; %&amp;gt;s %b&amp;quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;No more IP addresses logged! Only if you cause an error (404 or 500) will your IP address be logged.&lt;/p&gt;
+
+&lt;p&gt;So no javascript, css, or images from remote sites; no cookies; no ads. Can you get any more private?&lt;/p&gt;
+
+&lt;p&gt;I did just add jQuery and a bit of JavaScript, so if web2.0 makes you queasy, you&amp;#8217;ve been warned.&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;I should mention that hzzah&amp;#8217;s primary goal is for me to have fun with Django, not privacy. So while I&amp;#8217;ll definitely warn you if I make any changes, right now its not a top priority to pursue extreme privacy.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;[1]: &lt;a href=&#34;http://hzzah.com&#34;&gt;http://hzzah.com&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Fun with Django and modwsgi</title>
+      <link>/2008/02/05/fun-with-django-and-modwsgi/</link>
+      <pubDate>Wed, 06 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/02/05/fun-with-django-and-modwsgi/</guid>
+      <description>&lt;p&gt;Today I deployed my first &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; application for a client. Its yet-another-blog, so I&amp;#8217;ll refrain from posting the code and cluttering up the django-*blog* namespace on Google Code. Before you roll your eyes and complain about why I didn&amp;#8217;t use an existing solution, I think I have 2 somewhat valid reasons:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The client actually needed a _sub_set of the features most blogs offer, so I wouldn&amp;#8217;t really have anything to contribute back to an existing project.&lt;/li&gt;
+&lt;li&gt;Blogs are one of the simplest content driven web applications in existence. Wikis are just a bit simpler perhaps. At any rate, creating a blog app is an excellent way to learn a framework.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Python Deployment Decisions&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;In the past I&amp;#8217;ve used &lt;a href=&#34;http://michael.susens-schurter.com/blog/2007/08/16/deploying-cherrypy-on-apache-2-using-mod_proxy/&#34;&gt;CherryPy as my framework and a simple mod_proxy configuration to run the applications behind Apache&lt;/a&gt;. &lt;a href=&#34;http://www.djangoproject.com/documentation/django-admin/#runserver-optional-port-number-or-ipaddr-port&#34;&gt;Django considers its built-in web server a development tool only&lt;/a&gt;, so I figured it was time to explore the myriad of Python web app deployment alternatives: &lt;a href=&#34;http://www.modpython.org&#34;&gt;mod_python&lt;/a&gt;, &lt;a href=&#34;http://www.fastcgi.com/&#34;&gt;FastCGI&lt;/a&gt;, &lt;a href=&#34;http://www.modwsgi.org&#34;&gt;modwsgi&lt;/a&gt;. I&amp;#8217;m sure there are many more, but I&amp;#8217;d say those are the big 3.&lt;/p&gt;
+
+&lt;p&gt;I had tried to deploy Python web applications on DreamHost using FastCGI before and entered &lt;a href=&#34;http://www.al3x.net/2008/01/shared-hosting-is-ghetto.html&#34;&gt;the hell that is deploying Python web apps on shared hosts&lt;/a&gt;. &lt;em&gt;So FastCGI wasn&amp;#8217;t my first choice this time.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;I had also tried mod_python for deploying &lt;a href=&#34;http://www.cherrypy.org/&#34;&gt;CherryPy&lt;/a&gt; apps on my &lt;a href=&#34;http://www.linode.com/&#34;&gt;Linode&lt;/a&gt; before and for whatever reason just found &lt;a href=&#34;http://httpd.apache.org/docs/2.2/mod/mod_proxy.html&#34;&gt;mod_proxy&lt;/a&gt; to be &lt;em&gt;much&lt;/em&gt; easier to setup and manage.&lt;/p&gt;
+
+&lt;p&gt;I was kind of eager to try out modwsgi because its been getting a lot of attention lately, so I downloaded the source and compiled it on my &lt;a href=&#34;http://www.debian.org/&#34;&gt;Debian&lt;/a&gt; &lt;a href=&#34;http://www.debian.org/releases/etch/&#34;&gt;Etch&lt;/a&gt; server.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Deploying a Django App via modwsgi&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;modwsgi was quite easy to setup as long as you follow the instructions in their wiki for Django integration. I was hit by &lt;a href=&#34;http://code.djangoproject.com/ticket/3762&#34;&gt;bug #3762&lt;/a&gt;, but the modwsgi documentation got me through it. &lt;small&gt;(For what its worth the attached wsgi.patch also worked, but I don&amp;#8217;t really want to run a patched version of Django.)&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;One big problem I ran into was &lt;a href=&#34;http://docs.python.org/lib/module-sqlite3.html&#34;&gt;sqlite3&lt;/a&gt; gave me &lt;code&gt;OperationalError: unable to open database file&lt;/code&gt; whenever I did anything that would write to the database. My database file was owned by &lt;code&gt;www-data&lt;/code&gt; (the Apache process owner) and had the permissions &lt;code&gt;664&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;I switched to &lt;a href=&#34;http://www.postgresql.org/&#34;&gt;PostgreSQL&lt;/a&gt;, ran [&lt;code&gt;syncdb&lt;/code&gt;][16], and everything worked beautifully.&lt;/p&gt;
+
+&lt;p&gt;My wsgi script file /srv/spam/eggs/eggs.wsgi:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;import os, sys
+sys.path.append(&#39;/srv/spam&#39;)
+sys.path.append(&#39;/srv/spam/eggs&#39;)
+os.environ[&#39;DJANGO_SETTINGS_MODULE&#39;] = &#39;eggs.wsgi_settings&#39;
+
+import django.core.handlers.wsgi
+
+_application = django.core.handlers.wsgi.WSGIHandler()
+
+def application(environ, start_response):
+    environ[&#39;PATH_INFO&#39;] = environ[&#39;SCRIPT_NAME&#39;] + environ[&#39;PATH_INFO&#39;]
+    return _application(environ, start_response)
+&lt;/pre&gt;
+
+&lt;p&gt;Note I use &lt;code&gt;wsgi_settings&lt;/code&gt; instead of my usual settings file. wsgi_settings just imports my main settings file and changes some to their production values.&lt;/p&gt;
+
+&lt;p&gt;My Django application actually drops into the &lt;code&gt;/blog/&lt;/code&gt; and &lt;code&gt;/accounts/&lt;/code&gt; folders under a VirtualHost otherwise occupied by static files and some PHP scripts. modwsgi made this easy by putting this in my existing VirtualHost:&lt;/p&gt;
+
+&lt;pre lang=&#34;apache&#34;&gt;WSGIScriptAliasMatch /(blog|accounts)/.* /srv/spam/eggs/eggs.wsgi
+
+# A simple Alias directive handles my static files
+Alias /static/ /srv/spam/eggs/static/
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Bottom Line&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I highly recommend using modwsgi for deploying Python web applications. sqlite3 may work for you. In my case its probably best I use PostgreSQL for a number of reasons.&lt;/p&gt;
+
+&lt;p&gt;[16]: &lt;a href=&#34;http://www.djangoproject.com/documentation/django-admin/#syncdb&#34;&gt;http://www.djangoproject.com/documentation/django-admin/#syncdb&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

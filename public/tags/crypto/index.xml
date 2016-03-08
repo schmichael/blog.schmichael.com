@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Crypto on </title>
+    <link>/tags/crypto/</link>
+    <description>Recent content in Crypto on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 20 Oct 2008 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/crypto/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Fedora’s Crypto Consolidation</title>
+      <link>/2008/10/20/fedoras-crypto-consolidation/</link>
+      <pubDate>Mon, 20 Oct 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/10/20/fedoras-crypto-consolidation/</guid>
+      <description>&lt;p&gt;I just found out Fedora is attempting to consolidate on &lt;a href=&#34;http://developer.mozilla.org/en/NSS&#34;&gt;Mozilla&amp;#8217;s NSS&lt;/a&gt; for &lt;a href=&#34;http://fedoraproject.org/wiki/FedoraCryptoConsolidation&#34;&gt;system-wide cryptography&lt;/a&gt;. I love the idea and hope it succeeds as it will make using crypto so much easier for system administrators and users.&lt;/p&gt;
+
+&lt;p&gt;Since humans are the weakest link in the security chain, improving the human interaction with crypto is a much bigger security win than the latest impossible-to-crack-by-the-NSA-in-a-bajillion-years algorithm. While switching libraries isn&amp;#8217;t exactly a huge UI win, having a single application to manage all of your certificates, keys, passwords, etc. would be.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;d love to see Debian, Ubuntu, Suse, et al, get on board as well because this is the sort of initiative that simply won&amp;#8217;t happen upstream. Upstream developers have already chosen a crypto library and probably like it. The burden of tight integration is definitely the job of system engineers and packagers.&lt;/p&gt;
+
+&lt;p&gt;I submitted an Ubuntu Brainstorm Idea, so please feel free to vote on it if you&amp;#8217;re so inclined:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://brainstorm.ubuntu.com/idea/14632/&#34;&gt;&lt;img src=&#34;http://brainstorm.ubuntu.com/idea/14632/image/1/&#34; alt=&#34;&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I would love to submit this idea to Debian as well, but I have no idea where to even start. Probably a mailing list, but I don&amp;#8217;t exactly have the skills to defend this proposition. Eventually bugs would need to be filed against every package that needs to be converted to NSS, but I&amp;#8217;m afraid doing that as just-another-end-user might just anger a bunch of maintainers&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Looks like the [LSB is standardizing on NSS][5] as well.&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;I &lt;em&gt;really&lt;/em&gt; need to learn deb packaging&amp;#8230;&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;[5]: &lt;a href=&#34;http://ldn.linuxfoundation.org/article/lsb-beta-reveals-new-tools-features-developers&#34;&gt;http://ldn.linuxfoundation.org/article/lsb-beta-reveals-new-tools-features-developers&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

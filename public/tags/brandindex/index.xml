@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Brandindex on </title>
+    <link>/tags/brandindex/</link>
+    <description>Recent content in Brandindex on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 09 Jul 2009 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/brandindex/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Good-bye Lo-Fi Art, Hello YouGov</title>
+      <link>/2009/07/09/good-bye-lo-fi-art-hello-yougov/</link>
+      <pubDate>Thu, 09 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/07/09/good-bye-lo-fi-art-hello-yougov/</guid>
+      <description>&lt;p&gt;Next week I&amp;#8217;ll be leaving &lt;a href=&#34;http://lofiart.com/&#34;&gt;Lo-Fi Art&lt;/a&gt; to start working for &lt;a href=&#34;http://polimetrix.com/&#34;&gt;YouGov Polimetrix&lt;/a&gt; (aka PMX). For the past couple of years I&amp;#8217;ve been consulting with Chris Pitzer mostly as a Python web developer specializing in Django. It will be sad to stop working for a company I own with a friend, but I&amp;#8217;ve been working part time for PMX and am excited to work for them full time.&lt;/p&gt;
+
+&lt;p&gt;There are many reasons for my decision, but I should make it clear that it has nothing to do with Chris! It has been great working with him, and I&amp;#8217;m glad we get to continue to share office space even if we&amp;#8217;re working on different things. There is &lt;em&gt;plenty&lt;/em&gt; of client work stacking up for him to do as well, so I&amp;#8217;m not bailing on a sinking ship.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;So why am I leaving Lo-Fi Art?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The biggest reason is probably stress. I&amp;#8217;ve just stopped enjoying client work because if I&amp;#8217;m not stressed about getting the current client done on time, I&amp;#8217;m stressed about finding the next client. If its not one of those two things, I&amp;#8217;m probably stressed about when the next check is coming in. How much was it for again? Wait, did I already get that one? Argh! On top of that I&amp;#8217;m &lt;em&gt;terrible&lt;/em&gt; at managing money. While Chris does a great job with the company books, that doesn&amp;#8217;t keep me from screwing up my own (don&amp;#8217;t even ask me about how my tax return went this year).&lt;/p&gt;
+
+&lt;p&gt;On top of that, contracting gigs just have a lot of &lt;strong&gt;overhead&lt;/strong&gt;. For me overhead is anything that keeps me from writing code. I really don&amp;#8217;t enjoy writing proposals and meeting with clients to discuss (or often: haggle over) implementation details. Its not that I don&amp;#8217;t like &lt;em&gt;people&lt;/em&gt;. I love people! But I like working with a &lt;strong&gt;team&lt;/strong&gt; more than a &lt;strong&gt;client&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Some people really thrive in the consulting world. I think its just taken me years to realize I&amp;#8217;m not one of those people. I could see returning to consulting someday, but I can&amp;#8217;t imagine it would ever be back to the 2-4 week projects I currently spend most of my time on.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Why am I joining YouGov Polimetrix?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;ve been a consultant for PMX working on the &lt;a href=&#34;http://www.brandindex.com&#34;&gt;BrandIndex&lt;/a&gt; project for over a year now, and it was getting to the point where I needed to either commit or focus purely on Lo-Fi work. It was a really hard decision, but in the end PMX just gives me the opportunity to do what I love. I work in a fantastic team* with lots of fun technology in an organization that places high value on their IT resources. What more could I ask for? Oh yeah, a steady paycheck. That was a plus too. 😉&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Some of the dev team at PMX: &lt;a href=&#34;http://jamwt.com/&#34;&gt;Jamie Turner&lt;/a&gt; (&lt;a href=&#34;http://twitter.com/jamwt&#34;&gt;@jamwt&lt;/a&gt;), &lt;a href=&#34;http://dowski.com/&#34;&gt;Christian Wyglendowski&lt;/a&gt; (&lt;a href=&#34;http://twitter.com/dowskimania&#34;&gt;@dowskimania&lt;/a&gt;), &lt;a href=&#34;http://ionrock.org/&#34;&gt;Eric Larson&lt;/a&gt; (&lt;a href=&#34;http://twitter.com/ionrock&#34;&gt;@ionrock&lt;/a&gt;), and [Robert Brewer]&lt;a href=&#34;fumanchu on irc.oftc.net&#34;&gt;10&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;[10]: &lt;a href=&#34;http://www.aminus.org/blogs/index.php?blog=2&#34;&gt;http://www.aminus.org/blogs/index.php?blog=2&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

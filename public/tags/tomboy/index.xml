@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tomboy on </title>
+    <link>/tags/tomboy/</link>
+    <description>Recent content in Tomboy on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 18 Apr 2009 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/tomboy/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Keeping all your notes in sync with Dropbox and Tomboy</title>
+      <link>/2009/04/17/in-sync-with-dropbox-and-tomboy/</link>
+      <pubDate>Sat, 18 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/04/17/in-sync-with-dropbox-and-tomboy/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://projects.gnome.org/tomboy/&#34;&gt;Tomboy&lt;/a&gt; is a wonderful note taking program for Gnome. It has some synchronization features built-in, but not everyone has a server to store their notes for synchronizing between multiple computers.&lt;/p&gt;
+
+&lt;p&gt;Enter &lt;a href=&#34;https://www.getdropbox.com/referrals/NTE2ODkwNDk&#34;&gt;Dropbox&lt;/a&gt;: a service for synchronizing files between computers. It works great in Gnome (Windows and Mac OSX as well).&lt;/p&gt;
+
+&lt;p&gt;I use Dropbox for synchronizing my Tomboy notes by telling Tomboy to synchronize to a Local Folder: &lt;code&gt;~/Dropbox/Tomboy&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;My one gripe is that you have to go into a note to synchronize. [Someone has filed a bug and submitted a patch][3], so hopefully it will be fixed soon.&lt;/p&gt;
+
+&lt;p&gt;[3]: &lt;a href=&#34;http://bugzilla.gnome.org/show_bug.cgi?id=468459&#34;&gt;http://bugzilla.gnome.org/show_bug.cgi?id=468459&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

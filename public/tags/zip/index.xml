@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Zip on </title>
+    <link>/tags/zip/</link>
+    <description>Recent content in Zip on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 08 Jul 2009 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/zip/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>I Love Python: ZipFile Edition</title>
+      <link>/2009/07/08/i-love-python-zipfile-edition/</link>
+      <pubDate>Wed, 08 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/07/08/i-love-python-zipfile-edition/</guid>
+      <description>&lt;p&gt;For a client web project I needed to create a zip file containing a number of generated XML files. This isn&amp;#8217;t something I need to do very often, so I briefly considered just writing the XML files to disk and running a zip command. Ugly, but surely trying to dig up a pleasant Python zip library would be more work?&lt;/p&gt;
+
+&lt;p&gt;Turns out Python has had a wonderful zip library in its standard library since 1.6! The &lt;code&gt;&amp;lt;a href=&amp;quot;http://docs.python.org/library/zipfile.html&amp;quot;&amp;gt;zipfile&amp;lt;/a&amp;gt;&lt;/code&gt; module makes creating zip files a breeze:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;import os
+from zipfile import ZipFile, ZIP_DEFLATED
+
+from django.template.defaultfilters import slugify
+
+from somewhere_else import render_spam_xml, render_egg_xml
+
+ZIP_PATH = &#34;/some/system/path/for/zips&#34;
+
+def create_zip(spam):
+    spam_slug = slugify(spam.name)
+    filename = &#34;%s.zip&#34; % spam_slug
+    abspath = os.path.join(ZIP_PATH, filename)
+
+    # Create zip
+    z = ZipFile(abspath, &#34;w&#34;, ZIP_DEFLATED)
+
+    # Write spam xml directly to zip
+    z.writestr(&#34;%s.xml&#34; % spam_slug, render_spam_xml(spam))
+
+    # Write xml files to zip
+    for egg in spam.egg_set.all():
+        egg_slug = slugify(egg.name)
+
+        # Renders the egg object to an xml string
+        xml = render_egg_xml(egg)
+
+        # Note how easy it is to specify paths in the zip file:
+        z.writestr(&#34;eggs/%s.xml&#34; % egg_slug, xml)
+
+    # Zip file must be closed to be valid
+    z.close()
+    return abspath
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;small&gt;(Sorry for the Django bits in there, but they should be easy to replace.)&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;My favorite part is that you can use either the &lt;code&gt;ZipFile.write&lt;/code&gt; method to add files to the zip or the &lt;code&gt;ZipFile.writestr&lt;/code&gt; method to write bytes (strings in my case) directly to the zip file.&lt;/p&gt;
+
+&lt;p&gt;At any rate, just wanted to blog about it, so when I need to do it again in a few years I don&amp;#8217;t do something stupid like running the zip command.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Fusioncharts on </title>
+    <link>/tags/fusioncharts/</link>
+    <description>Recent content in Fusioncharts on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 08 Apr 2009 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/fusioncharts/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>BitBucket Project for Python FusionCharts Code</title>
+      <link>/2009/04/08/bitbucket-project-python-fusioncharts/</link>
+      <pubDate>Wed, 08 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/04/08/bitbucket-project-python-fusioncharts/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://michael.susens-schurter.com/blog/2009/04/02/image-exporter-for-fusion-charts/&#34;&gt;After my last post on FusionCharts&lt;/a&gt;, someone was nice enough to e-mail me some a &lt;a href=&#34;http://djangoproject.com&#34;&gt;Django&lt;/a&gt; snippet for exporting &lt;a href=&#34;http://fusioncharts.com&#34;&gt;FusionCharts&lt;/a&gt; as images, so I decided I might as well put the code in a public repository.&lt;/p&gt;
+
+&lt;p&gt;While I prefer Bazaar out of all the DVCSes, it seems Mercurial has captured the hearts and minds of the Python empire, so I created the &lt;a href=&#34;http://bitbucket.org/schmichael/python-fusioncharts/&#34;&gt;python-fusioncharts project&lt;/a&gt; on [BitBucket][5].&lt;/p&gt;
+
+&lt;p&gt;If you use Python and FusionCharts, I&amp;#8217;d love to add more snippets!&lt;/p&gt;
+
+&lt;p&gt;[5]: &lt;a href=&#34;http://bitbucket.org/&#34;&gt;http://bitbucket.org/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Image Exporter for Fusion Charts</title>
+      <link>/2009/04/02/image-exporter-for-fusion-charts/</link>
+      <pubDate>Thu, 02 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/04/02/image-exporter-for-fusion-charts/</guid>
+      <description>&lt;p&gt;I wrote an image exporter for &lt;a href=&#34;http://www.fusioncharts.com/&#34;&gt;Fusion Charts&lt;/a&gt; while working for &lt;a href=&#34;http://www.polimetrix.com/&#34;&gt;YouGov/Polimetrix&lt;/a&gt;, and someone recently asked if they could use it as well.&lt;/p&gt;
+
+&lt;p&gt;You&amp;#8217;ll have to alter it a bit because it was written for a custom &lt;a href=&#34;http://cherrypy.org&#34;&gt;CherryPy&lt;/a&gt;-based framework. It works with Fusion Charts 3.1 (and 3.0 with trivial changes to the POST variables being read).&lt;/p&gt;
+
+&lt;p&gt;The only dependency is on [PIL][4]:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;from StringIO import StringIO
+import Image
+import ImageColor
+
+import cherrypy
+
+def str2color(val):
+    return ImageColor.getrgb(&#39;#&#39;+val.ljust(6, &#39;0&#39;))
+
+class SaveImagePage(LoggedInPage):  # Custom framework specific -- remove
+    def control(self, page, meta_width=&#39;&#39;, meta_height=&#39;&#39;, meta_bgColor=&#39;ffffff&#39;, stream=&#39;&#39;):
+        # Convert 3.1 parameters to 3.0 style as they made more sense
+        width = meta_width
+        height = meta_height
+        bgcolor = meta_bgColor
+        data = stream
+
+        # Split the data into rows using ; as the spearator
+        rows = data.split(&#39;;&#39;)
+
+        # Create image
+        bgcolor = str2color(bgcolor)
+        im = Image.new(&#39;RGB&#39;, (int(width), int(height)), bgcolor)
+        imcore = im.load()
+
+        for y, row in enumerate(rows):
+            x = 0
+
+            # Split row into pixels
+            pixels = row.split(&#39;,&#39;)
+            for pixel in pixels:
+                # Split pixel into color and repeat value
+                color, repeat = pixel.split(&#39;_&#39;)
+                repeat = int(repeat)
+
+                if color == &#39;&#39;:
+                    # Empty color == background color
+                    color = bgcolor
+                else:
+                    # Pad color to 6 characters
+                    color = str2color(color)
+
+                while repeat:
+                    # Add pixels 1-at-a-time since putdata() doesn&#39;t work
+                    imcore[x, y] = color
+                    x += 1
+                    repeat -= 1
+
+        # Save image into file like object
+        imstr = StringIO()
+        im.save(imstr, &#39;PNG&#39;, quality=100)
+
+        # Set HTTP headers -- CherryPy specific code
+        cherrypy.response.headers[&#39;content-type&#39;] = &#39;image/png&#39;
+        cherrypy.response.headers[&#39;content-disposition&#39;] = \
+                &#39;attachment; filename=&#34;Chart.png&#39;
+
+        # Return image as string, your framework may be different
+        return imstr.getvalue()
+&lt;/pre&gt;
+
+&lt;p&gt;[4]: &lt;a href=&#34;http://www.pythonware.com/products/pil/&#34;&gt;http://www.pythonware.com/products/pil/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

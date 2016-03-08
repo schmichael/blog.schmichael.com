@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Debian Lenny on </title>
+    <link>/tags/debian-lenny/</link>
+    <description>Recent content in Debian Lenny on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 27 Dec 2008 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/debian-lenny/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Release Lenny!</title>
+      <link>/2008/12/27/release-lenny/</link>
+      <pubDate>Sat, 27 Dec 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/12/27/release-lenny/</guid>
+      <description>&lt;p&gt;An article from &lt;a href=&#34;http://www.theregister.co.uk/2008/12/27/mysql_slowing_down/&#34;&gt;El Reg about MySQL&lt;/a&gt; ends with a great quote:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;This is the same lesson that Debian hasn&amp;#8217;t yet learned from Ubuntu: fast and good-enough always beats slow and correct.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Release &lt;a href=&#34;http://www.debian.org/releases/lenny/&#34;&gt;Lenny&lt;/a&gt; now!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Yay! It appears [Debian has voted that binary firmware blobs in the Linux kernel are GPL compatible][3] unless explicitly proven otherwise! AFAIK this is in line with Linus&amp;#8217;s reasoning as well. Regardless of the &amp;#8220;law,&amp;#8221; end users benefit greatly from these blobs, and this means Lenny will hopefully be released much sooner than if another option had won!&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;The poor thing [Lenny] is already out of date (Old version of OpenOffice.org, 2 versions old on the kernel now, a version behind with Gnome, even further behind with KDE I believe, etc.)&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;[3]: &lt;a href=&#34;http://master.debian.org/~secretary/gr_lenny/results.txt&#34;&gt;http://master.debian.org/~secretary/gr_lenny/results.txt&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

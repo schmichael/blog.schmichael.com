@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lighttpd on </title>
+    <link>/tags/lighttpd/</link>
+    <description>Recent content in Lighttpd on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 26 Apr 2009 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/lighttpd/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Web Server Shootout Talk Accepted at OS Bridge Conference</title>
+      <link>/2009/04/26/web-server-shootout-talk-accepted-at-os-bridge-conference/</link>
+      <pubDate>Sun, 26 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/04/26/web-server-shootout-talk-accepted-at-os-bridge-conference/</guid>
+      <description>&lt;p&gt;My talk, &lt;a href=&#34;http://opensourcebridge.org/sessions/119&#34;&gt;Web Server Shootout&lt;/a&gt;, was accepted by the Open Source Bridge Conference! I&amp;#8217;m terribly excited, but also nervous because there&amp;#8217;s a lot I need to do between now and the conference. Expect regular updates on how my talk is progressing (always tagged with osbridge [feed]).&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href=&#34;http://opensourcebridge.org/2009/04/open-source-bridge-conference-confirmed-speakers/&#34;&gt;full list of sessions is up&lt;/a&gt; (or &lt;a href=&#34;http://opensourcebridge.org/events/2009/sessions&#34;&gt;here&lt;/a&gt;), and I&amp;#8217;m very excited just to be attending the conference. Congratulations to all of the speakers!&lt;/p&gt;
+
+&lt;p&gt;Some of the sessions I&amp;#8217;m particularly excited to attend are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://opensourcebridge.org/sessions/20&#34;&gt;An Introduction to Machine Learning by John Melesky&lt;/a&gt; &amp;#8211; A Portland Python User Group regular and really smart guy in general. Looking forward to getting my feet wet with machine learning.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://opensourcebridge.org/sessions/100&#34;&gt;Drop ACID and think about data by Bob Ippolito&lt;/a&gt; &amp;#8211; I think the Portland Python crew that went to Pycon helped convince Bob to bring his presentation to OS Bridge, and I&amp;#8217;m glad they did! I work with non-relational databases everyday, but I still design my apps with a relational data model in mind. This should be interesting.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://opensourcebridge.org/sessions/33&#34;&gt;The Linux Kernel Development model by Greg Kroah-Hartman&lt;/a&gt; &amp;#8211; Its &lt;a href=&#34;http://en.wikipedia.org/wiki/Greg_Kroah-Hartman&#34;&gt;Greg KH&lt;/a&gt;! Come on!&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://opensourcebridge.org/sessions/95&#34;&gt;How Idealist.org uses technology to change the world by Michel Pelletier&lt;/a&gt; &amp;#8211; Another Portland Pythoneer and really smart guy. Eager to here more about open source at work in an organization. Its always fun to watch Michel present anyway.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://opensourcebridge.org/sessions/36&#34;&gt;Web Testing with Windmill by Mikeal Rogers&lt;/a&gt; &amp;#8211; Hardly a day goes by that I don&amp;#8217;t tell myself I&amp;#8217;m going to improve my test coverage and skills. Windmill looks like an excellent testing tool to help me accomplish that.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There are many many more sessions I&amp;#8217;m excited about, but I&amp;#8217;m too sick of copying and pasting to mention anymore right now.&lt;/p&gt;
+
+&lt;p&gt;So [sign up to attend the Open Source Bridge Conference in Portland, OR this June!][10]&lt;/p&gt;
+
+&lt;p&gt;[10]: &lt;a href=&#34;http://opensourcebridge.org/attend/&#34;&gt;http://opensourcebridge.org/attend/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Web Server Quandary</title>
+      <link>/2008/12/27/web-server-quandary/</link>
+      <pubDate>Sat, 27 Dec 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/12/27/web-server-quandary/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://httpd.apache.org/&#34;&gt;Apache&lt;/a&gt; was probably the first Linux application I learned how to configure. However, I&amp;#8217;ve gotten a bit frustrated with it recently&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The Problem&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;A memory leak.&lt;/em&gt; Apache is eating up memory so quickly that I need to restart it every couple days or risk my entire server grinding to a halt as it starts swapping wildly. I&amp;#8217;ve poured over log files and &lt;code&gt;pmap&lt;/code&gt; output, but I still can&amp;#8217;t figure out where the problem lies. Curse you monolithic in-process architecture!&lt;/p&gt;
+
+&lt;p&gt;Actually I know what my problem is, I&amp;#8217;m running a mess of modules:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ssl&lt;/code&gt; &amp;#8211; 2 certificates on 2 ports&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;php5&lt;/code&gt; &amp;#8211; blerg, who doesn&amp;#8217;t have to run this?&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;suphp&lt;/code&gt; &amp;#8211; I suspect this is my problem, but I can&amp;#8217;t prove it. A client&amp;#8217;s 3rd party web application &lt;em&gt;requires&lt;/em&gt; it, but I think its easily replaceable with FastCGI.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;wsgi&lt;/code&gt; &amp;#8211; No complaints. Python apps are out-of-process thankfully.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;proxy&lt;/code&gt; &amp;#8211; Again no complaints. Can&amp;#8217;t imagine how this module could cause any problems except it does proxy some large (multi-megabyte, not huge) POSTs at times. I can&amp;#8217;t imagine a memory leak could slip into this module without a lot of people noticing.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution A: Apache+FastCGI&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I love the idea of putting each web application in its own process and letting Apache just act as an HTTP router. FastCGI seems to have all the features I need, and I&amp;#8217;m not really worried about the CPU overhead incurred by IPC.&lt;/p&gt;
+
+&lt;p&gt;However, there are 2 competing FastCGI modules for Apache, and I have no idea what to choose. Anecdotally the official &lt;a href=&#34;http://www.fastcgi.com/drupal/node/3&#34;&gt;mod_fastcgi&lt;/a&gt; is buggy and &lt;a href=&#34;http://www.fastcgi.com/drupal/node/2&#34;&gt;fastcgi.com is a spam infested wasteland&lt;/a&gt;. However, I&amp;#8217;ve found no authoritative source saying: &lt;em&gt;&amp;#8220;fastcgi is dead, long live &lt;a href=&#34;http://fastcgi.coremail.cn/&#34;&gt;fcgid&lt;/a&gt;!&amp;#8221;&lt;/em&gt; (Lame excuse, I know.)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution B: &lt;a href=&#34;http://www.lighttpd.net/&#34;&gt;Lighttpd&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I know Lighty is the darling of Rails sites, but whenever I stop by its site I&amp;#8217;m greeted with a list of recently fixed &lt;a href=&#34;http://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=lighttpd&#34;&gt;security bugs&lt;/a&gt;, and now it seems as though &lt;a href=&#34;http://blog.lighttpd.net/articles/2008/12/02/a-little-heads-up&#34;&gt;they&amp;#8217;re rewriting the core&lt;/a&gt;!&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;m sure Lighty is a high quality intelligently engineered project, but it seems to be the definition of immature. Not necessarily bad (in fact it usually means its progressing quickly!), but perhaps not as reliable as good old workhorses like Apache.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution C: &lt;a href=&#34;http://www.cherokee-project.com/&#34;&gt;Cherokee&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;ve been following Cherokee for some time now and running it locally on my workstation. I &lt;em&gt;love&lt;/em&gt; the web interface. I&amp;#8217;m usually a very anti-webmin, pro-vim kind of guy, but I&amp;#8217;m sick of editing Apache&amp;#8217;s config files. I do it about once a month and therefore it always takes lots of double-checking the docs. I don&amp;#8217;t know why, but its configuration has just never felt natural to me.&lt;/p&gt;
+
+&lt;p&gt;However, the lead Cherokee developer&amp;#8217;s bravado is by the most off-putting aspect of the project. &lt;a href=&#34;http://lists.octality.com/pipermail/cherokee/2008-December/009437.html&#34;&gt;He mocks modwsgi&lt;/a&gt; and posts simplistic benchmarks showing Cherokee to be the fastest web server, but meanwhile Cherokee churns out numerous bug patch releases in-between feature releases and has yet to reach 1.0 status.&lt;/p&gt;
+
+&lt;p&gt;It seems like an excellent project technically, but I&amp;#8217;m afraid there will be negative consequences for the lead developers hubris. &lt;small&gt;(I&amp;#8217;m not meaning to insult the guy. He&amp;#8217;s probably a far better hacker than I&amp;#8217;ll ever be. Self-promotion just makes me uncomfortable.)&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution D: [nginx][10]&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I don&amp;#8217;t know much about nginx except that it works. Basically all I&amp;#8217;ve heard about it is:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;It works.&lt;/li&gt;
+&lt;li&gt;Its fast. &lt;em&gt;Really&lt;/em&gt; fast.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;While &amp;#8220;working&amp;#8221; is definitely my primary objective, nginx seems a bit bare bones for me. I just don&amp;#8217;t think I&amp;#8217;m the target demographic. I&amp;#8217;d kind of like for my web server to handle spawning and kill of FastCGI processes.&lt;/p&gt;
+
+&lt;p&gt;nginx feels like git to me. Those who know it: use it and love it. Those who don&amp;#8217;t: stand in fear and awe of its unbridled power.&lt;/p&gt;
+
+&lt;p&gt;&amp;#8230;or maybe its just a nice simple barebones HTTP server&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Conclusions?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I think &lt;strong&gt;Solution A: FastCGI&lt;/strong&gt; is the most sensible. Apache has always served me well, and the memory leak is most likely due to that shoddy suphp module.&lt;/p&gt;
+
+&lt;p&gt;Moving my web applications to FastCGI is also the best way to prepare to move to one of these 2nd generation web servers.&lt;/p&gt;
+
+&lt;p&gt;However, I&amp;#8217;m getting kind of sick of Apache, and the ambiguousness of which FastCGI solution to choose is fairly annoying.&lt;/p&gt;
+
+&lt;p&gt;So dear lazyweb, for your everyday web developer consultant looking to run a bunch of PHP and Python web applications, what HTTP server stack should I use? (Debian Lenny packages are a plus.)&lt;/p&gt;
+
+&lt;p&gt;[10]: &lt;a href=&#34;http://nginx.net/&#34;&gt;http://nginx.net/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

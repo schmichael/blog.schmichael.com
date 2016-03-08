@@ -1,0 +1,862 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on </title>
+    <link>/categories/python/</link>
+    <description>Recent content in Python on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 03 Oct 2012 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>MmStats in Scripts</title>
+      <link>/2012/10/03/mmstats-in-scripts/</link>
+      <pubDate>Wed, 03 Oct 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/2012/10/03/mmstats-in-scripts/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://mmstats.readthedocs.org/&#34;&gt;MmStats&lt;/a&gt; is a library I created to expose and read statistics, metrics, and debugging information from running Python processes without the overhead of syscalls (eg writing to a socket or file) or threads, and to make sure that as many utilities as you want can read those metrics without affecting the performance of the main process exposing stats.&lt;/p&gt;
+
+&lt;p&gt;I &lt;a href=&#34;http://pypi.python.org/pypi/mmstats/0.7.0&#34;&gt;released 0.7&lt;/a&gt; today to ease integration into multithreaded apps, but it made me realize a simpler tutorial would probably be helpful.&lt;/p&gt;
+
+&lt;p&gt;While I had web apps, job consumers, and other long running daemons in mind when I wrote mmstats, it turns out it&amp;#8217;s also excellent for long running scripts.&lt;/p&gt;
+
+&lt;p&gt;You know the scripts: maintenance scripts, &amp;#8220;fixer&amp;#8221; scripts, slow build or deployment scripts, data migration scripts, etc.&lt;/p&gt;
+
+&lt;p&gt;If you&amp;#8217;re like me, you always forget 2 things every time you write and run one of these scripts:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Run it in &lt;code&gt;screen&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Periodic progress output&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Luckily for #1 there&amp;#8217;s already [disown][3].&lt;/p&gt;
+
+&lt;p&gt;For #2 we need an example script. Let&amp;#8217;s pretend you have a Django app with users and you need to update their email addresses in a different system with something like this:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;import otherdb
+from django.contrib.auth import models
+
+for user in models.User.objects.all():
+    otherdb.update(user.username, email=user.email)
+&lt;/pre&gt;
+
+&lt;p&gt;After forgetting to run it in screen, I&amp;#8217;d restart it &amp;#8230; and sit there &amp;#8230; staring at my terminal &amp;#8230; hating myself for not having it output anything.&lt;/p&gt;
+
+&lt;p&gt;But then these scripts never work the first time, so it&amp;#8217;d probably die in flames on the first user without an email or similar exceptional condition I forgot to take into account.&lt;/p&gt;
+
+&lt;p&gt;So on my second attempt I&amp;#8217;d probably quickly try to cobble together some progress indicator:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;import otherdb
+from django.contrib.auth import models
+
+BATCH = ...
+
+for i, user in enumerate(models.User.objects.all()):
+    if i % BATCH == 0:
+        print &#39;{0} done&#39;.format(i)
+
+    # Only update users who have emails! Otherwise otherdb dies.
+    if user.email:
+        otherdb.update(user.username, email=user.email)
+&lt;/pre&gt;
+
+&lt;p&gt;But what should &lt;code&gt;BATCH&lt;/code&gt; be? If I have 10,000 users, &lt;code&gt;BATCH = 1000&lt;/code&gt; seems reasonable, but what if &lt;code&gt;otherdb&lt;/code&gt; is &lt;em&gt;really&lt;/em&gt; slow? In that case a smaller batch like 100 or 50 might be appropriate, so I don&amp;#8217;t have to worry if &lt;code&gt;otherdb&lt;/code&gt; just became unresponsive or something.&lt;/p&gt;
+
+&lt;p&gt;The best option is to &lt;strong&gt;always have your precise progress available at your request.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;using-mmstats-in-scripts:2b040d130819a568375b3099f6ca400e&#34;&gt;Using MmStats in Scripts&lt;/h1&gt;
+
+&lt;p&gt;I&amp;#8217;ve found mmstats fits this use case beautifully. No more guessing at what might be an appropriate batch size or using the wrong format string in an uncommon case and crashing my script halfway through.&lt;/p&gt;
+
+&lt;p&gt;Integrating mmstats is as easy as:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;import time
+import mmstats
+import otherdb
+from django.contrib.auth import models
+
+# Define your stats in a model
+class S(mmstats.MmStats):
+    done = mmstats.CounterField(label=&#34;done&#34;)
+    missing_email = mmstats.CounterField(label=&#34;missing_email&#34;)
+    otherdb_timer = mmstats.TimerField(label=&#34;otherdb_timer&#34;)
+    last_user = mmstats.StringField(label=&#34;user&#34;)
+
+# Instantiate the stats model
+stats = S(filename=&#34;update-emails-{0}.mmstats&#34;.format(time.time()), path=&#34;.&#34;)
+
+for i, user in enumerate(models.User.objects.all()):
+    # Update the username for readers to see
+    stats.last_user = user.username
+
+    # Only update users who have emails! Otherwise otherdb dies.
+    if user.email:
+        with stats.otherdb_timer:
+            # Actually do the migration work
+            otherdb.update(user.username, email=user.email)
+    else:
+        stats.missing_email.inc()
+
+    # Increment the done counter to show another user has been processed
+    stats.done.inc()
+&lt;/pre&gt;
+
+&lt;p&gt;That&amp;#8217;s it! Now just re-run in screen, pop back into a shell and check on the progress with &lt;code&gt;slurpstats&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre lang=&#34;bash&#34;&gt;schmichael@prod9000:~$ slurpstats *.mmstats
+==&gt; ./update-emails-1234567890.mmstats
+  done               113
+  missing_email      12
+  otherdb_timer      0.3601293582
+  user               rob
+  sys.created        1346884490.7
+  sys.pid            10298
+  sys.gid            549
+  ...
+&lt;/pre&gt;
+
+&lt;p&gt;This output would indicate 113 users have been checked, 12 of them had no email, &amp;#8220;rob&amp;#8221; is the current user being processed, and that &lt;code&gt;otherdb.update(...)&lt;/code&gt; takes on average 360ms to complete. &lt;small&gt;By default timers average the last 100 values, but that&amp;#8217;s customizable via the size keyword argument.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;That&amp;#8217;s nice and all, but it&amp;#8217;d be more fun to see &lt;strong&gt;how many users were updated per second.&lt;/strong&gt; &lt;code&gt;pollstats&lt;/code&gt; is a simple tool for doing just that:&lt;/p&gt;
+
+&lt;pre lang=&#34;bash&#34;&gt;schmichael@prod9000:~$ pollstats done,missing_email *.mmstats
+       done         |      missing_email
+                213 |                 20
+                  3 |                  0
+                  5 |                  1
+                  1 |                  0
+...
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;pollstats&lt;/code&gt; will print out the current value of the given counters initially, and then once per second print the delta. So in our contrived example we&amp;#8217;d be processing somewhere between 1 and 5 users per second and less than 1 missing email per second.&lt;/p&gt;
+
+&lt;p&gt;Sadly &lt;code&gt;pollstats&lt;/code&gt; is extremely simplistic at the moment and lacks the ability to intelligently display non-counter fields. (Patches welcome!)&lt;/p&gt;
+
+&lt;p&gt;Even better: if you&amp;#8217;re script dies the mmstats file will be left for you to inspect. (Although if you want it perfectly in sync you should probably &lt;code&gt;stats.flush()&lt;/code&gt; on each iteration.)&lt;/p&gt;
+
+&lt;p&gt;mmstats is still young (pre-1.0 for a reason) and simplistic, but I already find it extremely useful not only in web apps and other daemons, but also in simple &amp;#8211; or not so simple &amp;#8211; one-off scripts. I hope you find it useful as well!&lt;/p&gt;
+
+&lt;p&gt;[3]: &lt;a href=&#34;http://playingwithsid.blogspot.com/2007/10/disown-nohup-bash-commands.html&#34;&gt;http://playingwithsid.blogspot.com/2007/10/disown-nohup-bash-commands.html&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Building Python 2.6.8 on Ubuntu 12.04</title>
+      <link>/2012/05/29/building-python-2-6-8-on-ubuntu-12-04/</link>
+      <pubDate>Tue, 29 May 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/2012/05/29/building-python-2-6-8-on-ubuntu-12-04/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Update 2012-06-01:&lt;/strong&gt; Looks like &lt;a href=&#34;https://github.com/saghul/pythonz&#34;&gt;pythonz&lt;/a&gt; is an easier way to install Python 2.6.8 (and all other Pythons) on Ubuntu 12.04.&lt;/p&gt;
+
+&lt;p&gt;Ubuntu 12.04 builds OpenSSL without SSLv2. Python 2.6.8 expects OpenSSL to be built with SSLv2.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://bugs.python.org/issue12012&#34;&gt;This is a bug that has been fixed in Python 2.7+&lt;/a&gt;, but it wasn&amp;#8217;t backported for Python 2.6.&lt;/p&gt;
+
+&lt;p&gt;So if you build your own Python 2.6 binaries on Ubuntu 12.04 you&amp;#8217;ll see errors like this when attempting to use anything SSL related:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;*** WARNING: renaming &amp;quot;_ssl&amp;quot; since importing it failed: build/lib.linux-x86_64-2.6/_ssl.so: undefined symbol: SSLv2_method&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Some of us still need Python 2.6, so &lt;a href=&#34;https://bitbucket.org/schmichael/cpython-v2.6.8-nosslv2/src/d77684a8fdd5&#34;&gt;I forked Python 2.6.8 and removed SSLv2 support&lt;/a&gt;. Tests pass and SSL works.&lt;/p&gt;
+
+&lt;p&gt;You can also just grab the diff below:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; M2Crypto requires patching as well:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Update 2:&lt;/strong&gt; If you trust me and use 64bit Ubuntu 12.04 you can download a pre-built [python-2.6.8~nosslv2][4] tarball from me. Includes distribute and pip pre-installed.&lt;/p&gt;
+
+&lt;p&gt;[4]: &lt;a href=&#34;http://schmichael.com/files/python-2.6.8~nosslv2.tar.gz&#34;&gt;http://schmichael.com/files/python-2.6.8~nosslv2.tar.gz&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>MemoryMapFile Convenience Class for Python</title>
+      <link>/2011/09/05/memorymapfile-convenience-class-for-python/</link>
+      <pubDate>Tue, 06 Sep 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/2011/09/05/memorymapfile-convenience-class-for-python/</guid>
+      <description>&lt;p&gt;My &lt;a href=&#34;/2011/05/15/sharing-python-data-between-processes-using-mmap/&#34;&gt;obsession&lt;/a&gt; with &lt;a href=&#34;http://en.wikipedia.org/wiki/Mmap&#34;&gt;mmap&lt;/a&gt; hasn&amp;#8217;t died, but while &lt;a href=&#34;http://docs.python.org/library/mmap&#34;&gt;Python&amp;#8217;s mmap module&lt;/a&gt; is a wonderful low level library it&amp;#8217;s a bit hard for a newcomer to use properly.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;ve started toying with a convenience wrapper class for &lt;code&gt;mmap.mmap&lt;/code&gt; (at least the Unix version):&lt;/p&gt;
+
+&lt;p&gt;My original goal was to automatically &lt;a href=&#34;http://docs.python.org/library/mmap#mmap.resize&#34;&gt;grow&lt;/a&gt; the mmap whenever the user attempts to write beyond the current size of the mmap file, but that&amp;#8217;s going to take carefully wrapping quite a few methods (&lt;code&gt;write&lt;/code&gt;, &lt;code&gt;__setitem__&lt;/code&gt;, and maybe get/read methods too).&lt;/p&gt;
+
+&lt;p&gt;If it becomes useful, I may use it in [mmstats][5].&lt;/p&gt;
+
+&lt;p&gt;Feedback welcome!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Discovered the hard way (segfaults) that resizing mmaps is tricky: the region can be moved but data will be copied. However, any existing pointers (from ctypes.&lt;type&gt;.from_buffer in my case) will now point to freed memory and segfault upon use.&lt;/p&gt;
+
+&lt;p&gt;tl;dr &amp;#8211; If at all possible, precompute the size of your mmap before using it.&lt;/p&gt;
+
+&lt;p&gt;[5]: &lt;a href=&#34;https://github.com/schmichael/mmstats&#34;&gt;https://github.com/schmichael/mmstats&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Sharing Python data between processes using mmap</title>
+      <link>/2011/05/15/sharing-python-data-between-processes-using-mmap/</link>
+      <pubDate>Mon, 16 May 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/2011/05/15/sharing-python-data-between-processes-using-mmap/</guid>
+      <description>&lt;p&gt;I&amp;#8217;ve been toying with an idea of exposing statistics for a Python application via shared memory to keep the performance impact on the application as low as possible. The goal being an application could passively expose a number of metrics that could either be periodically polled via &lt;a href=&#34;http://munin-monitoring.org/&#34;&gt;munin&lt;/a&gt;/&lt;a href=&#34;http://www.icinga.org/&#34;&gt;Icinga&lt;/a&gt;/etc plugins or interactive tools when diagnosing issues on a system.&lt;/p&gt;
+
+&lt;p&gt;But first things first: I need to put data into &lt;a href=&#34;http://en.wikipedia.org/wiki/Shared_memory&#34;&gt;shared memory&lt;/a&gt; from Python. &lt;a href=&#34;http://en.wikipedia.org/wiki/Mmap&#34;&gt;mmap&lt;/a&gt; is an excellent widely-implemented POSIX system call for creating a shared memory space backed by an on-disk file.&lt;/p&gt;
+
+&lt;p&gt;Usually in the UNIX world you have 2 ways of accessing/manipulating data: memory addresses or streams (files). Manipulating data via memory addresses means &lt;a href=&#34;http://en.wikipedia.org/wiki/Pointer_%28computing%29&#34;&gt;pointers&lt;/a&gt;, offsets, &lt;a href=&#34;http://en.wikipedia.org/wiki/Malloc&#34;&gt;malloc/free&lt;/a&gt;, etc. Stream interfaces manipulate data via &lt;a href=&#34;http://en.wikipedia.org/wiki/System_call&#34;&gt;read/write/seek system calls&lt;/a&gt; for files and &lt;a href=&#34;http://en.wikipedia.org/wiki/Berkeley_sockets&#34;&gt;send/recv/etc for sockets&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;mmap gives you both interfaces. A memory mapped file can be manipulated via read/write/seek or by directly accessing its mapped memory region. The advantage of the latter is that this memory region is in userspace &amp;#8212; meaning you can manipulate a file without incurring the overhead of write system calls for every manipulation.&lt;/p&gt;
+
+&lt;p&gt;Anyway, enough exposition, let&amp;#8217;s see some code. &lt;small&gt;(Despite mmap&amp;#8217;s nice featureset, I&amp;#8217;m only using it as a simple memory sharing mechanism anyway.)&lt;/small&gt; The following code shares a tiny bit of data between 2 Python processes using the excellent &lt;a href=&#34;http://docs.python.org/library/mmap&#34;&gt;mmap module in the stdlib&lt;/a&gt;. &lt;code&gt;a.py&lt;/code&gt; writes to the memory mapped region, and &lt;code&gt;b.py&lt;/code&gt; reads the data out. [ctypes][10] allows for an easy way to create values in a memory mapped region and manipulate them like &amp;#8220;normal&amp;#8221; Python objects.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;These code samples were written using Python 2.7 on Linux. They should work fine on any POSIX system, but Windows users will have to change the mmap calls to match the Windows API.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;a.py&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;#!/usr/bin/env python
+import ctypes
+import mmap
+import os
+import struct
+
+
+def main():
+    # Create new empty file to back memory map on disk
+    fd = os.open(&#39;/tmp/mmaptest&#39;, os.O_CREAT | os.O_TRUNC | os.O_RDWR)
+
+    # Zero out the file to insure it&#39;s the right size
+    assert os.write(fd, &#39;\x00&#39; * mmap.PAGESIZE) == mmap.PAGESIZE
+
+    # Create the mmap instace with the following params:
+    # fd: File descriptor which backs the mapping or -1 for anonymous mapping
+    # length: Must in multiples of PAGESIZE (usually 4 KB)
+    # flags: MAP_SHARED means other processes can share this mmap
+    # prot: PROT_WRITE means this process can write to this mmap
+    buf = mmap.mmap(fd, mmap.PAGESIZE, mmap.MAP_SHARED, mmap.PROT_WRITE)
+
+    # Now create an int in the memory mapping
+    i = ctypes.c_int.from_buffer(buf)
+
+    # Set a value
+    i.value = 10
+
+    # And manipulate it for kicks
+    i.value += 1
+    
+    assert i.value == 11
+
+    # Before we create a new value, we need to find the offset of the next free
+    # memory address within the mmap
+    offset = struct.calcsize(i._type_)
+
+    # The offset should be uninitialized (&#39;\x00&#39;)
+    assert buf[offset] == &#39;\x00&#39;
+
+    # Now ceate a string containing &#39;foo&#39; by first creating a c_char array
+    s_type = ctypes.c_char * len(&#39;foo&#39;)
+
+    # Now create the ctypes instance
+    s = s_type.from_buffer(buf, offset)
+
+    # And finally set it
+    s.raw = &#39;foo&#39;
+
+    print &#39;First 10 bytes of memory mapping: %r&#39; % buf[:10]
+    raw_input(&#39;Now run b.py and press ENTER&#39;)
+
+    print
+    print &#39;Changing i&#39;
+    i.value *= i.value
+
+    print &#39;Changing s&#39;
+    s.raw = &#39;bar&#39;
+
+    new_i = raw_input(&#39;Enter a new value for i: &#39;)
+    i.value = int(new_i)
+
+
+if __name__ == &#39;__main__&#39;:
+    main()
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;b.py&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;import mmap
+import os
+import struct
+import time
+
+def main():
+    # Open the file for reading
+    fd = os.open(&#39;/tmp/mmaptest&#39;, os.O_RDONLY)
+
+    # Memory map the file
+    buf = mmap.mmap(fd, mmap.PAGESIZE, mmap.MAP_SHARED, mmap.PROT_READ)
+
+    i = None
+    s = None
+
+    while 1:
+        new_i, = struct.unpack(&#39;i&#39;, buf[:4])
+        new_s, = struct.unpack(&#39;3s&#39;, buf[4:7])
+
+        if i != new_i or s != new_s:
+            print &#39;i: %s =&gt; %d&#39; % (i, new_i)
+            print &#39;s: %s =&gt; %s&#39; % (s, new_s)
+            print &#39;Press Ctrl-C to exit&#39;
+            i = new_i
+            s = new_s
+
+        time.sleep(1)
+
+
+if __name__ == &#39;__main__&#39;:
+    main()
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;small&gt;(Note that I cruelly don&amp;#8217;t clean up /tmp/mmaptest after the scripts finished. Consider it a 4KB tax for anyone who runs arbitrary code they found on the Internet without reading it first.)&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;[10]: &lt;a href=&#34;http://docs.python.org/library/ctypes&#34;&gt;http://docs.python.org/library/ctypes&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>signalfd</title>
+      <link>/2011/02/20/signalfd/</link>
+      <pubDate>Mon, 21 Feb 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/2011/02/20/signalfd/</guid>
+      <description>&lt;p&gt;&lt;em&gt;This article covers&lt;/em&gt; signalfd&lt;em&gt;, a system call only available on Linux. If anyone knows of an equivalent for OSX or BSDs,&lt;abbrev title=&#34;If there&#39;s something like signalfd for Windows, I&#39;m sorry but I really couldn&#39;t care less.&#34;&gt;*&lt;/abbrev&gt; please &lt;a href=&#34;/about-me/&#34;&gt;let me know&lt;/a&gt;. It&amp;#8217;d be great to create a compatibility layer.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Writing asynchronous IO code is fun; handling signals is not. &lt;a href=&#34;http://www.kernel.org/doc/man-pages/online/pages/man2/signalfd.2.html&#34;&gt;signalfd&lt;/a&gt; allows you to move your signal handling code into your main event loop instead of hooking up global handlers and using the featureless &lt;a href=&#34;http://docs.python.org/library/signal#signal.set_wakeup_fd&#34;&gt;set_wakeup_fd&lt;/a&gt; function to break the main loop.&lt;/p&gt;
+
+&lt;p&gt;Luckily &lt;a href=&#34;https://launchpad.net/python-signalfd&#34;&gt;Jean-Paul Calderone had already created a great Python wrapper for the signalfd and sigprocmask system calls&lt;/a&gt;. Unfortunately it doesn&amp;#8217;t include a way to parse the siginfo_t structure which contains all the useful information about the signal you&amp;#8217;re handling.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;ve added a helper to do just that in a branch:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://code.launchpad.net/~schmichael/python-signalfd/helpers&#34;&gt;https://code.launchpad.net/~schmichael/python-signalfd/helpers&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;A sample program would look like:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;import os
+import select
+import signal
+
+import signalfd
+
+
+def sigfdtest():
+    # Catch them all!
+    sigs = []
+    for attr in dir(signal):
+        if attr.startswith(&#39;SIG&#39;) and not attr.startswith(&#39;SIG_&#39;):
+            sigs.append(getattr(signal, attr))
+
+    sfd = signalfd.create_signalfd(sigs)
+    print &#39;Capturing: %r&#39; % sorted(sigs)
+    
+    while 1:
+        print &#39;selecting - pid: %d&#39; % os.getpid()
+        r = select.select([sfd], [], [])[0]
+        for s in r:
+            assert s is sfd, &#39;Python nicely re-uses the fd instance&#39;
+            sig = signalfd.read_signalfd(sfd)
+            print sig
+                
+
+if __name__ == &#39;__main__&#39;:
+    sigfdtest()
+&lt;/pre&gt;
+
+&lt;p&gt;When run you can throw some signals at it:&lt;/p&gt;
+
+&lt;pre&gt;Capturing: [6, 14, 7, 17, 17, 18, 8, 1, 4, 2, 29, 6, 9, 13, 29, 27, 30, 3, 64, 34, 11, 19, 31, 15, 5, 20, 21, 22, 23, 10, 12, 26, 28, 24, 25]
+selecting - pid: 6523
+^CSIGINT
+selecting - pid: 6523
+^CSIGINT
+selecting - pid: 6523
+SIGHUP
+selecting - pid: 6523
+Killed
+&lt;/pre&gt;
+
+&lt;p&gt;Of course you&amp;#8217;ll need to use an uninterpretable signal like KILL to exit.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://bugs.python.org/issue8407&#34;&gt;Jean-Paul attempted to get signalfd included in Python 2.7&amp;#8217;s signal module, and it was slated for inclusion in 3.2&lt;/a&gt;. However, given that &lt;a href=&#34;http://www.python.org/download/releases/3.2/&#34;&gt;3.2&lt;/a&gt; was just &lt;a href=&#34;http://docs.python.org/release/3.2/library/signal&#34;&gt;released without it&lt;/a&gt;, I&amp;#8217;m guessing the attempt to get this functionality into Python&amp;#8217;s stdlib has been forgotten.&lt;/p&gt;
+
+&lt;p&gt;Up next: [eventfd][8] perhaps?&lt;/p&gt;
+
+&lt;p&gt;[8]: &lt;a href=&#34;http://www.kernel.org/doc/man-pages/online/pages/man2/eventfd.2.html&#34;&gt;http://www.kernel.org/doc/man-pages/online/pages/man2/eventfd.2.html&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Deploying Python behind Nginx Talk Slides</title>
+      <link>/2011/01/25/deploying-python-behind-nginx-talk-slides/</link>
+      <pubDate>Tue, 25 Jan 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/2011/01/25/deploying-python-behind-nginx-talk-slides/</guid>
+      <description>&lt;p&gt;I gave a talk on deploying Python WSGI apps behind &lt;a href=&#34;http://wiki.nginx.org/&#34;&gt;nginx&lt;/a&gt; at the &lt;a href=&#34;http://wiki.python.org/moin/PortlandPythonUserGroup&#34;&gt;Portland Python User Group&lt;/a&gt; meeting on January 11th and finally got around to publishing the slides: &lt;a href=&#34;https://docs.google.com/present/edit?id=0Ab7GDIugV1qCZGR6c3d6YnJfMTA1aGRtZmJxYzI&amp;amp;hl=en&#34;&gt;schmingx&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I should mention &lt;a href=&#34;http://discorporate.us/jek/&#34;&gt;Jason Kirtland&lt;/a&gt; informed me after the meeting that &lt;a href=&#34;http://www.fastcgi.com/devkit/doc/fcgi-spec.html&#34;&gt;FastCGI&lt;/a&gt; supports [persistent connections (and a host of other features)][6] between a load balancer and backend app servers.&lt;/p&gt;
+
+&lt;p&gt;[6]: &lt;a href=&#34;http://www.fastcgi.com/devkit/doc/fcgi-spec.html#S3.5&#34;&gt;http://www.fastcgi.com/devkit/doc/fcgi-spec.html#S3.5&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Making Server-Side MongoDB Functions Less Awkward</title>
+      <link>/2010/01/11/making-server-side-mongodb-functions-less-awkward/</link>
+      <pubDate>Tue, 12 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/2010/01/11/making-server-side-mongodb-functions-less-awkward/</guid>
+      <description>&lt;p&gt;I&amp;#8217;ve recently switched my project at work to use MongoDB for the user database and a few other datasets.&lt;/p&gt;
+
+&lt;p&gt;Currently I don&amp;#8217;t use many JavaScript functions, but when I do I like to store them on the server so that they&amp;#8217;re accessible when I&amp;#8217;m poking around in a console.&lt;/p&gt;
+
+&lt;p&gt;I use something similar to the following function to load all of my JS functions onto the server when my app starts:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;import os
+import pymongo
+import pkg_resources
+
+# Relative to distribution&#39;s root
+SCRIPT_DIR = os.path.join(&#39;model&#39;, &#39;js&#39;)
+
+def init_js(db):
+    &#39;&#39;&#39;Initializes server-side javascript functions&#39;&#39;&#39;
+    scripts = filter(
+            lambda f: f.endswith(&#39;.js&#39;),
+            pkg_resources.resource_listdir(__name__, SCRIPT_DIR)
+        )
+    for script in scripts:
+        # Name the function after the script name
+        func_name, _ = script.split(&#39;.&#39;, 1)
+        script_path = os.path.join(SCRIPT_DIR, script)
+
+        # Create a pymongo Code object
+        # otherwise it will be stored as a string
+        code = pymongo.code.Code(
+                pkg_resources.resource_string(__name__, script_path))
+
+        # Upsert the function
+        db.system.js.save({ &#39;_id&#39;: func_name, &#39;value&#39;: code, })
+&lt;/pre&gt;
+
+&lt;p&gt;However, using server-side functions from Python is awkward at best. Say I have the JavaScript function:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;add.js&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre lang=&#34;javascript&#34;&gt;function(x, y) {
+    return x + y;
+}
+&lt;/pre&gt;
+
+&lt;p&gt;To run that function via PyMongo requires wrapping the function call with placeholder parameters in a Code object and passing in values as a dict:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;var1 = 1
+var2 = 2
+result = db.eval(pymongo.code.Code(&#39;add(a, b)&#39;, {&#39;a&#39;: var1, &#39;b&#39;: var2,}))
+assert result == 3
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; See [MongoDB dev Mike Dirolf comment][1] to see a much more concise way of executing server-side functions.&lt;/p&gt;
+
+&lt;p&gt;Bearable for simple functions, but having to manually map parameters to values is tiresome and error prone with longer function signatures.&lt;/p&gt;
+
+&lt;p&gt;What I wanted was something more natural like:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;var1 = 1
+var2 = 2
+result = db.add(var1, var2)
+assert result == 3
+&lt;/pre&gt;
+
+&lt;p&gt;I use a simple PyMongo Database object wrapper to make my life easier:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;import string
+
+from pymongo.code import Code
+
+class ServerSideFunctions(object):
+    def __init__(self, db):
+        self.db = db
+
+    def func_wrapper(self, func):
+        &#39;&#39;&#39;Returns a closure for calling a server-side function.&#39;&#39;&#39;
+        params = [] # To keep params ordered
+        kwargs = {}
+        def server_side_func(*args):
+            &#39;&#39;&#39;Calls server side function with positional arguments.&#39;&#39;&#39;
+            # Could be removed with better param generating logic
+            if len(args) &gt; len(string.letters):
+                raise TypeError(&#39;%s() takes at most %d arguments (%d given)&#39;
+                        % (func, len(string.letters), len(args)))
+            
+            # Prepare arguments
+            for k, v in zip(string.letters, args):
+                kwargs[k] = v
+                params.append(k) 
+
+            # Prepare code object
+            code = Code(&#39;%s(%s)&#39; % (func, &#39;, &#39;.join(params)), kwargs)
+                
+            # Return result of server-side function
+            return self.db.eval(code)
+        return server_side_func
+
+    def __getattr__(self, func):
+        &#39;&#39;&#39;Return a closure for calling server-side function named `func`&#39;&#39;&#39;
+        return self.func_wrapper(func)
+
+dbjs = ServerSideFunctions(&#39;foo&#39;)
+var1 = 1
+var2 = 2
+result = dbjs.add(var1, var2)
+assert result == 3
+&lt;/pre&gt;
+
+&lt;p&gt;I&amp;#8217;m tempted to monkey-patch PyMongo&amp;#8217;s Database class to add a ServerSideFunctions instance directly as a js attribute, so then I could drop the confusing &lt;code&gt;dbjs&lt;/code&gt; variable and just use:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;assert db.js.add(1,2) == 3
+&lt;/pre&gt;
+
+&lt;p&gt;If someone knows of a better way to access server-side MongoDB functions from Python, please let me know!&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;I modified this code to remove code specific to my project, so please let me know if there are errors.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;[1]: &lt;a href=&#34;http://michael.susens-schurter.com/blog/2010/01/11/making-server-side-mongodb-functions-less-awkward/comment-page-1/#comment-68027&#34;&gt;http://michael.susens-schurter.com/blog/2010/01/11/making-server-side-mongodb-functions-less-awkward/comment-page-1/#comment-68027&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>lxml vs. ElementTree</title>
+      <link>/2009/10/14/lxml-vs-elementtree/</link>
+      <pubDate>Wed, 14 Oct 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/10/14/lxml-vs-elementtree/</guid>
+      <description>&lt;p&gt;While lxml has some &lt;a href=&#34;http://codespeak.net/lxml/performance.html&#34;&gt;excellent benchmarks about the speed of lxml.etree vs. ElementTree&lt;/a&gt;, I wanted to run some tests that were as close as possible to my own use case (fairly simple multi-megabyte XML files).&lt;/p&gt;
+
+&lt;p&gt;Here are the results of my little test script [lxml-v-etree.py]&lt;a href=&#34;times are in milliseconds&#34;&gt;2&lt;/a&gt;:&lt;/p&gt;
+
+&lt;pre&gt;name           generate | tostring | total | write | parse | find | total
+------------------------+----------+-------+-------+-------+------+------
+xml.cElementTree    132 |   2430   |  2562 |  2433 |   158 |   58 |   216
+xml.cElementTree    112 |   2384   |  2497 |  2387 |   158 |   25 |   183
+xml.cElementTree    113 |   2393   |  2507 |  2396 |   161 |   25 |   187
+xml.ElementTree     591 |   2571   |  3163 |  2574 |  3613 |   25 |  3638
+xml.ElementTree     619 |   2567   |  3187 |  2570 |  3589 |   55 |  3644
+xml.ElementTree     609 |   2578   |  3188 |  2581 |  3564 |   55 |  3619
+lxml                333 |     75   |   409 |    82 |   200 |    0 |   201
+lxml                355 |     93   |   448 |    95 |   182 |   32 |   214
+lxml                310 |     94   |   404 |    96 |   156 |   56 |   213
+------------------------+----------+-------+-------+-------+------+------
+name           generate | tostring | total | write | parse | find | total
+------------------------+----------+-------+-------+-------+------+------
+&lt;/pre&gt;
+
+&lt;p&gt;Note that the first &amp;#8220;total&amp;#8221; is &amp;#8220;generate + tostring&amp;#8221; while the second &amp;#8220;total&amp;#8221; is for the 2 parsing related tests (previous 2 columns summed).&lt;/p&gt;
+
+&lt;p&gt;My parsing tests are basically &amp;#8220;etree.parse&amp;#8221; and then running &amp;#8220;Element.getchildren()&amp;#8221; 3 times, which is ridiculously simplistic and should probably be ignored. My writing tests are far more thorough/realistic.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;m running Python 2.6.2 with lxml 2.1.5 and libxml2 2.6.32 on Ubuntu 9.04 x86_64.&lt;/p&gt;
+
+&lt;p&gt;[2]: /files/lxml-v-etree.py-remove-me&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Python Packaging Talk</title>
+      <link>/2009/09/09/python-packaging-talk/</link>
+      <pubDate>Wed, 09 Sep 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/09/09/python-packaging-talk/</guid>
+      <description>&lt;p&gt;I gave a talk at &lt;a href=&#34;http://pdxpython.org/&#34;&gt;PDX Python&lt;/a&gt; last night on Python Packaging. It&amp;#8217;s just an overview and introduction completely lacking in any practical examples.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/files/packaging.odp&#34;&gt;Python Packaging slides (ODP)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/files/packaging-2.pdf&#34;&gt;Python Packaging slides (PDF)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;small&gt;Let me know if the ODP source is messed up. OpenOffice.org liked randomly losing background images and forgetting other formatting.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;So as penance I quick hacked up a silly little command line utility and uploaded it to PyPI to serve as a simple packaging example:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://pypi.python.org/pypi/whereampy&#34;&gt;whereampy on PyPI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://bitbucket.org/schmichael/whereampy/&#34;&gt;whereampy on bitbucket&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It&amp;#8217;d be nice to add some more advanced features like test running, including package data, and building C extensions. If you feel adventurous please &lt;a href=&#34;http://bitbucket.org/schmichael/whereampy/fork/&#34;&gt;fork&lt;/a&gt; it and send me a &lt;a href=&#34;http://bitbucket.org/schmichael/whereampy/pull/&#34;&gt;pull request&lt;/a&gt; on BitBucket.&lt;/p&gt;
+
+&lt;p&gt;Thanks to everyone who came to PDX Python last night! Especially &lt;a href=&#34;http://lucumr.pocoo.org/&#34;&gt;Armin Ronacher&lt;/a&gt; who was able to clarify and elaborate on a number of different distutils/setuptools topics!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Just spotted &lt;a href=&#34;http://tarekziade.wordpress.com/2009/09/12/static-metadata-for-distutils/&#34;&gt;an excellent post on distutils and setuptools by Tarek ZiadÃ©.&lt;/a&gt; Make sure to [read his blog if you&amp;#8217;re interested in packaging in Python.][10]&lt;/p&gt;
+
+&lt;p&gt;[10]: &lt;a href=&#34;http://tarekziade.wordpress.com/&#34;&gt;http://tarekziade.wordpress.com/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Switched tc-rest to webob</title>
+      <link>/2009/08/10/switched-tc-est-to-webob/</link>
+      <pubDate>Tue, 11 Aug 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/08/10/switched-tc-est-to-webob/</guid>
+      <description>&lt;p&gt;Small update on my toy tc-rest project: I switched to using &lt;a href=&#34;http://pythonpaste.org/webob/&#34;&gt;WebOb&lt;/a&gt; for creating HTTP Request and Response objects. Cleaned up the code a bit, but a real dispatcher is what&amp;#8217;s needed to really remove the cruft.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;m anxious to extend the API and add features, but I have no clue when I&amp;#8217;ll have time to touch it again. In the mean time I&amp;#8217;ve [pushed tc-rest to bitbucket.org if you want to take a look][2].&lt;/p&gt;
+
+&lt;p&gt;[2]: &lt;a href=&#34;http://bitbucket.org/schmichael/tc-rest/overview/&#34;&gt;http://bitbucket.org/schmichael/tc-rest/overview/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>TokyoCabinet &#43; fapws3 = tc-rest</title>
+      <link>/2009/08/08/tokyocabinet-fapws3-tc-rest/</link>
+      <pubDate>Sun, 09 Aug 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/08/08/tokyocabinet-fapws3-tc-rest/</guid>
+      <description>&lt;p&gt;Have you ever wondered how hard it would be to tack a RESTful HTTP interface on top of a fast key/value database like TokyoCabinet?&lt;/p&gt;
+
+&lt;p&gt;Probably not, but I did: &lt;a href=&#34;/files/tc-rest.tar.gz&#34;&gt;tc-rest.tar.gz&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Components:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://tokyocabinet.sourceforge.net/&#34;&gt;TokyoCabinet&lt;/a&gt; &amp;#8211; my favorite persistent key/value database&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://pypi.python.org/pypi/pytc/&#34;&gt;pytc&lt;/a&gt; &amp;#8211; a wonderful Python wrapper for TC&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://github.com/william-os4y/fapws3/tree/master&#34;&gt;fapws3&lt;/a&gt; &amp;#8211; a fast libev based HTTP/&lt;a href=&#34;http://www.python.org/dev/peps/pep-0333/&#34;&gt;WSGI&lt;/a&gt; server&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://code.google.com/p/simplejson/&#34;&gt;simpleson&lt;/a&gt; &amp;#8211; (or Python &amp;gt;= 2.6) for encapsulating HTTP responses&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.aminus.net/wiki/Okapi&#34;&gt;okapi&lt;/a&gt; &amp;#8211; a fantastic little static HTML page for testing HTTP APIs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Getting TokyoCabinet+pytc to work inside a &lt;a href=&#34;http://pypi.python.org/pypi/virtualenv/&#34;&gt;virtualenv&lt;/a&gt; was a bit tricky, so check out my &lt;code&gt;run.sh&lt;/code&gt; script if you&amp;#8217;re having trouble getting it to start.&lt;/p&gt;
+
+&lt;p&gt;Once you get it started, load okapi in your browser:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://localhost:8080/static/okapi.html&#34;&gt;http://localhost:8080/static/okapi.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;And then create a database by doing a POST like:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;http://localhost:8080/foo/&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;And finally store/get keys and values using GET and POST requests like:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;http://localhost:8080/foo/bar/&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;http://localhost:8080/foo/baz/&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Doing a GET request to a database URL lists keys.&lt;/p&gt;
+
+&lt;p&gt;At any rate, I had big dreams for building a system where you would store JSON, specify indexes on certain keys, and the server would maintain those indexes for you by creating ad hoc TokyoCabinet databases.&lt;/p&gt;
+
+&lt;p&gt;Instead I ended up wasting most of my time learning how to write a low-level WSGI app. I should have just used CherryPy or Django from the beginning, but I had never written a pure WSGI app before. It was a good lesson even if it meant not getting some of my features implemented.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;ll probably keep playing with this idea, but the next version will probably be based on some existing framework. Parsing &lt;code&gt;environ[&#39;PATH_INFO&#39;]&lt;/code&gt; and running &lt;code&gt;start_response(...)&lt;/code&gt; manually gets old fast.&lt;/p&gt;
+
+&lt;p&gt;fapws3 is pretty neat, but had lots of annoying rough edges. I had to manually create a &lt;code&gt;README&lt;/code&gt; file because its setup.py expects one to exist. Then I had to manually allow DELETE HTTP methods in fapws/base.py, otherwise it would return an HTML error message for me! That was a bit shocking since I was working under the assumption fapws3 is just a low-level HTTP/WSGI server.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Update&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;[If you&amp;#8217;re new to TokyoCabinet, I posted my presentation on it that I did at Portland Python meetup][9].&lt;/li&gt;
+&lt;li&gt;Someone want to benchmark this for me? Might be interesting since its made with the fastest libs available in Python for their respective tasks. I&amp;#8217;m just feeling lazy at this point. &lt;img src=&#34;http://localhost/wp-includes/images/smilies/simple-smile.png&#34; alt=&#34;:-)&#34; class=&#34;wp-smiley&#34; style=&#34;height: 1em; max-height: 1em;&#34; /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;[9]: &lt;a href=&#34;http://michael.susens-schurter.com/blog/2009/03/11/tokyo-cabinet-pytyrant-talk/&#34;&gt;http://michael.susens-schurter.com/blog/2009/03/11/tokyo-cabinet-pytyrant-talk/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>I Love Python: ZipFile Edition</title>
+      <link>/2009/07/08/i-love-python-zipfile-edition/</link>
+      <pubDate>Wed, 08 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/07/08/i-love-python-zipfile-edition/</guid>
+      <description>&lt;p&gt;For a client web project I needed to create a zip file containing a number of generated XML files. This isn&amp;#8217;t something I need to do very often, so I briefly considered just writing the XML files to disk and running a zip command. Ugly, but surely trying to dig up a pleasant Python zip library would be more work?&lt;/p&gt;
+
+&lt;p&gt;Turns out Python has had a wonderful zip library in its standard library since 1.6! The &lt;code&gt;&amp;lt;a href=&amp;quot;http://docs.python.org/library/zipfile.html&amp;quot;&amp;gt;zipfile&amp;lt;/a&amp;gt;&lt;/code&gt; module makes creating zip files a breeze:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;import os
+from zipfile import ZipFile, ZIP_DEFLATED
+
+from django.template.defaultfilters import slugify
+
+from somewhere_else import render_spam_xml, render_egg_xml
+
+ZIP_PATH = &#34;/some/system/path/for/zips&#34;
+
+def create_zip(spam):
+    spam_slug = slugify(spam.name)
+    filename = &#34;%s.zip&#34; % spam_slug
+    abspath = os.path.join(ZIP_PATH, filename)
+
+    # Create zip
+    z = ZipFile(abspath, &#34;w&#34;, ZIP_DEFLATED)
+
+    # Write spam xml directly to zip
+    z.writestr(&#34;%s.xml&#34; % spam_slug, render_spam_xml(spam))
+
+    # Write xml files to zip
+    for egg in spam.egg_set.all():
+        egg_slug = slugify(egg.name)
+
+        # Renders the egg object to an xml string
+        xml = render_egg_xml(egg)
+
+        # Note how easy it is to specify paths in the zip file:
+        z.writestr(&#34;eggs/%s.xml&#34; % egg_slug, xml)
+
+    # Zip file must be closed to be valid
+    z.close()
+    return abspath
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;small&gt;(Sorry for the Django bits in there, but they should be easy to replace.)&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;My favorite part is that you can use either the &lt;code&gt;ZipFile.write&lt;/code&gt; method to add files to the zip or the &lt;code&gt;ZipFile.writestr&lt;/code&gt; method to write bytes (strings in my case) directly to the zip file.&lt;/p&gt;
+
+&lt;p&gt;At any rate, just wanted to blog about it, so when I need to do it again in a few years I don&amp;#8217;t do something stupid like running the zip command.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Handy Python Progress for JSON module</title>
+      <link>/2009/04/26/handy-python-progress-for-json-module/</link>
+      <pubDate>Sun, 26 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/04/26/handy-python-progress-for-json-module/</guid>
+      <description>&lt;p&gt;I&amp;#8217;ve been spending a good deal of time the past couple of days processing large JSON files to try and fix some corrupted data (long story, short version: my fault). While JSON is a fast file format to work with, processing &amp;gt; 50 MB of any data format takes some time.&lt;/p&gt;
+
+&lt;p&gt;So to give myself some idea of what was going on, I whipped up a small progress bar for Python 2.6&amp;#8217;s &lt;a href=&#34;http://docs.python.org/library/json.html&#34;&gt;json&lt;/a&gt; module (works on [simplejson][2] if you&amp;#8217;re still using 2.&lt;sup&gt;4&lt;/sup&gt;&amp;frasl;&lt;sub&gt;2&lt;/sub&gt;.5):&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;import sys
+
+class JsonProgress(object):
+    def __init__(self):
+        self.count = 0
+
+    def __call__(self, obj):
+        self.count += 1
+        sys.stdout.write(&#34;\r%8d&#34; % self.count)
+        return obj
+&lt;/pre&gt;
+
+&lt;p&gt;And then use it as the object_hook when loading JSON:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;f = open(&#39;foo.json&#39;)
+foo = json.load(f, object_hook=JsonProgress())
+print &#34;\rDone&#34; # \r in the next line erases the progress output
+&lt;/pre&gt;
+
+&lt;p&gt;Although JsonProgress is a poor name since its also useful in generic list comprehensions:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;progress = JsonProgress()
+foo = [progress(x) for x in bar]
+print &#34;\nDone&#34; # \n prints a newline so the progress output is kept
+&lt;/pre&gt;
+
+&lt;p&gt;Obviously this is a performance hit, but still quite handy for personal use when you just want to know that &lt;em&gt;something&lt;/em&gt; is happening.&lt;/p&gt;
+
+&lt;p&gt;[2]: &lt;a href=&#34;http://pypi.python.org/pypi/simplejson&#34;&gt;http://pypi.python.org/pypi/simplejson&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>BitBucket Project for Python FusionCharts Code</title>
+      <link>/2009/04/08/bitbucket-project-python-fusioncharts/</link>
+      <pubDate>Wed, 08 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/04/08/bitbucket-project-python-fusioncharts/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://michael.susens-schurter.com/blog/2009/04/02/image-exporter-for-fusion-charts/&#34;&gt;After my last post on FusionCharts&lt;/a&gt;, someone was nice enough to e-mail me some a &lt;a href=&#34;http://djangoproject.com&#34;&gt;Django&lt;/a&gt; snippet for exporting &lt;a href=&#34;http://fusioncharts.com&#34;&gt;FusionCharts&lt;/a&gt; as images, so I decided I might as well put the code in a public repository.&lt;/p&gt;
+
+&lt;p&gt;While I prefer Bazaar out of all the DVCSes, it seems Mercurial has captured the hearts and minds of the Python empire, so I created the &lt;a href=&#34;http://bitbucket.org/schmichael/python-fusioncharts/&#34;&gt;python-fusioncharts project&lt;/a&gt; on [BitBucket][5].&lt;/p&gt;
+
+&lt;p&gt;If you use Python and FusionCharts, I&amp;#8217;d love to add more snippets!&lt;/p&gt;
+
+&lt;p&gt;[5]: &lt;a href=&#34;http://bitbucket.org/&#34;&gt;http://bitbucket.org/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Image Exporter for Fusion Charts</title>
+      <link>/2009/04/02/image-exporter-for-fusion-charts/</link>
+      <pubDate>Thu, 02 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/04/02/image-exporter-for-fusion-charts/</guid>
+      <description>&lt;p&gt;I wrote an image exporter for &lt;a href=&#34;http://www.fusioncharts.com/&#34;&gt;Fusion Charts&lt;/a&gt; while working for &lt;a href=&#34;http://www.polimetrix.com/&#34;&gt;YouGov/Polimetrix&lt;/a&gt;, and someone recently asked if they could use it as well.&lt;/p&gt;
+
+&lt;p&gt;You&amp;#8217;ll have to alter it a bit because it was written for a custom &lt;a href=&#34;http://cherrypy.org&#34;&gt;CherryPy&lt;/a&gt;-based framework. It works with Fusion Charts 3.1 (and 3.0 with trivial changes to the POST variables being read).&lt;/p&gt;
+
+&lt;p&gt;The only dependency is on [PIL][4]:&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;from StringIO import StringIO
+import Image
+import ImageColor
+
+import cherrypy
+
+def str2color(val):
+    return ImageColor.getrgb(&#39;#&#39;+val.ljust(6, &#39;0&#39;))
+
+class SaveImagePage(LoggedInPage):  # Custom framework specific -- remove
+    def control(self, page, meta_width=&#39;&#39;, meta_height=&#39;&#39;, meta_bgColor=&#39;ffffff&#39;, stream=&#39;&#39;):
+        # Convert 3.1 parameters to 3.0 style as they made more sense
+        width = meta_width
+        height = meta_height
+        bgcolor = meta_bgColor
+        data = stream
+
+        # Split the data into rows using ; as the spearator
+        rows = data.split(&#39;;&#39;)
+
+        # Create image
+        bgcolor = str2color(bgcolor)
+        im = Image.new(&#39;RGB&#39;, (int(width), int(height)), bgcolor)
+        imcore = im.load()
+
+        for y, row in enumerate(rows):
+            x = 0
+
+            # Split row into pixels
+            pixels = row.split(&#39;,&#39;)
+            for pixel in pixels:
+                # Split pixel into color and repeat value
+                color, repeat = pixel.split(&#39;_&#39;)
+                repeat = int(repeat)
+
+                if color == &#39;&#39;:
+                    # Empty color == background color
+                    color = bgcolor
+                else:
+                    # Pad color to 6 characters
+                    color = str2color(color)
+
+                while repeat:
+                    # Add pixels 1-at-a-time since putdata() doesn&#39;t work
+                    imcore[x, y] = color
+                    x += 1
+                    repeat -= 1
+
+        # Save image into file like object
+        imstr = StringIO()
+        im.save(imstr, &#39;PNG&#39;, quality=100)
+
+        # Set HTTP headers -- CherryPy specific code
+        cherrypy.response.headers[&#39;content-type&#39;] = &#39;image/png&#39;
+        cherrypy.response.headers[&#39;content-disposition&#39;] = \
+                &#39;attachment; filename=&#34;Chart.png&#39;
+
+        # Return image as string, your framework may be different
+        return imstr.getvalue()
+&lt;/pre&gt;
+
+&lt;p&gt;[4]: &lt;a href=&#34;http://www.pythonware.com/products/pil/&#34;&gt;http://www.pythonware.com/products/pil/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

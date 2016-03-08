@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Osbridge on </title>
+    <link>/tags/osbridge/</link>
+    <description>Recent content in Osbridge on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 18 Jun 2009 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/osbridge/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Web Server Shootout Slides</title>
+      <link>/2009/06/18/web-server-shootout-slides/</link>
+      <pubDate>Thu, 18 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/06/18/web-server-shootout-slides/</guid>
+      <description>&lt;p&gt;The &lt;a href=&#34;http://opensourcebridge.org/sessions/119&#34;&gt;presentation&lt;/a&gt; has been given.&lt;/p&gt;
+
+&lt;p&gt;The slides are available as &lt;a href=&#34;http://michael.susens-schurter.com/files/wss/wss.html&#34;&gt;HTML&lt;/a&gt; or [the source OpenOffice.org Impress file][3].&lt;/p&gt;
+
+&lt;p&gt;Thanks to everyone who attended, and thanks to the Open Source Bridge organizers for putting on an excellent conference!&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;small&gt;I have a bzr repository full of my log files I&amp;#8217;m considering uploading. Unfortunately the meanings of the log files are mostly in my head, so I think I should clean them up before unleashing them on the world. Ping me by &lt;a href=&#34;http://twitter.com/schmichael&#34;&gt;tweet&lt;/a&gt; or &lt;a href=&#34;mailto:michael+blog@susens-schurter.com&#34;&gt;e-mail&lt;/a&gt;.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;[3]: &lt;a href=&#34;http://michael.susens-schurter.com/files/wss.odp&#34;&gt;http://michael.susens-schurter.com/files/wss.odp&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Web Server Shootout Talk Accepted at OS Bridge Conference</title>
+      <link>/2009/04/26/web-server-shootout-talk-accepted-at-os-bridge-conference/</link>
+      <pubDate>Sun, 26 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/04/26/web-server-shootout-talk-accepted-at-os-bridge-conference/</guid>
+      <description>&lt;p&gt;My talk, &lt;a href=&#34;http://opensourcebridge.org/sessions/119&#34;&gt;Web Server Shootout&lt;/a&gt;, was accepted by the Open Source Bridge Conference! I&amp;#8217;m terribly excited, but also nervous because there&amp;#8217;s a lot I need to do between now and the conference. Expect regular updates on how my talk is progressing (always tagged with osbridge [feed]).&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href=&#34;http://opensourcebridge.org/2009/04/open-source-bridge-conference-confirmed-speakers/&#34;&gt;full list of sessions is up&lt;/a&gt; (or &lt;a href=&#34;http://opensourcebridge.org/events/2009/sessions&#34;&gt;here&lt;/a&gt;), and I&amp;#8217;m very excited just to be attending the conference. Congratulations to all of the speakers!&lt;/p&gt;
+
+&lt;p&gt;Some of the sessions I&amp;#8217;m particularly excited to attend are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://opensourcebridge.org/sessions/20&#34;&gt;An Introduction to Machine Learning by John Melesky&lt;/a&gt; &amp;#8211; A Portland Python User Group regular and really smart guy in general. Looking forward to getting my feet wet with machine learning.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://opensourcebridge.org/sessions/100&#34;&gt;Drop ACID and think about data by Bob Ippolito&lt;/a&gt; &amp;#8211; I think the Portland Python crew that went to Pycon helped convince Bob to bring his presentation to OS Bridge, and I&amp;#8217;m glad they did! I work with non-relational databases everyday, but I still design my apps with a relational data model in mind. This should be interesting.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://opensourcebridge.org/sessions/33&#34;&gt;The Linux Kernel Development model by Greg Kroah-Hartman&lt;/a&gt; &amp;#8211; Its &lt;a href=&#34;http://en.wikipedia.org/wiki/Greg_Kroah-Hartman&#34;&gt;Greg KH&lt;/a&gt;! Come on!&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://opensourcebridge.org/sessions/95&#34;&gt;How Idealist.org uses technology to change the world by Michel Pelletier&lt;/a&gt; &amp;#8211; Another Portland Pythoneer and really smart guy. Eager to here more about open source at work in an organization. Its always fun to watch Michel present anyway.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://opensourcebridge.org/sessions/36&#34;&gt;Web Testing with Windmill by Mikeal Rogers&lt;/a&gt; &amp;#8211; Hardly a day goes by that I don&amp;#8217;t tell myself I&amp;#8217;m going to improve my test coverage and skills. Windmill looks like an excellent testing tool to help me accomplish that.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There are many many more sessions I&amp;#8217;m excited about, but I&amp;#8217;m too sick of copying and pasting to mention anymore right now.&lt;/p&gt;
+
+&lt;p&gt;So [sign up to attend the Open Source Bridge Conference in Portland, OR this June!][10]&lt;/p&gt;
+
+&lt;p&gt;[10]: &lt;a href=&#34;http://opensourcebridge.org/attend/&#34;&gt;http://opensourcebridge.org/attend/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2nd OS Bridge Proposal: Django Introduction</title>
+      <link>/2009/03/30/2nd-os-bridge-proposal-django-introduction/</link>
+      <pubDate>Tue, 31 Mar 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/03/30/2nd-os-bridge-proposal-django-introduction/</guid>
+      <description>&lt;p&gt;I just posted my second talk proposal for the Open Source Bridge Conference:&lt;/p&gt;
+
+&lt;p&gt;[&lt;/p&gt;
+
+&lt;p&gt;Introduction to Django: The Who, What, and When]&lt;a href=&#34;http://opensourcebridge.org/proposals/120&#34;&gt;1&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[As with my other talk, Web Server Shootout,][2] I&amp;#8217;m not trying to convince anyone of anything. We&amp;#8217;re all already inundated with plenty of senseless marketing and fanboyism.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;d rather present my knowledge, experiences, mistakes, and opinions in an effort to help others make more intelligent decisions about the development platforms they choose to use.*&lt;/p&gt;
+
+&lt;p&gt;Let me know what you think!&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;small&gt;*If that was dripping with too much sappy altruism, do remember I get into the conference free if either proposal gets selected. 😉&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;[2]: &lt;a href=&#34;http://opensourcebridge.org/proposals/119&#34;&gt;http://opensourcebridge.org/proposals/119&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Crowdsourcing my OS Bridge Talk Proposal</title>
+      <link>/2009/03/29/crowdsourcing-my-os-bridge-talk-proposal/</link>
+      <pubDate>Mon, 30 Mar 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/03/29/crowdsourcing-my-os-bridge-talk-proposal/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; &lt;a href=&#34;http://opensourcebridge.org/proposals/119&#34;&gt;Submitted my proposal&lt;/a&gt;, but please still leave me comments! I can still edit my proposal.&lt;/p&gt;
+
+&lt;p&gt;Web server performance has been a hot topic for some time now as Apache hasn&amp;#8217;t been the only viable option for a few years.&lt;/p&gt;
+
+&lt;p&gt;I want to do a talk at &lt;a href=&#34;http://opensourcebridge.org/&#34;&gt;OS Bridge&lt;/a&gt; doing practical comparisons between the popular web site hosting options available today. There&amp;#8217;s plenty of requests per second comparisons between the major HTTP servers out there, so I want to go beyond and compare a wide variety of metrics in a wide variety of environments.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;#8217;s what I&amp;#8217;m thinking so far, but &lt;strong&gt;I&amp;#8217;d love your feedback!&lt;/strong&gt; I&amp;#8217;m really excited about the possibility of presenting at a large conference like OS Bridge and want to make my talk as exciting and useful as possible.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Metrics&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Requests per second (serially* and concurrent)&lt;/li&gt;
+&lt;li&gt;Memory usage&lt;/li&gt;
+&lt;li&gt;Features (extensibility, modularity, etc)&lt;/li&gt;
+&lt;li&gt;Community (support options, tools/modules available, etc)&lt;/li&gt;
+&lt;li&gt;Portability&lt;/li&gt;
+&lt;li&gt;Reliability (can I crash it? how well does it handle load?)&lt;/li&gt;
+&lt;li&gt;Ease of setup and maintenance (floods of patches? hideous config file?)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Web Servers&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The usual suspects (will definitely test):&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://httpd.apache.org/&#34;&gt;Apache&lt;/a&gt; 2.2 (prefork &lt;em&gt;and&lt;/em&gt; worker mpms)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://nginx.net/&#34;&gt;Nginx&lt;/a&gt; 0.6.x (latest stable)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.lighttpd.net/&#34;&gt;Lighttpd&lt;/a&gt; 1.4.x (latest stable)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Maybes:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Nginx 0.5.x (legacy)&lt;/li&gt;
+&lt;li&gt;Nginx 0.7.x (latest dev)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cherokee-project.com/&#34;&gt;Cherokee&lt;/a&gt; (not sure if its really popular enough yet to bother)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cherrypy.org&#34;&gt;CherryPy&lt;/a&gt; and some other language specific or just less known servers would be fun.&lt;/li&gt;
+&lt;li&gt;IIS &amp;#8211; It&amp;#8217;d be really fun if I could find someone willing to help me run my tests on IIS. I definitely won&amp;#8217;t be setting it up myself though!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Test Cases&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This is where things become &lt;em&gt;really&lt;/em&gt; complicated. I don&amp;#8217;t want to just download static files from each server and pretend like thats a real world use case, but at the same time the various environments I could come up with are nearly limitless.&lt;/p&gt;
+
+&lt;p&gt;I want to strive to cover the most common environments** as well as a few variations that produce interesting results.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://wordpress.org/&#34;&gt;WordPress&lt;/a&gt; (mod-php where applicable and FastCGI)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://drupal.org/&#34;&gt;Drupal&lt;/a&gt; (mod-php where applicable and FastCGI)&lt;/li&gt;
+&lt;li&gt;Bugzilla, Redmine, and Trac (to test a few non-trivial apps from 3 popular languages)&lt;/li&gt;
+&lt;li&gt;trivial &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; app (mod-python &amp;amp; mod-wsgi on Apache, FastCGI everywhere)&lt;/li&gt;
+&lt;li&gt;trivial &lt;a href=&#34;http://rubyonrails.org/&#34;&gt;Ruby on Rails&lt;/a&gt; app (need advice from RoR devs on common deployment methods)&lt;/li&gt;
+&lt;li&gt;trivial Zend Framework app (or is there a more popular php framework?)&lt;/li&gt;
+&lt;li&gt;something from the Java world?&lt;/li&gt;
+&lt;li&gt;maybe something fairly obscure like &lt;a href=&#34;http://www.seaside.st/&#34;&gt;Seaside&lt;/a&gt;?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Conclusion&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Wow, that seems like a lot to cover thoroughly, but I think the research will be a lot of fun to do.&lt;/p&gt;
+
+&lt;p&gt;Please let me know your thoughts either in the comments, on &lt;a href=&#34;http://twitter.com/schmichael&#34;&gt;twitter (@schmichael)&lt;/a&gt;, on &lt;a href=&#34;http://opensourcebridge.org/2009/03/open-source-bridge-is-on-irc/&#34;&gt;IRC (schmichael again)&lt;/a&gt;, or via [e-mail][15].&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;br /&gt; * Its interesting to compare &lt;em&gt;serial&lt;/em&gt; to &lt;em&gt;parallel&lt;/em&gt; req/sec to give people an idea of how well the technology will scale &lt;em&gt;on a single server&lt;/em&gt;. I&amp;#8217;ll make sure to note good serial performance can often be turned into good parallel performance by using a load balancing proxy and multiple instances of your application server.&lt;br /&gt; ** All Linux based for simplicity unless someone volunteers to run the tests on other platforms.&lt;br /&gt; &lt;/small&gt;&lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;[15]: mailto:michael+osbridge@susens-schurter.com&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ipython on </title>
+    <link>/tags/ipython/</link>
+    <description>Recent content in Ipython on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 11 Apr 2008 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/ipython/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>History Meme</title>
+      <link>/2008/04/11/history-meme/</link>
+      <pubDate>Fri, 11 Apr 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/04/11/history-meme/</guid>
+      <description>&lt;p&gt;For some reason I find this meme interesting&amp;#8230; I don&amp;#8217;t know why I find it interesting, but at least its brief.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Home Office Computer&lt;/strong&gt; (Debian Unstable)&lt;/p&gt;
+
+&lt;pre lang=&#34;bash&#34;&gt;$ history|awk &#39;{a[$2]++} END{for(i in a){printf &#34;%5d\t%s\n&#34;,a[i],i}}&#39;|sort -rn|head
+   99   sudo
+   80   cd
+   59   ssh
+   52   vi
+   47   ls
+   19   cat
+   17   ipython2.5
+   12   svn
+   12   man
+    8   host&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Server I do most of my work on these days&amp;#8230;&lt;/strong&gt; (Ubuntu 6.10)&lt;/p&gt;
+
+&lt;pre lang=&#34;bash&#34;&gt;$ history|awk &#39;{a[$2]++} END{for(i in a){printf &#34;%5d\t%s\n&#34;,a[i],i}}&#39;|sort -rn|head
+  288   vi
+  108   svn
+   59   cd
+   15   ls
+    8   screen
+    4   grep
+    2   sudo
+    2   mv
+    2   make
+    2   cat&lt;/pre&gt;
+
+&lt;p&gt;I haven&amp;#8217;t seen &lt;code&gt;ipython&lt;/code&gt; on anyone else&amp;#8217;s yet. I&amp;#8217;m constantly hopping in &amp;amp; out of ipython to test things.&lt;/p&gt;
+
+&lt;p&gt;On the GUI side of things I use Gnome, Firefox, Epiphany, Gnome-Terminal, Banshee, Pidgin, and NetworkManager every day.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Postgresql on </title>
+    <link>/categories/postgresql/</link>
+    <description>Recent content in Postgresql on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 09 Oct 2007 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/categories/postgresql/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>PostgreSQL 8.3 Beta</title>
+      <link>/2007/10/09/postgresql-83-beta/</link>
+      <pubDate>Tue, 09 Oct 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/2007/10/09/postgresql-83-beta/</guid>
+      <description>&lt;p&gt;&lt;small&gt;Warning: &lt;abbr title=&#34;I Am Not A DataBase Administrator&#34;&gt;IANADBA&lt;/abbr&gt;&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;I was just reading the &lt;a href=&#34;http://www.postgresql.org/docs/8.3/static/release-8-3.html&#34;&gt;release notes for PostgreSQL 8.3 beta1&lt;/a&gt;, and there&amp;#8217;s quite a lot of exciting improvements coming:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Full text search is now a built-in feature&lt;/li&gt;
+&lt;li&gt;Support for the SQL/XML standard, including a new xml builtin data type &lt;em&gt;(For the enterprisy users)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;enum data types &lt;em&gt;(I&amp;#8217;m not a big fan of enums in a database, but lots of people like them.)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;UUID data type, similar to that defined by [RFC 4122][2]. &lt;em&gt;(Very useful feature in some clustering situations. Some people even argue GUIDs/UUIDs should replace integer surrogate keys most of the time.)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;ORDER BY &amp;#8230; NULLS FIRST/LAST &lt;em&gt;(A minor little feature, but I remember wishing for it once upon a time.)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;And some excellent performance improvements, especially if you&amp;#8217;re data doesn&amp;#8217;t have to be flushed to disk to finish a transaction (potentially dangerous, but acceptable for many use cases).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;While I haven&amp;#8217;t had the pleasure of using PostgreSQL for a few months, I prefer it over MySQL and recommend it to anyone looking for an open source database with advanced features and excellent reliability.&lt;/p&gt;
+
+&lt;p&gt;[2]: &lt;a href=&#34;http://www.ietf.org/rfc/rfc4122.txt&#34;&gt;http://www.ietf.org/rfc/rfc4122.txt&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Debian Etch Released</title>
+      <link>/2007/04/08/debian-etch-released/</link>
+      <pubDate>Sun, 08 Apr 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/2007/04/08/debian-etch-released/</guid>
+      <description>&lt;p&gt;It &lt;a href=&#34;http://www.debian-administration.org/articles/514&#34;&gt;appears&lt;/a&gt; &lt;a href=&#34;http://www.debian.org/releases/etch/releasenotes&#34;&gt;Debian GNU/Linux 4.0, codenamed Etch,&lt;/a&gt; (quite a mouthful) &lt;a href=&#34;http://www.debian.org/News/2007/20070408&#34;&gt;has been released as the latest stable version of Debian&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Go &lt;a href=&#34;http://www.debian.org/CD/torrent-cd/&#34;&gt;download it using BitTorrent to be cool&lt;/a&gt;. 😉&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Tip #1:&lt;/strong&gt;Â  You do &lt;em&gt;&lt;strong&gt;not&lt;/strong&gt;&lt;/em&gt; have to download all of the CDs, just get one and Debian&amp;#8217;s installer will download the rest.)&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;m a happy and loyal Debian user and strongly encourage any Linux power users to try out Etch. &lt;a href=&#34;http://www.ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt; is still my recommendation for users who want things to &amp;#8220;Just Work.&amp;#8221; However, I highly recommend Debian for any kind of server (file, print, application, database, web, e-mail).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Tip #2:&lt;/strong&gt; Check out &lt;a href=&#34;http://www.debian-multimedia.org/&#34;&gt;Debian Multimedia&lt;/a&gt; for all of your proprietary codec needs!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Mini-Review&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;ve been using Etch (and Sid) for a while now, so its tough to do a real review from a &amp;#8220;normal&amp;#8221; end user&amp;#8217;s perspective.&lt;/p&gt;
+
+&lt;p&gt;Some highlights:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Developer&amp;#8217;s should be happy as &lt;a href=&#34;http://php.net/&#34;&gt;PHP,&lt;/a&gt; &lt;a href=&#34;http://python.org/&#34;&gt;Python&lt;/a&gt;, &lt;a href=&#34;http://mono-project.com/&#34;&gt;Mono,&lt;/a&gt; &lt;a href=&#34;http://mysql.com/&#34;&gt;MySQL,&lt;/a&gt; and &lt;a href=&#34;http://www.postgresql.org/&#34;&gt;PostgreSQL&lt;/a&gt; are all fairly up-to-date and extremely easy to install.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.gnome.org/&#34;&gt;Gnome&lt;/a&gt; is stable and speedy.&lt;/li&gt;
+&lt;li&gt;The &lt;a href=&#34;http://wiki.debian.org/DebianInstaller/GUI&#34;&gt;graphical installer&lt;/a&gt; brings Debian out of the 1990s and offers tons of features.&lt;/li&gt;
+&lt;li&gt;As usual, Debian&amp;#8217;s package repository is &lt;em&gt;huge&lt;/em&gt;. Forget vendor-supplied RPMs or custom installers, if its not in Debian&amp;#8217;s repository (or Debian Multimedia), you probably don&amp;#8217;t need it. 😉&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Some downsides:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Relatively ancient version of the standard C library (2.3.6) means &lt;a href=&#34;http://thomas.apestaart.org/log/?p=457&#34;&gt;poor compatibility with 3rd party binaries&lt;/a&gt; (which Debian has always hated anyway).&lt;/li&gt;
+&lt;li&gt;Gnome is 2 stable versions behind in Debian (2.14 vs. 2.18). This is very frustrating as Gnome constantly produces nice incremental improvements.&lt;/li&gt;
+&lt;li&gt;Debian just isn&amp;#8217;t as easy to use by default as Ubuntu. Debian needs to install and integrate some of the more cutting edge desktop apps like &lt;a href=&#34;http://beagle-project.org&#34;&gt;Beagle&lt;/a&gt;, &lt;a href=&#34;http://www.gnome.org/projects/tomboy/&#34;&gt;Tomboy&lt;/a&gt;, &lt;a href=&#34;http://raphael.slinckx.net/deskbar/&#34;&gt;Deskbar&lt;/a&gt;, and Ubuntu&amp;#8217;s nicer package management interfaces.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://wiki.debian.org/SecureApt&#34;&gt;Secure APT&lt;/a&gt; is a &lt;em&gt;great&lt;/em&gt; feature, but the error messages it can produce are going to scare the pants off of new users. More effort needs to be made to integrate all of the various places user&amp;#8217;s encounter public key crypto. Right now its very schizophrenic and confusing: GPG errors are too common, and command line magic that even confuses me is necessary to add new repositories.&lt;/li&gt;
+&lt;li&gt;Not related to the release, Debian&amp;#8217;s support system is a confusing jumble of web interfaces, mailing lists, IRC channels, and &lt;a href=&#34;http://wiki.debian.org&#34;&gt;an excellent wiki&lt;/a&gt; (that I rarely remember to use). Hopefully this is something a new [Debian DPL][20] will address.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;[20]: &lt;a href=&#34;http://wiki.debian.org/DebianProjectLeader?action=show&amp;amp;redirect=DPL&#34;&gt;http://wiki.debian.org/DebianProjectLeader?action=show&amp;amp;redirect=DPL&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>PostgreSQL Killed My Harddrive</title>
+      <link>/2007/03/14/postgresql-killed-my-harddrive/</link>
+      <pubDate>Wed, 14 Mar 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/2007/03/14/postgresql-killed-my-harddrive/</guid>
+      <description>&lt;p&gt;The harddrive died in the server that dumps our firewall&amp;#8217;s syslog output into a nice &lt;a href=&#34;http://www.postgresql.org&#34;&gt;PostgreSQL&lt;/a&gt; database for easy reporting. PostgreSQL didn&amp;#8217;t do anything evil in order to kill the drive, but because &lt;a href=&#34;http://developer.postgresql.org/pgdocs/postgres/runtime-config-wal.html&#34;&gt;it syncs data to the harddrive for safety&lt;/a&gt;, it kept my ancient server&amp;#8217;s harddrive spinning &lt;sup&gt;24&lt;/sup&gt;&amp;frasl;&lt;sub&gt;7&lt;/sub&gt;.&lt;/p&gt;
+
+&lt;p&gt;I should mention this was my fault. I really should have &lt;a href=&#34;http://www.postgresql.org/docs/8.1/interactive/runtime-config-wal.html&#34;&gt;turned fsync off&lt;/a&gt; to let the server cache the trickle of ICMP packets that keep our firewall awake all night. Instead the old Quantum Fireball Plus LM harddrive wrote every byte right as it came in.&lt;/p&gt;
+
+&lt;p&gt;Luckily the harddrive still worked enough that I could attach it to another computer via a IDE-USB adapter and copy off any data I wanted to keep.&lt;/p&gt;
+
+&lt;p&gt;Below are the SMART statistics for the drive as collected by &lt;a href=&#34;http://smartmontools.sourceforge.net/&#34;&gt;smartmontools&lt;/a&gt; and &lt;a href=&#34;http://munin.projects.linpro.no/&#34;&gt;munin&lt;/a&gt;. As I was able to retrieve data off the disk, I would say SMART did its job even if it didn&amp;#8217;t give me much warning.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://michael.susens-schurter.com/blog/wp-content/uploads/2007/03/moodletremontlocal-smart_hda-day.png&#34; title=&#34;moodletremontlocal-smart_hda-day.png&#34;&gt;&lt;img src=&#34;http://michael.susens-schurter.com/blog/wp-content/uploads/2007/03/moodletremontlocal-smart_hda-day.png&#34; alt=&#34;moodletremontlocal-smart_hda-day.png&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://michael.susens-schurter.com/blog/wp-content/uploads/2007/03/moodletremontlocal-smart_hda-month.png&#34; title=&#34;moodletremontlocal-smart_hda-month.png&#34;&gt;&lt;img src=&#34;http://michael.susens-schurter.com/blog/wp-content/uploads/2007/03/moodletremontlocal-smart_hda-month.png&#34; alt=&#34;moodletremontlocal-smart_hda-month.png&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Connecting SQLObjects to PostgreSQL via SSL</title>
+      <link>/2007/03/07/connecting-sqlobjects-to-postgresql-via-ssl/</link>
+      <pubDate>Wed, 07 Mar 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/2007/03/07/connecting-sqlobjects-to-postgresql-via-ssl/</guid>
+      <description>&lt;p&gt;I&amp;#8217;m trying to learn &lt;a href=&#34;http://www.turbogears.org/&#34;&gt;TurboGears,&lt;/a&gt; but I got stumped yesterday trying to figure out how to connect to PostgreSQL via SSL.&lt;/p&gt;
+
+&lt;p&gt;Turns out this works in &lt;a href=&#34;http://www.sqlobject.org/&#34;&gt;SQLObject&lt;/a&gt; (TurboGear&amp;#8217;s default ORM):&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;sqlobject.dburi=&amp;quot;postgres://username:pass@servername/mydb sslmode=require&amp;quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Turns out the syntax I was trying to use works with [SQLAlchemy]&lt;a href=&#34;which it appears most cool kids use&#34;&gt;3&lt;/a&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;postgres://username:pass@servername/mydb&lt;/code&gt;&lt;code&gt;&amp;lt;strong&amp;gt;?&amp;lt;/strong&amp;gt;sslmode=require&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Notice the only difference is the question mark between the database and extra parameters. Kind of makes me want to cry&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;To all my friends who have listened to me extol the virtues of Python, let me also add that &lt;strong&gt;learning a new framework sucks&lt;/strong&gt;. Especially when that framework is a moving target.&lt;/p&gt;
+
+&lt;p&gt;[3]: &lt;a href=&#34;http://www.sqlalchemy.org&#34;&gt;http://www.sqlalchemy.org&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>PostgreSQL 8.2 Released</title>
+      <link>/2006/12/06/postgresql-82-released/</link>
+      <pubDate>Wed, 06 Dec 2006 00:00:00 +0000</pubDate>
+      
+      <guid>/2006/12/06/postgresql-82-released/</guid>
+      <description>&lt;p&gt;Just noticed &lt;a href=&#34;http://www.postgresql.org/docs/8.2/static/release-8-2.html&#34;&gt;PostgreSQL 8.2 was released yesterday&lt;/a&gt;. I chose PostgreSQL 8.x for a large project when MySQL 5 either wasn&amp;#8217;t out or was too new for my comfort.&lt;/p&gt;
+
+&lt;p&gt;I learned database application programming on MySQL, but now I choose PostgreSQL whenever I have the option. PostrgeSQL is just packed with features that MySQL either doesn&amp;#8217;t have or just recently implemented so you need a cutting edge version.&lt;/p&gt;
+
+&lt;p&gt;It seems to me that PostgreSQL has a much better user community as well. I know there are many excellent DBA&amp;#8217;s using MySQL, but the MySQL community seems dominated by PHP hackers who found MySQL pre-installed on their $5/mo. shared hosting account.&lt;/p&gt;
+
+&lt;p&gt;If you&amp;#8217;ve never tried PostgreSQL, I highly recommend it, especially if you&amp;#8217;ve ever implemented &lt;em&gt;autonumber tables&lt;/em&gt; in MySQL to get around flaky autonumber generation. PostgreSQL uses &lt;em&gt;sequences&lt;/em&gt; which are basically single field/row tables for maintaining autonumbers. There are a number of &lt;a href=&#34;http://www.postgresql.org/docs/8.2/interactive/functions-sequence.html&#34;&gt;sequence related functions in PostgreSQL&lt;/a&gt; that makes work with autonumbers not only easy, but also predictable.&lt;/p&gt;
+
+&lt;p&gt;Oh and [pgAdmin III][3] beats MySQL&amp;#8217;s awkward and buggy GUI offerings any day.&lt;/p&gt;
+
+&lt;p&gt;[3]: &lt;a href=&#34;http://www.pgadmin.org/&#34;&gt;http://www.pgadmin.org/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>SchoolWorks on Linux: Part 1 of Many</title>
+      <link>/2006/09/06/schoolworks-on-linux-part-1-of-many/</link>
+      <pubDate>Thu, 07 Sep 2006 00:00:00 +0000</pubDate>
+      
+      <guid>/2006/09/06/schoolworks-on-linux-part-1-of-many/</guid>
+      <description>&lt;p&gt;Now that &lt;a href=&#34;http://www.schoolworksinc.com/&#34;&gt;SchoolWorks&lt;/a&gt; has officially been released, I guess I can begin posting about my attempts to get it running on Linux.&lt;/p&gt;
+
+&lt;p&gt;First of all SchoolWorks is school administration software (or &lt;a href=&#34;http://en.wikipedia.org/wiki/Student_information_system&#34;&gt;SIS&lt;/a&gt;) built using:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://msdn.microsoft.com/asp.net/&#34;&gt;ASP.NET&lt;/a&gt; 2.0 (in Windows using &lt;a href=&#34;http://msdn.microsoft.com/vstudio/&#34;&gt;Microsoft Visual Studio&lt;/a&gt; 2005)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.postgresql.org/&#34;&gt;PostgreSQL&lt;/a&gt; (thanks to &lt;a href=&#34;http://pgfoundry.org/projects/npgsql&#34;&gt;Npgsql&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Crystal Reports (great for report designers, &lt;a href=&#34;http://blogs.synthesyssolutions.com/michael/2006/08/23/never-use-crystal-reports-again/&#34;&gt;abhorrent for developers&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We also used the following support tools:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.bugzilla.org/&#34;&gt;Bugzilla&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://subversion.tigris.org/&#34;&gt;Subversion&lt;/a&gt; and &lt;a href=&#34;http://tortoisesvn.net/&#34;&gt;TortoiseSVN&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.pgadmin.org/&#34;&gt;PgAdmin III&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;While Visual Studio and ASP.NET can be frustrating at times, the only part of SchoolWorks that I avoid like the plague is working with Crystal Reports.&lt;/p&gt;
+
+&lt;p&gt;Recently I&amp;#8217;ve been trying to build SchoolWorks using &lt;a href=&#34;http://www.mono-project.com/&#34;&gt;Mono&lt;/a&gt; on Linux. I&amp;#8217;ve successfully &lt;a href=&#34;http://www.mono-project.com/&#34;&gt;built Mono&lt;/a&gt; (libgdiplus + mono + mcs + xsp) on my personal &lt;a href=&#34;http://www.debian.org/releases/etch/&#34;&gt;Debian Etch&lt;/a&gt;, but I haven&amp;#8217;t gotten much of SchoolWorks to compile yet.&lt;/p&gt;
+
+&lt;p&gt;The first missing feature was &lt;a href=&#34;http://msdn2.microsoft.com/en-us/library/system.decimal.tryparse.aspx&#34;&gt;Decimal.TryParse&lt;/a&gt; which we use a lot in SchoolWorks. [I submitted (my very first!) patch to the mono-devel mailing list in hopes of getting support for Decimal.TryParse added][15].&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;ll try to keep posting my progress as it should be interesting to SchoolWorks users as well as .NET/Mono developers.&lt;/p&gt;
+
+&lt;p&gt;[15]: &lt;a href=&#34;http://lists.ximian.com/pipermail/mono-devel-list/2006-September/020302.html&#34;&gt;http://lists.ximian.com/pipermail/mono-devel-list/2006-September/020302.html&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Missing MySQL’s REPLACE (aka MERGE) in PostgreSQL</title>
+      <link>/2006/07/13/missing-mysqls-replace-aka-merge-in-postgresql/</link>
+      <pubDate>Thu, 13 Jul 2006 00:00:00 +0000</pubDate>
+      
+      <guid>/2006/07/13/missing-mysqls-replace-aka-merge-in-postgresql/</guid>
+      <description>&lt;p&gt;When Synthesys first decided to go with PostgreSQL as the database for a large web application, I was very excited to get away from our usual reliance on MySQL and move to a &lt;em&gt;real&lt;/em&gt; database platform.&lt;/p&gt;
+
+&lt;p&gt;Once we figured out the whole MySQL auto_increment vs. &lt;a href=&#34;http://www.postgresql.org/docs/8.1/interactive/datatype.html#DATATYPE-SERIAL&#34;&gt;PostgreSQL SERIAL&lt;/a&gt;, the first thing we really missed in PostgreSQL was the REPLACE statement. I understand why its missing, and it is kind of a hack of a SQL statement (its not in a SQL standard).&lt;/p&gt;
+
+&lt;p&gt;Turns out in the &lt;a href=&#34;http://www.varlena.com/GeneralBits/73.php&#34;&gt;SQL 2003 Standard there is a statement similar to REPLACE called MERGE&lt;/a&gt;. Despite PostgreSQL&amp;#8217;s excellent support for standards, they &lt;a href=&#34;http://www.postgresql.org/docs/8.1/interactive/unsupported-features-sql-standard.html&#34;&gt;have not implemented MERGE&lt;/a&gt;. I would guess it has something to do with the ambiguity of the statement.&lt;/p&gt;
+
+&lt;p&gt;At any rate I still love working with PostgreSQL, and for what its worth [Npgsql is an excellent PostgreSQL connector for Mono/.Net][4]. (Even in RC/Beta state)&lt;/p&gt;
+
+&lt;p&gt;[4]: &lt;a href=&#34;http://pgfoundry.org/projects/npgsql/&#34;&gt;http://pgfoundry.org/projects/npgsql/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Connecting Crystal Reports XI Standard to PostgreSQL</title>
+      <link>/2006/05/22/connecting-crystal-reports-xi-standard-to-postgresql/</link>
+      <pubDate>Mon, 22 May 2006 00:00:00 +0000</pubDate>
+      
+      <guid>/2006/05/22/connecting-crystal-reports-xi-standard-to-postgresql/</guid>
+      <description>&lt;p&gt;At &lt;a href=&#34;http://www.synthesyssolutions.com/&#34;&gt;Synthesys&lt;/a&gt; we&amp;#8217;re using &lt;a href=&#34;http://www.postgresql.org/&#34;&gt;PostgreSQL&lt;/a&gt; as the database for a large web application.ï¿½ For the time being we&amp;#8217;re writing our reports in Crystal Reports, although we&amp;#8217;re hoping to move to a free platform in the future.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately we only have &lt;a href=&#34;http://www.businessobjects.com/products/reporting/crystalreports/standard/default.asp&#34;&gt;Crystal Reports XI &lt;em&gt;&lt;strong&gt;Standard Edition&lt;/strong&gt;&lt;/em&gt;&lt;/a&gt; which evidently doesn&amp;#8217;t support ODBC connections.ï¿½ Crystal wants you to buy the Professional Edition to get that kind of &lt;em&gt;enterprise&lt;/em&gt; functionality.&lt;/p&gt;
+
+&lt;p&gt;Our first attempt to get the two talking consisted of using &lt;strong&gt;Microsoft Access&amp;#8217;s External Table Linking capability&lt;/strong&gt;.ï¿½ While this was &lt;strong&gt;horrifying&lt;/strong&gt; in concept, it actually worked beautifully until you needed to sort by a PostgreSQL &lt;em&gt;text&lt;/em&gt; field.ï¿½ Microsoft Access read &lt;em&gt;text&lt;/em&gt; fields as &lt;em&gt;memo&lt;/em&gt; fields, and you can&amp;#8217;t sort by &lt;em&gt;memo&lt;/em&gt; fields.&lt;/p&gt;
+
+&lt;p&gt;So back to the drawing board.ï¿½ Our next attempt was to use &lt;a href=&#34;http://pgfoundry.org/projects/oledb/&#34;&gt;&lt;strong&gt;PgOleDb&lt;/strong&gt;&lt;/a&gt; in hopes that Crystal allowed that.ï¿½ For some reason Crystal allows OLE connections, but not ODBC.ï¿½ However, whenever we tried to add a table to a report, we received an OLE/ADO error.ï¿½ Have I mentioned I hate Window&amp;#8217;s data access technologies?ï¿½ Well I do.&lt;/p&gt;
+
+&lt;p&gt;Our final attempt consisted of connecting to &lt;strong&gt;ODBC through OLE&lt;/strong&gt;.ï¿½ I don&amp;#8217;t know why this is possible, but it is.ï¿½ Not only is it possible, but it works beautifully.&lt;/p&gt;
+
+&lt;p&gt;For some bizarre reason &lt;strong&gt;you can connect to a PostgreSQL database from Crystal Reports XI Standard Edition if you use an OLE wrapper around a PostgreSQL ODBC connection.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Many thanks to [psqlODBC][5], and no thanks to Crystal.&lt;/p&gt;
+
+&lt;p&gt;[5]: &lt;a href=&#34;http://pgfoundry.org/projects/psqlodbc/&#34;&gt;http://pgfoundry.org/projects/psqlodbc/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>OpenIT Progress</title>
+      <link>/2006/01/24/openit-progress/</link>
+      <pubDate>Wed, 25 Jan 2006 00:00:00 +0000</pubDate>
+      
+      <guid>/2006/01/24/openit-progress/</guid>
+      <description>&lt;p&gt;I&amp;#8217;ve been keeping up a good pace of bug fixing in &lt;a href=&#34;https://sourceforge.net/projects/openit&#34;&gt;OpenIT&lt;/a&gt; thanks to user bug reports. I&amp;#8217;m really getting bitter about using &lt;a href=&#34;http://www.mysql.com&#34;&gt;MySQL&lt;/a&gt; 4.0, especially after we&amp;#8217;ve started using &lt;a href=&#34;http://www.postgresql.org&#34;&gt;PostgreSQL&lt;/a&gt; for a new project at Synthesys.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.postgresql.org/docs/8.1/interactive/tutorial-views.html&#34;&gt;Views&lt;/a&gt;? &lt;a href=&#34;http://www.postgresql.org/docs/8.1/interactive/tutorial-fk.html&#34;&gt;Foreign Key Constraints&lt;/a&gt;? [Cascading UPDATEs and DELETEs][6]? I&amp;#8217;ve had to implement these in PHP! Lord have mercy on my soul. While I appreciate how easy MySQL is to install and use, after using PostgreSQL for just a short while I&amp;#8217;m ready to drop MySQL and never look back.&lt;/p&gt;
+
+&lt;p&gt;[6]: &lt;a href=&#34;http://www.postgresql.org/docs/8.1/interactive/ddl-constraints.html#DDL-CONSTRAINTS-FK&#34;&gt;http://www.postgresql.org/docs/8.1/interactive/ddl-constraints.html#DDL-CONSTRAINTS-FK&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

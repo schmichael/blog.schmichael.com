@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bzr on </title>
+    <link>/tags/bzr/</link>
+    <description>Recent content in Bzr on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 26 Feb 2009 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/bzr/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Bazaar: DVCS for Dummies</title>
+      <link>/2009/02/26/bazaar-dvcs-for-dummies/</link>
+      <pubDate>Thu, 26 Feb 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/02/26/bazaar-dvcs-for-dummies/</guid>
+      <description>&lt;p&gt;I like &lt;a href=&#34;http://bazaar-vcs.org/&#34;&gt;Bazaar (bzr)&lt;/a&gt;. It doesn&amp;#8217;t make me popular in the &lt;a href=&#34;http://www.selenic.com/mercurial/&#34;&gt;Mercurial&lt;/a&gt;-centric Pythonosphere. It doesn&amp;#8217;t make me a 1337 Ã¼ber hacker like &lt;a href=&#34;http://whygitisbetterthanx.com/&#34;&gt;git&lt;/a&gt; would.&lt;/p&gt;
+
+&lt;p&gt;However, it does meet the most important criteria: &lt;strong&gt;It just works&lt;/strong&gt; &lt;em&gt;for me&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now for the big disclaimer: Most of the projects I use bzr to manage fall into 1 of 2 categories:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Projects with small teams (1-4 developers)&lt;/li&gt;
+&lt;li&gt;Public projects where I just want to grab the source and maybe maintain some local patches&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;If I needed to somehow manage a project with dozens or hundreds of contributors (like Gnome or the Linux Kernel), git would probably look a lot more appealing to me. After all, it was designed for large code bases with lots of contributors and branches.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;ve seen lots of &lt;a href=&#34;http://www.nardol.org/2009/2/19/git-basics-reversing-the-git-sucks-effect&#34;&gt;git cookbooks popping up lately&lt;/a&gt;, so I thought I&amp;#8217;d explain my bzr workflow for the 2 use cases I list above.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1. Starting and sharing a project with a small team&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Prerequisite: You&amp;#8217;ve created a directory with some code in it.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Turn your source code directory into a bzr repository: &lt;pre lang=&#34;bash&#34;&gt;~/src/foo$ bzr init&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Add you source files: &lt;pre lang=&#34;bash&#34;&gt;~/src/foo$ bzr add&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Commit: &lt;pre lang=&#34;bash&#34;&gt;~/src/foo$ bzr ci&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Push my changes to a remote location* other team members can access: &lt;pre lang=&#34;bash&#34;&gt;~/src/foo$ bzr push &amp;ndash;remember sftp://some/file/server&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Done! My favorite part is that besides the &lt;code&gt;--remember&lt;/code&gt; option, bzr just does what you expect without any flags or configuring. The &lt;code&gt;--remember&lt;/code&gt; option simply tells bzr to use that location for future &lt;code&gt;push&lt;/code&gt; commands (so you can drop all the typing after &amp;#8220;push&amp;#8221;).&lt;/p&gt;
+
+&lt;p&gt;For more information check out the &lt;a href=&#34;http://doc.bazaar-vcs.org/bzr.dev/en/user-guide/index.html#sharing-with-peers&#34;&gt;excellent bazaar documentation on sharing code&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2. Getting the code for an open source project&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Unfortunately most big bzr-hosted projects are on Launchpad which makes for a pretty boring demonstration:&lt;/p&gt;
+
+&lt;pre lang=&#34;bash&#34;&gt;~/src$ bzr branch lp:terminator # yawn
+&lt;/pre&gt;
+
+&lt;p&gt;To make matters worse, non-Launchpad hosted projects are nearly as dull:&lt;/p&gt;
+
+&lt;pre lang=&#34;bash&#34;&gt;~/src$ bzr branch http://bzr.savannah.gnu.org/r/gnash/trunk
+&lt;/pre&gt;
+
+&lt;p&gt;In each case bzr will create a new directory for you using the last part of the source path (terminator &amp;amp; trunk respectively). You can optionally give it a second argument to put the branch in a different location. The destination can even be a remote server!&lt;/p&gt;
+
+&lt;pre lang=&#34;bash&#34;&gt;~/src$ bzr branch http://source/branch sftp://destination/branch
+&lt;/pre&gt;
+
+&lt;p&gt;Ok now I&amp;#8217;m just showing off. I&amp;#8217;ve never found a use for that feature. 😉 However, I do appreciate that a location is a location to bzr regardless of whether that location is the local filesystem or a remote server. It just works how you&amp;#8217;d expect it.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://doc.bazaar-vcs.org/bzr.dev/en/user-guide/index.html&#34;&gt;Chapters 4-6 of Bazaar&amp;#8217;s documentation&lt;/a&gt; give some excellent examples of various collaboration workflows.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Bonus Feature:&lt;/em&gt; Subversion mode!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;So its not really &lt;em&gt;Subversion mode&lt;/em&gt;, but bzr does support pulling repositories via the &lt;code&gt;checkout&lt;/code&gt; command and updating your working copy from the remote repository via the &lt;code&gt;update&lt;/code&gt; command just like Subversion. As you would expect, the &lt;code&gt;commit&lt;/code&gt; now sends changes directly to the remote server.&lt;/p&gt;
+
+&lt;p&gt;While I&amp;#8217;ve used this feature mainly to make transitioning to bzr easier for Subversion users, [Bazaar&amp;#8217;s documentation has some excellent techniques for making advanced workflows easier using checkouts][7].&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;ul&gt;
+&lt;li&gt;** SSH Tips: &lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ul&gt;
+&lt;li&gt;bzr+ssh is faster than plain old sftp but requires bzr to be installed on the server.&lt;/li&gt;
+&lt;li&gt;Setup ssh connection multiplexing using &lt;code&gt;ControlMaster&lt;/code&gt; in &lt;code&gt;~/.ssh/config&lt;/code&gt; and leave an ssh session active to speed up bzr operations.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;[7]: &lt;a href=&#34;http://doc.bazaar-vcs.org/bzr.dev/en/user-guide/index.html#using-checkouts&#34;&gt;http://doc.bazaar-vcs.org/bzr.dev/en/user-guide/index.html#using-checkouts&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Why not Subversion &#43; DVCS of Choice?</title>
+      <link>/2009/01/06/why-not-subversion-dvcs-of-choice/</link>
+      <pubDate>Wed, 07 Jan 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/01/06/why-not-subversion-dvcs-of-choice/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://michael.susens-schurter.com/blog/2009/01/04/time-to-learn-git/&#34;&gt;A follow-up to my last post on DVCSes&amp;#8230;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://planet.gnome.org/&#34;&gt;Gnomers&lt;/a&gt; have been &lt;a href=&#34;http://wingolog.org/archives/2009/01/06/git-and-bzr&#34;&gt;discussing DVCSes a lot lately&lt;/a&gt;, and at least one seems to prefer &lt;a href=&#34;http://blogs.gnome.org/johncarr/2008/12/11/dvcs-for-gnome/&#34;&gt;bzr as the repository format and git as the protocol it speaks.&lt;/a&gt; &lt;small&gt;If this sounds like madness to you, you&amp;#8217;re not alone.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;What I don&amp;#8217;t understand is why more people don&amp;#8217;t choose to keep Subversion as their repository and just use the $DVCS-svn of your choice?&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Granted I&amp;#8217;ve only used &lt;a href=&#34;http://bazaar-vcs.org/BzrForeignBranches/Subversion&#34;&gt;bzr-svn&lt;/a&gt; a bit, but it worked quite well and seems to only be getting better. I hear [git-svn][6] is quite good as well (but &lt;abbrev title=&#34;if I remember correctly&#34;&gt;iirc&lt;/abbrev&gt; hg lags behind the competition).&lt;/p&gt;
+
+&lt;p&gt;The benefits of this seem pretty nice:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Repository and Project management tools could get by with only first class Subversion support.&lt;/li&gt;
+&lt;li&gt;Directing inexperienced users to download code would be standardized.&lt;/li&gt;
+&lt;li&gt;Linux distributions wouldn&amp;#8217;t have to ship 5 different VCSes (cvs, svn, git, bzr, hg), although the VCSes don&amp;#8217;t take up much space.&lt;/li&gt;
+&lt;li&gt;Developers could use whichever tool they preferred, publish branches to any one of the zillions of free hosts for their DVCS of choice, and get on with their life.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Answering my own question&amp;#8230;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The obvious counter argument is that in order to share code you either:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&amp;#8230;force everyone who cares to use your DVCS.&lt;/li&gt;
+&lt;li&gt;&amp;#8230;or lose some of the benefits of your chosen DVCS and share code via a SVN branch.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Lets face it, both options are a pretty big hassle for &lt;em&gt;developers&lt;/em&gt;. Comprises always are.&lt;/p&gt;
+
+&lt;p&gt;For smaller single projects the overhead associated with going this route probably isn&amp;#8217;t worth it. You&amp;#8217;ll probably either end up losing 75% of what makes a DVCS handy or just use SVN.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Why is Gnome not considering this option though?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This option seems ideal for projects like Gnome. Individual modules will probably adopt a preferred DVCS, and thats fine. None of them are so different that a competent developer couldn&amp;#8217;t yank some revisions from an unfamiliar DVCS.&lt;/p&gt;
+
+&lt;p&gt;The project as a whole (and individual modules) would continue to remain uniformly easily available through a single svn checkout.&lt;/p&gt;
+
+&lt;p&gt;At the very least isn&amp;#8217;t this better (at least saner) than bolting git onto bzr&amp;#8217;s repository format?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Audience Participation&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;m not a Gnome developer though. Just a curious user. However, as a fellow developer I am left wondering: why isn&amp;#8217;t this a good option? Are $DVCS-svn connectors just not good enough? Are the comprises too great? Or the most likely: am I just missing some obvious showstopper?&lt;/p&gt;
+
+&lt;p&gt;[6]: &lt;a href=&#34;http://www.kernel.org/pub/software/scm/git/docs/git-svn.html&#34;&gt;http://www.kernel.org/pub/software/scm/git/docs/git-svn.html&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Time to Learn Git?</title>
+      <link>/2009/01/04/time-to-learn-git/</link>
+      <pubDate>Sun, 04 Jan 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/01/04/time-to-learn-git/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Doh! Sorry for flooding everyone&amp;#8217;s feed readers with my epic post. Evidently WordPress ignored my &amp;#8220;more&amp;#8221; tag. &lt;small&gt;I think I ran into this problem before&amp;#8230;&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Update 2:&lt;/strong&gt; Retracted the meaningless Google Trends point. Thanks to commenters for pointing out how meaningless it was. I still feel like git has a much stronger web presence than bzr or hg, but its just another one of the many &amp;#8220;gut feelings&amp;#8221; in this post. &lt;img src=&#34;http://localhost/wp-includes/images/smilies/simple-smile.png&#34; alt=&#34;:-)&#34; class=&#34;wp-smiley&#34; style=&#34;height: 1em; max-height: 1em;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The DVCS wars have been raging for a while now, and in case you haven&amp;#8217;t been keeping score, &lt;strong&gt;git is winning&lt;/strong&gt;. Admittedly I have no proof and don&amp;#8217;t even know if proof is possible, but I have some good evidence of git&amp;#8217;s march toward VCS dominance:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://upsilon.cc/~zack/stuff/vcs-usage/&#34;&gt;Git dominates every other DVCS by an order of magnitude among Debian packages (that link to their upstream repository).&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blogs.gnome.org/newren/2009/01/03/gnome-dvcs-survey-results/&#34;&gt;A recent survey of Gnome developers found an overwhelming support for Git&lt;/a&gt; over other VCSes.&lt;/li&gt;
+&lt;li&gt;&lt;del datetime=&#34;2009-01-04T18:30:56+00:00&#34;&gt;&lt;a href=&#34;http://www.google.com/trends?q=git%2Cbzr%2Cmercurial&#34;&gt;Git dominates Google trends&lt;/a&gt;.&lt;/del&gt; &lt;small&gt;Speaking of Google, they have 4 &lt;a href=&#34;http://research.google.com/video.html&#34;&gt;Tech Talks&lt;/a&gt; on Git, and absolutely none for bzr &lt;del datetime=&#34;2009-01-05T16:53:00+00:00&#34;&gt;or hg&lt;/del&gt;. Update: hg has one &amp;#8211; see comments.&lt;/small&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://whygitisbetterthanx.com/&#34;&gt;Why Git is Better than X&lt;/a&gt; &amp;#8211; More than the site, the lack of popular counter-argument sites springing up leads me to believe hg and [bzr][4] don&amp;#8217;t have nearly as fanatical of supporters.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Also note some of the major upstream projects using each DVCS:&lt;/p&gt;
+
+&lt;div style=&#34;float: left; width: 150px; text-align: left;&#34;&gt;
+  &lt;strong&gt;&lt;a href=&#34;http://git.or.cz/gitwiki/GitProjects&#34;&gt;git&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt; 
+  
+  &lt;ul&gt;
+    &lt;li&gt;
+      &lt;a href=&#34;http://kernel.org/&#34;&gt;Linux Kernel&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;a href=&#34;http://git.fedoraproject.org/&#34;&gt;Fedora&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;a href=&#34;http://cgit.freedesktop.org/&#34;&gt;X.org/FreeDesktop&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;a href=&#34;http://dev.perl.org/perl5/source.html&#34;&gt;Perl&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;a href=&#34;http://rubyonrails.org/&#34;&gt;Ruby on Rails&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;a href=&#34;http://git.samba.org/&#34;&gt;Samba&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;a href=&#34;http://wiki.winehq.org/GitWine&#34;&gt;Wine&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;a href=&#34;http://dev.laptop.org/browser&#34;&gt;OLPC&lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+  
+  &lt;p&gt;
+    Get the idea yet?
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div style=&#34;float: left; width: 150px; text-align: left;&#34;&gt;
+  &lt;strong&gt;&lt;a href=&#34;http://bazaar-vcs.org/WhoUsesBzr&#34;&gt;bzr&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt; 
+  
+  &lt;ul&gt;
+    &lt;li&gt;
+      &lt;a href=&#34;http://dev.mysql.com/tech-resources/articles/getting-started-with-bazaar-for-mysql.html&#34;&gt;MySQL&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;a href=&#34;https://wiki.ubuntu.com/Bzr#The%20Bazaar%20or%20%22An%20Explanation%20of%20Bazaar%20for%20the%20(Almost)%20Typical%20Contributor%22&#34;&gt;Ubuntu&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;a href=&#34;http://www.list.org/&#34;&gt;Mailman&lt;/a&gt;&lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div style=&#34;float: left; width: 150px; text-align: left;&#34;&gt;
+  &lt;strong&gt;&lt;a href=&#34;http://www.selenic.com/mercurial/wiki/index.cgi/ProjectsUsingMercurial&#34;&gt;hg&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt; 
+  
+  &lt;ul&gt;
+    &lt;li&gt;
+      &lt;a href=&#34;http://hg.mozilla.org/&#34;&gt;Mozilla&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;a href=&#34;http://openjdk.java.net/&#34;&gt;OpenJDK&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;a href=&#34;http://xenbits.xensource.com/&#34;&gt;Xen&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;a href=&#34;http://pylonshq.com/&#34;&gt;Pylons&lt;/a&gt;&lt;small&gt; (not quite major but it will have to do)&lt;/small&gt;
+    &lt;/li&gt;&lt;/div&gt; 
+    
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div style=&amp;quot;clear:both;&amp;quot;&amp;gt;
+  &amp;amp;nbsp;
+&amp;lt;/div&amp;gt;
+
+&amp;lt;p&amp;gt;
+  &amp;lt;strong&amp;gt;Communities&amp;lt;/strong&amp;gt;
+&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;
+  Git seems to be attracting the most diverse communities as well:
+&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;
+  &amp;lt;em&amp;gt;Git:&amp;lt;/em&amp;gt; Linux Kernel, X.org/FreeDesktop, Ruby on Rails&amp;lt;br /&amp;gt; &amp;lt;em&amp;gt;Bazaar:&amp;lt;/em&amp;gt; Ubuntu, Ubuntu, Ubuntu&amp;lt;br /&amp;gt; &amp;lt;em&amp;gt;Mercurial:&amp;lt;/em&amp;gt; Pythonistas, projects that need better Windows support than Git offers
+&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;
+  &amp;lt;small&amp;gt;Once again I don&amp;amp;#8217;t really have any stats to back up these assertions, they&amp;amp;#8217;re just my biased observations.&amp;lt;/small&amp;gt;
+&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;
+  &amp;lt;strong&amp;gt;Personally&amp;amp;#8230;&amp;lt;/strong&amp;gt;
+&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;
+  I tried learning Git soon after it was first released and failed like so many others. Unlike many of those others, I never went back to give it another shot.
+&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;
+  Next I learned Bazaar and felt comfortable in it almost immediately. Now I use Bazaar as my preferred VCS and quite like it mainly because it works well and was very easy to learn. I know its not the fastest, but its so far from being a bottleneck in my development process I don&amp;amp;#8217;t notice.
+&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;
+  I learned Mercurial for work and use it at least as much as Bazaar, but I&amp;amp;#8217;m not sure why anyone would use it over Bazaar. I think people who learned Mercurial first think the same thing about Bazaar. 😉
+&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;
+  And perhaps thats part of why Git is winning. It seems fundamentally different from the other two which is probably why its the only 1 of the 3 I haven&amp;amp;#8217;t learned.
+&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;
+  &amp;lt;strong&amp;gt;&amp;lt;em&amp;gt;THE FUTURE!!!!!!!11&amp;lt;/em&amp;gt;&amp;lt;/strong&amp;gt;
+&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;
+  I actually don&amp;amp;#8217;t plan on learning git any time soon. &amp;lt;a href=&amp;quot;http://michael.susens-schurter.com/blog/2008/12/27/web-server-quandary/&amp;quot;&amp;gt;My time for playing with new technology is currently taken up testing nginx, spawning, and FastCGI&amp;lt;/a&amp;gt;.
+&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;
+  I suspect thats the norm as well: people who already know a DVCS &amp;lt;em&amp;gt;probably&amp;lt;/em&amp;gt; aren&amp;amp;#8217;t looking to migrate between them. The few that are, are probably moving to Git.
+&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;
+  I think we&amp;amp;#8217;ll see the current trend of Git&amp;amp;#8217;s lead widening over bzr and hg as well.
+&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;
+  However, &amp;lt;em&amp;gt;&amp;lt;strong&amp;gt;I don&amp;amp;#8217;t see the war ending anytime soon. The fact of the matter is all 3 of them are great&amp;lt;/strong&amp;gt;&amp;lt;/em&amp;gt; and the weaker DVCSes have already fallen prey to evolutionary forces (monotone, darcs, etc).
+&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;
+  &amp;lt;strong&amp;gt;Flamebait&amp;lt;/strong&amp;gt;
+&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;
+  What are your thoughts on my completely contrived DVCS War? Which do you prefer? How many do you use? Are my assumptions about popularity (in particular the various communities around each) accurate?
+&amp;lt;/p&amp;gt;
+
+&amp;lt;p&amp;gt;
+  &amp;lt;small&amp;gt;I wish &amp;lt;a href=&amp;quot;https://www.ohloh.net/&amp;quot;&amp;gt;Ohloh&amp;lt;/a&amp;gt; or &amp;lt;a href=&amp;quot;http://cia.vc/&amp;quot;&amp;gt;cia.vc&amp;lt;/a&amp;gt; gave VCS usage statistics, although I&amp;amp;#8217;m not even sure they record that data.&amp;lt;/small&amp;gt;
+&amp;lt;/p&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;[4]: &lt;a href=&#34;http://whybzrisbetterthanx.github.com/&#34;&gt;http://whybzrisbetterthanx.github.com/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Hzzah: AJAX Searching, Grouped Searches, and Version Numbers</title>
+      <link>/2008/07/15/hzzah-ajax-searching-grouped-searches-and-version-numbers/</link>
+      <pubDate>Wed, 16 Jul 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/07/15/hzzah-ajax-searching-grouped-searches-and-version-numbers/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;AJAX Searching&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Thanks to &lt;a href=&#34;http://docs.jquery.com/Ajax&#34;&gt;jQuery&lt;/a&gt; and the &lt;a href=&#34;http://plugins.jquery.com/project/history&#34;&gt;jQuery History plugin&lt;/a&gt;, searching is now done via AJAX but it doesn&amp;#8217;t break your back and forward buttons.&lt;/p&gt;
+
+&lt;p&gt;The navigation callback in JavaScript ought to be more of a proper state machine, but considering there are only 3 states (blank, about, and searching) I&amp;#8217;m not too concerned.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Grouped Searches&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I played around with hzzah a bit more after I noticed its search results were far worse than those on Yahoo.com&lt;/p&gt;
+
+&lt;p&gt;It seems Yahoo.com only returns 1 or 2 hits per domain, whereas the BOSS API will happily return hundreds all from the same site.&lt;/p&gt;
+
+&lt;p&gt;This means if you&amp;#8217;re vain like me and search for your name, you get pages of links to your blog and nowhere else. The &lt;a href=&#34;http://search.yahoo.com/search?p=michael+schurter&amp;amp;ei=UTF-8&amp;amp;fr=&#34;&gt;Yahoo.com results are pretty good&lt;/a&gt; and only return 2 hits for my blog.&lt;/p&gt;
+
+&lt;p&gt;So I grouped hits by domain name, but since I broke pagination in the process, [searching for myself][4] is completely worthless now.&lt;/p&gt;
+
+&lt;p&gt;I have some ideas on how to fix that, but they&amp;#8217;ll have to wait for another time.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Version Numbers&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Squint at the bottom of the page to see the current revision number.&lt;/p&gt;
+
+&lt;p&gt;Anybody know how to have that increment automatically when I do &lt;code&gt;bzr up&lt;/code&gt; on my server? I haven&amp;#8217;t looked for a post-update hook which would do the trick.&lt;/p&gt;
+
+&lt;p&gt;[4]: &lt;a href=&#34;http://hzzah.com/#s:michael%20schurter&#34;&gt;http://hzzah.com/#s:michael%20schurter&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Introducing Hzzah!</title>
+      <link>/2008/07/15/introducing-hzzah/</link>
+      <pubDate>Tue, 15 Jul 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/07/15/introducing-hzzah/</guid>
+      <description>&lt;p&gt;&lt;small&gt;from the I-can-haz-a-search-engine department&amp;#8230;&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Sorry about the tacky donate link all. I tried to hide it from feed readers with WordPress&amp;#8217;s &amp;lt;!&amp;#8211;more&amp;gt; feature, but evidently that doesn&amp;#8217;t apply to feeds. &lt;img src=&#34;http://localhost/wp-includes/images/smilies/frownie.png&#34; alt=&#34;:(&#34; class=&#34;wp-smiley&#34; style=&#34;height: 1em; max-height: 1em;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;When it comes to market share, Google is to Searching as Microsoft is to Operating Systems. Thankfully Google has won their dominant position by creating a really amazing product &lt;small&gt;(you can find plenty of discussions on &lt;a href=&#34;http://en.wikipedia.org/wiki/Criticism_of_Microsoft#Business_practices&#34;&gt;why Microsoft is on top elsewhere)&lt;/a&gt;&lt;/small&gt;.&lt;/p&gt;
+
+&lt;p&gt;Recently &lt;a href=&#34;http://developer.yahoo.com/search/boss/&#34;&gt;Yahoo! opened up their search APIs&lt;/a&gt; for anyone to use along with &lt;a href=&#34;http://developer.yahoo.com/search/boss/mashup.html&#34;&gt;a handy Python library&lt;/a&gt;. In a time when Yahoo&amp;#8217;s very existence is being threatened, I felt a pang of nostalgia for the search engine that fed me decent results for &amp;#8220;free dos games&amp;#8221; throughout the mid-90s.&lt;/p&gt;
+
+&lt;p&gt;So last night I whipped up a little search engine called &lt;a href=&#34;http://hzzah.com&#34;&gt;Hzzah!&lt;/a&gt;*&lt;/p&gt;
+
+&lt;div style=&#34;clear: both; line-height: 0px; font-size: 0px;&#34;&gt;
+  &amp;nbsp;
+&lt;/div&gt;
+
+&lt;div style=&#34;float: right; clear: both;&#34;&gt;
+  &lt;a href=&#34;http://creativecommons.org/licenses/BSD/&#34;&gt;&lt;img src=&#34;http://michael.susens-schurter.com/files/40bsd.png&#34; alt=&#34;BSDtastic!&#34; /&gt;&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Features:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Simple&lt;/li&gt;
+&lt;li&gt;No ads, cookies, or even JavaScript &lt;small&gt;(at the moment at least)&lt;/small&gt;&lt;/li&gt;
+&lt;li&gt;Open Source! &lt;a href=&#34;http://creativecommons.org/licenses/BSD/&#34;&gt;BSD to be precise&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Did I mention simple? That&amp;#8217;s really all it has going for it&amp;#8230;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you have &lt;a href=&#34;http://bazaar-vcs.org/&#34;&gt;Bazaar&lt;/a&gt; installed you can grab the code a variety of ways:&lt;/p&gt;
+
+&lt;pre lang=&#34;bash&#34;&gt;# If you know Subversion, use this method.  `bzr up` will keep you up to date
+bzr checkout http://michael.susens-schurter.com/code/hzzah-public
+
+# If you want to hack on Hzzah or are comfortable with bzr, feel free to branch
+bzr branch http://michael.susens-schurter.com/code/hzzah-public hzzah-steve
+&lt;/pre&gt;
+
+&lt;p&gt;You can also &lt;a href=&#34;http://michael.susens-schurter.com/code/hzzah-public-r5.zip&#34;&gt;grab a zip&lt;/a&gt;, but its probably going to become out of date quickly.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Read the README file for help setting it up.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;And like I say in the README, if you&amp;#8217;re feeling generous, feel free to toss some cash this way:&lt;/p&gt;
+
+&lt;p&gt;[&lt;img src=&#34;https://www.paypal.com/en_US/i/btn/btn_donate_SM.gif&#34; border=&#34;0&#34; alt=&#34;PayPal - The safer, easier way to pay online!&#34; /&gt;][7]&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;* Make fun of the name all you like&amp;#8230; there&amp;#8217;s no good domain names left. The name is inspired by a friend from college for whom &lt;em&gt;huzzah&lt;/em&gt; was her exclamation of choice.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;[7]: &lt;a href=&#34;https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;amp;business=mschurter%40yahoo%2ecom&amp;amp;item_name=hzzah%2ecom%20by%20Michael%20Schurter&amp;amp;item_number=1337&amp;amp;no_shipping=0&amp;amp;no_note=1&amp;amp;tax=0&amp;amp;currency_code=USD&amp;amp;lc=US&amp;amp;bn=PP%2dDonationsBF&amp;amp;charset=UTF%2d8&#34;&gt;https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;amp;business=mschurter%40yahoo%2ecom&amp;amp;item_name=hzzah%2ecom%20by%20Michael%20Schurter&amp;amp;item_number=1337&amp;amp;no_shipping=0&amp;amp;no_note=1&amp;amp;tax=0&amp;amp;currency_code=USD&amp;amp;lc=US&amp;amp;bn=PP%2dDonationsBF&amp;amp;charset=UTF%2d8&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Simple WordPress Upgrade Using Subversion</title>
+      <link>/2007/10/28/simple-wordpress-upgrade-using-subversion/</link>
+      <pubDate>Sun, 28 Oct 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/2007/10/28/simple-wordpress-upgrade-using-subversion/</guid>
+      <description>&lt;p&gt;I&amp;#8217;ve been using subversion to update WordPress for a few minor revisions now. I simply followed the 2.2 branch and ran&amp;#8230;&lt;/p&gt;
+
+&lt;pre lang=&#34;bash&#34;&gt;svn up&lt;/pre&gt;
+
+&lt;p&gt;&amp;#8230;to update my code.&lt;/p&gt;
+
+&lt;p&gt;Today I ran&amp;#8230;&lt;/p&gt;
+
+&lt;pre lang=&#34;bash&#34;&gt;svn switch http://svn.automattic.com/wordpress/branches/2.3&lt;/pre&gt;
+
+&lt;p&gt;&amp;#8230;followed by visiting the upgrade script page and everything worked beautifully!&lt;/p&gt;
+
+&lt;p&gt;Anyone &lt;em&gt;not&lt;/em&gt; using subversion to update WordPress is doing way too much work! Time to play with tags&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;Now if I was really cool I&amp;#8217;d use &lt;a href=&#34;http://bazaar-vcs.org/&#34;&gt;bzr&lt;/a&gt; to maintain my local code changes and plugins in my own repository&amp;#8230; maybe later.&lt;/small&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

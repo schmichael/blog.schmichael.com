@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pycon2008 on </title>
+    <link>/tags/pycon2008/</link>
+    <description>Recent content in Pycon2008 on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 18 Mar 2008 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/pycon2008/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Looking for CherryPy Case Studies</title>
+      <link>/2008/03/18/looking-for-cherrypy-case-studies/</link>
+      <pubDate>Tue, 18 Mar 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/03/18/looking-for-cherrypy-case-studies/</guid>
+      <description>&lt;div style=&#34;float: right; padding: 0px 0px 5px 5px;&#34;&gt;
+  &lt;a href=&#34;http://cherrypy.org&#34;&gt;&lt;img src=&#34;http://michael.susens-schurter.com/files/cplogo.jpg&#34; alt=&#34;CherryPy Logo&#34; /&gt;&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;p&gt;At the &lt;a href=&#34;http://cherrypy.org/&#34;&gt;CherryPy&lt;/a&gt; &lt;a href=&#34;http://groups.google.com/group/cherrypy-users/browse_thread/thread/7926752b6605d9fe&#34;&gt;BOF&lt;/a&gt;&lt;a href=&#34;http://cherrypy.org/&#34;&gt;1&lt;/a&gt; at &lt;a href=&#34;http://us.pycon.org/2008/about/&#34;&gt;Pycon in Chicago&lt;/a&gt; we discussed how people are using CherryPy in lots of different ways. We&amp;#8217;re afraid people aren&amp;#8217;t grokking how flexible CherryPy is just by briefly glancing at the web site and thought having some interesting case studies would be useful.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href=&#34;http://www.cherrypy.org/wiki/SuccessStories&#34;&gt;wiki has a good start&lt;/a&gt;. However, its a bit out of date, and it&amp;#8217;d be nice to have some great Case Studies as well as a separate list of Projects using CherryPy.&lt;/p&gt;
+
+&lt;p&gt;If your company deploys CherryPy or you&amp;#8217;ve used CherryPy for a client, I&amp;#8217;d love to hear the story. Here&amp;#8217;s a basic format you could follow:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Who&lt;/strong&gt; is using CherryPy: (your name)&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Where&lt;/strong&gt; are you using Cherrypy?&lt;/p&gt;
+
+&lt;p&gt;(Company or client name. You can of course remain anonymous)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;What&lt;/strong&gt; do you do with CherryPy?&lt;/p&gt;
+
+&lt;p&gt;(What&amp;#8217;s your project: a traditional public web site? internal web services?)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;How&lt;/strong&gt; is CherryPy deployed?&lt;/p&gt;
+
+&lt;p&gt;(Behind modproxy/modpython/modwsgi, on a cluster behind a load balancer, or is it your frontend HTTP server?)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;How long&lt;/strong&gt; have you used CherryPy?&lt;/p&gt;
+
+&lt;p&gt;(The &amp;#8220;when&amp;#8221; question)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Why&lt;/strong&gt; did you choose CherryPy?&lt;/p&gt;
+
+&lt;p&gt;(While &amp;#8220;because its the best&amp;#8221; is obviously the answer, a little more detail would be nice. 😉 )&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Feel free to include screenshots, links, code snippets, diagrams, etc, and &lt;strong&gt;&lt;a href=&#34;mailto:michael@susens-schurter.com&#34;&gt;e-mail me!&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;With [3.1 nearing release][6], it&amp;#8217;d be nice if we could launch an updated version of the web site at the same time, so your help is greatly appreciated!&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;I also posted &lt;a href=&#34;http://groups.google.com/group/cherrypy-users/browse_thread/thread/1774049cc582a595?hl=en&#34;&gt;this over at the cherrypy-user mailing list&lt;/a&gt;.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://cherrypy.org/&#34;&gt;1&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre lang=&#34;python&#34;&gt;if excuse not in [&#39;at funeral&#39;, &#39;giving birth&#39;, &#39;saving planet&#39;]:
+    raise Exception(&#39;%s is no reason to miss the CherryPy BOF&#39; % excuse)&lt;/pre&gt;
+
+&lt;p&gt;[6]: &lt;a href=&#34;http://download.cherrypy.org/cherrypy/3.1.0beta3/&#34;&gt;http://download.cherrypy.org/cherrypy/3.1.0beta3/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

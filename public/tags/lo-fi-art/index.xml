@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lo Fi Art on </title>
+    <link>/tags/lo-fi-art/</link>
+    <description>Recent content in Lo Fi Art on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 19 Oct 2007 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/lo-fi-art/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Customizing the Summary in TracGantt</title>
+      <link>/2007/10/18/customizing-the-summary-in-tracgantt/</link>
+      <pubDate>Fri, 19 Oct 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/2007/10/18/customizing-the-summary-in-tracgantt/</guid>
+      <description>&lt;div style=&#34;float: left; margin-right: 10px;&#34;&gt;
+  &lt;a href=&#34;http://trac.edgewall.org&#34;&gt;&lt;img src=&#34;http://michael.susens-schurter.com/files/trac_logo.png&#34; alt=&#34;Trac Logo&#34; /&gt;&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;p&gt;We use &lt;a href=&#34;http://trac.edgewall.org&#34;&gt;Trac&lt;/a&gt; at Lo-Fi Art to manage&amp;#8230; well just about everything that doesn&amp;#8217;t go in our Google Calendars. We&amp;#8217;ve been testing out &lt;a href=&#34;http://willbarton.com/code/tracgantt/&#34;&gt;TracGantt&lt;/a&gt; to get some sort of idea what we&amp;#8217;re working on at any given date.&lt;/p&gt;
+
+&lt;p&gt;We quickly ran into the problem that the summary TracGantt displayed didn&amp;#8217;t display 2 pieces of information that were critical for us: the reporter and component. Luckily it wasn&amp;#8217;t very hard to hack in a customizable summary display.&lt;/p&gt;
+
+&lt;p&gt;You can download either a&amp;#8230;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&amp;#8230;&lt;a href=&#34;http://michael.susens-schurter.com/code/TracGantt-0.3.2a-summary_template.patch&#34;&gt;patch against TracGantt 0.3.2a&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&amp;#8230;or &lt;a href=&#34;http://michael.susens-schurter.com/code/TracGantt-0.3.2a.schmichael-py2.4.egg&#34;&gt;an egg&lt;/a&gt; which can be placed in your &lt;code&gt;plugins&lt;/code&gt; folder&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;To change th summary display simply set:&lt;/p&gt;
+
+&lt;pre lang=&#34;ini&#34;&gt;summary_format = $foo: $bar&lt;/pre&gt;
+
+&lt;p&gt;where $foo and $bar are any keys inside the ticket.values dict. It defaults to:&lt;/p&gt;
+
+&lt;pre lang=&#34;ini&#34;&gt;summary_format = [$component] $reporter: $summary&lt;/pre&gt;
+
+&lt;p&gt;It appears [Will Barton, the creator of TracGnatt, isn&amp;#8217;t very interested in maintaining it][5].&lt;/p&gt;
+
+&lt;p&gt;Does anybody else use TracGnatt? Should I offer to become the new maintainer?&lt;/p&gt;
+
+&lt;p&gt;[5]: &lt;a href=&#34;http://willbarton.com/&#34;&gt;http://willbarton.com/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Every 3rd Safari Upload Fails</title>
+      <link>/2007/10/17/every-3rd-safari-upload-fails/</link>
+      <pubDate>Wed, 17 Oct 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/2007/10/17/every-3rd-safari-upload-fails/</guid>
+      <description>&lt;div style=&#34;float: left;&#34;&gt;
+  &lt;a href=&#34;http://cherrypy.org&#34;&gt;&lt;img src=&#34;http://michael.susens-schurter.com/files/cplogo.jpg&#34; alt=&#34;CherryPy Logo&#34; /&gt;&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Recently I built a small &lt;a href=&#34;http://cherrypy.org/&#34;&gt;CherryPy&lt;/a&gt; application to allow users to upload photos to a gallery. The application is pretty trivial and just uses the &lt;a href=&#34;http://www.pythonware.com/products/pil/&#34;&gt;Python Imaging Library&lt;/a&gt; to resize the photos and &lt;a href=&#34;http://genshi.edgewall.org/&#34;&gt;Genshi&lt;/a&gt; to output some XML which is used by a Flash gallery.&lt;/p&gt;
+
+&lt;p&gt;However, after deployment a user complained every 3rd upload would fail. She was using Safari on Mac OSX, and I couldn&amp;#8217;t duplicate the error in Firefox. Luckily she didn&amp;#8217;t mind switching to Firefox and it fixed her problem:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Working with Firefox has helped tremendously! I&amp;#8217;ll only use it from now on, and we should be fine with uploads.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Has anyone else seen this? I [deployed CherryPy behind Apache 2.2 using mod_proxy][4], and Apache logs the following error when an upload fails (IPs changed):&lt;/p&gt;
+
+&lt;pre&gt;[error] proxy: client 000.000.000.000 given Content-Length did not match number of body bytes read
+[error] (70014)End of file found: proxy: pass request body failed to 127.0.0.1:9595 (127.0.0.1) from 00.000.000.001 ()&lt;/pre&gt;
+
+&lt;p&gt;So it appears Safari just messes up the Content-Length. All CherryPy would receive is a POST with no data.&lt;/p&gt;
+
+&lt;p&gt;[4]: &lt;a href=&#34;http://michael.susens-schurter.com/blog/2007/08/16/deploying-cherrypy-on-apache-2-using-mod_proxy/&#34;&gt;http://michael.susens-schurter.com/blog/2007/08/16/deploying-cherrypy-on-apache-2-using-mod_proxy/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Hello Planet Python</title>
+      <link>/2007/10/17/hello-planet-python/</link>
+      <pubDate>Wed, 17 Oct 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/2007/10/17/hello-planet-python/</guid>
+      <description>&lt;p&gt;Just noticed my first post appeared on &lt;a href=&#34;http://planetpython.org/&#34;&gt;Unofficial Planet Python&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Hello all!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;If you&amp;#8217;re really bored, you can &lt;a href=&#34;http://michael.susens-schurter.com/blog/about-me/&#34;&gt;learn more about me&lt;/a&gt; or &lt;a href=&#34;http://michael.susens-schurter.com/blog/&#34;&gt;read all of my posts&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Suffice it to say I&amp;#8217;m a new Python consultant. Monday, October 15th, was my last day at my old job, and I&amp;#8217;m very excited to be starting a new web development company, Lo-Fi Art, with my friend Chris Pitzer! (No links because I&amp;#8217;m really not trying to shamelessly advertise, I&amp;#8217;m just excited!)&lt;/p&gt;
+
+&lt;p&gt;At any rate, thanks to [Christian Wyglendowski][4] for introducing me to Python and now getting me on the Unoffical Planet Python!&lt;/p&gt;
+
+&lt;p&gt;I come from a PHP (with some .NET) background, so I&amp;#8217;m sorry if my posts seem simple or mundane to experienced Pythoners. I can&amp;#8217;t help it if the beautiful simplicity of Python is exciting to a PHP/.NET refugee. 😉&lt;/p&gt;
+
+&lt;p&gt;[4]: &lt;a href=&#34;http://www.dowski.com/&#34;&gt;http://www.dowski.com/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>First Command to Run On Debian</title>
+      <link>/2007/10/11/first-command-to-run-on-debian/</link>
+      <pubDate>Thu, 11 Oct 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/2007/10/11/first-command-to-run-on-debian/</guid>
+      <description>&lt;p&gt;(Also applies to Ubuntu if you have a SSH server installed.)&lt;/p&gt;
+
+&lt;pre lang=&#34;bash&#34;&gt;sudo apt-get install denyhosts
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://denyhosts.sourceforge.net/&#34;&gt;DenyHosts&lt;/a&gt; is a &lt;a href=&#34;http://python.org/&#34;&gt;Python&lt;/a&gt; application that monitors [SSH][3] authentication attempts and block hosts with multiple failures. While its configuration file is easy to figure out, the defaults work well for me.&lt;/p&gt;
+
+&lt;p&gt;Every SSH server should be running DenyHosts or a similar security application. Running without it is like running Windows without anti-virus.&lt;/p&gt;
+
+&lt;p&gt;[3]: &lt;a href=&#34;http://en.wikipedia.org/wiki/Ssh&#34;&gt;http://en.wikipedia.org/wiki/Ssh&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>DreamHost Never Ceases To Amaze</title>
+      <link>/2007/10/05/dreamhost-never-ceases-to-amaze/</link>
+      <pubDate>Fri, 05 Oct 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/2007/10/05/dreamhost-never-ceases-to-amaze/</guid>
+      <description>&lt;p&gt;How are you supposed to feel when &lt;a href=&#34;http://blog.dreamhost.com/2007/10/04/we-keep-it-moving/&#34;&gt;your hosting company gets evicted from their office space&lt;/a&gt;?&lt;/p&gt;
+
+&lt;p&gt;Ironically just a week or two ago &lt;a href=&#34;http://digitalfiefdom.org/&#34;&gt;a friend of mine&lt;/a&gt; had his shared hosting provider migrate his sites to a new server using &lt;em&gt;3 week old data.&lt;/em&gt; So I guess things could be a lot worse than a silly little eviction.&lt;/p&gt;
+
+&lt;p&gt;This is why I keep all of my important sites on a [Linode][3]. &lt;img src=&#34;http://localhost/wp-includes/images/smilies/simple-smile.png&#34; alt=&#34;:)&#34; class=&#34;wp-smiley&#34; style=&#34;height: 1em; max-height: 1em;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;I guess my IMAP account is still sitting on DreamHost&amp;#8217;s servers, but its been surprisingly stable lately.&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;[3]: &lt;a href=&#34;http://www.linode.com&#34;&gt;http://www.linode.com&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Leaving Tremont, Joining Lo-Fi Art LLC</title>
+      <link>/2007/10/02/leaving-tremont-joining-lo-fi-art-llc/</link>
+      <pubDate>Wed, 03 Oct 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/2007/10/02/leaving-tremont-joining-lo-fi-art-llc/</guid>
+      <description>&lt;p&gt;I tendered my resignation at &lt;a href=&#34;http://www.tremont702.us&#34;&gt;Tremont District #702 Schools&lt;/a&gt; today.&lt;/p&gt;
+
+&lt;p&gt;In 2 weeks I&amp;#8217;ll start working full time for &lt;a href=&#34;http://lofiart.com/&#34;&gt;the IT consultancy I started with Chris Pitzer, &lt;strong&gt;Lo-Fi Art, LLC&lt;/strong&gt;&lt;/a&gt;.* While we mostly specialize in web design and development, I&amp;#8217;ll be doing quite a bit of system and network administration at a (different) school at least at first.&lt;/p&gt;
+
+&lt;p&gt;Expect lots of posts on this topic in the near future. I haven&amp;#8217;t been this excited in a long time, and I&amp;#8217;ve never been this excited about &lt;em&gt;work&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;So [send your RFPs my way][3]! We&amp;#8217;d love to help.&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;* Yeah our own web site isn&amp;#8217;t even up yet. But no one pays us to do that. 😉&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;[3]: mailto:michael@lofiart.com&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
