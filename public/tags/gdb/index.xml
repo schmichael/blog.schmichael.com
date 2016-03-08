@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Gdb on </title>
-    <link>/tags/gdb/</link>
-    <description>Recent content in Gdb on </description>
+    <title>Gdb on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/gdb/</link>
+    <description>Recent content in Gdb on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 02 Apr 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/gdb/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/gdb/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Debugging Go 1.2 on Ubuntu 13.10 with GDB</title>
-      <link>/2014/04/02/debugging-go-1-2-on-ubuntu-13-10-with-gdb/</link>
+      <link>https://blog.schmichael.com/2014/04/02/debugging-go-1-2-on-ubuntu-13-10-with-gdb/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>/2014/04/02/debugging-go-1-2-on-ubuntu-13-10-with-gdb/</guid>
+      <guid>https://blog.schmichael.com/2014/04/02/debugging-go-1-2-on-ubuntu-13-10-with-gdb/</guid>
       <description>&lt;p&gt;While the &lt;a href=&#34;http://golang.org/doc/gdb&#34;&gt;Debugging Go Code with GDB&lt;/a&gt; documentation is fantastic, it unfortunately doesn&amp;#8217;t work out of the box with Ubuntu 13.10. If you try it you&amp;#8217;ll probably see an error similar to:&lt;/p&gt;
 
 &lt;p&gt;The problem is that Ubuntu 13.10 links GDB against Python 3.3 while the script golang ships is for Python 2. &lt;a href=&#34;https://code.google.com/p/go/issues/detail?id=6698&#34;&gt;Someone has already filed an issue, and it appears to be fixed&lt;/a&gt; upstream (so expect Go 1.3 to Just Work).&lt;/p&gt;
@@ -28,10 +28,10 @@
     
     <item>
       <title>A Complete Noobs Guide to Hacking Nginx</title>
-      <link>/2010/12/28/noobs-guide-to-hacking-nginx/</link>
+      <link>https://blog.schmichael.com/2010/12/28/noobs-guide-to-hacking-nginx/</link>
       <pubDate>Wed, 29 Dec 2010 00:00:00 +0000</pubDate>
       
-      <guid>/2010/12/28/noobs-guide-to-hacking-nginx/</guid>
+      <guid>https://blog.schmichael.com/2010/12/28/noobs-guide-to-hacking-nginx/</guid>
       <description>&lt;p&gt;At &lt;a href=&#34;http://urbanairship.com&#34;&gt;Urban Airship&lt;/a&gt; our &lt;a href=&#34;http://en.wikipedia.org/wiki/Representational_State_Transfer#RESTful_web_services&#34;&gt;RESTful HTTP API&lt;/a&gt; uses PUT requests for, among other things, &lt;a href=&#34;http://urbanairship.com/docs/push.html#registration&#34;&gt;registering a device&lt;/a&gt;. Since the application registering the device is the HTTP Basic Auth username, there&amp;#8217;s often no body (&lt;a href=&#34;http://www.w3.org/Protocols/rfc2616/rfc2616-sec7.html#sec7.2&#34;&gt;entity body&lt;/a&gt; in HTTP parlance). Unfortunately &lt;a href=&#34;http://wiki.nginx.org&#34;&gt;nginx&lt;/a&gt; (as of 0.8.54, and I believe 0.9.3) doesn&amp;#8217;t support PUT requests without a Content-Length header and responds with a 411 Length Required response. While the &lt;a href=&#34;http://wiki.nginx.org/HttpChunkinModule&#34;&gt;chunkin&lt;/a&gt; module adds Transfer-Encoding: chunked support, it doesn&amp;#8217;t fix the empty PUT problem since HTTP requests without bodies don&amp;#8217;t require Content-Length nor Transfer-Encoding headers.&lt;/p&gt;
 
 &lt;p&gt;So let&amp;#8217;s hack nginx shall we?&lt;/p&gt;

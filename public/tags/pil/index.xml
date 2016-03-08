@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Pil on </title>
-    <link>/tags/pil/</link>
-    <description>Recent content in Pil on </description>
+    <title>Pil on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/pil/</link>
+    <description>Recent content in Pil on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 08 Apr 2009 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/pil/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/pil/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>BitBucket Project for Python FusionCharts Code</title>
-      <link>/2009/04/08/bitbucket-project-python-fusioncharts/</link>
+      <link>https://blog.schmichael.com/2009/04/08/bitbucket-project-python-fusioncharts/</link>
       <pubDate>Wed, 08 Apr 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/04/08/bitbucket-project-python-fusioncharts/</guid>
+      <guid>https://blog.schmichael.com/2009/04/08/bitbucket-project-python-fusioncharts/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://michael.susens-schurter.com/blog/2009/04/02/image-exporter-for-fusion-charts/&#34;&gt;After my last post on FusionCharts&lt;/a&gt;, someone was nice enough to e-mail me some a &lt;a href=&#34;http://djangoproject.com&#34;&gt;Django&lt;/a&gt; snippet for exporting &lt;a href=&#34;http://fusioncharts.com&#34;&gt;FusionCharts&lt;/a&gt; as images, so I decided I might as well put the code in a public repository.&lt;/p&gt;
 
 &lt;p&gt;While I prefer Bazaar out of all the DVCSes, it seems Mercurial has captured the hearts and minds of the Python empire, so I created the &lt;a href=&#34;http://bitbucket.org/schmichael/python-fusioncharts/&#34;&gt;python-fusioncharts project&lt;/a&gt; on [BitBucket][5].&lt;/p&gt;
@@ -26,10 +26,10 @@
     
     <item>
       <title>Image Exporter for Fusion Charts</title>
-      <link>/2009/04/02/image-exporter-for-fusion-charts/</link>
+      <link>https://blog.schmichael.com/2009/04/02/image-exporter-for-fusion-charts/</link>
       <pubDate>Thu, 02 Apr 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/04/02/image-exporter-for-fusion-charts/</guid>
+      <guid>https://blog.schmichael.com/2009/04/02/image-exporter-for-fusion-charts/</guid>
       <description>&lt;p&gt;I wrote an image exporter for &lt;a href=&#34;http://www.fusioncharts.com/&#34;&gt;Fusion Charts&lt;/a&gt; while working for &lt;a href=&#34;http://www.polimetrix.com/&#34;&gt;YouGov/Polimetrix&lt;/a&gt;, and someone recently asked if they could use it as well.&lt;/p&gt;
 
 &lt;p&gt;You&amp;#8217;ll have to alter it a bit because it was written for a custom &lt;a href=&#34;http://cherrypy.org&#34;&gt;CherryPy&lt;/a&gt;-based framework. It works with Fusion Charts 3.1 (and 3.0 with trivial changes to the POST variables being read).&lt;/p&gt;

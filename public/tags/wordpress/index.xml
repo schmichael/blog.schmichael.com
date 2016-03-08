@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Wordpress on </title>
-    <link>/tags/wordpress/</link>
-    <description>Recent content in Wordpress on </description>
+    <title>Wordpress on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/wordpress/</link>
+    <description>Recent content in Wordpress on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 15 Jul 2008 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>WordPress Rocks at Updates</title>
-      <link>/2008/07/15/wordpress-rocks-at-updates/</link>
+      <link>https://blog.schmichael.com/2008/07/15/wordpress-rocks-at-updates/</link>
       <pubDate>Tue, 15 Jul 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/07/15/wordpress-rocks-at-updates/</guid>
+      <guid>https://blog.schmichael.com/2008/07/15/wordpress-rocks-at-updates/</guid>
       <description>&lt;p&gt;I feel I owe it to my friends who put up with my senseless Python fanboying to admit &lt;a href=&#34;http://wordpress.org&#34;&gt;WordPress&lt;/a&gt; is not only a great blog engine, but rocks at updates.&lt;/p&gt;
 
 &lt;p&gt;I just upgraded from 2.5 to 2.6 by doing a simple &lt;code&gt;svn switch http://...&lt;/code&gt; and then logging into the web admin interface. It took about 30 seconds to complete.&lt;/p&gt;
@@ -28,10 +28,10 @@
     
     <item>
       <title>Simple WordPress Upgrade Using Subversion</title>
-      <link>/2007/10/28/simple-wordpress-upgrade-using-subversion/</link>
+      <link>https://blog.schmichael.com/2007/10/28/simple-wordpress-upgrade-using-subversion/</link>
       <pubDate>Sun, 28 Oct 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/10/28/simple-wordpress-upgrade-using-subversion/</guid>
+      <guid>https://blog.schmichael.com/2007/10/28/simple-wordpress-upgrade-using-subversion/</guid>
       <description>&lt;p&gt;I&amp;#8217;ve been using subversion to update WordPress for a few minor revisions now. I simply followed the 2.2 branch and ran&amp;#8230;&lt;/p&gt;
 
 &lt;pre lang=&#34;bash&#34;&gt;svn up&lt;/pre&gt;

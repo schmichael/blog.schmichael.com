@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Shortcuts on </title>
-    <link>/tags/shortcuts/</link>
-    <description>Recent content in Shortcuts on </description>
+    <title>Shortcuts on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/shortcuts/</link>
+    <description>Recent content in Shortcuts on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 30 Jan 2008 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/shortcuts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/shortcuts/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Hostname Tab-Completion for OpenSSH</title>
-      <link>/2008/01/30/hostname-tab-completion-for-openssh/</link>
+      <link>https://blog.schmichael.com/2008/01/30/hostname-tab-completion-for-openssh/</link>
       <pubDate>Wed, 30 Jan 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/01/30/hostname-tab-completion-for-openssh/</guid>
+      <guid>https://blog.schmichael.com/2008/01/30/hostname-tab-completion-for-openssh/</guid>
       <description>&lt;p&gt;I use &lt;a href=&#34;http://openssh.org/&#34;&gt;OpenSSH&lt;/a&gt; daily. In fact the only app I probably use more is &lt;a href=&#34;http://www.vim.org/&#34;&gt;vim&lt;/a&gt;. However, until yesterday I was typing out the full username and hostname when using ssh:&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;ssh username@ridiculouslylong.domain.com&lt;/code&gt;&lt;/p&gt;

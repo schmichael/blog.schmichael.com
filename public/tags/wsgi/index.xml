@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Wsgi on </title>
-    <link>/tags/wsgi/</link>
-    <description>Recent content in Wsgi on </description>
+    <title>Wsgi on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/wsgi/</link>
+    <description>Recent content in Wsgi on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 25 Jan 2011 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/wsgi/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/wsgi/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Deploying Python behind Nginx Talk Slides</title>
-      <link>/2011/01/25/deploying-python-behind-nginx-talk-slides/</link>
+      <link>https://blog.schmichael.com/2011/01/25/deploying-python-behind-nginx-talk-slides/</link>
       <pubDate>Tue, 25 Jan 2011 00:00:00 +0000</pubDate>
       
-      <guid>/2011/01/25/deploying-python-behind-nginx-talk-slides/</guid>
+      <guid>https://blog.schmichael.com/2011/01/25/deploying-python-behind-nginx-talk-slides/</guid>
       <description>&lt;p&gt;I gave a talk on deploying Python WSGI apps behind &lt;a href=&#34;http://wiki.nginx.org/&#34;&gt;nginx&lt;/a&gt; at the &lt;a href=&#34;http://wiki.python.org/moin/PortlandPythonUserGroup&#34;&gt;Portland Python User Group&lt;/a&gt; meeting on January 11th and finally got around to publishing the slides: &lt;a href=&#34;https://docs.google.com/present/edit?id=0Ab7GDIugV1qCZGR6c3d6YnJfMTA1aGRtZmJxYzI&amp;amp;hl=en&#34;&gt;schmingx&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;I should mention &lt;a href=&#34;http://discorporate.us/jek/&#34;&gt;Jason Kirtland&lt;/a&gt; informed me after the meeting that &lt;a href=&#34;http://www.fastcgi.com/devkit/doc/fcgi-spec.html&#34;&gt;FastCGI&lt;/a&gt; supports [persistent connections (and a host of other features)][6] between a load balancer and backend app servers.&lt;/p&gt;
@@ -24,10 +24,10 @@
     
     <item>
       <title>Fun with Django and modwsgi</title>
-      <link>/2008/02/05/fun-with-django-and-modwsgi/</link>
+      <link>https://blog.schmichael.com/2008/02/05/fun-with-django-and-modwsgi/</link>
       <pubDate>Wed, 06 Feb 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/02/05/fun-with-django-and-modwsgi/</guid>
+      <guid>https://blog.schmichael.com/2008/02/05/fun-with-django-and-modwsgi/</guid>
       <description>&lt;p&gt;Today I deployed my first &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; application for a client. Its yet-another-blog, so I&amp;#8217;ll refrain from posting the code and cluttering up the django-*blog* namespace on Google Code. Before you roll your eyes and complain about why I didn&amp;#8217;t use an existing solution, I think I have 2 somewhat valid reasons:&lt;/p&gt;
 
 &lt;ol&gt;

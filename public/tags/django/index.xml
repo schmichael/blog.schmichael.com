@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Django on </title>
-    <link>/tags/django/</link>
-    <description>Recent content in Django on </description>
+    <title>Django on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/django/</link>
+    <description>Recent content in Django on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 08 Jul 2009 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/django/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/django/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>I Love Python: ZipFile Edition</title>
-      <link>/2009/07/08/i-love-python-zipfile-edition/</link>
+      <link>https://blog.schmichael.com/2009/07/08/i-love-python-zipfile-edition/</link>
       <pubDate>Wed, 08 Jul 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/07/08/i-love-python-zipfile-edition/</guid>
+      <guid>https://blog.schmichael.com/2009/07/08/i-love-python-zipfile-edition/</guid>
       <description>&lt;p&gt;For a client web project I needed to create a zip file containing a number of generated XML files. This isn&amp;#8217;t something I need to do very often, so I briefly considered just writing the XML files to disk and running a zip command. Ugly, but surely trying to dig up a pleasant Python zip library would be more work?&lt;/p&gt;
 
 &lt;p&gt;Turns out Python has had a wonderful zip library in its standard library since 1.6! The &lt;code&gt;&amp;lt;a href=&amp;quot;http://docs.python.org/library/zipfile.html&amp;quot;&amp;gt;zipfile&amp;lt;/a&amp;gt;&lt;/code&gt; module makes creating zip files a breeze:&lt;/p&gt;
@@ -63,10 +63,10 @@ def create_zip(spam):
     
     <item>
       <title>BitBucket Project for Python FusionCharts Code</title>
-      <link>/2009/04/08/bitbucket-project-python-fusioncharts/</link>
+      <link>https://blog.schmichael.com/2009/04/08/bitbucket-project-python-fusioncharts/</link>
       <pubDate>Wed, 08 Apr 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/04/08/bitbucket-project-python-fusioncharts/</guid>
+      <guid>https://blog.schmichael.com/2009/04/08/bitbucket-project-python-fusioncharts/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://michael.susens-schurter.com/blog/2009/04/02/image-exporter-for-fusion-charts/&#34;&gt;After my last post on FusionCharts&lt;/a&gt;, someone was nice enough to e-mail me some a &lt;a href=&#34;http://djangoproject.com&#34;&gt;Django&lt;/a&gt; snippet for exporting &lt;a href=&#34;http://fusioncharts.com&#34;&gt;FusionCharts&lt;/a&gt; as images, so I decided I might as well put the code in a public repository.&lt;/p&gt;
 
 &lt;p&gt;While I prefer Bazaar out of all the DVCSes, it seems Mercurial has captured the hearts and minds of the Python empire, so I created the &lt;a href=&#34;http://bitbucket.org/schmichael/python-fusioncharts/&#34;&gt;python-fusioncharts project&lt;/a&gt; on [BitBucket][5].&lt;/p&gt;
@@ -79,10 +79,10 @@ def create_zip(spam):
     
     <item>
       <title>2nd OS Bridge Proposal: Django Introduction</title>
-      <link>/2009/03/30/2nd-os-bridge-proposal-django-introduction/</link>
+      <link>https://blog.schmichael.com/2009/03/30/2nd-os-bridge-proposal-django-introduction/</link>
       <pubDate>Tue, 31 Mar 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/03/30/2nd-os-bridge-proposal-django-introduction/</guid>
+      <guid>https://blog.schmichael.com/2009/03/30/2nd-os-bridge-proposal-django-introduction/</guid>
       <description>&lt;p&gt;I just posted my second talk proposal for the Open Source Bridge Conference:&lt;/p&gt;
 
 &lt;p&gt;[&lt;/p&gt;
@@ -105,10 +105,10 @@ def create_zip(spam):
     
     <item>
       <title>(Yet Another) Deploying Django with CherryPy Script</title>
-      <link>/2009/02/18/deploying-django-with-cherrypy/</link>
+      <link>https://blog.schmichael.com/2009/02/18/deploying-django-with-cherrypy/</link>
       <pubDate>Wed, 18 Feb 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/02/18/deploying-django-with-cherrypy/</guid>
+      <guid>https://blog.schmichael.com/2009/02/18/deploying-django-with-cherrypy/</guid>
       <description>&lt;p&gt;Recently I deployed a &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; project on an OSX server. I foolishly thought this would be as easy as on Linux until I ran into the mess that is _x86&lt;em&gt;64&lt;/em&gt; Apache + &lt;a href=&#34;http://www.modwsgi.org/&#34;&gt;mod_wsgi&lt;/a&gt;* + Django + psycopg2 + &lt;em&gt;i386&lt;/em&gt; PostgreSQL. After wasting far too much time googling and recompiling various bits trying to get everything happy, I followed &lt;a href=&#34;http://www.eflorenzano.com/blog/post/hosting-django-site-pure-python/&#34;&gt;Eric Florenzano&amp;#8217;s post&lt;/a&gt; on deploying Django using &lt;a href=&#34;http://www.cherrypy.org/&#34;&gt;CherryPy&lt;/a&gt;&amp;#8216;s** [wsgiserver][5].&lt;/p&gt;
 
 &lt;p&gt;Here&amp;#8217;s my lightly modified version of Eric&amp;#8217;s script:&lt;/p&gt;
@@ -171,10 +171,10 @@ if __name__ == &#34;__main__&#34;:
     
     <item>
       <title>Introducing Hzzah!</title>
-      <link>/2008/07/15/introducing-hzzah/</link>
+      <link>https://blog.schmichael.com/2008/07/15/introducing-hzzah/</link>
       <pubDate>Tue, 15 Jul 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/07/15/introducing-hzzah/</guid>
+      <guid>https://blog.schmichael.com/2008/07/15/introducing-hzzah/</guid>
       <description>&lt;p&gt;&lt;small&gt;from the I-can-haz-a-search-engine department&amp;#8230;&lt;/small&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Sorry about the tacky donate link all. I tried to hide it from feed readers with WordPress&amp;#8217;s &amp;lt;!&amp;#8211;more&amp;gt; feature, but evidently that doesn&amp;#8217;t apply to feeds. &lt;img src=&#34;http://localhost/wp-includes/images/smilies/frownie.png&#34; alt=&#34;:(&#34; class=&#34;wp-smiley&#34; style=&#34;height: 1em; max-height: 1em;&#34; /&gt;&lt;/p&gt;
@@ -227,10 +227,10 @@ bzr branch http://michael.susens-schurter.com/code/hzzah-public hzzah-steve
     
     <item>
       <title>Common Django Typo in URLconf</title>
-      <link>/2008/03/10/common-django-typo-in-urlconf/</link>
+      <link>https://blog.schmichael.com/2008/03/10/common-django-typo-in-urlconf/</link>
       <pubDate>Mon, 10 Mar 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/03/10/common-django-typo-in-urlconf/</guid>
+      <guid>https://blog.schmichael.com/2008/03/10/common-django-typo-in-urlconf/</guid>
       <description>&lt;p&gt;If you&amp;#8217;re hacking Django and get this&amp;#8230;&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;ImproperlyConfigured: Error while importing URLconf &#39;proj.app.urls&#39;: &#39;tuple&#39; object is not callable&lt;/code&gt;&lt;/p&gt;
@@ -245,10 +245,10 @@ bzr branch http://michael.susens-schurter.com/code/hzzah-public hzzah-steve
     
     <item>
       <title>Fun with Django and modwsgi</title>
-      <link>/2008/02/05/fun-with-django-and-modwsgi/</link>
+      <link>https://blog.schmichael.com/2008/02/05/fun-with-django-and-modwsgi/</link>
       <pubDate>Wed, 06 Feb 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/02/05/fun-with-django-and-modwsgi/</guid>
+      <guid>https://blog.schmichael.com/2008/02/05/fun-with-django-and-modwsgi/</guid>
       <description>&lt;p&gt;Today I deployed my first &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; application for a client. Its yet-another-blog, so I&amp;#8217;ll refrain from posting the code and cluttering up the django-*blog* namespace on Google Code. Before you roll your eyes and complain about why I didn&amp;#8217;t use an existing solution, I think I have 2 somewhat valid reasons:&lt;/p&gt;
 
 &lt;ol&gt;
@@ -310,10 +310,10 @@ Alias /static/ /srv/spam/eggs/static/
     
     <item>
       <title>Searching for that perfect Django Blog App</title>
-      <link>/2007/12/13/searching-for-that-perfect-django-blog-app/</link>
+      <link>https://blog.schmichael.com/2007/12/13/searching-for-that-perfect-django-blog-app/</link>
       <pubDate>Thu, 13 Dec 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/12/13/searching-for-that-perfect-django-blog-app/</guid>
+      <guid>https://blog.schmichael.com/2007/12/13/searching-for-that-perfect-django-blog-app/</guid>
       <description>&lt;p&gt;I need to alter a blog a bit for a client, so I went looking for a good Django-based blog to get me started. Here are my notes starting from &lt;a href=&#34;http://www.google.com/search?q=django-blog&#34;&gt;google&lt;/a&gt; and &lt;a href=&#34;http://www.google.com/search?hl=en&amp;amp;domains=code.google.com&amp;amp;q=django-+-%3Ainurl%3A%2Fsource+-inurl%3A%2Fwiki+-inurl%3A%2Fsoc+blogs&amp;amp;btnG=Search&amp;amp;sitesearch=code.google.com&#34;&gt;google code searches&lt;/a&gt;*:&lt;/p&gt;
 
 &lt;ul&gt;

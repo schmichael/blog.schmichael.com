@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Drupal Database Maintenance Script</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.15" />
+  <link href="" rel="alternate" type="application/rss+xml" title="schmichael&#39;s blog" />
+  <link href="https://blog.schmichael.com//css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://blog.schmichael.com//css/hc.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  
+    
+    </head>
+    <body>
+<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Herring Cove </div>
+      <div id = "wrapper">
+
+
+<div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="https://blog.schmichael.com//"><p class="navbar-brand">schmichael&#39;s blog</p></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+					
+					
+					<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+					<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+					<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+       
+       <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+					<img src="" />
+          <li class="sidebar-brand"><a href="https://blog.schmichael.com//"><h1 class="brand">schmichael&#39;s blog</h1></a><h3></h3></li>
+          <hr />
+					
+						<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+						<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+						<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          <hr />
+          <div id="social-wrapper">
+           
+           
+           
+           
+         </div>
+       </ul>
+     </div>
+
+
+
+     <div class="container">
+
+
+  <div id="article">
+   <div class="article-title">Drupal Database Maintenance Script</div>
+   <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2007-08-03</small></p> <hr/>
+   <div class="post">
+     <p>I love <a href="http://drupal.org">Drupal</a>, but its insistence on saving every session its ever created causes the <code>sessions</code> table to become massive. So I usually end up creating a shell script like the following:</p>
+
+<p><strong>drupal-db-maint.sh</strong> (I posted <a href="http://pastebin.ca/644472">a copy to pastebin</a> since WordPress makes the code impossible to read.)</p>
+
+<div style="border: 1px solid #cccccc; margin: 2px; padding: 2px; font-family: monospace; font-size: 8pt; text-align: left">
+  #!/bin/sh<br /> echo `date` &#8211; Starting Drupal database maintenance<br /> MYSQL_USERNAME=&#8217;<strong>insert your MySQL username here</strong>&#8216;<br /> MYSQL_PASSWORD=&#8217;<strong>insert your MySQL password here</strong>&#8216;<br /> MYSQL_DATABASE=&#8217;<strong>insert your database name here</strong>&#8216;</p> 
+  
+  <p>
+    # Note: 2592000 = sessions over 30 days old.<br /> # Adjust the timespan as desired.<br /> CLEAN_SESSIONS_SQL=&#8217;DELETE FROM `sessions` WHERE `timestamp` < (UNIX_TIMESTAMP() &#8211; 2592000)&#8217;<br /> OPTIMIZE_CACHES_SQL=&#8217;OPTIMIZE TABLE `cache` , `cache_filter` , `cache_menu` , `cache_page` , `cache_views` , `sessions`&#8217;
+  </p>
+  
+  <p>
+    # Note: I have tons of modules installed.<br /> # I tried cleaning out their table names before posting, but you&#8217;ll want to double check this SQL.<br /> OPTIMIZE_REST_SQL=&#8217;OPTIMIZE TABLE `access` , `accesslog` , `aggregator_category` , `aggregator_category_feed` , `aggregator_category_item` , `aggregator_feed` , `aggregator_item` , `authmap` , `blocks` , `blocks_roles` , `boxes` , `client` , `client_system` , `comments` , `contact` , `files` , `file_revisions` , `filters` , `filter_formats` , `flood` , `history` , `invite` , `menu` , `node` , `node_access` , `node_comment_statistics` , `node_counter` , `node_revisions` , `node_type` , `permission` , `profile_fields` , `profile_values` , `role` , `search_dataset` , `search_index` , `search_total` , `sequences` , `system` , `term_data` , `term_hierarchy` , `term_node` , `term_relation` , `term_synonym` , `url_alias` , `users` , `users_roles` , `variable` , `vocabulary` , `vocabulary_node_types` , `watchdog`&#8217;
+  </p>
+  
+  <p>
+    # Note: I run this script on a Linode which has limited IO.<br /> # Adding a short wait between commands lessens the load on the server.<br /> SLEEP_TIME=5
+  </p>
+  
+  <p>
+    echo $CLEAN_SESSIONS_SQL | mysql -u $MYSQL_USERNAME -p$MYSQL_PASSWORD $MYSQL_DATABASE<br /> sleep $SLEEP_TIME
+  </p>
+  
+  <p>
+    echo $OPTIMIZE_CACHES_SQL | mysql -u $MYSQL_USERNAME -p$MYSQL_PASSWORD $MYSQL_DATABASE > /dev/null<br /> sleep $SLEEP_TIME
+  </p>
+  
+  <p>
+    echo $OPTIMIZE_REST_SQL | mysql -u $MYSQL_USERNAME -p$MYSQL_PASSWORD $MYSQL_DATABASE > /dev/null
+  </p>
+  
+  <p>
+    echo `date` &#8211; Done with Drupal database maintenance
+  </p>
+</div>
+
+<p>Then just run <code>crontab -e</code> to edit your crontab and add a line similar to:</p>
+
+<p><code>46  4  *   *   *     /path/to/drupal-db-maint.sh</code></p>
+
+<p>That will optimize your database nightly at 4:46 AM server time (usually UTC).</p>
+
+<p>If you don&#8217;t like my solution, there are plenty of <a href="http://tools.ourmedia.org/blog/markus_sandy/performance_and_a_new_module">more elegant session cleaning solutions out there</a>. I&#8217;m just more comfortable writing shell scripts and crontabs than Drupal modules that use [hook_cron][4].</p>
+
+<p><small>Posting code in WordPress so that its readable is pretty much impossible. Any suggestions?</small></p>
+
+<p>[4]: <a href="http://api.drupal.org/api/function/hook_cron/5">http://api.drupal.org/api/function/hook_cron/5</a></p>
+
+   </div>
+ </div>
+
+
+ <a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+ <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+ <ul class="pager">
+      &nbsp;<li class="previous"><a href="https://blog.schmichael.com/2007/08/09/fixing-rhythmbox/"> Fixing Rhythmbox</a></li>
+      &nbsp;<li class="next"><a href="https://blog.schmichael.com/2007/08/03/goodbye-banshee-welcome-back-rhythmbox/"> Goodbye Banshee, Welcome Back Rhythmbox</a></li>
+</ul>
+
+
+
+    </ul>
+    </div>
+    <footer>
+
+        <p class="text-muted credit">&copy; . All rights reserved. </p>
+    </footer>
+ 
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/hc.js"></script>
+</body>
+
+</html>
+

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>PostgreSQL Killed My Harddrive</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.15" />
+  <link href="" rel="alternate" type="application/rss+xml" title="schmichael&#39;s blog" />
+  <link href="https://blog.schmichael.com//css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://blog.schmichael.com//css/hc.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  
+    
+    </head>
+    <body>
+<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Herring Cove </div>
+      <div id = "wrapper">
+
+
+<div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="https://blog.schmichael.com//"><p class="navbar-brand">schmichael&#39;s blog</p></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+					
+					
+					<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+					<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+					<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+       
+       <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+					<img src="" />
+          <li class="sidebar-brand"><a href="https://blog.schmichael.com//"><h1 class="brand">schmichael&#39;s blog</h1></a><h3></h3></li>
+          <hr />
+					
+						<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+						<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+						<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          <hr />
+          <div id="social-wrapper">
+           
+           
+           
+           
+         </div>
+       </ul>
+     </div>
+
+
+
+     <div class="container">
+
+
+  <div id="article">
+   <div class="article-title">PostgreSQL Killed My Harddrive</div>
+   <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2007-03-14</small></p> <hr/>
+   <div class="post">
+     <p>The harddrive died in the server that dumps our firewall&#8217;s syslog output into a nice <a href="http://www.postgresql.org">PostgreSQL</a> database for easy reporting. PostgreSQL didn&#8217;t do anything evil in order to kill the drive, but because <a href="http://developer.postgresql.org/pgdocs/postgres/runtime-config-wal.html">it syncs data to the harddrive for safety</a>, it kept my ancient server&#8217;s harddrive spinning <sup>24</sup>&frasl;<sub>7</sub>.</p>
+
+<p>I should mention this was my fault. I really should have <a href="http://www.postgresql.org/docs/8.1/interactive/runtime-config-wal.html">turned fsync off</a> to let the server cache the trickle of ICMP packets that keep our firewall awake all night. Instead the old Quantum Fireball Plus LM harddrive wrote every byte right as it came in.</p>
+
+<p>Luckily the harddrive still worked enough that I could attach it to another computer via a IDE-USB adapter and copy off any data I wanted to keep.</p>
+
+<p>Below are the SMART statistics for the drive as collected by <a href="http://smartmontools.sourceforge.net/">smartmontools</a> and <a href="http://munin.projects.linpro.no/">munin</a>. As I was able to retrieve data off the disk, I would say SMART did its job even if it didn&#8217;t give me much warning.</p>
+
+<p><a href="http://michael.susens-schurter.com/blog/wp-content/uploads/2007/03/moodletremontlocal-smart_hda-day.png" title="moodletremontlocal-smart_hda-day.png"><img src="http://michael.susens-schurter.com/blog/wp-content/uploads/2007/03/moodletremontlocal-smart_hda-day.png" alt="moodletremontlocal-smart_hda-day.png" /></a></p>
+
+<p><a href="http://michael.susens-schurter.com/blog/wp-content/uploads/2007/03/moodletremontlocal-smart_hda-month.png" title="moodletremontlocal-smart_hda-month.png"><img src="http://michael.susens-schurter.com/blog/wp-content/uploads/2007/03/moodletremontlocal-smart_hda-month.png" alt="moodletremontlocal-smart_hda-month.png" /></a></p>
+
+   </div>
+ </div>
+
+
+ <a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+ <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+ <ul class="pager">
+      &nbsp;<li class="previous"><a href="https://blog.schmichael.com/2007/03/14/dell-linux-survey/"> Dell Linux Survey</a></li>
+      &nbsp;<li class="next"><a href="https://blog.schmichael.com/2007/03/07/connecting-sqlobjects-to-postgresql-via-ssl/"> Connecting SQLObjects to PostgreSQL via SSL</a></li>
+</ul>
+
+
+
+    </ul>
+    </div>
+    <footer>
+
+        <p class="text-muted credit">&copy; . All rights reserved. </p>
+    </footer>
+ 
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/hc.js"></script>
+</body>
+
+</html>
+

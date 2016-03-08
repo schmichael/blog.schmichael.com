@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Keys on </title>
-    <link>/tags/keys/</link>
-    <description>Recent content in Keys on </description>
+    <title>Keys on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/keys/</link>
+    <description>Recent content in Keys on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 20 Mar 2008 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/keys/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/keys/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Easy Rsync Remote Backups Using SSH Keys</title>
-      <link>/2008/03/19/easy-rsync-remote-backups-using-ssh-keys/</link>
+      <link>https://blog.schmichael.com/2008/03/19/easy-rsync-remote-backups-using-ssh-keys/</link>
       <pubDate>Thu, 20 Mar 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/03/19/easy-rsync-remote-backups-using-ssh-keys/</guid>
+      <guid>https://blog.schmichael.com/2008/03/19/easy-rsync-remote-backups-using-ssh-keys/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://www.samba.org/rsync/&#34;&gt;Rsync&lt;/a&gt; is an excellent file transfer utility thats especially well suited for backing up files over the Internet because it only transfers the data that has changed. A friend asked me how to set it up, so I thought I&amp;#8217;d post what I sent him here.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; Backup a directory from computer &lt;code&gt;Zim&lt;/code&gt; to computer &lt;code&gt;Ark&lt;/code&gt;&lt;/p&gt;

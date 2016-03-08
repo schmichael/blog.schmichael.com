@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Easy Rsync Remote Backups Using SSH Keys</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.15" />
+  <link href="" rel="alternate" type="application/rss+xml" title="schmichael&#39;s blog" />
+  <link href="https://blog.schmichael.com//css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://blog.schmichael.com//css/hc.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  
+    
+    </head>
+    <body>
+<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Herring Cove </div>
+      <div id = "wrapper">
+
+
+<div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="https://blog.schmichael.com//"><p class="navbar-brand">schmichael&#39;s blog</p></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+					
+					
+					<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+					<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+					<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+       
+       <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+					<img src="" />
+          <li class="sidebar-brand"><a href="https://blog.schmichael.com//"><h1 class="brand">schmichael&#39;s blog</h1></a><h3></h3></li>
+          <hr />
+					
+						<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+						<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+						<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          <hr />
+          <div id="social-wrapper">
+           
+           
+           
+           
+         </div>
+       </ul>
+     </div>
+
+
+
+     <div class="container">
+
+
+  <div id="article">
+   <div class="article-title">Easy Rsync Remote Backups Using SSH Keys</div>
+   <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2008-03-20</small></p> <hr/>
+   <div class="post">
+     <p><a href="http://www.samba.org/rsync/">Rsync</a> is an excellent file transfer utility thats especially well suited for backing up files over the Internet because it only transfers the data that has changed. A friend asked me how to set it up, so I thought I&#8217;d post what I sent him here.</p>
+
+<p><strong>Goal:</strong> Backup a directory from computer <code>Zim</code> to computer <code>Ark</code></p>
+
+<p><strong>Details:</strong></p>
+
+<ul>
+<li>Both <code>Zim</code> and <code>Ark</code> are subdomains of <code>example.com</code></li>
+<li>The user on <code>Ark</code> which receives the backup files is named <code>backupuser</code></li>
+<li>The user on <code>Zim</code> with access to the files you want to backup is named <code>steve</code></li>
+</ul>
+
+<p><strong>Prerequisites:</strong></p>
+
+<ul>
+<li><a href="http://openssh.org/">ssh</a> installed on both hosts</li>
+
+<li><p><a href="http://www.samba.org/rsync/download.html">rsync</a> installed on both hosts</p></li>
+
+<li><p>Login to <code>Zim</code> via <code>ssh</code>: <pre lang="bash">ssh steve@zim.example.com</pre></p></li>
+
+<li><p>Generate a <code>ssh</code> key pair using: <pre lang="bash">ssh-keygen -t rsa
+&lt;press enter when prompted where to save the key&gt;
+&lt;press enter twice when asked for a passphrase&gt;</pre></p></li>
+
+<li><p>To use the key to login to <code>Ark</code> remotely without manually entering a password you need to copy the public key from <code>Zim</code> to <code>Ark</code> using: <pre lang="bash">ssh-copy-id -i .ssh/id_rsa.pub backupuser@ark.example.com</pre></p>
+
+<p>If you don&#8217;t have <code>ssh-copy-id</code> on your system, get a new system. 😉 If thats not possible you can download the script with:</p>
+
+<pre lang="bash">wget -O ssh-copy-id http://cvsweb.mindrot.org/index.cgi/~checkout~/openssh/contrib/ssh-copy-id?rev=1.6;content-type=text%2Fplain &#038;&#038; chmod +x ssh-copy-id</pre>
+
+<p>Then retry the above command only you&#8217;ll need to prepend a &#8220;./&#8221;:</p>
+
+<pre lang="bash">./ssh-copy-id -i .ssh/id_rsa.pub backupuser@ark.example.com</pre></li>
+
+<li><p>Verify the key copied properly by attempting to login to <code>Ark</code>. You should <em>not</em> be prompted for a password: <pre lang="bash">ssh backupuser@ark.example.com</pre></p></li>
+
+<li><p>Logout of <code>Ark</code>. The key is setup, so you&#8217;re now ready to rsync files without having to manually enter a password.</p></li>
+
+<li><p>Test rsync by choosing a small file to backup and using: <pre lang="bash">rsync -tP /some/small/testfile backupuser@ark.example.com:/tmp</pre></p>
+
+<p>A nice little progress bar should be displayed as the file is transferred. Confirm that &#8220;testfile&#8221; is now in <code>/tmp</code> on <code>Ark</code>.</li></p>
+
+<ul>
+<li><p>You&#8217;re finally ready to do a real rsync like: <pre lang="bash">rsync -t /directory/to/backup/* backupuser@ark.example.com:/existing/backup/directory</pre></p>
+
+<p><strong>Note:</strong> There are several useful options for rsync. Check <code>man rsync</code> to find out more.</p>
+
+<ul>
+<li><code>-p</code> &#8212; preserve permissions (useful for backups, use -E if you only care about the executable bit)</li>
+<li><code>-r</code> &#8212; recursively backup directories.</li>
+<li><code>-z</code> &#8212; compressed uncompressed files</li>
+<li>And just FYI: <code>-t</code> tells rsync to use the last modified timestamp to determine whether or not to transfer files. It makes rsync a <em>lot</em> faster at determining whether or not files have changed.</li>
+</ul></li>
+
+<li><p>To schedule the backup to take place nightly at 1:13 AM edit your crontab using <code>crontab -e</code> and insert the following line: <pre lang="bash">13 1 * * * rsync -qt /directory/to/backup/* backupuser@ark.example.com:/existing/backup/directory</pre></ol></p></li>
+</ul>
+
+<p><strong>Caveats:</strong></p>
+
+<ul>
+<li>These instructions will <em>push</em> files from <code>Zim</code> to <code>Ark</code>. There&#8217;s no reason why <code>Ark</code> couldn&#8217;t <em>pull</em> files from <code>Zim</code>. In fact, this is often <strong>more secure</strong> if <code>Zim</code> is a web server with a larger attack surface than <code>Ark</code>. Mea culpa.</li>
+<li>If the IP address of <code>Ark</code> is dynamic, use a service like [dyndns.com][4]. Otherwise SSH will give you errors.</li>
+<li><em>Major security warning:</em> If someone breaks into <code>Zim</code>, they can also delete all of your backups on <code>Ark</code>. Never ever ever use the <code>root</code> user for backups on <code>Ark</code>. You can use the <code>root</code> user on <code>Zim</code> to send the backups, but its best to have a special backup user setup on <code>Ark</code> to receive the backup.</li>
+</ul></li>
+</ul>
+
+<p>[4]: <a href="http://www.dyndns.com">http://www.dyndns.com</a></p>
+
+   </div>
+ </div>
+
+
+ <a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+ <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+ <ul class="pager">
+      &nbsp;<li class="previous"><a href="https://blog.schmichael.com/2008/04/11/history-meme/"> History Meme</a></li>
+      &nbsp;<li class="next"><a href="https://blog.schmichael.com/2008/03/17/annoyed-with-joel-on-software/"> Annoyed with Joel on Software</a></li>
+</ul>
+
+
+
+    </ul>
+    </div>
+    <footer>
+
+        <p class="text-muted credit">&copy; . All rights reserved. </p>
+    </footer>
+ 
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/hc.js"></script>
+</body>
+
+</html>
+

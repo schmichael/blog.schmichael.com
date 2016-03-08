@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Swfdec on </title>
-    <link>/tags/swfdec/</link>
-    <description>Recent content in Swfdec on </description>
+    <title>Swfdec on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/swfdec/</link>
+    <description>Recent content in Swfdec on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sun, 14 Sep 2008 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/swfdec/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/swfdec/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Adobe Flash in Linux</title>
-      <link>/2008/09/14/adobe-flash-in-linux/</link>
+      <link>https://blog.schmichael.com/2008/09/14/adobe-flash-in-linux/</link>
       <pubDate>Sun, 14 Sep 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/09/14/adobe-flash-in-linux/</guid>
+      <guid>https://blog.schmichael.com/2008/09/14/adobe-flash-in-linux/</guid>
       <description>&lt;p&gt;Like most people, I use Flash a lot. Not only do I watch YouTube and Hulu videos, but FusionCharts* are an integral part of one of the main projects I work on. And like most people, I just want Flash to work. While an open source option would be nice, I really just need something that works.&lt;/p&gt;
 
 &lt;p&gt;Unfortunately &lt;strong&gt;Flash in Linux&lt;/strong&gt; &lt;small&gt;still&lt;/small&gt; &lt;strong&gt;sucks.&lt;/strong&gt;&lt;/p&gt;

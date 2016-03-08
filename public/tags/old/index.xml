@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Old on </title>
-    <link>/tags/old/</link>
-    <description>Recent content in Old on </description>
+    <title>Old on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/old/</link>
+    <description>Recent content in Old on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 06 Oct 2006 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/old/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/old/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Spam me</title>
-      <link>/2006/10/06/spam-me/</link>
+      <link>https://blog.schmichael.com/2006/10/06/spam-me/</link>
       <pubDate>Fri, 06 Oct 2006 00:00:00 +0000</pubDate>
       
-      <guid>/2006/10/06/spam-me/</guid>
+      <guid>https://blog.schmichael.com/2006/10/06/spam-me/</guid>
       <description>&lt;p&gt;My good friend &lt;a href=&#34;http://www.dancoulter.com/&#34;&gt;Dan Coulter&lt;/a&gt; set me up with an e-mail account to test [DreamHost][2]&amp;#8216;s spam filtering. If you&amp;#8217;re not a spammer, you can stop reading this post now. &lt;img src=&#34;http://localhost/wp-includes/images/smilies/simple-smile.png&#34; alt=&#34;:)&#34; class=&#34;wp-smiley&#34; style=&#34;height: 1em; max-height: 1em;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;So please send all of your pharmacy advertisements, stock tips, and other spam to:&lt;/p&gt;

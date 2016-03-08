@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Tips on Surviving DreamHost</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.15" />
+  <link href="" rel="alternate" type="application/rss+xml" title="schmichael&#39;s blog" />
+  <link href="https://blog.schmichael.com//css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://blog.schmichael.com//css/hc.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  
+    
+    </head>
+    <body>
+<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Herring Cove </div>
+      <div id = "wrapper">
+
+
+<div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="https://blog.schmichael.com//"><p class="navbar-brand">schmichael&#39;s blog</p></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+					
+					
+					<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+					<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+					<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+       
+       <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+					<img src="" />
+          <li class="sidebar-brand"><a href="https://blog.schmichael.com//"><h1 class="brand">schmichael&#39;s blog</h1></a><h3></h3></li>
+          <hr />
+					
+						<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+						<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+						<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          <hr />
+          <div id="social-wrapper">
+           
+           
+           
+           
+         </div>
+       </ul>
+     </div>
+
+
+
+     <div class="container">
+
+
+  <div id="article">
+   <div class="article-title">Tips on Surviving DreamHost</div>
+   <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2007-06-11</small></p> <hr/>
+   <div class="post">
+     <p>I use DreamHost and it is by far the <em><strong>least</strong></em> <strong>reliable hosting service I&#8217;ve ever used.</strong></p>
+
+<p>However, they&#8217;re quite cheap for the vast amounts of storage and bandwidth provided. I also <strong>love</strong> their <a href="http://blog.dreamhost.com/">blog</a>, newsletter, <a href="http://www.dreamhoststatus.com/">status page</a>, control panel, and especially that they&#8217;re <a href="http://www.dreamhost.com/green.cgi?susens-schurter.com">green</a>!</p>
+
+<p>Bottom line: DreamHost is great for some use cases, and incredibly dangerous for others. Here are some tips:</p>
+
+<ol>
+<li><p><strong>Do</strong> <strong><em>not</em> use IMAP for DreamHost e-mail.</strong> IMAP is wonderful&#8230;at least over a 100% reliable high-bandwidth, low-latency connection. I would recommend only using DreamHost for POP access or e-mail forwarding.</p>
+
+<p>I made the mistake of using IMAP and now have over 5,000 wonderfully organized and filtered messages trapped on DreamHost&#8217;s unreliable servers. I&#8217;m not a big fan of Gmail&#8217;s non-hierarchical organization scheme, and both Yahoo! &amp; Hotmail have miserable user interfaces. So now I&#8217;m stuck with embarrassingly unreliable e-mail acces.</p></li>
+
+<li><p><strong>Do <em>not</em> store any sensitive information on DreamHost.</strong> They just had a <a href="http://www.dreamhoststatus.com/2007/06/06/security-breach/">security breach</a>.</p>
+
+<p>If you do, make sure that the file permissions only allow your user access to sensitive files: <code>chmod 0600 &lt;em&gt;filename&lt;/em&gt;</code></p></li>
+
+<li><p><strong>Do <em>not</em> host sites which require high levels of availability.</strong> You&#8217;ve been warned. 😉</p></li>
+</ol>
+
+<p>Enough bad news, here&#8217;s what I do recommend using DreamHost for:</p>
+
+<ol>
+<li>Personal sites (like my blog) or sites which don&#8217;t require high availability (small businesses or organizations).</li>
+<li>Serving static media files for a site hosted elsewhere (although some sort of failover should be used).</li>
+<li>Remote backup &#8212; as long as you <strong>encrypt any sensitive information</strong>.</li>
+<li>Shell access to a Linux server. If you want to play with Linux + Apache + MySQL + <a href="http://www.php.net/">PHP</a>/<a href="http://www.perl.org/">Perl</a>/<a href="http://www.rubyonrails.org/">Ruby on Rails</a>/[Python][8], DreamHost seems like an excellent choice. Just remember to move to a more reliable hosting service before launching your Web 2.0 startup.</li>
+</ol>
+
+<p>[8]: <a href="http://www.python.org/">http://www.python.org/</a></p>
+
+   </div>
+ </div>
+
+
+ <a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+ <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+ <ul class="pager">
+      &nbsp;<li class="previous"><a href="https://blog.schmichael.com/2007/06/11/spoiled-by-linux/"> Spoiled by Linux</a></li>
+      &nbsp;<li class="next"><a href="https://blog.schmichael.com/about-me/"> About Me</a></li>
+</ul>
+
+
+
+    </ul>
+    </div>
+    <footer>
+
+        <p class="text-muted credit">&copy; . All rights reserved. </p>
+    </footer>
+ 
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/hc.js"></script>
+</body>
+
+</html>
+

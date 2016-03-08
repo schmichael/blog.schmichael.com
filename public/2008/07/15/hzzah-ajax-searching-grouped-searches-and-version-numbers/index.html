@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Hzzah: AJAX Searching, Grouped Searches, and Version Numbers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.15" />
+  <link href="" rel="alternate" type="application/rss+xml" title="schmichael&#39;s blog" />
+  <link href="https://blog.schmichael.com//css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://blog.schmichael.com//css/hc.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  
+    
+    </head>
+    <body>
+<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Herring Cove </div>
+      <div id = "wrapper">
+
+
+<div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="https://blog.schmichael.com//"><p class="navbar-brand">schmichael&#39;s blog</p></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+					
+					
+					<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+					<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+					<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+       
+       <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+					<img src="" />
+          <li class="sidebar-brand"><a href="https://blog.schmichael.com//"><h1 class="brand">schmichael&#39;s blog</h1></a><h3></h3></li>
+          <hr />
+					
+						<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+						<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+						<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          <hr />
+          <div id="social-wrapper">
+           
+           
+           
+           
+         </div>
+       </ul>
+     </div>
+
+
+
+     <div class="container">
+
+
+  <div id="article">
+   <div class="article-title">Hzzah: AJAX Searching, Grouped Searches, and Version Numbers</div>
+   <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2008-07-16</small></p> <hr/>
+   <div class="post">
+     <p><strong>AJAX Searching</strong></p>
+
+<p>Thanks to <a href="http://docs.jquery.com/Ajax">jQuery</a> and the <a href="http://plugins.jquery.com/project/history">jQuery History plugin</a>, searching is now done via AJAX but it doesn&#8217;t break your back and forward buttons.</p>
+
+<p>The navigation callback in JavaScript ought to be more of a proper state machine, but considering there are only 3 states (blank, about, and searching) I&#8217;m not too concerned.</p>
+
+<p><strong>Grouped Searches</strong></p>
+
+<p>I played around with hzzah a bit more after I noticed its search results were far worse than those on Yahoo.com</p>
+
+<p>It seems Yahoo.com only returns 1 or 2 hits per domain, whereas the BOSS API will happily return hundreds all from the same site.</p>
+
+<p>This means if you&#8217;re vain like me and search for your name, you get pages of links to your blog and nowhere else. The <a href="http://search.yahoo.com/search?p=michael+schurter&amp;ei=UTF-8&amp;fr=">Yahoo.com results are pretty good</a> and only return 2 hits for my blog.</p>
+
+<p>So I grouped hits by domain name, but since I broke pagination in the process, [searching for myself][4] is completely worthless now.</p>
+
+<p>I have some ideas on how to fix that, but they&#8217;ll have to wait for another time.</p>
+
+<p><strong>Version Numbers</strong></p>
+
+<p>Squint at the bottom of the page to see the current revision number.</p>
+
+<p>Anybody know how to have that increment automatically when I do <code>bzr up</code> on my server? I haven&#8217;t looked for a post-update hook which would do the trick.</p>
+
+<p>[4]: <a href="http://hzzah.com/#s:michael%20schurter">http://hzzah.com/#s:michael%20schurter</a></p>
+
+   </div>
+ </div>
+
+
+ <a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+ <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+ <ul class="pager">
+      &nbsp;<li class="previous"><a href="https://blog.schmichael.com/2008/07/15/can-you-get-any-more-private/"> Can you get any more private?</a></li>
+      &nbsp;<li class="next"><a href="https://blog.schmichael.com/2008/07/15/introducing-hzzah/"> Introducing Hzzah!</a></li>
+</ul>
+
+
+
+    </ul>
+    </div>
+    <footer>
+
+        <p class="text-muted credit">&copy; . All rights reserved. </p>
+    </footer>
+ 
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/hc.js"></script>
+</body>
+
+</html>
+

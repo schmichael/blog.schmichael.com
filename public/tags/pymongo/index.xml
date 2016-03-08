@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Pymongo on </title>
-    <link>/tags/pymongo/</link>
-    <description>Recent content in Pymongo on </description>
+    <title>Pymongo on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/pymongo/</link>
+    <description>Recent content in Pymongo on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 12 Jan 2010 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/pymongo/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/pymongo/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Making Server-Side MongoDB Functions Less Awkward</title>
-      <link>/2010/01/11/making-server-side-mongodb-functions-less-awkward/</link>
+      <link>https://blog.schmichael.com/2010/01/11/making-server-side-mongodb-functions-less-awkward/</link>
       <pubDate>Tue, 12 Jan 2010 00:00:00 +0000</pubDate>
       
-      <guid>/2010/01/11/making-server-side-mongodb-functions-less-awkward/</guid>
+      <guid>https://blog.schmichael.com/2010/01/11/making-server-side-mongodb-functions-less-awkward/</guid>
       <description>&lt;p&gt;I&amp;#8217;ve recently switched my project at work to use MongoDB for the user database and a few other datasets.&lt;/p&gt;
 
 &lt;p&gt;Currently I don&amp;#8217;t use many JavaScript functions, but when I do I like to store them on the server so that they&amp;#8217;re accessible when I&amp;#8217;m poking around in a console.&lt;/p&gt;

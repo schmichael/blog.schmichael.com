@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>VNC Server on Debian 3.1 (Sarge)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.15" />
+  <link href="" rel="alternate" type="application/rss+xml" title="schmichael&#39;s blog" />
+  <link href="https://blog.schmichael.com//css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://blog.schmichael.com//css/hc.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  
+    
+    </head>
+    <body>
+<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Herring Cove </div>
+      <div id = "wrapper">
+
+
+<div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="https://blog.schmichael.com//"><p class="navbar-brand">schmichael&#39;s blog</p></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+					
+					
+					<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+					<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+					<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+       
+       <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+					<img src="" />
+          <li class="sidebar-brand"><a href="https://blog.schmichael.com//"><h1 class="brand">schmichael&#39;s blog</h1></a><h3></h3></li>
+          <hr />
+					
+						<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+						<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+						<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+          <hr />
+          <div id="social-wrapper">
+           
+           
+           
+           
+         </div>
+       </ul>
+     </div>
+
+
+
+     <div class="container">
+
+
+  <div id="article">
+   <div class="article-title">VNC Server on Debian 3.1 (Sarge)</div>
+   <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2006-02-03</small></p> <hr/>
+   <div class="post">
+     <p>Recently <a href="http://www.greenville.edu/faculty/dcole/">Deloy</a> asked me for help setting up VNC on some <a href="http://fedora.redhat.com/">Fedora</a> servers his students are using. While I&#8217;ve never used Fedora, the setup I use in <a href="http://www.debian.org/">Debian</a> <a href="http://www.debian.org/releases/sarge/">Sarge</a> should work on any sensible Linux distribution (and probably any good *nix machine). This setup will allow multiple users to login concurrently.</p>
+
+<p>The packages I use:</p>
+
+<ul>
+<li>tightvncserver 1.2.9 <small>(plain old vncserver works, but tightvncserver has better compression)</small></li>
+<li>vnc-common 3.3.7</li>
+<li>x11vnc 0.7</li>
+<li>netkit-inetd 0.10 <small>(any sort of inetd/xinetd implementation should work)</small></li>
+</ul>
+
+<p><strong>1. Append to <code>/etc/services</code>:</strong></p>
+
+<p><code>custom-vnc    5951/tcp</code></p>
+
+<p>Note: There&#8217;s nothing magical about port 5951, specify whatever port you want.)</p>
+
+<p><strong>2. Append to <code>/etc/inetd.conf</code>:</strong></p>
+
+<p><code>custom-vnc   stream  tcp     nowait  nobody.tty      /usr/bin/Xvnc Xvnc -inetd -query localhost -once -geometry 800x600 -depth 16</code></p>
+
+<p>Note: Tweak the geometry &amp; depth settings depending on the bandwidth you have available. Don&#8217;t be afraid to specify non-traditional geometries like 800&#215;1000 to get the best fit for your desktop.</p>
+
+<p><strong>3. Restart inetd.</strong> In Debian I usually use the bizarre &#8220;invoke-rc.d inetd restart&#8221; command although a good &#8220;/etc/init.d/inetd restart&#8221; accomplishes the same task. For some reason I&#8217;ve always thought the invoke-rc.d method was preferred, but I have no clue where I got that idea from.</p>
+
+<p><strong>4. Connect remotely.</strong> On another computer open up your favorite VNC viewer and point it to the hostname and port (port not Display number) of the server you just setup VNC server on.</p>
+
+<p>You should see your default X Windows Display Manager login screen (probably <a href="http://www.gnome.org/projects/gdm/">gdm</a> for <a href="http://www.gnome.org/">Gnome</a> or kdm for <a href="http://www.kde.org/">KDE</a>). You can now login and use that computer remotely. Simply logout when you&#8217;re finished.</p>
+
+<p><strong>Caveat:</strong> As far as I know you cannot share a single VNC session among multiple viewers, but that feature of VNC doesn&#8217;t make much sense in this context.</p>
+
+<p><span style="font-weight: bold">Tip:</span> While the <span style="font-style: italic">Tight</span> encoding supported by many VNC clients and servers offers JPEG compression which is great for low-bandwidth connections. However, Tight encoding takes a lot more processing time than other encodings and the compression is [lossy][8], so stick to the simpler encodings for LAN connections.</p>
+
+<p><span style="font-weight: bold" /></p>
+
+<p><span style="font-weight: bold">Warning:</span> <span style="font-style: italic">The VNC protocol is not secure. Please use a VPN or secure tunneling protocol like <a href="http://www.openssh.org/">SSH</a> when using VNC.</span></p>
+
+<p>[8]: <a href="http://en.wikipedia.org/wiki/Lossy_compression">http://en.wikipedia.org/wiki/Lossy_compression</a></p>
+
+   </div>
+ </div>
+
+
+ <a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+ <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+ <ul class="pager">
+      &nbsp;<li class="previous"><a href="https://blog.schmichael.com/2006/02/26/sourceforgenet-adds-subversion-support/"> SourceForge.net Adds Subversion Support</a></li>
+      &nbsp;<li class="next"><a href="https://blog.schmichael.com/2006/02/02/openssh-43-released/"> OpenSSH 4.3 Released</a></li>
+</ul>
+
+
+
+    </ul>
+    </div>
+    <footer>
+
+        <p class="text-muted credit">&copy; . All rights reserved. </p>
+    </footer>
+ 
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/hc.js"></script>
+</body>
+
+</html>
+

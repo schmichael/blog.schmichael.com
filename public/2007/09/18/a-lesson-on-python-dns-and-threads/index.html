@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A Lesson on Python, DNS, and Threads</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.15" />
+  <link href="" rel="alternate" type="application/rss+xml" title="schmichael&#39;s blog" />
+  <link href="https://blog.schmichael.com//css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://blog.schmichael.com//css/hc.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  
+    
+    </head>
+    <body>
+<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Herring Cove </div>
+      <div id = "wrapper">
+
+
+<div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="https://blog.schmichael.com//"><p class="navbar-brand">schmichael&#39;s blog</p></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+					
+					
+					<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+					<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+					<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+       
+       <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+					<img src="" />
+          <li class="sidebar-brand"><a href="https://blog.schmichael.com//"><h1 class="brand">schmichael&#39;s blog</h1></a><h3></h3></li>
+          <hr />
+					
+						<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+						<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+						<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          <hr />
+          <div id="social-wrapper">
+           
+           
+           
+           
+         </div>
+       </ul>
+     </div>
+
+
+
+     <div class="container">
+
+
+  <div id="article">
+   <div class="article-title">A Lesson on Python, DNS, and Threads</div>
+   <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2007-09-18</small></p> <hr/>
+   <div class="post">
+     <p>While working on a firewall project <small>(that I&#8217;ll hopefully be posting about soon)</small>, I ran across the need to resolve thousands of domain names to IP addresses as quickly as possible (without duplicates). It was a simple, straightforward problem which proved to be a great learning experience!</p>
+
+<p>To follow along at home you&#8217;ll need to download <strike>proxies.txt</strike> and put it in the same directory as the Python scripts below. <strong>Update: I removed the proxiest.txt file&#8230; too many hits for all the wrong reasons I&#8217;m sure.</strong></p>
+
+<p><strike>Spoiler</strike> <em>Obvious Warning: If you need to do lots of DNS queries, <strong>don&#8217;t reinvent the wheel: use an asynchronous DNS library</strong>. These examples are useful for people interested in learning about threading and optimizing simple tasks.</em></p>
+
+<p><strong>First Try: Synchronous DNS Lookups</strong></p>
+
+<p>Always try the simplest solution first: loop over the list of domain names and add each resolved IP to a set. A set is by definition a unique list, so it won&#8217;t contain duplicate IP entires.</p>
+
+<p>The Python code is short enough to post here, but WordPress really likes messing with my whitespace, so <a href="http://python.pastebin.com/f4292b7fa">I uploaded it to pastebin</a>.</p>
+
+<p>Unfortunately doing synchronous DNS lookups on 3,000 domain names took about <strong>2 hours</strong> on my machine!</p>
+
+<p><em>Bottom line:</em> 2 hours is not acceptable.</p>
+
+<p><strong>Second Try: <a href="http://docs.python.org/lib/module-threading.html">Threads</a> and <a href="http://en.wikipedia.org/wiki/Semaphore_(programming)">Semaphores</a></strong></p>
+
+<p>I know threads are overkill, but it just wouldn&#8217;t be fun if I went straight to using asynchronous DNS. 😉 I also wanted to try using threads on Python which in general have a bad reputation due to the GIL.</p>
+
+<p>[</p>
+
+<p>Download try2.py]<a href="/code/easyadns/try2.py">4</a> and execute it with &#8220;<code>time python try2.py</code>&#8221; to see how long it takes to do the lookups. It took <strong>40 seconds</strong> on my computer.</p>
+
+<p>However, if you set &#8220;<code>easyadns_debug = False</code>&#8221; in the code, suddenly I get a &#8220;<code>thread.error: can't start new thread</code>&#8221; exception. I believe this is because the code is starting about 3,000 new threads in a tight loop which isn&#8217;t a very nice thing to do.</p>
+
+<p>I use a counting semaphore with a value of 50 to ensure only 50 lookups are performed at a time, but this doesn&#8217;t stop the script from spawning 3,000 threads immediately! I&#8217;m guessing all of the <code>print</code> statements that occur when easyadns_debug is true slow down the process just enough to allow Python to sanely handle all of the new threads.</p>
+
+<p><em>Bottom line:</em> 40 seconds is good, but causing difficult to debug exceptions is unacceptable.</p>
+
+<p><strong>Third Try: Thread Pool</strong></p>
+
+<p>At this point I should have bitten the bullet and sought out a <em>real</em> asynchronous DNS library, but I had to at least try threads properly before giving up on them.</p>
+
+<p><a href="/code/easyadns/try3.py">Download try3.py</a> and execute it with &#8220;<code>time python try3.py</code>&#8220;.</p>
+
+<p>Just like with try2.py you can set easyadns_debug to False to disable all of the output, but unlike try2.py, this version won&#8217;t crash if you do!</p>
+
+<p>My third try uses a thread pool to handle the lookups. 50 threads are created and pop domain names off of the master list. This method requires a lock on both the input and output data variables which adds overhead.</p>
+
+<p>With debugging on the script takes <strong>3 minutes 20 seconds</strong> to do the lookups, and disabling debugging output seems to save about 20 seconds.</p>
+
+<p><em>Bottom Line:</em> 3 minutes isn&#8217;t bad, but from the 2nd try we know there&#8217;s a more efficient way.</p>
+
+<p><strong>Solution: <a href="http://code.google.com/p/adns-python/">adns-python</a></strong></p>
+
+<p>adns-python&#8217;s nearly complete lack of documentation scared me away at first, but with a little toying around in ipython its pretty straightforward. Its just a &#8220;sudo apt-get install python-adns&#8221; away in Debian Sid.</p>
+
+<p>[Download try4.py][7] and execute it with &#8220;<code>time python try4.py</code>&#8220;.</p>
+
+<p>As always you can turn off debugging messages easily. However, even with debugging on this script completes in a little over <strong>20 seconds</strong>.</p>
+
+<p>Using a callback instead of the while loop starting on line 15 would be preferable, but I didn&#8217;t see how to use callbacks in the version of adns-python I was using. Callbacks would also introduce the need to lock <code>data</code> before adding IPs to it.</p>
+
+<p><em>Bottom line:</em> No threads. No locks. Less code. Good performance. We have a winner!</p>
+
+<p>Some random things I learned while doing all of this:</p>
+
+<ul>
+<li>The bottleneck for DNS lookups is the <strong>timeout</strong>. Failed lookups will wait multiple seconds before timing out while successful DNS queries will return results in a fraction of a second.</li>
+<li>Python threading is <em>not</em> worthless because of the GIL. It will be interesting to see where experiments in Python concurrency lead, but I don&#8217;t see the GIL as a limiting factor for Python.</li>
+<li>Because of the GIL I may not have need to lock around my variables. This could have improved performance, but I wanted to write the code using the correct principles. I would hope you could port these examples to another language and get similar results.</li>
+<li>It&#8217;s hell to post code in WordPress. I thought installing a code formatting plugin would help, but it doesn&#8217;t seem to stop WordPress from mangling my whitespace randomly.</li>
+</ul>
+
+<p><strong>Aug 1st, 2010 &#8211; Update:</strong> Disabled comments on this post as it seems to attract a disproportionate amount of spam.</p>
+
+<p>[7]: /code/easyadns/try4.py</p>
+
+   </div>
+ </div>
+
+
+ <a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+ <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+ <ul class="pager">
+      &nbsp;<li class="previous"><a href="https://blog.schmichael.com/2007/09/20/session-locking-and-performance-in-cherrypy/"> Session Locking and Performance in CherryPy</a></li>
+      &nbsp;<li class="next"><a href="https://blog.schmichael.com/2007/09/05/how-to-build-a-web20-link-sharing-site/"> How to Build a Web2.0 Link Sharing Site</a></li>
+</ul>
+
+
+
+    </ul>
+    </div>
+    <footer>
+
+        <p class="text-muted credit">&copy; . All rights reserved. </p>
+    </footer>
+ 
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/hc.js"></script>
+</body>
+
+</html>
+

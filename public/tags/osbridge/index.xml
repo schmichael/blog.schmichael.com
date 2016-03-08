@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Osbridge on </title>
-    <link>/tags/osbridge/</link>
-    <description>Recent content in Osbridge on </description>
+    <title>Osbridge on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/osbridge/</link>
+    <description>Recent content in Osbridge on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 18 Jun 2009 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/osbridge/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/osbridge/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Web Server Shootout Slides</title>
-      <link>/2009/06/18/web-server-shootout-slides/</link>
+      <link>https://blog.schmichael.com/2009/06/18/web-server-shootout-slides/</link>
       <pubDate>Thu, 18 Jun 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/06/18/web-server-shootout-slides/</guid>
+      <guid>https://blog.schmichael.com/2009/06/18/web-server-shootout-slides/</guid>
       <description>&lt;p&gt;The &lt;a href=&#34;http://opensourcebridge.org/sessions/119&#34;&gt;presentation&lt;/a&gt; has been given.&lt;/p&gt;
 
 &lt;p&gt;The slides are available as &lt;a href=&#34;http://michael.susens-schurter.com/files/wss/wss.html&#34;&gt;HTML&lt;/a&gt; or [the source OpenOffice.org Impress file][3].&lt;/p&gt;
@@ -30,10 +30,10 @@
     
     <item>
       <title>Web Server Shootout Talk Accepted at OS Bridge Conference</title>
-      <link>/2009/04/26/web-server-shootout-talk-accepted-at-os-bridge-conference/</link>
+      <link>https://blog.schmichael.com/2009/04/26/web-server-shootout-talk-accepted-at-os-bridge-conference/</link>
       <pubDate>Sun, 26 Apr 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/04/26/web-server-shootout-talk-accepted-at-os-bridge-conference/</guid>
+      <guid>https://blog.schmichael.com/2009/04/26/web-server-shootout-talk-accepted-at-os-bridge-conference/</guid>
       <description>&lt;p&gt;My talk, &lt;a href=&#34;http://opensourcebridge.org/sessions/119&#34;&gt;Web Server Shootout&lt;/a&gt;, was accepted by the Open Source Bridge Conference! I&amp;#8217;m terribly excited, but also nervous because there&amp;#8217;s a lot I need to do between now and the conference. Expect regular updates on how my talk is progressing (always tagged with osbridge [feed]).&lt;/p&gt;
 
 &lt;p&gt;The &lt;a href=&#34;http://opensourcebridge.org/2009/04/open-source-bridge-conference-confirmed-speakers/&#34;&gt;full list of sessions is up&lt;/a&gt; (or &lt;a href=&#34;http://opensourcebridge.org/events/2009/sessions&#34;&gt;here&lt;/a&gt;), and I&amp;#8217;m very excited just to be attending the conference. Congratulations to all of the speakers!&lt;/p&gt;
@@ -58,10 +58,10 @@
     
     <item>
       <title>2nd OS Bridge Proposal: Django Introduction</title>
-      <link>/2009/03/30/2nd-os-bridge-proposal-django-introduction/</link>
+      <link>https://blog.schmichael.com/2009/03/30/2nd-os-bridge-proposal-django-introduction/</link>
       <pubDate>Tue, 31 Mar 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/03/30/2nd-os-bridge-proposal-django-introduction/</guid>
+      <guid>https://blog.schmichael.com/2009/03/30/2nd-os-bridge-proposal-django-introduction/</guid>
       <description>&lt;p&gt;I just posted my second talk proposal for the Open Source Bridge Conference:&lt;/p&gt;
 
 &lt;p&gt;[&lt;/p&gt;
@@ -84,10 +84,10 @@
     
     <item>
       <title>Crowdsourcing my OS Bridge Talk Proposal</title>
-      <link>/2009/03/29/crowdsourcing-my-os-bridge-talk-proposal/</link>
+      <link>https://blog.schmichael.com/2009/03/29/crowdsourcing-my-os-bridge-talk-proposal/</link>
       <pubDate>Mon, 30 Mar 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/03/29/crowdsourcing-my-os-bridge-talk-proposal/</guid>
+      <guid>https://blog.schmichael.com/2009/03/29/crowdsourcing-my-os-bridge-talk-proposal/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; &lt;a href=&#34;http://opensourcebridge.org/proposals/119&#34;&gt;Submitted my proposal&lt;/a&gt;, but please still leave me comments! I can still edit my proposal.&lt;/p&gt;
 
 &lt;p&gt;Web server performance has been a hot topic for some time now as Apache hasn&amp;#8217;t been the only viable option for a few years.&lt;/p&gt;

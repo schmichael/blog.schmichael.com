@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Iceweasel &#43; libnss_wins = Crash</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.15" />
+  <link href="" rel="alternate" type="application/rss+xml" title="schmichael&#39;s blog" />
+  <link href="https://blog.schmichael.com//css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://blog.schmichael.com//css/hc.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  
+    
+    </head>
+    <body>
+<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Herring Cove </div>
+      <div id = "wrapper">
+
+
+<div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="https://blog.schmichael.com//"><p class="navbar-brand">schmichael&#39;s blog</p></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+					
+					
+					<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+					<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+					<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+       
+       <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+					<img src="" />
+          <li class="sidebar-brand"><a href="https://blog.schmichael.com//"><h1 class="brand">schmichael&#39;s blog</h1></a><h3></h3></li>
+          <hr />
+					
+						<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+						<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+						<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          <hr />
+          <div id="social-wrapper">
+           
+           
+           
+           
+         </div>
+       </ul>
+     </div>
+
+
+
+     <div class="container">
+
+
+  <div id="article">
+   <div class="article-title">Iceweasel &#43; libnss_wins = Crash</div>
+   <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2007-02-27</small></p> <hr/>
+   <div class="post">
+     <p>I hate the fact that <a href="http://www.getfirefox.com/">Firefox</a>, probably the most recognizable open source brand name, was hastily renamed <a href="http://en.wikipedia.org/wiki/IceWeasel"><span style="font-style: italic">Iceweasel</span></a> in <a href="http://www.debian.org/releases/etch/">Debian Etch</a> due to trademark issues.</p>
+
+<p>So I&#8217;ve been especially sensitive lately as Iceweasel seems to be crashing on me all the time. I&#8217;ve uninstalled my add-ons, cleared my cache, and tried to debug the issue.</p>
+
+<p>I finally caught a crash while attached to Iceweasel using <a href="http://sourceware.org/gdb/">gdb</a>. Looks like libnss_wins ([Samba][5]&#8216;s WINS name lookup service) is to blame:</p>
+
+<p><code>Program received signal SIGBUS, Bus error.&lt;br /&gt;
+[Switching to Thread -1288709200 (LWP 28528)]&lt;br /&gt;
+0xb1a98309 in toupper_w () from &lt;strong&gt;/lib/libnss_wins.so.2&lt;/strong&gt;</code></p>
+
+<p>Of course I just failed to duplicate the crash&#8230;</p>
+
+<p><strong>Update:</strong> Removing wins from my nsswitch.conf works and doesn&#8217;t seem to hurt anything else.</p>
+
+<p>[5]: <a href="http://samba.org">http://samba.org</a></p>
+
+   </div>
+ </div>
+
+
+ <a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+ <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+ <ul class="pager">
+      &nbsp;<li class="previous"><a href="https://blog.schmichael.com/2007/02/27/dan-was-right/"> Dan Was Right</a></li>
+      &nbsp;<li class="next"><a href="https://blog.schmichael.com/2007/02/23/even-python-coders-love-drupal/"> Even Python Coders Love Drupal</a></li>
+</ul>
+
+
+
+    </ul>
+    </div>
+    <footer>
+
+        <p class="text-muted credit">&copy; . All rights reserved. </p>
+    </footer>
+ 
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/hc.js"></script>
+</body>
+
+</html>
+

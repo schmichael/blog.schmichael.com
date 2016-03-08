@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Less Pagination, More More</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.15" />
+  <link href="" rel="alternate" type="application/rss+xml" title="schmichael&#39;s blog" />
+  <link href="https://blog.schmichael.com//css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://blog.schmichael.com//css/hc.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  
+    
+    </head>
+    <body>
+<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Herring Cove </div>
+      <div id = "wrapper">
+
+
+<div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="https://blog.schmichael.com//"><p class="navbar-brand">schmichael&#39;s blog</p></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+					
+					
+					<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+					<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+					<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+       
+       <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+					<img src="" />
+          <li class="sidebar-brand"><a href="https://blog.schmichael.com//"><h1 class="brand">schmichael&#39;s blog</h1></a><h3></h3></li>
+          <hr />
+					
+						<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+						<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+						<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          <hr />
+          <div id="social-wrapper">
+           
+           
+           
+           
+         </div>
+       </ul>
+     </div>
+
+
+
+     <div class="container">
+
+
+  <div id="article">
+   <div class="article-title">Less Pagination, More More</div>
+   <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2010-07-17</small></p> <hr/>
+   <div class="post">
+     <p>We live in a brave new (to some) world of databases other than a relational database with a SQL interface. Normally end users never notice a difference, but the astute viewer may notice the slow demise of an old friend: pagination.</p>
+
+<p>Traditionally with SQL databases pagination has looked something like this:</p>
+
+<p><img src="http://schmichael.com/files/pagination.png" alt="" /></p>
+
+<p>There are previous and next links as well as links for jumping right to the beginning and end. Pretty boring stuff.</p>
+
+<p>What&#8217;s interesting is that this standard interface is disappearing in favor of something like this:</p>
+
+<p><em>Twitter</em></p>
+
+<p><img src="http://schmichael.com/files/twitter-more.png" alt="" /></p>
+
+<p><em>Facebook</em></p>
+
+<p><img src="http://schmichael.com/files/facebook-more.png" alt="" /></p>
+
+<p>And soon beta testers of <a href="http://blog.urbanairship.com/2010/05/25/android-delivers-push-notifications-are-here-to-stay/">Urban Airship&#8217;s push service for Android</a> will see a More link on the page that lists devices associated with their app:</p>
+
+<p><img src="http://schmichael.com/files/apids-more.png" alt="" /></p>
+
+<p>The simplest possible explanation for this dumbing down of pagination is that <strong>count (for total pages) and skip/offset are expensive operations.</strong></p>
+
+<p>Not only are those operations expensive, but in eventually consistent databases, which many modern non-relational databases are, they&#8217;re extremely expensive, if not impossible, to perform.</p>
+
+<p><strong>Cassandra</strong></p>
+
+<p>At Urban Airship we, like Facebook, use <a href="http://cassandra.apache.org/">Cassandra</a>: a distributed column-based database. This deals two deadly blows to traditional pagination:</p>
+
+<ol>
+<li>No way to count columns in a row (without reading every column).</li>
+<li>No way to skip by numeric offset (so you can&#8217;t say, skip to page 5).</li>
+</ol>
+
+<p>In Cassandra columns are ordered, so you start reading from the beginning and read N+1 columns where N is the number of items you&#8217;d like to display. The last column&#8217;s key is then used to determine whether the More link is enabled, and if so, what key to start the next &#8220;page&#8221; at.</p>
+
+<p>Both of those are solvable problems if you really need them, but I would suspect you would end up creating a column count cache as well as some sort of table of contents for the various page offsets. Not what I want to spend my time implementing.</p>
+
+<p>The fact of the matter is that for many use cases, a simple More button works just as well (if not better) than traditional pagination. It&#8217;s also far cheaper to implement, which means more developer time free to work on features and more hardware resources available to push your 140 character insights around the web.</p>
+
+<p><strong>MongoDB</strong></p>
+
+<p>I should note that MongoDB is fairly unique in the non-relational database world as its dynamic querying features include <a href="http://www.mongodb.org/display/DOCS/Aggregation#Aggregation-Count">count</a> and [skip][8] operations. However, as with any database, you&#8217;ll want to make sure these queries hit indexes.</p>
+
+<p>Sadly MongoDB currently doesn&#8217;t have the distributed features necessary to automatically handle data too big for a single server.</p>
+
+<p>[8]: <a href="http://www.mongodb.org/display/DOCS/Advanced+Queries#AdvancedQueries-%7B%7Bskip%28%29%7D%7D">http://www.mongodb.org/display/DOCS/Advanced+Queries#AdvancedQueries-%7B%7Bskip%28%29%7D%7D</a></p>
+
+   </div>
+ </div>
+
+
+ <a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+ <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+ <ul class="pager">
+      &nbsp;<li class="previous"><a href="https://blog.schmichael.com/2010/12/28/noobs-guide-to-hacking-nginx/"> A Complete Noobs Guide to Hacking Nginx</a></li>
+      &nbsp;<li class="next"><a href="https://blog.schmichael.com/2010/07/09/new-job-new-blog/"> New Job, New Blog</a></li>
+</ul>
+
+
+
+    </ul>
+    </div>
+    <footer>
+
+        <p class="text-muted credit">&copy; . All rights reserved. </p>
+    </footer>
+ 
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/hc.js"></script>
+</body>
+
+</html>
+

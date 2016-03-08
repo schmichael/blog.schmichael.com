@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>lxml vs. ElementTree</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.15" />
+  <link href="" rel="alternate" type="application/rss+xml" title="schmichael&#39;s blog" />
+  <link href="https://blog.schmichael.com//css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://blog.schmichael.com//css/hc.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  
+    
+    </head>
+    <body>
+<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Herring Cove </div>
+      <div id = "wrapper">
+
+
+<div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="https://blog.schmichael.com//"><p class="navbar-brand">schmichael&#39;s blog</p></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+					
+					
+					<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+					<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+					<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+       
+       <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+					<img src="" />
+          <li class="sidebar-brand"><a href="https://blog.schmichael.com//"><h1 class="brand">schmichael&#39;s blog</h1></a><h3></h3></li>
+          <hr />
+					
+						<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+						<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+						<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+          <hr />
+          <div id="social-wrapper">
+           
+           
+           
+           
+         </div>
+       </ul>
+     </div>
+
+
+
+     <div class="container">
+
+
+  <div id="article">
+   <div class="article-title">lxml vs. ElementTree</div>
+   <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2009-10-14</small></p> <hr/>
+   <div class="post">
+     <p>While lxml has some <a href="http://codespeak.net/lxml/performance.html">excellent benchmarks about the speed of lxml.etree vs. ElementTree</a>, I wanted to run some tests that were as close as possible to my own use case (fairly simple multi-megabyte XML files).</p>
+
+<p>Here are the results of my little test script [lxml-v-etree.py]<a href="times are in milliseconds">2</a>:</p>
+
+<pre>name           generate | tostring | total | write | parse | find | total
+------------------------+----------+-------+-------+-------+------+------
+xml.cElementTree    132 |   2430   |  2562 |  2433 |   158 |   58 |   216
+xml.cElementTree    112 |   2384   |  2497 |  2387 |   158 |   25 |   183
+xml.cElementTree    113 |   2393   |  2507 |  2396 |   161 |   25 |   187
+xml.ElementTree     591 |   2571   |  3163 |  2574 |  3613 |   25 |  3638
+xml.ElementTree     619 |   2567   |  3187 |  2570 |  3589 |   55 |  3644
+xml.ElementTree     609 |   2578   |  3188 |  2581 |  3564 |   55 |  3619
+lxml                333 |     75   |   409 |    82 |   200 |    0 |   201
+lxml                355 |     93   |   448 |    95 |   182 |   32 |   214
+lxml                310 |     94   |   404 |    96 |   156 |   56 |   213
+------------------------+----------+-------+-------+-------+------+------
+name           generate | tostring | total | write | parse | find | total
+------------------------+----------+-------+-------+-------+------+------
+</pre>
+
+<p>Note that the first &#8220;total&#8221; is &#8220;generate + tostring&#8221; while the second &#8220;total&#8221; is for the 2 parsing related tests (previous 2 columns summed).</p>
+
+<p>My parsing tests are basically &#8220;etree.parse&#8221; and then running &#8220;Element.getchildren()&#8221; 3 times, which is ridiculously simplistic and should probably be ignored. My writing tests are far more thorough/realistic.</p>
+
+<p>I&#8217;m running Python 2.6.2 with lxml 2.1.5 and libxml2 2.6.32 on Ubuntu 9.04 x86_64.</p>
+
+<p>[2]: /files/lxml-v-etree.py-remove-me</p>
+
+   </div>
+ </div>
+
+
+ <a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+ <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+ <ul class="pager">
+      &nbsp;<li class="previous"><a href="https://blog.schmichael.com/2009/11/11/ubuntu-9-10-on-a-thinkpad-t400/"> Ubuntu 9.10 on a Thinkpad T400</a></li>
+      &nbsp;<li class="next"><a href="https://blog.schmichael.com/2009/09/22/google-chrome-frame/"> Google Chrome Frame</a></li>
+</ul>
+
+
+
+    </ul>
+    </div>
+    <footer>
+
+        <p class="text-muted credit">&copy; . All rights reserved. </p>
+    </footer>
+ 
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/hc.js"></script>
+</body>
+
+</html>
+

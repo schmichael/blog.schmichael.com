@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>About-mes on </title>
-    <link>/about-me/</link>
-    <description>Recent content in About-mes on </description>
+    <title>About-mes on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/about-me/</link>
+    <description>Recent content in About-mes on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 06 Jun 2007 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/about-me/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/about-me/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>About Me</title>
-      <link>/about-me/</link>
+      <link>https://blog.schmichael.com/about-me/</link>
       <pubDate>Wed, 06 Jun 2007 00:00:00 +0000</pubDate>
       
-      <guid>/about-me/</guid>
-      <description>&lt;p&gt;My name is &lt;em&gt;Michael Susens-Schurter&lt;/em&gt; (but I&amp;#8217;m often lazy and shorten it to just &lt;em&gt;Michael Schurter&lt;/em&gt;) and go by &lt;strong&gt;schmichael&lt;/strong&gt; online. I&amp;#8217;m married to the beautiful &lt;a href=&#34;http://twitter.com/samwistera&#34;&gt;Samantha Wistera&lt;/a&gt; and currently a developer at &lt;a href=&#34;http://urbanairship.com&#34;&gt;Urban Airship&lt;/a&gt;.&lt;/p&gt;
+      <guid>https://blog.schmichael.com/about-me/</guid>
+      <description>&lt;p&gt;My name is &lt;em&gt;Michael Susens-Schurter&lt;/em&gt; (but I&amp;rsquo;m often lazy and shorten it to just
+&lt;em&gt;Michael Schurter&lt;/em&gt;) and go by &lt;strong&gt;schmichael&lt;/strong&gt; online. I&amp;rsquo;m married to the
+beautiful &lt;a href=&#34;https://twitter.com/samwistera&#34;&gt;Samantha Wistera&lt;/a&gt; and currently a developer at &lt;a href=&#34;https://getlytics.com&#34;&gt;Lytics&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;You can stalk me various places around the web:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;mailto:m+blog@schmichael.com&#34;&gt;e-mail&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://twitter.com/schmichael&#34;&gt;Twitter as @schmichael&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://picasaweb.google.com/michael.schurter&#34;&gt;Photos on Picassa&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.linkedin.com/in/michaelschurter&#34;&gt;LinkedIn&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.facebook.com/schmichael&#34;&gt;Facebook&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;schmichael on FreeNode or OFTC&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/schmichael&#34;&gt;Twitter as @schmichael&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/schmichael&#34;&gt;Github&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://plus.google.com/+MichaelSchurter&#34;&gt;G+&lt;/a&gt; (not much public)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.instagram.com/schmichael0/&#34;&gt;Instagram&lt;/a&gt; (private)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.linkedin.com/in/michaelschurter&#34;&gt;LinkedIn&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.facebook.com/schmichael&#34;&gt;Facebook&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;schmichael on FreeNode&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;small&gt;For the curious: &amp;#8220;good good study day day up&amp;#8221; is a literal translation of a Chinese proverb more accurately translated as: &amp;#8220;Only if you study hard will you make progress everyday.&amp;#8221;&lt;/small&gt;&lt;/p&gt;
-
-&lt;p&gt;![schmichael snowshoeing][8]&lt;/p&gt;
-
-&lt;p&gt;[8]: &lt;a href=&#34;http://schmichael.com/files/2011.02.20-snowshoeing.jpg&#34;&gt;http://schmichael.com/files/2011.02.20-snowshoeing.jpg&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://schmichael.com/files/2011.02.20-snowshoeing.jpg&#34; alt=&#34;schmichael snowshoeing&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Linode on </title>
-    <link>/tags/linode/</link>
-    <description>Recent content in Linode on </description>
+    <title>Linode on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/linode/</link>
+    <description>Recent content in Linode on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sat, 24 Jan 2009 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/linode/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/linode/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Show Me Ads!  (At least the ones I want to see.)</title>
-      <link>/2009/01/24/show-me-ads/</link>
+      <link>https://blog.schmichael.com/2009/01/24/show-me-ads/</link>
       <pubDate>Sat, 24 Jan 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/01/24/show-me-ads/</guid>
+      <guid>https://blog.schmichael.com/2009/01/24/show-me-ads/</guid>
       <description>&lt;p&gt;I don&amp;#8217;t use ad blockers. If a site has really obnoxious ads, I try to avoid that site. I understand that ads are the way these sites make money, and honestly one day I may have an ad-funded site as well.&lt;/p&gt;
 
 &lt;p&gt;While the vast majority of online ads don&amp;#8217;t even register in my brain, I have actually found ads useful in the past. The most memorable was many years ago when I was working at a tiny IT consulting company looking to leave the &lt;a href=&#34;http://www.al3x.net/2008/01/shared-hosting-is-ghetto.html&#34;&gt;shared hosting ghetto&lt;/a&gt;. I saw an ad for &lt;a href=&#34;http://www.linode.com/?r=98bc4d2c0f709b4dd0570cc69e2fa9980428a627&#34;&gt;Linode&lt;/a&gt; on [KernelTrap][3] &lt;small&gt;(is KernelTrap defunct now?)&lt;/small&gt;, clicked it, signed up, and used Linode ever since!&lt;/p&gt;
@@ -30,10 +30,10 @@
     
     <item>
       <title>Summer of Hacks</title>
-      <link>/2008/05/13/summer-of-hacks/</link>
+      <link>https://blog.schmichael.com/2008/05/13/summer-of-hacks/</link>
       <pubDate>Tue, 13 May 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/05/13/summer-of-hacks/</guid>
+      <guid>https://blog.schmichael.com/2008/05/13/summer-of-hacks/</guid>
       <description>&lt;p&gt;My &lt;a href=&#34;http://www.linode.com/&#34;&gt;Linode&lt;/a&gt; has been experiencing a huge number of brute force login attempts in the past week. I don&amp;#8217;t keep detailed statistics, but I would guess there have been &lt;strong&gt;300 attempts in the past week&lt;/strong&gt; as opposed to &lt;em&gt;the usual rate of about 500 attempts over 200 days (2-3 attempts per day)&lt;/em&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://denyhosts.sourceforge.net/&#34;&gt;Denyhosts&lt;/a&gt; has been doing its job perfectly. It should be illegal to run a Internet exposed SSH server without it or a similar tool.*&lt;/p&gt;
@@ -48,10 +48,10 @@
     
     <item>
       <title>Free RAM from Linode</title>
-      <link>/2007/12/26/free-ram-from-linode/</link>
+      <link>https://blog.schmichael.com/2007/12/26/free-ram-from-linode/</link>
       <pubDate>Wed, 26 Dec 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/12/26/free-ram-from-linode/</guid>
+      <guid>https://blog.schmichael.com/2007/12/26/free-ram-from-linode/</guid>
       <description>&lt;p&gt;I&amp;#8217;ve said it &lt;a href=&#34;http://michael.susens-schurter.com/blog/2007/08/15/i-love-linode/&#34;&gt;before&lt;/a&gt;, and I&amp;#8217;ll say it again: I love Linode. Over Christmas they &lt;a href=&#34;http://www.linode.com/forums/viewtopic.php?t=2993&#34;&gt;increased the amount of RAM their customers receive&lt;/a&gt;. I still haven&amp;#8217;t rebooted to take advantage of the last &lt;strong&gt;free&lt;/strong&gt; RAM increase!&lt;/p&gt;
 
 &lt;p&gt;Anyone looking for &lt;strong&gt;reliable&lt;/strong&gt; &lt;a href=&#34;http://en.wikipedia.org/wiki/Vps&#34;&gt;VPS&lt;/a&gt; hosting without the significant cost and hassle of co-locating your own server: [check out Linode][4].&lt;/p&gt;

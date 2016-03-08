@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>I Love Python: ZipFile Edition</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.15" />
+  <link href="" rel="alternate" type="application/rss+xml" title="schmichael&#39;s blog" />
+  <link href="https://blog.schmichael.com//css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://blog.schmichael.com//css/hc.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  
+    
+    </head>
+    <body>
+<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Herring Cove </div>
+      <div id = "wrapper">
+
+
+<div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="https://blog.schmichael.com//"><p class="navbar-brand">schmichael&#39;s blog</p></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+					
+					
+					<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+					<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+					<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+       
+       <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+					<img src="" />
+          <li class="sidebar-brand"><a href="https://blog.schmichael.com//"><h1 class="brand">schmichael&#39;s blog</h1></a><h3></h3></li>
+          <hr />
+					
+						<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+						<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+						<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+          <hr />
+          <div id="social-wrapper">
+           
+           
+           
+           
+         </div>
+       </ul>
+     </div>
+
+
+
+     <div class="container">
+
+
+  <div id="article">
+   <div class="article-title">I Love Python: ZipFile Edition</div>
+   <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2009-07-08</small></p> <hr/>
+   <div class="post">
+     <p>For a client web project I needed to create a zip file containing a number of generated XML files. This isn&#8217;t something I need to do very often, so I briefly considered just writing the XML files to disk and running a zip command. Ugly, but surely trying to dig up a pleasant Python zip library would be more work?</p>
+
+<p>Turns out Python has had a wonderful zip library in its standard library since 1.6! The <code>&lt;a href=&quot;http://docs.python.org/library/zipfile.html&quot;&gt;zipfile&lt;/a&gt;</code> module makes creating zip files a breeze:</p>
+
+<pre lang="python">import os
+from zipfile import ZipFile, ZIP_DEFLATED
+
+from django.template.defaultfilters import slugify
+
+from somewhere_else import render_spam_xml, render_egg_xml
+
+ZIP_PATH = "/some/system/path/for/zips"
+
+def create_zip(spam):
+    spam_slug = slugify(spam.name)
+    filename = "%s.zip" % spam_slug
+    abspath = os.path.join(ZIP_PATH, filename)
+
+    # Create zip
+    z = ZipFile(abspath, "w", ZIP_DEFLATED)
+
+    # Write spam xml directly to zip
+    z.writestr("%s.xml" % spam_slug, render_spam_xml(spam))
+
+    # Write xml files to zip
+    for egg in spam.egg_set.all():
+        egg_slug = slugify(egg.name)
+
+        # Renders the egg object to an xml string
+        xml = render_egg_xml(egg)
+
+        # Note how easy it is to specify paths in the zip file:
+        z.writestr("eggs/%s.xml" % egg_slug, xml)
+
+    # Zip file must be closed to be valid
+    z.close()
+    return abspath
+</pre>
+
+<p><small>(Sorry for the Django bits in there, but they should be easy to replace.)</small></p>
+
+<p>My favorite part is that you can use either the <code>ZipFile.write</code> method to add files to the zip or the <code>ZipFile.writestr</code> method to write bytes (strings in my case) directly to the zip file.</p>
+
+<p>At any rate, just wanted to blog about it, so when I need to do it again in a few years I don&#8217;t do something stupid like running the zip command.</p>
+
+   </div>
+ </div>
+
+
+ <a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+ <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+ <ul class="pager">
+      &nbsp;<li class="previous"><a href="https://blog.schmichael.com/2009/07/09/good-bye-lo-fi-art-hello-yougov/"> Good-bye Lo-Fi Art, Hello YouGov</a></li>
+      &nbsp;<li class="next"><a href="https://blog.schmichael.com/2009/06/18/web-server-shootout-slides/"> Web Server Shootout Slides</a></li>
+</ul>
+
+
+
+    </ul>
+    </div>
+    <footer>
+
+        <p class="text-muted credit">&copy; . All rights reserved. </p>
+    </footer>
+ 
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/hc.js"></script>
+</body>
+
+</html>
+

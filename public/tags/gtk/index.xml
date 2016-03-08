@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Gtk on </title>
-    <link>/tags/gtk/</link>
-    <description>Recent content in Gtk on </description>
+    <title>Gtk on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/gtk/</link>
+    <description>Recent content in Gtk on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 31 Oct 2008 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/gtk/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/gtk/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Listing All Passwords Stored in Gnome Keyring</title>
-      <link>/2008/10/30/listing-all-passwords-stored-in-gnome-keyring/</link>
+      <link>https://blog.schmichael.com/2008/10/30/listing-all-passwords-stored-in-gnome-keyring/</link>
       <pubDate>Fri, 31 Oct 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/10/30/listing-all-passwords-stored-in-gnome-keyring/</guid>
+      <guid>https://blog.schmichael.com/2008/10/30/listing-all-passwords-stored-in-gnome-keyring/</guid>
       <description>&lt;p&gt;I was toying with writing my first desktop application in years and got distracted by how cool &lt;a href=&#34;http://live.gnome.org/GnomeKeyring&#34;&gt;Gnome Keyring&lt;/a&gt; is. Of course storing and retrieving passwords is pretty mundane, so here&amp;#8217;s a fun example that dumps all of the current user&amp;#8217;s passwords:&lt;/p&gt;
 
 &lt;pre lang=&#34;python&#34;&gt;#!/usr/bin/env python

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Hostname Tab-Completion for OpenSSH</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.15" />
+  <link href="" rel="alternate" type="application/rss+xml" title="schmichael&#39;s blog" />
+  <link href="https://blog.schmichael.com//css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://blog.schmichael.com//css/hc.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  
+    
+    </head>
+    <body>
+<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Herring Cove </div>
+      <div id = "wrapper">
+
+
+<div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="https://blog.schmichael.com//"><p class="navbar-brand">schmichael&#39;s blog</p></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+					
+					
+					<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+					<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+					<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+       
+       <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+					<img src="" />
+          <li class="sidebar-brand"><a href="https://blog.schmichael.com//"><h1 class="brand">schmichael&#39;s blog</h1></a><h3></h3></li>
+          <hr />
+					
+						<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+						<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+						<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          <hr />
+          <div id="social-wrapper">
+           
+           
+           
+           
+         </div>
+       </ul>
+     </div>
+
+
+
+     <div class="container">
+
+
+  <div id="article">
+   <div class="article-title">Hostname Tab-Completion for OpenSSH</div>
+   <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2008-01-30</small></p> <hr/>
+   <div class="post">
+     <p>I use <a href="http://openssh.org/">OpenSSH</a> daily. In fact the only app I probably use more is <a href="http://www.vim.org/">vim</a>. However, until yesterday I was typing out the full username and hostname when using ssh:</p>
+
+<p><code>&amp;nbsp;&amp;nbsp;&amp;nbsp;ssh username@ridiculouslylong.domain.com</code></p>
+
+<p><strong>Ugh</strong></p>
+
+<p>Using the same username makes life a bit simpler:</p>
+
+<p><code>&amp;nbsp;&amp;nbsp;&amp;nbsp;ssh ridiculouslylong.domain.com</code></p>
+
+<p><strong>Meh</strong>, better, but I&#8217;m <em>really</em> lazy!</p>
+
+<p>I&#8217;d heard about tab-completion for hostnames from various blogs, but never knew how to do it. I hopped into #debian and thirty seconds later someone had kindly told me about <code>&lt;b&gt;~/.ssh/config&lt;/b&gt;</code></p>
+
+<p>Not only is any host listed in your <code>~/.ssh/config</code> auto-completed on the command line by hitting tab, but you can also specify what username to connect as! So my .ssh/config file looks something like:</p>
+
+<p><code>Host host1.domain.com&lt;br /&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;User randomuser&lt;br /&gt;
+Host www.somewhereelse.com&lt;br /&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;User someotheruser&lt;br /&gt;
+Host mail.domain2.com&lt;br /&gt;
+Host domain3.com</code></p>
+
+<p>Now I can just type:</p>
+
+<p><code>&amp;nbsp;&amp;nbsp;&amp;nbsp;ssh h&lt;TAB&gt;&lt;ENTER&gt;</code></p>
+
+<p>to connect to <em>host1.domain.com</em> as <em>randomuser</em>.</p>
+
+<p><strong>Beautiful.</strong></p>
+
+<p>Check out <code>man ssh_config</code> for details and other options.</p>
+
+<p>Also, if you&#8217;re not using <a href="http://en.wikipedia.org/wiki/Ssh-agent">ssh keys</a> instead of passwords, you&#8217;re doing too much work. [Seahorse][4] makes SSH keys simple.</p>
+
+<p>[4]: <a href="http://www.gnome.org/projects/seahorse/">http://www.gnome.org/projects/seahorse/</a></p>
+
+   </div>
+ </div>
+
+
+ <a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+ <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+ <ul class="pager">
+      &nbsp;<li class="previous"><a href="https://blog.schmichael.com/2008/02/05/fun-with-django-and-modwsgi/"> Fun with Django and modwsgi</a></li>
+      &nbsp;<li class="next"><a href="https://blog.schmichael.com/2007/12/26/free-ram-from-linode/"> Free RAM from Linode</a></li>
+</ul>
+
+
+
+    </ul>
+    </div>
+    <footer>
+
+        <p class="text-muted credit">&copy; . All rights reserved. </p>
+    </footer>
+ 
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/hc.js"></script>
+</body>
+
+</html>
+

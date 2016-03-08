@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Manbabies on </title>
-    <link>/tags/manbabies/</link>
-    <description>Recent content in Manbabies on </description>
+    <title>Manbabies on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/manbabies/</link>
+    <description>Recent content in Manbabies on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 09 May 2008 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/manbabies/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/manbabies/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Man Babies</title>
-      <link>/2008/05/08/man-babies/</link>
+      <link>https://blog.schmichael.com/2008/05/08/man-babies/</link>
       <pubDate>Fri, 09 May 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/05/08/man-babies/</guid>
+      <guid>https://blog.schmichael.com/2008/05/08/man-babies/</guid>
       <description>&lt;p&gt;Right after I graduated from college, I taught 2 low level CS courses over a couple of semesters. Two of my students created some sort of chat program where you could punch your friends in the face if I remember correctly. It was awesome.&lt;/p&gt;
 
 &lt;p&gt;Now they&amp;#8217;ve graduated and [brought something even more amazing into this world: ManBabies.com][1]&lt;/p&gt;

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ipython on </title>
-    <link>/tags/ipython/</link>
-    <description>Recent content in Ipython on </description>
+    <title>Ipython on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/ipython/</link>
+    <description>Recent content in Ipython on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 11 Apr 2008 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/ipython/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/ipython/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>History Meme</title>
-      <link>/2008/04/11/history-meme/</link>
+      <link>https://blog.schmichael.com/2008/04/11/history-meme/</link>
       <pubDate>Fri, 11 Apr 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/04/11/history-meme/</guid>
+      <guid>https://blog.schmichael.com/2008/04/11/history-meme/</guid>
       <description>&lt;p&gt;For some reason I find this meme interesting&amp;#8230; I don&amp;#8217;t know why I find it interesting, but at least its brief.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Home Office Computer&lt;/strong&gt; (Debian Unstable)&lt;/p&gt;

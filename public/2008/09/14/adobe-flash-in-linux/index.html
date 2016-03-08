@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Adobe Flash in Linux</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.15" />
+  <link href="" rel="alternate" type="application/rss+xml" title="schmichael&#39;s blog" />
+  <link href="https://blog.schmichael.com//css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://blog.schmichael.com//css/hc.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  
+    
+    </head>
+    <body>
+<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Herring Cove </div>
+      <div id = "wrapper">
+
+
+<div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="https://blog.schmichael.com//"><p class="navbar-brand">schmichael&#39;s blog</p></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+					
+					
+					<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+					<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+					<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+       
+       <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+					<img src="" />
+          <li class="sidebar-brand"><a href="https://blog.schmichael.com//"><h1 class="brand">schmichael&#39;s blog</h1></a><h3></h3></li>
+          <hr />
+					
+						<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+						<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+						<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          <hr />
+          <div id="social-wrapper">
+           
+           
+           
+           
+         </div>
+       </ul>
+     </div>
+
+
+
+     <div class="container">
+
+
+  <div id="article">
+   <div class="article-title">Adobe Flash in Linux</div>
+   <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2008-09-14</small></p> <hr/>
+   <div class="post">
+     <p>Like most people, I use Flash a lot. Not only do I watch YouTube and Hulu videos, but FusionCharts* are an integral part of one of the main projects I work on. And like most people, I just want Flash to work. While an open source option would be nice, I really just need something that works.</p>
+
+<p>Unfortunately <strong>Flash in Linux</strong> <small>still</small> <strong>sucks.</strong></p>
+
+<p>Fortunately, <strong>not for long.</strong></p>
+
+<p><strong>Flash 9</strong></p>
+
+<p>For a long time I&#8217;ve just used the <a href="http://packages.debian.org/sid/flashplugin-nonfree">flashplugin-nonfree</a> (such an attractive package name) package to get Flash support.</p>
+
+<p>In general this works great, unless you want to also use <a href="http://pulseaudio.org/">PulseAudio</a>. For some reason I do, which means my audio is always out of sync. Apparently Ubuntu has a flashplugin-nonfree-pulse (another awesome package name), but <a href="http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=477266#35">Debian won&#8217;t package it because of issues with upstream, and the fact the upcoming Flash 10 works fine without any extra wrappers</a>.</p>
+
+<p><strong>Flash 10</strong></p>
+
+<p>So I finally decide to just try out the betas of <a href="http://labs.adobe.com/downloads/flashplayer10.html">Flash 10</a>. At this point in time, Flash 10 beta 2, is the latest, so I download it and copy the <code>.so</code> file to <code>/usr/lib/mozilla/plugins/</code>.</p>
+
+<p>Tada! Sync&#8217;d audio! Yay!</p>
+
+<p>Except now my browser crashes on about 1 out of every 2 sites with Flash. Some Flash doesn&#8217;t render completely. Other Flash videos flicker horribly.</p>
+
+<p>Bottom line is even Ubuntu&#8217;s notoriously unstable alpha&#8217;s are better than trying to use Flash 10 beta 2.</p>
+
+<p><strong>Update:</strong> Just tried Flash 10 RC 1, but its not better than beta 2. Actually it might be a bit better because it crashes <em>less</em>, but its more frustrating in other ways: <em>some Flash videos don&#8217;t show up at all.</em></p>
+
+<p><strong>swfdec</strong></p>
+
+<p>One last thing to try: <a href="http://swfdec.freedesktop.org/wiki/">swfdec</a>, an open source Flash player. I&#8217;ve followed its development closely on Planet Gnome and really respect its developer, <a href="http://blogs.gnome.org/otte/">Benjamin Otte</a>. Unfortunately it makes Flash 10 beta 2 look good by comparison. To be fair I used the unstable 0.7.4 version of swfdec, so maybe thats why it crashes fairly often. 0.8 was just released, but evidently not packaged for Debian yet.</p>
+
+<p>I&#8217;ll probably keep trying swfdec from time to time in the future as I <em>want</em> to use it, but for now I just need a Flash player that works.</p>
+
+<p><strong>[Gnash][7]</strong></p>
+
+<p>I should try it, but the FSF can be such dicks I have a hard time even wanting to try it. They have a stupid &#8220;Bad Vista&#8221; logo in the upper right corner of their home page. I&#8217;m no fan of Vista, but plastering the Internet with poorly drawn negative logos isn&#8217;t going to win friends.</p>
+
+<p>I shouldn&#8217;t let politics affect whats essentially a purely pragmatic endeavor**, so I&#8217;ll probably end up trying it out.</p>
+
+<p><strong>Conclusion</strong></p>
+
+<p>I can&#8217;t wait for Flash 10 to be released. While I love open source, Adobe makes excellent products, and I just need Flash to work. Its like my graphics driver: I really don&#8217;t care about the source, just make my graphics work!</p>
+
+<p><small>* Very pretty product. Decent documentation. Worthless JavaScript API and debugging features. I hope <canvas> becomes a viable alternative soon.</small></p>
+
+<p><small>** That endeavor being: get Flash to work as well in Linux as it does in Windows.</small></p>
+
+<p>[7]: <a href="http://www.gnu.org/software/gnash/">http://www.gnu.org/software/gnash/</a></p>
+
+   </div>
+ </div>
+
+
+ <a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+ <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+ <ul class="pager">
+      &nbsp;<li class="previous"><a href="https://blog.schmichael.com/2008/09/22/replacing-openid/"> Replacing OpenID</a></li>
+      &nbsp;<li class="next"><a href="https://blog.schmichael.com/2008/09/02/kyle-waremburg/"> Kyle Waremburg</a></li>
+</ul>
+
+
+
+    </ul>
+    </div>
+    <footer>
+
+        <p class="text-muted credit">&copy; . All rights reserved. </p>
+    </footer>
+ 
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/hc.js"></script>
+</body>
+
+</html>
+

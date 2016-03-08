@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Recipe for a Transparent Linux Firewall and CherryPy Control Panel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.15" />
+  <link href="" rel="alternate" type="application/rss+xml" title="schmichael&#39;s blog" />
+  <link href="https://blog.schmichael.com//css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://blog.schmichael.com//css/hc.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  
+    
+    </head>
+    <body>
+<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Herring Cove </div>
+      <div id = "wrapper">
+
+
+<div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="https://blog.schmichael.com//"><p class="navbar-brand">schmichael&#39;s blog</p></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+					
+					
+					<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+					<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+					<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+       
+       <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+					<img src="" />
+          <li class="sidebar-brand"><a href="https://blog.schmichael.com//"><h1 class="brand">schmichael&#39;s blog</h1></a><h3></h3></li>
+          <hr />
+					
+						<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+						<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+						<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          <hr />
+          <div id="social-wrapper">
+           
+           
+           
+           
+         </div>
+       </ul>
+     </div>
+
+
+
+     <div class="container">
+
+
+  <div id="article">
+   <div class="article-title">Recipe for a Transparent Linux Firewall and CherryPy Control Panel</div>
+   <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2007-11-06</small></p> <hr/>
+   <div class="post">
+     <div style="float: right; padding: 10px;">
+  <a href="http://michael.susens-schurter.com/files/firewalladmin.png"><img alt="firewalladmin screenshot" src="http://michael.susens-schurter.com/files/firewalladmin-small.png" /></a>
+</div>
+
+<p>At my previous job I built a transparent firewall with the help of a student. He hacked up some iptables scripts, and I hacked up a CherryPy application to control the firewall. It turned out to be pretty handy, so I&#8217;m finally getting around to posting it somewhere&#8230;</p>
+
+<p><strong>Recipe:</strong> A transparent firewall to block certain IP addresses and a nice web based control panel to edit the blacklist.</p>
+
+<p><strong>Ingredients:</strong></p>
+
+<ul>
+<li>Old computer (preferably a PIII) with 3 NICs</li>
+<li><a href="http://www.debian.org/releases/etch/">Debian Etch</a> (or your Linux flavor of choice)</li>
+<li>Packages: <a href="http://packages.debian.org/etch/iptables">iptables</a>, <a href="http://packages.debian.org/etch/bridge-utils">bridge-utils</a>, <a href="http://packages.debian.org/etch/python/python">Python</a>, <a href="http://packages.debian.org/etch/python/python-setuptools">setuptools</a>, CherryPy 3 (use easy_install), Genshi (use easy_install), <a href="http://packages.debian.org/etch/python/python-adns">Python-ADNS</a>, <a href="http://packages.debian.org/etch/python/python-sqlobject">SQLObject</a></li>
+<li><a href="http://michael.susens-schurter.com/code/firewall-admin.tar.gz">firewall-admin.tar.gz</a> &#8211; my exceedingly creatively named firewall administration CherryPy web app</li>
+</ul>
+
+<p><strong>Directions:</strong></p>
+
+<ol>
+<li>Extract firewall-admin.tar.gz and change to the base directory. By default its setup to be in /srv/firewall-admin</li>
+<li>If you didn&#8217;t extract to <code>/srv/firewall-admin</code>, edit etc/rc.local and <em>basedir</em> in <code>firewalladmin.config</code> to reflect the current directory.</li>
+<li>By default <code>firewalladmin/lib/bridge.py</code> [bridges][9] <em>eth1</em> and <em>eth2</em>, and <em>eth0</em> should be attached to your LAN to access SSH and the web control panel.</li>
+<li>Edit firewalladmin.config to run on the IP address assigned to your administrative NIC and remember what port its set to run on.</li>
+<li>Add the commands from <code>etc/rc.local</code> to your system&#8217;s existing <code>/etc/rc.local</code> script. This will start the transparent firewall and web control panel on boot.</li>
+<li>Next you&#8217;ll need to setup the database. Edit line 28 in <code>firewalladmin/model.py</code> to set a default password and then run <code>createdb.py</code></li>
+<li>You&#8217;re now ready to start the firewall and control panel simply by running <code>sudo etc/rc.local</code> (see <em>Caveats</em> below). You can always test out just the web interface by running <code>start-firewalladmin.py</code></li>
+<li>Browse to the web interface using the IP and Port setup in step 4, login using the username and password setup in step 6, and start configuring your transparent firewall!</li>
+</ol>
+
+<p>The firewall allows creating multiple blacklists (aka Categories) which can be edited/paused/deleted individually. It has has <em>allow lists</em> (aka Whitelists) which can be used to allow specific internal IPs access to specific sites that might otherwise be blocked by a blacklist.</p>
+
+<p><strong>Important:</strong> When a user visits a blocked site they are redirected to the IP and Port specified on line 10 of <code>firewalladmin/lib/iptables.py</code>. We setup Apache to listen on that port and serve up a generic <em>You&#8217;ve been blocked</em> page, but you could be even more clever. You&#8217;ll need a <code>.htaccess</code> file like the following to properly map all blocked traffic to your block page:</p>
+
+<pre lang="htaccess">RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.html [L,QSA]
+</pre>
+
+<p><strong>Caveats</strong></p>
+
+<ul>
+<li>All scripts as well as the web control panel are <strong>executed as root</strong>. This setup should only be run on dedicated hardware and not on a server with other services.</li>
+<li>No test suite. Mea culpa.</li>
+<li>Little to no error handling. You&#8217;ve been warned. 😉</li>
+<li>Basically this is a quick hack and should not be used in the same way you use tested and maintained software. YMMV</li>
+</ul>
+
+<p>This little setup has proved very useful at the school for augmenting their existing content filtering system, and all web traffic passes through it without trouble. An old PIII can run a 3,000 domain blacklist at wirespeed on a 10 Mbps link while using less than 10% of the CPU.</p>
+
+<p>[9]: <a href="http://www.linux-foundation.org/en/Net:Bridge">http://www.linux-foundation.org/en/Net:Bridge</a></p>
+
+   </div>
+ </div>
+
+
+ <a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+ <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+ <ul class="pager">
+      &nbsp;<li class="previous"><a href="https://blog.schmichael.com/2007/11/29/fun-with-sqlobject-and-mxdatetime/"> Fun with SQLObject and mxDateTime</a></li>
+      &nbsp;<li class="next"><a href="https://blog.schmichael.com/2007/10/28/irc-bot-to-post-links-to-delicious/"> IRC Bot to Post Links to Delicious</a></li>
+</ul>
+
+
+
+    </ul>
+    </div>
+    <footer>
+
+        <p class="text-muted credit">&copy; . All rights reserved. </p>
+    </footer>
+ 
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/hc.js"></script>
+</body>
+
+</html>
+

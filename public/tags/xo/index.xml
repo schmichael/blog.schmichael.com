@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Xo on </title>
-    <link>/tags/xo/</link>
-    <description>Recent content in Xo on </description>
+    <title>Xo on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/xo/</link>
+    <description>Recent content in Xo on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 21 Feb 2008 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/xo/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/xo/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>First Impressions on the OLPC XO Laptop</title>
-      <link>/2008/02/21/first-impressions-on-the-olpc-xo-laptop/</link>
+      <link>https://blog.schmichael.com/2008/02/21/first-impressions-on-the-olpc-xo-laptop/</link>
       <pubDate>Thu, 21 Feb 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/02/21/first-impressions-on-the-olpc-xo-laptop/</guid>
+      <guid>https://blog.schmichael.com/2008/02/21/first-impressions-on-the-olpc-xo-laptop/</guid>
       <description>&lt;p&gt;Last night &lt;a href=&#34;http://ausil.us/blog&#34;&gt;Dennis Gilmore, Build Engineer&lt;/a&gt; for &lt;a href=&#34;http://laptop.org/&#34;&gt;OLPC&lt;/a&gt;, spoke at [Bradley University][3]. Since I live 3 blocks from Bradley and have been following OLPC off and on since the beginning, I couldn&amp;#8217;t pass this up (even though I was the token old guy in a classroom mostly full of college undergrads).&lt;/p&gt;
 
 &lt;p&gt;Dennis had brought 3 XOs with him for the students to play with. He gave a good introductory presentation on OLPC, XO, and Sugar. Not much new for anyone who has been following the project, but I did learn that the XO runs each activity&amp;#8217;s process in a different uid/gid. The students asked lots of good questions and were obviously excited about OLPC.&lt;/p&gt;
@@ -21,7 +21,7 @@
 &lt;p&gt;Read on if you care to hear my personal experience with an XO&amp;#8230; &lt;img src=&#34;http://localhost/wp-includes/images/smilies/simple-smile.png&#34; alt=&#34;:)&#34; class=&#34;wp-smiley&#34; style=&#34;height: 1em; max-height: 1em;&#34; /&gt;&lt;/p&gt;
 
 &lt;div style=&#34;float: right;&#34;&gt;
-  &lt;img src=&#34;/files/xo.jpg&#34; alt=&#34;An OLPC XO Laptop&#34; /&gt;
+  &lt;img src=&#34;https://blog.schmichael.com/files/xo.jpg&#34; alt=&#34;An OLPC XO Laptop&#34; /&gt;
 &lt;/div&gt;
 
 &lt;p&gt;&lt;strong&gt;First Impressions of the XO &amp;amp; Sugar&lt;/strong&gt;&lt;/p&gt;

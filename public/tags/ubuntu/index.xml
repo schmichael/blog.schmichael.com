@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ubuntu on </title>
-    <link>/tags/ubuntu/</link>
-    <description>Recent content in Ubuntu on </description>
+    <title>Ubuntu on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/ubuntu/</link>
+    <description>Recent content in Ubuntu on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 02 Apr 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Debugging Go 1.2 on Ubuntu 13.10 with GDB</title>
-      <link>/2014/04/02/debugging-go-1-2-on-ubuntu-13-10-with-gdb/</link>
+      <link>https://blog.schmichael.com/2014/04/02/debugging-go-1-2-on-ubuntu-13-10-with-gdb/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>/2014/04/02/debugging-go-1-2-on-ubuntu-13-10-with-gdb/</guid>
+      <guid>https://blog.schmichael.com/2014/04/02/debugging-go-1-2-on-ubuntu-13-10-with-gdb/</guid>
       <description>&lt;p&gt;While the &lt;a href=&#34;http://golang.org/doc/gdb&#34;&gt;Debugging Go Code with GDB&lt;/a&gt; documentation is fantastic, it unfortunately doesn&amp;#8217;t work out of the box with Ubuntu 13.10. If you try it you&amp;#8217;ll probably see an error similar to:&lt;/p&gt;
 
 &lt;p&gt;The problem is that Ubuntu 13.10 links GDB against Python 3.3 while the script golang ships is for Python 2. &lt;a href=&#34;https://code.google.com/p/go/issues/detail?id=6698&#34;&gt;Someone has already filed an issue, and it appears to be fixed&lt;/a&gt; upstream (so expect Go 1.3 to Just Work).&lt;/p&gt;
@@ -28,10 +28,10 @@
     
     <item>
       <title>Ubuntu 9.10 on a Thinkpad T400</title>
-      <link>/2009/11/11/ubuntu-9-10-on-a-thinkpad-t400/</link>
+      <link>https://blog.schmichael.com/2009/11/11/ubuntu-9-10-on-a-thinkpad-t400/</link>
       <pubDate>Thu, 12 Nov 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/11/11/ubuntu-9-10-on-a-thinkpad-t400/</guid>
+      <guid>https://blog.schmichael.com/2009/11/11/ubuntu-9-10-on-a-thinkpad-t400/</guid>
       <description>&lt;p&gt;I upgraded from Ubuntu 9.04 to &lt;a href=&#34;http://www.ubuntu.com/products/whatisubuntu/910features&#34;&gt;9.10&lt;/a&gt; on my Lenovo Thinkpad T400 about a week ago, and thought I&amp;#8217;d write down some of my impressions.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Good news&lt;/strong&gt;&lt;/p&gt;
@@ -82,10 +82,10 @@
     
     <item>
       <title>New Laptop: Acer Extensa 4630Z</title>
-      <link>/2009/03/22/new-laptop-acer-extensa-4630z/</link>
+      <link>https://blog.schmichael.com/2009/03/22/new-laptop-acer-extensa-4630z/</link>
       <pubDate>Mon, 23 Mar 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/03/22/new-laptop-acer-extensa-4630z/</guid>
+      <guid>https://blog.schmichael.com/2009/03/22/new-laptop-acer-extensa-4630z/</guid>
       <description>&lt;p&gt;I bought a laptop recently because being a web consultant and tied to a desktop is not only embarrassing, but is a quick way to lose (or at least frustrate) clients who&amp;#8217;d love to see my hairy hacker face on-site.&lt;/p&gt;
 
 &lt;p&gt;I use Linux, Firefox, and vim for work so my requirements for a laptop basically came down to WiFi. I also didn&amp;#8217;t want something big and clunky because I&amp;#8217;m looking to augment my desktop, not replace it.&lt;/p&gt;
@@ -122,10 +122,10 @@
     
     <item>
       <title>Fedora’s Crypto Consolidation</title>
-      <link>/2008/10/20/fedoras-crypto-consolidation/</link>
+      <link>https://blog.schmichael.com/2008/10/20/fedoras-crypto-consolidation/</link>
       <pubDate>Mon, 20 Oct 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/10/20/fedoras-crypto-consolidation/</guid>
+      <guid>https://blog.schmichael.com/2008/10/20/fedoras-crypto-consolidation/</guid>
       <description>&lt;p&gt;I just found out Fedora is attempting to consolidate on &lt;a href=&#34;http://developer.mozilla.org/en/NSS&#34;&gt;Mozilla&amp;#8217;s NSS&lt;/a&gt; for &lt;a href=&#34;http://fedoraproject.org/wiki/FedoraCryptoConsolidation&#34;&gt;system-wide cryptography&lt;/a&gt;. I love the idea and hope it succeeds as it will make using crypto so much easier for system administrators and users.&lt;/p&gt;
 
 &lt;p&gt;Since humans are the weakest link in the security chain, improving the human interaction with crypto is a much bigger security win than the latest impossible-to-crack-by-the-NSA-in-a-bajillion-years algorithm. While switching libraries isn&amp;#8217;t exactly a huge UI win, having a single application to manage all of your certificates, keys, passwords, etc. would be.&lt;/p&gt;

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Nginx on </title>
-    <link>/tags/nginx/</link>
-    <description>Recent content in Nginx on </description>
+    <title>Nginx on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/nginx/</link>
+    <description>Recent content in Nginx on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 25 Jan 2011 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Deploying Python behind Nginx Talk Slides</title>
-      <link>/2011/01/25/deploying-python-behind-nginx-talk-slides/</link>
+      <link>https://blog.schmichael.com/2011/01/25/deploying-python-behind-nginx-talk-slides/</link>
       <pubDate>Tue, 25 Jan 2011 00:00:00 +0000</pubDate>
       
-      <guid>/2011/01/25/deploying-python-behind-nginx-talk-slides/</guid>
+      <guid>https://blog.schmichael.com/2011/01/25/deploying-python-behind-nginx-talk-slides/</guid>
       <description>&lt;p&gt;I gave a talk on deploying Python WSGI apps behind &lt;a href=&#34;http://wiki.nginx.org/&#34;&gt;nginx&lt;/a&gt; at the &lt;a href=&#34;http://wiki.python.org/moin/PortlandPythonUserGroup&#34;&gt;Portland Python User Group&lt;/a&gt; meeting on January 11th and finally got around to publishing the slides: &lt;a href=&#34;https://docs.google.com/present/edit?id=0Ab7GDIugV1qCZGR6c3d6YnJfMTA1aGRtZmJxYzI&amp;amp;hl=en&#34;&gt;schmingx&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;I should mention &lt;a href=&#34;http://discorporate.us/jek/&#34;&gt;Jason Kirtland&lt;/a&gt; informed me after the meeting that &lt;a href=&#34;http://www.fastcgi.com/devkit/doc/fcgi-spec.html&#34;&gt;FastCGI&lt;/a&gt; supports [persistent connections (and a host of other features)][6] between a load balancer and backend app servers.&lt;/p&gt;
@@ -24,10 +24,10 @@
     
     <item>
       <title>A Complete Noobs Guide to Hacking Nginx</title>
-      <link>/2010/12/28/noobs-guide-to-hacking-nginx/</link>
+      <link>https://blog.schmichael.com/2010/12/28/noobs-guide-to-hacking-nginx/</link>
       <pubDate>Wed, 29 Dec 2010 00:00:00 +0000</pubDate>
       
-      <guid>/2010/12/28/noobs-guide-to-hacking-nginx/</guid>
+      <guid>https://blog.schmichael.com/2010/12/28/noobs-guide-to-hacking-nginx/</guid>
       <description>&lt;p&gt;At &lt;a href=&#34;http://urbanairship.com&#34;&gt;Urban Airship&lt;/a&gt; our &lt;a href=&#34;http://en.wikipedia.org/wiki/Representational_State_Transfer#RESTful_web_services&#34;&gt;RESTful HTTP API&lt;/a&gt; uses PUT requests for, among other things, &lt;a href=&#34;http://urbanairship.com/docs/push.html#registration&#34;&gt;registering a device&lt;/a&gt;. Since the application registering the device is the HTTP Basic Auth username, there&amp;#8217;s often no body (&lt;a href=&#34;http://www.w3.org/Protocols/rfc2616/rfc2616-sec7.html#sec7.2&#34;&gt;entity body&lt;/a&gt; in HTTP parlance). Unfortunately &lt;a href=&#34;http://wiki.nginx.org&#34;&gt;nginx&lt;/a&gt; (as of 0.8.54, and I believe 0.9.3) doesn&amp;#8217;t support PUT requests without a Content-Length header and responds with a 411 Length Required response. While the &lt;a href=&#34;http://wiki.nginx.org/HttpChunkinModule&#34;&gt;chunkin&lt;/a&gt; module adds Transfer-Encoding: chunked support, it doesn&amp;#8217;t fix the empty PUT problem since HTTP requests without bodies don&amp;#8217;t require Content-Length nor Transfer-Encoding headers.&lt;/p&gt;
 
 &lt;p&gt;So let&amp;#8217;s hack nginx shall we?&lt;/p&gt;
@@ -674,10 +674,10 @@ The importance of being able to attach a debugger became clear as soon as I test
     
     <item>
       <title>Web Server Shootout Talk Accepted at OS Bridge Conference</title>
-      <link>/2009/04/26/web-server-shootout-talk-accepted-at-os-bridge-conference/</link>
+      <link>https://blog.schmichael.com/2009/04/26/web-server-shootout-talk-accepted-at-os-bridge-conference/</link>
       <pubDate>Sun, 26 Apr 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/04/26/web-server-shootout-talk-accepted-at-os-bridge-conference/</guid>
+      <guid>https://blog.schmichael.com/2009/04/26/web-server-shootout-talk-accepted-at-os-bridge-conference/</guid>
       <description>&lt;p&gt;My talk, &lt;a href=&#34;http://opensourcebridge.org/sessions/119&#34;&gt;Web Server Shootout&lt;/a&gt;, was accepted by the Open Source Bridge Conference! I&amp;#8217;m terribly excited, but also nervous because there&amp;#8217;s a lot I need to do between now and the conference. Expect regular updates on how my talk is progressing (always tagged with osbridge [feed]).&lt;/p&gt;
 
 &lt;p&gt;The &lt;a href=&#34;http://opensourcebridge.org/2009/04/open-source-bridge-conference-confirmed-speakers/&#34;&gt;full list of sessions is up&lt;/a&gt; (or &lt;a href=&#34;http://opensourcebridge.org/events/2009/sessions&#34;&gt;here&lt;/a&gt;), and I&amp;#8217;m very excited just to be attending the conference. Congratulations to all of the speakers!&lt;/p&gt;
@@ -702,10 +702,10 @@ The importance of being able to attach a debugger became clear as soon as I test
     
     <item>
       <title>Web Server Quandary</title>
-      <link>/2008/12/27/web-server-quandary/</link>
+      <link>https://blog.schmichael.com/2008/12/27/web-server-quandary/</link>
       <pubDate>Sat, 27 Dec 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/12/27/web-server-quandary/</guid>
+      <guid>https://blog.schmichael.com/2008/12/27/web-server-quandary/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://httpd.apache.org/&#34;&gt;Apache&lt;/a&gt; was probably the first Linux application I learned how to configure. However, I&amp;#8217;ve gotten a bit frustrated with it recently&amp;#8230;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;The Problem&lt;/strong&gt;&lt;/p&gt;

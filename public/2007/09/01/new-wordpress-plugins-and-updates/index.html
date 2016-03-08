@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>New WordPress Plugins and Updates</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.15" />
+  <link href="" rel="alternate" type="application/rss+xml" title="schmichael&#39;s blog" />
+  <link href="https://blog.schmichael.com//css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://blog.schmichael.com//css/hc.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  
+    
+    </head>
+    <body>
+<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Herring Cove </div>
+      <div id = "wrapper">
+
+
+<div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="https://blog.schmichael.com//"><p class="navbar-brand">schmichael&#39;s blog</p></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+					
+					
+					<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+					<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+					<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+       
+       <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+					<img src="" />
+          <li class="sidebar-brand"><a href="https://blog.schmichael.com//"><h1 class="brand">schmichael&#39;s blog</h1></a><h3></h3></li>
+          <hr />
+					
+						<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+						<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+						<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          <hr />
+          <div id="social-wrapper">
+           
+           
+           
+           
+         </div>
+       </ul>
+     </div>
+
+
+
+     <div class="container">
+
+
+  <div id="article">
+   <div class="article-title">New WordPress Plugins and Updates</div>
+   <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2007-09-02</small></p> <hr/>
+   <div class="post">
+     <div style="margin: 6px; float: right">
+  <a href="http://wordpress.org" title="WordPress"><img src="http://michael.susens-schurter.com/blog/wp-content/uploads/2007/09/wordpress-screenshot.png" alt="WordPress Screenshot" /></a>
+</div>
+
+<p>I just added the <strong><a href="http://txfx.net/code/wordpress/subscribe-to-comments/">Subscribe to Comments</a></strong> WordPress plugin. You should now be able to get e-mail notifications when new comments are posted. This should make flamewars and trolling much easier. 😉</p>
+
+<p>For what its worth I also installed the <strong><a href="http://www.arnebrachhold.de/2005/06/05/google-sitemaps-generator-v2-final">Google Sitemap Generator</a></strong> plugin which seems to work alright. My main gripe is that the author uses a blog post dated June 5, 2005 as the home page for the plugin! I actually passed it up and kept looking the first time I hit the page because I assumed the plugin was old.</p>
+
+<p>I have to admit, sites that use a blog like a full-fledged CMS usually annoy me. Of course tons of sites probably do it without me noticing, so I suppose if its done well, I don&#8217;t mind. <img src="http://localhost/wp-includes/images/smilies/simple-smile.png" alt=":)" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+
+<p>A while ago I installed the <strong><a href="http://wordpress.org/extend/plugins/wp-syntax/">WP-Syntax</a></strong> plugin. Here&#8217;s a snippet of Python to test it out since I haven&#8217;t gotten around to posting any code lately:</p>
+
+<pre lang="python">d = {'test1': 'hello world'}
+d.setdefault('test1', 'goodbye world')
+d.setdefault('foo', 'bar')
+print d['test1']
+print d['foo']</pre>
+
+<p>This prints:</p>
+
+<pre>hello world
+bar</pre>
+
+<p>becase setdefault() only changes the value of a dictionary key if the key has no value. Very handy.</p>
+
+<p>My final bit of WordPress hacking has been to switch to using [<strong>Subversion</strong>][4] to update WordPress. Juggling files to do updates is just annoying. With Subversion I just checked out <code>http://svn.automattic.com/wordpress/branches/2.2</code> and run <code>svn up</code> whenever an update is released.</p>
+
+<p>I suppose I could just schedule running <code>svn up</code> with a cron job. It would even automatically e-mail what files it updates because cron e-mails stdout by default. But considering how much I <em>love</em> automatic updates on Windows, I think I&#8217;ll hold off on that&#8230; 😉</p>
+
+<p><strong>Update:</strong> Grrr&#8230; Now if only I could convince WordPress not to convert my <div> tags to <p> tags when editing posts and messing up my whitespace when saving!</p>
+
+<p>[4]: <a href="http://subversion.tigris.org/">http://subversion.tigris.org/</a></p>
+
+   </div>
+ </div>
+
+
+ <a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+ <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+ <ul class="pager">
+      &nbsp;<li class="previous"><a href="https://blog.schmichael.com/2007/09/05/how-to-build-a-web20-link-sharing-site/"> How to Build a Web2.0 Link Sharing Site</a></li>
+      &nbsp;<li class="next"><a href="https://blog.schmichael.com/2007/08/29/genshi-cherrypy-formencode-tutorial/"> Genshi &#43; CherryPy &#43; FormEncode Tutorial</a></li>
+</ul>
+
+
+
+    </ul>
+    </div>
+    <footer>
+
+        <p class="text-muted credit">&copy; . All rights reserved. </p>
+    </footer>
+ 
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/hc.js"></script>
+</body>
+
+</html>
+

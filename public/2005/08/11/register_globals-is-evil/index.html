@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>register_globals is evil</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.15" />
+  <link href="" rel="alternate" type="application/rss+xml" title="schmichael&#39;s blog" />
+  <link href="https://blog.schmichael.com//css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://blog.schmichael.com//css/hc.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  
+    
+    </head>
+    <body>
+<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Herring Cove </div>
+      <div id = "wrapper">
+
+
+<div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="https://blog.schmichael.com//"><p class="navbar-brand">schmichael&#39;s blog</p></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+					
+					
+					<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+					<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+					<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+       
+       <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+					<img src="" />
+          <li class="sidebar-brand"><a href="https://blog.schmichael.com//"><h1 class="brand">schmichael&#39;s blog</h1></a><h3></h3></li>
+          <hr />
+					
+						<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+						<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+						<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          <hr />
+          <div id="social-wrapper">
+           
+           
+           
+           
+         </div>
+       </ul>
+     </div>
+
+
+
+     <div class="container">
+
+
+  <div id="article">
+   <div class="article-title">register_globals is evil</div>
+   <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2005-08-11</small></p> <hr/>
+   <div class="post">
+     <p>Disclaimer: I am not a PHP security expert. The open source PHP web application I develop, <a href="http://openit.sourceforge.net/">OpenIT</a> isn&#8217;t exactly a poster child for best security practices.</p>
+
+<p>I enjoyed reading <a href="http://blog.php-security.org/archives/3-register_globals-is-not-evil.html">Stefan Esser&#8217;s blog: register_globals is not evil</a>, and I agree with many of the things he wrote. In fact the main problem I have with his article is the title. A more accurate (but less fun) title would be &#8220;register_globals is evil, but plan for it.&#8221;</p>
+
+<p>In my humble opinion <a href="http://us2.php.net/register_globals">register_globals</a> is one of the worst language &#8220;features&#8221; PHP has. Under no circumstances should it be used, and every night when I say my prayers I ask <a href="http://www.zend.com/">God</a> to deprecate it in future versions of PHP. The ability for users to override/create arbitrary variables in a PHP application is frightening, and &#8220;C does it too!&#8221; is never appropriate to say in a discussion about security.</p>
+
+<p>Stefan has some excellent points about how assuming register_globals is off in your web apps is the real security threat. As long as the evil that is register_globals exists in this world, PHP applications will have to contiue wasting their time protecting against it.</p>
+
+<p>Unfortunately, [OpenIT][5] is one of these offending applications&#8230; I just committed a new .htaccess file to turn register_globals off, but this probably isn&#8217;t enough.</p>
+
+<p>[5]: <a href="http://cvs.sourceforge.net/viewcvs.py/openit/OpenIT/.htaccess?rev=1.4&amp;view=auto">http://cvs.sourceforge.net/viewcvs.py/openit/OpenIT/.htaccess?rev=1.4&amp;view=auto</a></p>
+
+   </div>
+ </div>
+
+
+ <a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+ <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+ <ul class="pager">
+      &nbsp;<li class="previous"><a href="https://blog.schmichael.com/2005/08/15/eval-is-evil-too/"> eval() is evil too</a></li>
+      &nbsp;<li class="next"><a href="https://blog.schmichael.com/2005/08/10/of-rock-stars-and-it-nerds/"> Of Rock Stars and IT Nerds</a></li>
+</ul>
+
+
+
+    </ul>
+    </div>
+    <footer>
+
+        <p class="text-muted credit">&copy; . All rights reserved. </p>
+    </footer>
+ 
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/hc.js"></script>
+</body>
+
+</html>
+

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on </title>
-    <link>/post/</link>
-    <description>Recent content in Posts on </description>
+    <title>Posts on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/post/</link>
+    <description>Recent content in Posts on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 02 Apr 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Debugging Go 1.2 on Ubuntu 13.10 with GDB</title>
-      <link>/2014/04/02/debugging-go-1-2-on-ubuntu-13-10-with-gdb/</link>
+      <link>https://blog.schmichael.com/2014/04/02/debugging-go-1-2-on-ubuntu-13-10-with-gdb/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>/2014/04/02/debugging-go-1-2-on-ubuntu-13-10-with-gdb/</guid>
+      <guid>https://blog.schmichael.com/2014/04/02/debugging-go-1-2-on-ubuntu-13-10-with-gdb/</guid>
       <description>&lt;p&gt;While the &lt;a href=&#34;http://golang.org/doc/gdb&#34;&gt;Debugging Go Code with GDB&lt;/a&gt; documentation is fantastic, it unfortunately doesn&amp;#8217;t work out of the box with Ubuntu 13.10. If you try it you&amp;#8217;ll probably see an error similar to:&lt;/p&gt;
 
 &lt;p&gt;The problem is that Ubuntu 13.10 links GDB against Python 3.3 while the script golang ships is for Python 2. &lt;a href=&#34;https://code.google.com/p/go/issues/detail?id=6698&#34;&gt;Someone has already filed an issue, and it appears to be fixed&lt;/a&gt; upstream (so expect Go 1.3 to Just Work).&lt;/p&gt;
@@ -28,10 +28,10 @@
     
     <item>
       <title>MmStats in Scripts</title>
-      <link>/2012/10/03/mmstats-in-scripts/</link>
+      <link>https://blog.schmichael.com/2012/10/03/mmstats-in-scripts/</link>
       <pubDate>Wed, 03 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>/2012/10/03/mmstats-in-scripts/</guid>
+      <guid>https://blog.schmichael.com/2012/10/03/mmstats-in-scripts/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://mmstats.readthedocs.org/&#34;&gt;MmStats&lt;/a&gt; is a library I created to expose and read statistics, metrics, and debugging information from running Python processes without the overhead of syscalls (eg writing to a socket or file) or threads, and to make sure that as many utilities as you want can read those metrics without affecting the performance of the main process exposing stats.&lt;/p&gt;
@@ -162,10 +162,10 @@ for i, user in enumerate(models.User.objects.all()):
     
     <item>
       <title>Building Python 2.6.8 on Ubuntu 12.04</title>
-      <link>/2012/05/29/building-python-2-6-8-on-ubuntu-12-04/</link>
+      <link>https://blog.schmichael.com/2012/05/29/building-python-2-6-8-on-ubuntu-12-04/</link>
       <pubDate>Tue, 29 May 2012 00:00:00 +0000</pubDate>
       
-      <guid>/2012/05/29/building-python-2-6-8-on-ubuntu-12-04/</guid>
+      <guid>https://blog.schmichael.com/2012/05/29/building-python-2-6-8-on-ubuntu-12-04/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Update 2012-06-01:&lt;/strong&gt; Looks like &lt;a href=&#34;https://github.com/saghul/pythonz&#34;&gt;pythonz&lt;/a&gt; is an easier way to install Python 2.6.8 (and all other Pythons) on Ubuntu 12.04.&lt;/p&gt;
 
 &lt;p&gt;Ubuntu 12.04 builds OpenSSL without SSLv2. Python 2.6.8 expects OpenSSL to be built with SSLv2.&lt;/p&gt;
@@ -190,17 +190,17 @@ for i, user in enumerate(models.User.objects.all()):
     
     <item>
       <title>Failing with MongoDB</title>
-      <link>/2011/11/05/failing-with-mongodb/</link>
+      <link>https://blog.schmichael.com/2011/11/05/failing-with-mongodb/</link>
       <pubDate>Sat, 05 Nov 2011 00:00:00 +0000</pubDate>
       
-      <guid>/2011/11/05/failing-with-mongodb/</guid>
+      <guid>https://blog.schmichael.com/2011/11/05/failing-with-mongodb/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Sorry this isn&amp;#8217;t my best piece of writing and there seems to be some confusion. The dataset in question was first in a 1.8 master/slave pair and then migrated to sharded replica sets and 2.0.0.&lt;/p&gt;
 
 &lt;p&gt;For a bit of history of my dealings with MongoDB at Urban Airship, I gave a couple versions of a Scaling with MongoDB talk:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://opensourcebridge.org/2011/wiki/Scaling_with_MongoDB&#34;&gt;at Open Source Bridge (latest &amp;amp; greatest)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;/2011/02/02/schmongodb-slides-from-update-portland/&#34;&gt;at Update Portland (original, less polished version)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.schmichael.com/2011/02/02/schmongodb-slides-from-update-portland/&#34;&gt;at Update Portland (original, less polished version)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;My coworker Adam Lowry even gave a follow-up talk of sorts at &lt;a href=&#34;http://postgresopen.org/2011/schedule/presentations/98/&#34;&gt;Postgres Open 2011&lt;/a&gt; (&lt;a href=&#34;http://wiki.postgresql.org/images/7/7f/Adam-lowry-postgresopen2011.pdf&#34;&gt;slides&lt;/a&gt;) about migrating one of our datasets off of MongoDB and (back) on to PostgreSQL.&lt;/p&gt;
@@ -288,11 +288,11 @@ for i, user in enumerate(models.User.objects.all()):
     
     <item>
       <title>MemoryMapFile Convenience Class for Python</title>
-      <link>/2011/09/05/memorymapfile-convenience-class-for-python/</link>
+      <link>https://blog.schmichael.com/2011/09/05/memorymapfile-convenience-class-for-python/</link>
       <pubDate>Tue, 06 Sep 2011 00:00:00 +0000</pubDate>
       
-      <guid>/2011/09/05/memorymapfile-convenience-class-for-python/</guid>
-      <description>&lt;p&gt;My &lt;a href=&#34;/2011/05/15/sharing-python-data-between-processes-using-mmap/&#34;&gt;obsession&lt;/a&gt; with &lt;a href=&#34;http://en.wikipedia.org/wiki/Mmap&#34;&gt;mmap&lt;/a&gt; hasn&amp;#8217;t died, but while &lt;a href=&#34;http://docs.python.org/library/mmap&#34;&gt;Python&amp;#8217;s mmap module&lt;/a&gt; is a wonderful low level library it&amp;#8217;s a bit hard for a newcomer to use properly.&lt;/p&gt;
+      <guid>https://blog.schmichael.com/2011/09/05/memorymapfile-convenience-class-for-python/</guid>
+      <description>&lt;p&gt;My &lt;a href=&#34;https://blog.schmichael.com/2011/05/15/sharing-python-data-between-processes-using-mmap/&#34;&gt;obsession&lt;/a&gt; with &lt;a href=&#34;http://en.wikipedia.org/wiki/Mmap&#34;&gt;mmap&lt;/a&gt; hasn&amp;#8217;t died, but while &lt;a href=&#34;http://docs.python.org/library/mmap&#34;&gt;Python&amp;#8217;s mmap module&lt;/a&gt; is a wonderful low level library it&amp;#8217;s a bit hard for a newcomer to use properly.&lt;/p&gt;
 
 &lt;p&gt;I&amp;#8217;ve started toying with a convenience wrapper class for &lt;code&gt;mmap.mmap&lt;/code&gt; (at least the Unix version):&lt;/p&gt;
 
@@ -312,10 +312,10 @@ for i, user in enumerate(models.User.objects.all()):
     
     <item>
       <title>Sharing Python data between processes using mmap</title>
-      <link>/2011/05/15/sharing-python-data-between-processes-using-mmap/</link>
+      <link>https://blog.schmichael.com/2011/05/15/sharing-python-data-between-processes-using-mmap/</link>
       <pubDate>Mon, 16 May 2011 00:00:00 +0000</pubDate>
       
-      <guid>/2011/05/15/sharing-python-data-between-processes-using-mmap/</guid>
+      <guid>https://blog.schmichael.com/2011/05/15/sharing-python-data-between-processes-using-mmap/</guid>
       <description>&lt;p&gt;I&amp;#8217;ve been toying with an idea of exposing statistics for a Python application via shared memory to keep the performance impact on the application as low as possible. The goal being an application could passively expose a number of metrics that could either be periodically polled via &lt;a href=&#34;http://munin-monitoring.org/&#34;&gt;munin&lt;/a&gt;/&lt;a href=&#34;http://www.icinga.org/&#34;&gt;Icinga&lt;/a&gt;/etc plugins or interactive tools when diagnosing issues on a system.&lt;/p&gt;
 
 &lt;p&gt;But first things first: I need to put data into &lt;a href=&#34;http://en.wikipedia.org/wiki/Shared_memory&#34;&gt;shared memory&lt;/a&gt; from Python. &lt;a href=&#34;http://en.wikipedia.org/wiki/Mmap&#34;&gt;mmap&lt;/a&gt; is an excellent widely-implemented POSIX system call for creating a shared memory space backed by an on-disk file.&lt;/p&gt;
@@ -439,11 +439,11 @@ if __name__ == &#39;__main__&#39;:
     
     <item>
       <title>signalfd</title>
-      <link>/2011/02/20/signalfd/</link>
+      <link>https://blog.schmichael.com/2011/02/20/signalfd/</link>
       <pubDate>Mon, 21 Feb 2011 00:00:00 +0000</pubDate>
       
-      <guid>/2011/02/20/signalfd/</guid>
-      <description>&lt;p&gt;&lt;em&gt;This article covers&lt;/em&gt; signalfd&lt;em&gt;, a system call only available on Linux. If anyone knows of an equivalent for OSX or BSDs,&lt;abbrev title=&#34;If there&#39;s something like signalfd for Windows, I&#39;m sorry but I really couldn&#39;t care less.&#34;&gt;*&lt;/abbrev&gt; please &lt;a href=&#34;/about-me/&#34;&gt;let me know&lt;/a&gt;. It&amp;#8217;d be great to create a compatibility layer.&lt;/em&gt;&lt;/p&gt;
+      <guid>https://blog.schmichael.com/2011/02/20/signalfd/</guid>
+      <description>&lt;p&gt;&lt;em&gt;This article covers&lt;/em&gt; signalfd&lt;em&gt;, a system call only available on Linux. If anyone knows of an equivalent for OSX or BSDs,&lt;abbrev title=&#34;If there&#39;s something like signalfd for Windows, I&#39;m sorry but I really couldn&#39;t care less.&#34;&gt;*&lt;/abbrev&gt; please &lt;a href=&#34;https://blog.schmichael.com/about-me/&#34;&gt;let me know&lt;/a&gt;. It&amp;#8217;d be great to create a compatibility layer.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;Writing asynchronous IO code is fun; handling signals is not. &lt;a href=&#34;http://www.kernel.org/doc/man-pages/online/pages/man2/signalfd.2.html&#34;&gt;signalfd&lt;/a&gt; allows you to move your signal handling code into your main event loop instead of hooking up global handlers and using the featureless &lt;a href=&#34;http://docs.python.org/library/signal#signal.set_wakeup_fd&#34;&gt;set_wakeup_fd&lt;/a&gt; function to break the main loop.&lt;/p&gt;
 
@@ -510,10 +510,10 @@ Killed
     
     <item>
       <title>schmongodb slides from Update Portland</title>
-      <link>/2011/02/02/schmongodb-slides-from-update-portland/</link>
+      <link>https://blog.schmichael.com/2011/02/02/schmongodb-slides-from-update-portland/</link>
       <pubDate>Thu, 03 Feb 2011 00:00:00 +0000</pubDate>
       
-      <guid>/2011/02/02/schmongodb-slides-from-update-portland/</guid>
+      <guid>https://blog.schmichael.com/2011/02/02/schmongodb-slides-from-update-portland/</guid>
       <description>&lt;p&gt;A few months ago someone in #pdxwebdev on Freenode asked an innocent &lt;a href=&#34;http://www.mongodb.org&#34;&gt;MongoDB&lt;/a&gt; question. In response I ranted seemingly endlessly about our experience with MongoDB at &lt;a href=&#34;http://urbanairship.com&#34;&gt;Urban Airship&lt;/a&gt;. After a few moments somebody (perhaps sarcastically? who can know on IRC) suggested I give a talk on my experiences with MongoDB. That led me to realize despite &lt;a href=&#34;http://calagator.org/&#34;&gt;Portland&amp;#8217;s amazing meetup culture&lt;/a&gt; there were no tech-meetups that focused on either:&lt;/p&gt;
 
 &lt;ol&gt;
@@ -552,10 +552,10 @@ Killed
     
     <item>
       <title>Deploying Python behind Nginx Talk Slides</title>
-      <link>/2011/01/25/deploying-python-behind-nginx-talk-slides/</link>
+      <link>https://blog.schmichael.com/2011/01/25/deploying-python-behind-nginx-talk-slides/</link>
       <pubDate>Tue, 25 Jan 2011 00:00:00 +0000</pubDate>
       
-      <guid>/2011/01/25/deploying-python-behind-nginx-talk-slides/</guid>
+      <guid>https://blog.schmichael.com/2011/01/25/deploying-python-behind-nginx-talk-slides/</guid>
       <description>&lt;p&gt;I gave a talk on deploying Python WSGI apps behind &lt;a href=&#34;http://wiki.nginx.org/&#34;&gt;nginx&lt;/a&gt; at the &lt;a href=&#34;http://wiki.python.org/moin/PortlandPythonUserGroup&#34;&gt;Portland Python User Group&lt;/a&gt; meeting on January 11th and finally got around to publishing the slides: &lt;a href=&#34;https://docs.google.com/present/edit?id=0Ab7GDIugV1qCZGR6c3d6YnJfMTA1aGRtZmJxYzI&amp;amp;hl=en&#34;&gt;schmingx&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;I should mention &lt;a href=&#34;http://discorporate.us/jek/&#34;&gt;Jason Kirtland&lt;/a&gt; informed me after the meeting that &lt;a href=&#34;http://www.fastcgi.com/devkit/doc/fcgi-spec.html&#34;&gt;FastCGI&lt;/a&gt; supports [persistent connections (and a host of other features)][6] between a load balancer and backend app servers.&lt;/p&gt;
@@ -566,10 +566,10 @@ Killed
     
     <item>
       <title>A Complete Noobs Guide to Hacking Nginx</title>
-      <link>/2010/12/28/noobs-guide-to-hacking-nginx/</link>
+      <link>https://blog.schmichael.com/2010/12/28/noobs-guide-to-hacking-nginx/</link>
       <pubDate>Wed, 29 Dec 2010 00:00:00 +0000</pubDate>
       
-      <guid>/2010/12/28/noobs-guide-to-hacking-nginx/</guid>
+      <guid>https://blog.schmichael.com/2010/12/28/noobs-guide-to-hacking-nginx/</guid>
       <description>&lt;p&gt;At &lt;a href=&#34;http://urbanairship.com&#34;&gt;Urban Airship&lt;/a&gt; our &lt;a href=&#34;http://en.wikipedia.org/wiki/Representational_State_Transfer#RESTful_web_services&#34;&gt;RESTful HTTP API&lt;/a&gt; uses PUT requests for, among other things, &lt;a href=&#34;http://urbanairship.com/docs/push.html#registration&#34;&gt;registering a device&lt;/a&gt;. Since the application registering the device is the HTTP Basic Auth username, there&amp;#8217;s often no body (&lt;a href=&#34;http://www.w3.org/Protocols/rfc2616/rfc2616-sec7.html#sec7.2&#34;&gt;entity body&lt;/a&gt; in HTTP parlance). Unfortunately &lt;a href=&#34;http://wiki.nginx.org&#34;&gt;nginx&lt;/a&gt; (as of 0.8.54, and I believe 0.9.3) doesn&amp;#8217;t support PUT requests without a Content-Length header and responds with a 411 Length Required response. While the &lt;a href=&#34;http://wiki.nginx.org/HttpChunkinModule&#34;&gt;chunkin&lt;/a&gt; module adds Transfer-Encoding: chunked support, it doesn&amp;#8217;t fix the empty PUT problem since HTTP requests without bodies don&amp;#8217;t require Content-Length nor Transfer-Encoding headers.&lt;/p&gt;
 
 &lt;p&gt;So let&amp;#8217;s hack nginx shall we?&lt;/p&gt;
@@ -1216,10 +1216,10 @@ The importance of being able to attach a debugger became clear as soon as I test
     
     <item>
       <title>Less Pagination, More More</title>
-      <link>/2010/07/16/less-pagination-more-more/</link>
+      <link>https://blog.schmichael.com/2010/07/16/less-pagination-more-more/</link>
       <pubDate>Sat, 17 Jul 2010 00:00:00 +0000</pubDate>
       
-      <guid>/2010/07/16/less-pagination-more-more/</guid>
+      <guid>https://blog.schmichael.com/2010/07/16/less-pagination-more-more/</guid>
       <description>&lt;p&gt;We live in a brave new (to some) world of databases other than a relational database with a SQL interface. Normally end users never notice a difference, but the astute viewer may notice the slow demise of an old friend: pagination.&lt;/p&gt;
 
 &lt;p&gt;Traditionally with SQL databases pagination has looked something like this:&lt;/p&gt;
@@ -1273,10 +1273,10 @@ The importance of being able to attach a debugger became clear as soon as I test
     
     <item>
       <title>New Job, New Blog</title>
-      <link>/2010/07/09/new-job-new-blog/</link>
+      <link>https://blog.schmichael.com/2010/07/09/new-job-new-blog/</link>
       <pubDate>Fri, 09 Jul 2010 00:00:00 +0000</pubDate>
       
-      <guid>/2010/07/09/new-job-new-blog/</guid>
+      <guid>https://blog.schmichael.com/2010/07/09/new-job-new-blog/</guid>
       <description>&lt;p&gt;The title is a bit misleading, but I haven&amp;#8217;t updated my blog in far too long.&lt;/p&gt;
 
 &lt;p&gt;In April I started working for &lt;a href=&#34;http://urbanairship.com/&#34;&gt;Urban Airship&lt;/a&gt;, and I&amp;#8217;ve been meaning to upgrade my blog and move to it to a shorter URL for some time. You should be reading this on &lt;a href=&#34;http://blog.schmichael.com/&#34;&gt;schmichael.com&lt;/a&gt; instead of on the old site at &lt;a href=&#34;http://michael.susens-schurter.com/blog/&#34;&gt;michael.susens-schurter.com&lt;/a&gt;. I think I setup the write .htaccess magic to make all of the old links properly redirect to the new domain. Sorry if I broke anything.&lt;/p&gt;
@@ -1289,10 +1289,10 @@ The importance of being able to attach a debugger became clear as soon as I test
     
     <item>
       <title>Making Server-Side MongoDB Functions Less Awkward</title>
-      <link>/2010/01/11/making-server-side-mongodb-functions-less-awkward/</link>
+      <link>https://blog.schmichael.com/2010/01/11/making-server-side-mongodb-functions-less-awkward/</link>
       <pubDate>Tue, 12 Jan 2010 00:00:00 +0000</pubDate>
       
-      <guid>/2010/01/11/making-server-side-mongodb-functions-less-awkward/</guid>
+      <guid>https://blog.schmichael.com/2010/01/11/making-server-side-mongodb-functions-less-awkward/</guid>
       <description>&lt;p&gt;I&amp;#8217;ve recently switched my project at work to use MongoDB for the user database and a few other datasets.&lt;/p&gt;
 
 &lt;p&gt;Currently I don&amp;#8217;t use many JavaScript functions, but when I do I like to store them on the server so that they&amp;#8217;re accessible when I&amp;#8217;m poking around in a console.&lt;/p&gt;
@@ -1414,10 +1414,10 @@ assert result == 3
     
     <item>
       <title>Web Developer Contractor Rates</title>
-      <link>/2009/11/18/web-developer-contractor-rates/</link>
+      <link>https://blog.schmichael.com/2009/11/18/web-developer-contractor-rates/</link>
       <pubDate>Wed, 18 Nov 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/11/18/web-developer-contractor-rates/</guid>
+      <guid>https://blog.schmichael.com/2009/11/18/web-developer-contractor-rates/</guid>
       <description>&lt;p&gt;We just happened* to start chatting in the #pdxdjango IRC channel on Freenode about what the rates web developer contractors charge today, and I wanted to post my experiences after leaving the contractor world a few months ago after 2 years of more or less successful contracting either individually or via &lt;a href=&#34;http://lofiart.com&#34;&gt;Lo-Fi Art&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;A really rough table of my rates as a contractor:&lt;/p&gt;
@@ -1514,10 +1514,10 @@ assert result == 3
     
     <item>
       <title>Ubuntu 9.10 on a Thinkpad T400</title>
-      <link>/2009/11/11/ubuntu-9-10-on-a-thinkpad-t400/</link>
+      <link>https://blog.schmichael.com/2009/11/11/ubuntu-9-10-on-a-thinkpad-t400/</link>
       <pubDate>Thu, 12 Nov 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/11/11/ubuntu-9-10-on-a-thinkpad-t400/</guid>
+      <guid>https://blog.schmichael.com/2009/11/11/ubuntu-9-10-on-a-thinkpad-t400/</guid>
       <description>&lt;p&gt;I upgraded from Ubuntu 9.04 to &lt;a href=&#34;http://www.ubuntu.com/products/whatisubuntu/910features&#34;&gt;9.10&lt;/a&gt; on my Lenovo Thinkpad T400 about a week ago, and thought I&amp;#8217;d write down some of my impressions.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Good news&lt;/strong&gt;&lt;/p&gt;

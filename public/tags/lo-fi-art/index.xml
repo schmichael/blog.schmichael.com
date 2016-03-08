@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Lo Fi Art on </title>
-    <link>/tags/lo-fi-art/</link>
-    <description>Recent content in Lo Fi Art on </description>
+    <title>Lo Fi Art on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/lo-fi-art/</link>
+    <description>Recent content in Lo Fi Art on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 19 Oct 2007 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/lo-fi-art/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/lo-fi-art/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Customizing the Summary in TracGantt</title>
-      <link>/2007/10/18/customizing-the-summary-in-tracgantt/</link>
+      <link>https://blog.schmichael.com/2007/10/18/customizing-the-summary-in-tracgantt/</link>
       <pubDate>Fri, 19 Oct 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/10/18/customizing-the-summary-in-tracgantt/</guid>
+      <guid>https://blog.schmichael.com/2007/10/18/customizing-the-summary-in-tracgantt/</guid>
       <description>&lt;div style=&#34;float: left; margin-right: 10px;&#34;&gt;
   &lt;a href=&#34;http://trac.edgewall.org&#34;&gt;&lt;img src=&#34;http://michael.susens-schurter.com/files/trac_logo.png&#34; alt=&#34;Trac Logo&#34; /&gt;&lt;/a&gt;
 &lt;/div&gt;
@@ -47,10 +47,10 @@
     
     <item>
       <title>Every 3rd Safari Upload Fails</title>
-      <link>/2007/10/17/every-3rd-safari-upload-fails/</link>
+      <link>https://blog.schmichael.com/2007/10/17/every-3rd-safari-upload-fails/</link>
       <pubDate>Wed, 17 Oct 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/10/17/every-3rd-safari-upload-fails/</guid>
+      <guid>https://blog.schmichael.com/2007/10/17/every-3rd-safari-upload-fails/</guid>
       <description>&lt;div style=&#34;float: left;&#34;&gt;
   &lt;a href=&#34;http://cherrypy.org&#34;&gt;&lt;img src=&#34;http://michael.susens-schurter.com/files/cplogo.jpg&#34; alt=&#34;CherryPy Logo&#34; /&gt;&lt;/a&gt;
 &lt;/div&gt;
@@ -76,10 +76,10 @@
     
     <item>
       <title>Hello Planet Python</title>
-      <link>/2007/10/17/hello-planet-python/</link>
+      <link>https://blog.schmichael.com/2007/10/17/hello-planet-python/</link>
       <pubDate>Wed, 17 Oct 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/10/17/hello-planet-python/</guid>
+      <guid>https://blog.schmichael.com/2007/10/17/hello-planet-python/</guid>
       <description>&lt;p&gt;Just noticed my first post appeared on &lt;a href=&#34;http://planetpython.org/&#34;&gt;Unofficial Planet Python&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Hello all!&lt;/strong&gt;&lt;/p&gt;
@@ -98,10 +98,10 @@
     
     <item>
       <title>First Command to Run On Debian</title>
-      <link>/2007/10/11/first-command-to-run-on-debian/</link>
+      <link>https://blog.schmichael.com/2007/10/11/first-command-to-run-on-debian/</link>
       <pubDate>Thu, 11 Oct 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/10/11/first-command-to-run-on-debian/</guid>
+      <guid>https://blog.schmichael.com/2007/10/11/first-command-to-run-on-debian/</guid>
       <description>&lt;p&gt;(Also applies to Ubuntu if you have a SSH server installed.)&lt;/p&gt;
 
 &lt;pre lang=&#34;bash&#34;&gt;sudo apt-get install denyhosts
@@ -117,10 +117,10 @@
     
     <item>
       <title>DreamHost Never Ceases To Amaze</title>
-      <link>/2007/10/05/dreamhost-never-ceases-to-amaze/</link>
+      <link>https://blog.schmichael.com/2007/10/05/dreamhost-never-ceases-to-amaze/</link>
       <pubDate>Fri, 05 Oct 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/10/05/dreamhost-never-ceases-to-amaze/</guid>
+      <guid>https://blog.schmichael.com/2007/10/05/dreamhost-never-ceases-to-amaze/</guid>
       <description>&lt;p&gt;How are you supposed to feel when &lt;a href=&#34;http://blog.dreamhost.com/2007/10/04/we-keep-it-moving/&#34;&gt;your hosting company gets evicted from their office space&lt;/a&gt;?&lt;/p&gt;
 
 &lt;p&gt;Ironically just a week or two ago &lt;a href=&#34;http://digitalfiefdom.org/&#34;&gt;a friend of mine&lt;/a&gt; had his shared hosting provider migrate his sites to a new server using &lt;em&gt;3 week old data.&lt;/em&gt; So I guess things could be a lot worse than a silly little eviction.&lt;/p&gt;
@@ -135,10 +135,10 @@
     
     <item>
       <title>Leaving Tremont, Joining Lo-Fi Art LLC</title>
-      <link>/2007/10/02/leaving-tremont-joining-lo-fi-art-llc/</link>
+      <link>https://blog.schmichael.com/2007/10/02/leaving-tremont-joining-lo-fi-art-llc/</link>
       <pubDate>Wed, 03 Oct 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/10/02/leaving-tremont-joining-lo-fi-art-llc/</guid>
+      <guid>https://blog.schmichael.com/2007/10/02/leaving-tremont-joining-lo-fi-art-llc/</guid>
       <description>&lt;p&gt;I tendered my resignation at &lt;a href=&#34;http://www.tremont702.us&#34;&gt;Tremont District #702 Schools&lt;/a&gt; today.&lt;/p&gt;
 
 &lt;p&gt;In 2 weeks I&amp;#8217;ll start working full time for &lt;a href=&#34;http://lofiart.com/&#34;&gt;the IT consultancy I started with Chris Pitzer, &lt;strong&gt;Lo-Fi Art, LLC&lt;/strong&gt;&lt;/a&gt;.* While we mostly specialize in web design and development, I&amp;#8217;ll be doing quite a bit of system and network administration at a (different) school at least at first.&lt;/p&gt;

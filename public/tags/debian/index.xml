@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Debian on </title>
-    <link>/tags/debian/</link>
-    <description>Recent content in Debian on </description>
+    <title>Debian on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/debian/</link>
+    <description>Recent content in Debian on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sat, 27 Dec 2008 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/debian/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/debian/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Release Lenny!</title>
-      <link>/2008/12/27/release-lenny/</link>
+      <link>https://blog.schmichael.com/2008/12/27/release-lenny/</link>
       <pubDate>Sat, 27 Dec 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/12/27/release-lenny/</guid>
+      <guid>https://blog.schmichael.com/2008/12/27/release-lenny/</guid>
       <description>&lt;p&gt;An article from &lt;a href=&#34;http://www.theregister.co.uk/2008/12/27/mysql_slowing_down/&#34;&gt;El Reg about MySQL&lt;/a&gt; ends with a great quote:&lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -32,10 +32,10 @@
     
     <item>
       <title>Fixing Gnome Notification’s Popup Location</title>
-      <link>/2008/12/01/fixing-gnome-notifications-popup-location/</link>
+      <link>https://blog.schmichael.com/2008/12/01/fixing-gnome-notifications-popup-location/</link>
       <pubDate>Tue, 02 Dec 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/12/01/fixing-gnome-notifications-popup-location/</guid>
+      <guid>https://blog.schmichael.com/2008/12/01/fixing-gnome-notifications-popup-location/</guid>
       <description>&lt;p&gt;Gnome notifications popup in the lower left corner of your desktop by default* which constantly annoys me. I usually have a terminal open in the lower left corner, and having my work covered by notifications is quite annoying.&lt;/p&gt;
 
 &lt;p&gt;Luckily the fix is easy:&lt;/p&gt;
@@ -60,7 +60,7 @@ True
 True
 &lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&#34;/files/notification-top_right.png&#34; alt=&#34;Notification in the upper right.&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.schmichael.com/files/notification-top_right.png&#34; alt=&#34;Notification in the upper right.&#34; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;at least on Gnome 2.22.3 on Debian Sid with notification-daemon 0.3.7-1+b1&lt;/li&gt;
@@ -74,10 +74,10 @@ True
     
     <item>
       <title>Fedora’s Crypto Consolidation</title>
-      <link>/2008/10/20/fedoras-crypto-consolidation/</link>
+      <link>https://blog.schmichael.com/2008/10/20/fedoras-crypto-consolidation/</link>
       <pubDate>Mon, 20 Oct 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/10/20/fedoras-crypto-consolidation/</guid>
+      <guid>https://blog.schmichael.com/2008/10/20/fedoras-crypto-consolidation/</guid>
       <description>&lt;p&gt;I just found out Fedora is attempting to consolidate on &lt;a href=&#34;http://developer.mozilla.org/en/NSS&#34;&gt;Mozilla&amp;#8217;s NSS&lt;/a&gt; for &lt;a href=&#34;http://fedoraproject.org/wiki/FedoraCryptoConsolidation&#34;&gt;system-wide cryptography&lt;/a&gt;. I love the idea and hope it succeeds as it will make using crypto so much easier for system administrators and users.&lt;/p&gt;
 
 &lt;p&gt;Since humans are the weakest link in the security chain, improving the human interaction with crypto is a much bigger security win than the latest impossible-to-crack-by-the-NSA-in-a-bajillion-years algorithm. While switching libraries isn&amp;#8217;t exactly a huge UI win, having a single application to manage all of your certificates, keys, passwords, etc. would be.&lt;/p&gt;
@@ -100,10 +100,10 @@ True
     
     <item>
       <title>Adobe Flash in Linux</title>
-      <link>/2008/09/14/adobe-flash-in-linux/</link>
+      <link>https://blog.schmichael.com/2008/09/14/adobe-flash-in-linux/</link>
       <pubDate>Sun, 14 Sep 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/09/14/adobe-flash-in-linux/</guid>
+      <guid>https://blog.schmichael.com/2008/09/14/adobe-flash-in-linux/</guid>
       <description>&lt;p&gt;Like most people, I use Flash a lot. Not only do I watch YouTube and Hulu videos, but FusionCharts* are an integral part of one of the main projects I work on. And like most people, I just want Flash to work. While an open source option would be nice, I really just need something that works.&lt;/p&gt;
 
 &lt;p&gt;Unfortunately &lt;strong&gt;Flash in Linux&lt;/strong&gt; &lt;small&gt;still&lt;/small&gt; &lt;strong&gt;sucks.&lt;/strong&gt;&lt;/p&gt;
@@ -154,10 +154,10 @@ True
     
     <item>
       <title>Thunderbird Import Fail</title>
-      <link>/2008/07/07/thunderbird-import-fail/</link>
+      <link>https://blog.schmichael.com/2008/07/07/thunderbird-import-fail/</link>
       <pubDate>Mon, 07 Jul 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/07/07/thunderbird-import-fail/</guid>
+      <guid>https://blog.schmichael.com/2008/07/07/thunderbird-import-fail/</guid>
       <description>&lt;p&gt;Do I really need to see this?&lt;/p&gt;
 
 &lt;p&gt;[![Thunderbird screenshot with only 1 option: Don&amp;rsquo;t import anything][1]][1]&lt;/p&gt;
@@ -168,10 +168,10 @@ True
     
     <item>
       <title>New Cable Internet, 22″ LCD, and WiFi!</title>
-      <link>/2007/12/17/new-cable-internet-22-lcd-and-wifi/</link>
+      <link>https://blog.schmichael.com/2007/12/17/new-cable-internet-22-lcd-and-wifi/</link>
       <pubDate>Tue, 18 Dec 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/12/17/new-cable-internet-22-lcd-and-wifi/</guid>
+      <guid>https://blog.schmichael.com/2007/12/17/new-cable-internet-22-lcd-and-wifi/</guid>
       <description>&lt;p&gt;Today was my work Christmas! I work from home most of the time, so I&amp;#8217;m finally getting around to upgrading some of the equipment I use for my job every day. Today I got 3 new pieces of technology and just finished setting them all up!&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Goodbye ATT&amp;amp;T!&lt;/strong&gt;&lt;/p&gt;

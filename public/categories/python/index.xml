@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Python on </title>
-    <link>/categories/python/</link>
-    <description>Recent content in Python on </description>
+    <title>Python on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/categories/python/</link>
+    <description>Recent content in Python on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 03 Oct 2012 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/categories/python/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>MmStats in Scripts</title>
-      <link>/2012/10/03/mmstats-in-scripts/</link>
+      <link>https://blog.schmichael.com/2012/10/03/mmstats-in-scripts/</link>
       <pubDate>Wed, 03 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>/2012/10/03/mmstats-in-scripts/</guid>
+      <guid>https://blog.schmichael.com/2012/10/03/mmstats-in-scripts/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://mmstats.readthedocs.org/&#34;&gt;MmStats&lt;/a&gt; is a library I created to expose and read statistics, metrics, and debugging information from running Python processes without the overhead of syscalls (eg writing to a socket or file) or threads, and to make sure that as many utilities as you want can read those metrics without affecting the performance of the main process exposing stats.&lt;/p&gt;
@@ -144,10 +144,10 @@ for i, user in enumerate(models.User.objects.all()):
     
     <item>
       <title>Building Python 2.6.8 on Ubuntu 12.04</title>
-      <link>/2012/05/29/building-python-2-6-8-on-ubuntu-12-04/</link>
+      <link>https://blog.schmichael.com/2012/05/29/building-python-2-6-8-on-ubuntu-12-04/</link>
       <pubDate>Tue, 29 May 2012 00:00:00 +0000</pubDate>
       
-      <guid>/2012/05/29/building-python-2-6-8-on-ubuntu-12-04/</guid>
+      <guid>https://blog.schmichael.com/2012/05/29/building-python-2-6-8-on-ubuntu-12-04/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Update 2012-06-01:&lt;/strong&gt; Looks like &lt;a href=&#34;https://github.com/saghul/pythonz&#34;&gt;pythonz&lt;/a&gt; is an easier way to install Python 2.6.8 (and all other Pythons) on Ubuntu 12.04.&lt;/p&gt;
 
 &lt;p&gt;Ubuntu 12.04 builds OpenSSL without SSLv2. Python 2.6.8 expects OpenSSL to be built with SSLv2.&lt;/p&gt;
@@ -172,11 +172,11 @@ for i, user in enumerate(models.User.objects.all()):
     
     <item>
       <title>MemoryMapFile Convenience Class for Python</title>
-      <link>/2011/09/05/memorymapfile-convenience-class-for-python/</link>
+      <link>https://blog.schmichael.com/2011/09/05/memorymapfile-convenience-class-for-python/</link>
       <pubDate>Tue, 06 Sep 2011 00:00:00 +0000</pubDate>
       
-      <guid>/2011/09/05/memorymapfile-convenience-class-for-python/</guid>
-      <description>&lt;p&gt;My &lt;a href=&#34;/2011/05/15/sharing-python-data-between-processes-using-mmap/&#34;&gt;obsession&lt;/a&gt; with &lt;a href=&#34;http://en.wikipedia.org/wiki/Mmap&#34;&gt;mmap&lt;/a&gt; hasn&amp;#8217;t died, but while &lt;a href=&#34;http://docs.python.org/library/mmap&#34;&gt;Python&amp;#8217;s mmap module&lt;/a&gt; is a wonderful low level library it&amp;#8217;s a bit hard for a newcomer to use properly.&lt;/p&gt;
+      <guid>https://blog.schmichael.com/2011/09/05/memorymapfile-convenience-class-for-python/</guid>
+      <description>&lt;p&gt;My &lt;a href=&#34;https://blog.schmichael.com/2011/05/15/sharing-python-data-between-processes-using-mmap/&#34;&gt;obsession&lt;/a&gt; with &lt;a href=&#34;http://en.wikipedia.org/wiki/Mmap&#34;&gt;mmap&lt;/a&gt; hasn&amp;#8217;t died, but while &lt;a href=&#34;http://docs.python.org/library/mmap&#34;&gt;Python&amp;#8217;s mmap module&lt;/a&gt; is a wonderful low level library it&amp;#8217;s a bit hard for a newcomer to use properly.&lt;/p&gt;
 
 &lt;p&gt;I&amp;#8217;ve started toying with a convenience wrapper class for &lt;code&gt;mmap.mmap&lt;/code&gt; (at least the Unix version):&lt;/p&gt;
 
@@ -196,10 +196,10 @@ for i, user in enumerate(models.User.objects.all()):
     
     <item>
       <title>Sharing Python data between processes using mmap</title>
-      <link>/2011/05/15/sharing-python-data-between-processes-using-mmap/</link>
+      <link>https://blog.schmichael.com/2011/05/15/sharing-python-data-between-processes-using-mmap/</link>
       <pubDate>Mon, 16 May 2011 00:00:00 +0000</pubDate>
       
-      <guid>/2011/05/15/sharing-python-data-between-processes-using-mmap/</guid>
+      <guid>https://blog.schmichael.com/2011/05/15/sharing-python-data-between-processes-using-mmap/</guid>
       <description>&lt;p&gt;I&amp;#8217;ve been toying with an idea of exposing statistics for a Python application via shared memory to keep the performance impact on the application as low as possible. The goal being an application could passively expose a number of metrics that could either be periodically polled via &lt;a href=&#34;http://munin-monitoring.org/&#34;&gt;munin&lt;/a&gt;/&lt;a href=&#34;http://www.icinga.org/&#34;&gt;Icinga&lt;/a&gt;/etc plugins or interactive tools when diagnosing issues on a system.&lt;/p&gt;
 
 &lt;p&gt;But first things first: I need to put data into &lt;a href=&#34;http://en.wikipedia.org/wiki/Shared_memory&#34;&gt;shared memory&lt;/a&gt; from Python. &lt;a href=&#34;http://en.wikipedia.org/wiki/Mmap&#34;&gt;mmap&lt;/a&gt; is an excellent widely-implemented POSIX system call for creating a shared memory space backed by an on-disk file.&lt;/p&gt;
@@ -323,11 +323,11 @@ if __name__ == &#39;__main__&#39;:
     
     <item>
       <title>signalfd</title>
-      <link>/2011/02/20/signalfd/</link>
+      <link>https://blog.schmichael.com/2011/02/20/signalfd/</link>
       <pubDate>Mon, 21 Feb 2011 00:00:00 +0000</pubDate>
       
-      <guid>/2011/02/20/signalfd/</guid>
-      <description>&lt;p&gt;&lt;em&gt;This article covers&lt;/em&gt; signalfd&lt;em&gt;, a system call only available on Linux. If anyone knows of an equivalent for OSX or BSDs,&lt;abbrev title=&#34;If there&#39;s something like signalfd for Windows, I&#39;m sorry but I really couldn&#39;t care less.&#34;&gt;*&lt;/abbrev&gt; please &lt;a href=&#34;/about-me/&#34;&gt;let me know&lt;/a&gt;. It&amp;#8217;d be great to create a compatibility layer.&lt;/em&gt;&lt;/p&gt;
+      <guid>https://blog.schmichael.com/2011/02/20/signalfd/</guid>
+      <description>&lt;p&gt;&lt;em&gt;This article covers&lt;/em&gt; signalfd&lt;em&gt;, a system call only available on Linux. If anyone knows of an equivalent for OSX or BSDs,&lt;abbrev title=&#34;If there&#39;s something like signalfd for Windows, I&#39;m sorry but I really couldn&#39;t care less.&#34;&gt;*&lt;/abbrev&gt; please &lt;a href=&#34;https://blog.schmichael.com/about-me/&#34;&gt;let me know&lt;/a&gt;. It&amp;#8217;d be great to create a compatibility layer.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;Writing asynchronous IO code is fun; handling signals is not. &lt;a href=&#34;http://www.kernel.org/doc/man-pages/online/pages/man2/signalfd.2.html&#34;&gt;signalfd&lt;/a&gt; allows you to move your signal handling code into your main event loop instead of hooking up global handlers and using the featureless &lt;a href=&#34;http://docs.python.org/library/signal#signal.set_wakeup_fd&#34;&gt;set_wakeup_fd&lt;/a&gt; function to break the main loop.&lt;/p&gt;
 
@@ -394,10 +394,10 @@ Killed
     
     <item>
       <title>Deploying Python behind Nginx Talk Slides</title>
-      <link>/2011/01/25/deploying-python-behind-nginx-talk-slides/</link>
+      <link>https://blog.schmichael.com/2011/01/25/deploying-python-behind-nginx-talk-slides/</link>
       <pubDate>Tue, 25 Jan 2011 00:00:00 +0000</pubDate>
       
-      <guid>/2011/01/25/deploying-python-behind-nginx-talk-slides/</guid>
+      <guid>https://blog.schmichael.com/2011/01/25/deploying-python-behind-nginx-talk-slides/</guid>
       <description>&lt;p&gt;I gave a talk on deploying Python WSGI apps behind &lt;a href=&#34;http://wiki.nginx.org/&#34;&gt;nginx&lt;/a&gt; at the &lt;a href=&#34;http://wiki.python.org/moin/PortlandPythonUserGroup&#34;&gt;Portland Python User Group&lt;/a&gt; meeting on January 11th and finally got around to publishing the slides: &lt;a href=&#34;https://docs.google.com/present/edit?id=0Ab7GDIugV1qCZGR6c3d6YnJfMTA1aGRtZmJxYzI&amp;amp;hl=en&#34;&gt;schmingx&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;I should mention &lt;a href=&#34;http://discorporate.us/jek/&#34;&gt;Jason Kirtland&lt;/a&gt; informed me after the meeting that &lt;a href=&#34;http://www.fastcgi.com/devkit/doc/fcgi-spec.html&#34;&gt;FastCGI&lt;/a&gt; supports [persistent connections (and a host of other features)][6] between a load balancer and backend app servers.&lt;/p&gt;
@@ -408,10 +408,10 @@ Killed
     
     <item>
       <title>Making Server-Side MongoDB Functions Less Awkward</title>
-      <link>/2010/01/11/making-server-side-mongodb-functions-less-awkward/</link>
+      <link>https://blog.schmichael.com/2010/01/11/making-server-side-mongodb-functions-less-awkward/</link>
       <pubDate>Tue, 12 Jan 2010 00:00:00 +0000</pubDate>
       
-      <guid>/2010/01/11/making-server-side-mongodb-functions-less-awkward/</guid>
+      <guid>https://blog.schmichael.com/2010/01/11/making-server-side-mongodb-functions-less-awkward/</guid>
       <description>&lt;p&gt;I&amp;#8217;ve recently switched my project at work to use MongoDB for the user database and a few other datasets.&lt;/p&gt;
 
 &lt;p&gt;Currently I don&amp;#8217;t use many JavaScript functions, but when I do I like to store them on the server so that they&amp;#8217;re accessible when I&amp;#8217;m poking around in a console.&lt;/p&gt;
@@ -533,10 +533,10 @@ assert result == 3
     
     <item>
       <title>lxml vs. ElementTree</title>
-      <link>/2009/10/14/lxml-vs-elementtree/</link>
+      <link>https://blog.schmichael.com/2009/10/14/lxml-vs-elementtree/</link>
       <pubDate>Wed, 14 Oct 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/10/14/lxml-vs-elementtree/</guid>
+      <guid>https://blog.schmichael.com/2009/10/14/lxml-vs-elementtree/</guid>
       <description>&lt;p&gt;While lxml has some &lt;a href=&#34;http://codespeak.net/lxml/performance.html&#34;&gt;excellent benchmarks about the speed of lxml.etree vs. ElementTree&lt;/a&gt;, I wanted to run some tests that were as close as possible to my own use case (fairly simple multi-megabyte XML files).&lt;/p&gt;
 
 &lt;p&gt;Here are the results of my little test script [lxml-v-etree.py]&lt;a href=&#34;times are in milliseconds&#34;&gt;2&lt;/a&gt;:&lt;/p&gt;
@@ -569,15 +569,15 @@ name           generate | tostring | total | write | parse | find | total
     
     <item>
       <title>Python Packaging Talk</title>
-      <link>/2009/09/09/python-packaging-talk/</link>
+      <link>https://blog.schmichael.com/2009/09/09/python-packaging-talk/</link>
       <pubDate>Wed, 09 Sep 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/09/09/python-packaging-talk/</guid>
+      <guid>https://blog.schmichael.com/2009/09/09/python-packaging-talk/</guid>
       <description>&lt;p&gt;I gave a talk at &lt;a href=&#34;http://pdxpython.org/&#34;&gt;PDX Python&lt;/a&gt; last night on Python Packaging. It&amp;#8217;s just an overview and introduction completely lacking in any practical examples.&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;/files/packaging.odp&#34;&gt;Python Packaging slides (ODP)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;/files/packaging-2.pdf&#34;&gt;Python Packaging slides (PDF)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.schmichael.com/files/packaging.odp&#34;&gt;Python Packaging slides (ODP)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.schmichael.com/files/packaging-2.pdf&#34;&gt;Python Packaging slides (PDF)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;small&gt;Let me know if the ODP source is messed up. OpenOffice.org liked randomly losing background images and forgetting other formatting.&lt;/small&gt;&lt;/p&gt;
@@ -601,10 +601,10 @@ name           generate | tostring | total | write | parse | find | total
     
     <item>
       <title>Switched tc-rest to webob</title>
-      <link>/2009/08/10/switched-tc-est-to-webob/</link>
+      <link>https://blog.schmichael.com/2009/08/10/switched-tc-est-to-webob/</link>
       <pubDate>Tue, 11 Aug 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/08/10/switched-tc-est-to-webob/</guid>
+      <guid>https://blog.schmichael.com/2009/08/10/switched-tc-est-to-webob/</guid>
       <description>&lt;p&gt;Small update on my toy tc-rest project: I switched to using &lt;a href=&#34;http://pythonpaste.org/webob/&#34;&gt;WebOb&lt;/a&gt; for creating HTTP Request and Response objects. Cleaned up the code a bit, but a real dispatcher is what&amp;#8217;s needed to really remove the cruft.&lt;/p&gt;
 
 &lt;p&gt;I&amp;#8217;m anxious to extend the API and add features, but I have no clue when I&amp;#8217;ll have time to touch it again. In the mean time I&amp;#8217;ve [pushed tc-rest to bitbucket.org if you want to take a look][2].&lt;/p&gt;
@@ -615,13 +615,13 @@ name           generate | tostring | total | write | parse | find | total
     
     <item>
       <title>TokyoCabinet &#43; fapws3 = tc-rest</title>
-      <link>/2009/08/08/tokyocabinet-fapws3-tc-rest/</link>
+      <link>https://blog.schmichael.com/2009/08/08/tokyocabinet-fapws3-tc-rest/</link>
       <pubDate>Sun, 09 Aug 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/08/08/tokyocabinet-fapws3-tc-rest/</guid>
+      <guid>https://blog.schmichael.com/2009/08/08/tokyocabinet-fapws3-tc-rest/</guid>
       <description>&lt;p&gt;Have you ever wondered how hard it would be to tack a RESTful HTTP interface on top of a fast key/value database like TokyoCabinet?&lt;/p&gt;
 
-&lt;p&gt;Probably not, but I did: &lt;a href=&#34;/files/tc-rest.tar.gz&#34;&gt;tc-rest.tar.gz&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Probably not, but I did: &lt;a href=&#34;https://blog.schmichael.com/files/tc-rest.tar.gz&#34;&gt;tc-rest.tar.gz&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Components:&lt;/p&gt;
 
@@ -672,10 +672,10 @@ name           generate | tostring | total | write | parse | find | total
     
     <item>
       <title>I Love Python: ZipFile Edition</title>
-      <link>/2009/07/08/i-love-python-zipfile-edition/</link>
+      <link>https://blog.schmichael.com/2009/07/08/i-love-python-zipfile-edition/</link>
       <pubDate>Wed, 08 Jul 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/07/08/i-love-python-zipfile-edition/</guid>
+      <guid>https://blog.schmichael.com/2009/07/08/i-love-python-zipfile-edition/</guid>
       <description>&lt;p&gt;For a client web project I needed to create a zip file containing a number of generated XML files. This isn&amp;#8217;t something I need to do very often, so I briefly considered just writing the XML files to disk and running a zip command. Ugly, but surely trying to dig up a pleasant Python zip library would be more work?&lt;/p&gt;
 
 &lt;p&gt;Turns out Python has had a wonderful zip library in its standard library since 1.6! The &lt;code&gt;&amp;lt;a href=&amp;quot;http://docs.python.org/library/zipfile.html&amp;quot;&amp;gt;zipfile&amp;lt;/a&amp;gt;&lt;/code&gt; module makes creating zip files a breeze:&lt;/p&gt;
@@ -725,10 +725,10 @@ def create_zip(spam):
     
     <item>
       <title>Handy Python Progress for JSON module</title>
-      <link>/2009/04/26/handy-python-progress-for-json-module/</link>
+      <link>https://blog.schmichael.com/2009/04/26/handy-python-progress-for-json-module/</link>
       <pubDate>Sun, 26 Apr 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/04/26/handy-python-progress-for-json-module/</guid>
+      <guid>https://blog.schmichael.com/2009/04/26/handy-python-progress-for-json-module/</guid>
       <description>&lt;p&gt;I&amp;#8217;ve been spending a good deal of time the past couple of days processing large JSON files to try and fix some corrupted data (long story, short version: my fault). While JSON is a fast file format to work with, processing &amp;gt; 50 MB of any data format takes some time.&lt;/p&gt;
 
 &lt;p&gt;So to give myself some idea of what was going on, I whipped up a small progress bar for Python 2.6&amp;#8217;s &lt;a href=&#34;http://docs.python.org/library/json.html&#34;&gt;json&lt;/a&gt; module (works on [simplejson][2] if you&amp;#8217;re still using 2.&lt;sup&gt;4&lt;/sup&gt;&amp;frasl;&lt;sub&gt;2&lt;/sub&gt;.5):&lt;/p&gt;
@@ -767,10 +767,10 @@ print &#34;\nDone&#34; # \n prints a newline so the progress output is kept
     
     <item>
       <title>BitBucket Project for Python FusionCharts Code</title>
-      <link>/2009/04/08/bitbucket-project-python-fusioncharts/</link>
+      <link>https://blog.schmichael.com/2009/04/08/bitbucket-project-python-fusioncharts/</link>
       <pubDate>Wed, 08 Apr 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/04/08/bitbucket-project-python-fusioncharts/</guid>
+      <guid>https://blog.schmichael.com/2009/04/08/bitbucket-project-python-fusioncharts/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://michael.susens-schurter.com/blog/2009/04/02/image-exporter-for-fusion-charts/&#34;&gt;After my last post on FusionCharts&lt;/a&gt;, someone was nice enough to e-mail me some a &lt;a href=&#34;http://djangoproject.com&#34;&gt;Django&lt;/a&gt; snippet for exporting &lt;a href=&#34;http://fusioncharts.com&#34;&gt;FusionCharts&lt;/a&gt; as images, so I decided I might as well put the code in a public repository.&lt;/p&gt;
 
 &lt;p&gt;While I prefer Bazaar out of all the DVCSes, it seems Mercurial has captured the hearts and minds of the Python empire, so I created the &lt;a href=&#34;http://bitbucket.org/schmichael/python-fusioncharts/&#34;&gt;python-fusioncharts project&lt;/a&gt; on [BitBucket][5].&lt;/p&gt;
@@ -783,10 +783,10 @@ print &#34;\nDone&#34; # \n prints a newline so the progress output is kept
     
     <item>
       <title>Image Exporter for Fusion Charts</title>
-      <link>/2009/04/02/image-exporter-for-fusion-charts/</link>
+      <link>https://blog.schmichael.com/2009/04/02/image-exporter-for-fusion-charts/</link>
       <pubDate>Thu, 02 Apr 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/04/02/image-exporter-for-fusion-charts/</guid>
+      <guid>https://blog.schmichael.com/2009/04/02/image-exporter-for-fusion-charts/</guid>
       <description>&lt;p&gt;I wrote an image exporter for &lt;a href=&#34;http://www.fusioncharts.com/&#34;&gt;Fusion Charts&lt;/a&gt; while working for &lt;a href=&#34;http://www.polimetrix.com/&#34;&gt;YouGov/Polimetrix&lt;/a&gt;, and someone recently asked if they could use it as well.&lt;/p&gt;
 
 &lt;p&gt;You&amp;#8217;ll have to alter it a bit because it was written for a custom &lt;a href=&#34;http://cherrypy.org&#34;&gt;CherryPy&lt;/a&gt;-based framework. It works with Fusion Charts 3.1 (and 3.0 with trivial changes to the POST variables being read).&lt;/p&gt;

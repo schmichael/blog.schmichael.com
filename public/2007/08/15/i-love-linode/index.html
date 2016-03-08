@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>I Love Linode</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.15" />
+  <link href="" rel="alternate" type="application/rss+xml" title="schmichael&#39;s blog" />
+  <link href="https://blog.schmichael.com//css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://blog.schmichael.com//css/hc.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  
+    
+    </head>
+    <body>
+<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Herring Cove </div>
+      <div id = "wrapper">
+
+
+<div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="https://blog.schmichael.com//"><p class="navbar-brand">schmichael&#39;s blog</p></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+					
+					
+					<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+					<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+					<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+       
+       <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+					<img src="" />
+          <li class="sidebar-brand"><a href="https://blog.schmichael.com//"><h1 class="brand">schmichael&#39;s blog</h1></a><h3></h3></li>
+          <hr />
+					
+						<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+						<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+						<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          <hr />
+          <div id="social-wrapper">
+           
+           
+           
+           
+         </div>
+       </ul>
+     </div>
+
+
+
+     <div class="container">
+
+
+  <div id="article">
+   <div class="article-title">I Love Linode</div>
+   <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2007-08-16</small></p> <hr/>
+   <div class="post">
+     <p>I just signed up for a new <a href="http://www.linode.com/">Linode</a> account. This is the fourth account I&#8217;ve created with them over the years, and I&#8217;ve always been very pleased. I wish I do a side-by-side comparison with another <a href="http://en.wikipedia.org/wiki/Vps">VPS</a> host, but I&#8217;ve never had any reason to shop around.</p>
+
+<p><small>I guess I did administer a Windows 2003 VPS on <a href="http://www.godaddy.com/">GoDaddy</a> for a while. The experience was too horrific to even try to compare to Linode. Why anyone would want a Windows web server is beyond me. At the time we had been fooled into using ASP.NET to build a huge web application. I&#8217;ll never make that mistake again.</small></p>
+
+<p>Linode is a VPS provider which uses <a href="http://user-mode-linux.sourceforge.net/">User Mode Linux</a> to create virtual Linux servers which run as a process on top of a physical Linux server. While <a href="http://www.xensource.com">Xen</a> seems to be the one getting all of the hype these days, UML is extremely stable, secure, and mature. Each user is allocated a pool of <a href="http://www.linode.com/wiki/index.php/IO_Tokens">IO tokens</a> which refills at a static rate. This allows servers to have high burst IO rates while preventing any single virtual server from hogging the IO. It seems to work quite well.</p>
+
+<p>Registration was quick and easy. My only minor complaint is that there&#8217;s about an hour wait between when you&#8217;re billed and when you&#8217;re account is activated. When I asked their support about this I got a fast reply from Thomas Asaro:</p>
+
+<blockquote>
+<p>Every signup is manually reviewed and approved by staff. This is to prevent fraudulent signups, protect the credit card holders, and protect our network. Our average activation time is 1 hour.</p>
+</blockquote>
+
+<p>That&#8217;s probably my favorite thing about Linode: <strong>excellent support.</strong> Whether its via e-mail, their <a href="http://www.linode.com/wiki/index.php/IO_Tokens">wiki</a>, <a href="http://www.linode.com/irc/">IRC</a>, or <a href="http://www.linode.com/forums">forums</a>, the Linode staff and users have always been quick to help.</p>
+
+<p>I started using Linode years ago when I worked for <a href="http://www.synthesyssolutions.com/">Synthesys Solutions</a>. At the time we were using some terrible shared hosting provider that was constantly having problems. We decided not to risk our luck with another shared hosting provider, and I configured a Linode for hosting our web sites and e-mail.</p>
+
+<p>The only performance issues I had with Linode were caused by spam. We scanned all of our e-mail for viruses with [ClamAV][9]. While ClamAV is a fantastic solution, like all virus scanners its very resource intensive. So a spam bomb would hit our server and bring it to an unusable crawl for anywhere from 30 minutes to over an hour. A faster Linode would have helped, but administering an e-mail server is always going to be a constant battle (unless you don&#8217;t care about your users).</p>
+
+<p>For now I plan on still using DreamHost for e-mail hosting to avoid the spam battle. While the stability isn&#8217;t what I would like, POP3 users rarely, if ever, notice. And right now I don&#8217;t host enough e-mail addresses to warrant the headache of managing it myself.</p>
+
+<p>I highly recommend Linode to anyone looking for an extremely reliable Linux hosting service who doesn&#8217;t want to spend a lot on a dedicated server.</p>
+
+<p>[9]: <a href="http://www.clamav.net/">http://www.clamav.net/</a></p>
+
+   </div>
+ </div>
+
+
+ <a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+ <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+ <ul class="pager">
+      &nbsp;<li class="previous"><a href="https://blog.schmichael.com/2007/08/16/deploying-cherrypy-on-apache-2-using-mod_proxy/"> Deploying CherryPy on Apache 2 using mod_proxy</a></li>
+      &nbsp;<li class="next"><a href="https://blog.schmichael.com/2007/08/09/fixing-rhythmbox/"> Fixing Rhythmbox</a></li>
+</ul>
+
+
+
+    </ul>
+    </div>
+    <footer>
+
+        <p class="text-muted credit">&copy; . All rights reserved. </p>
+    </footer>
+ 
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/hc.js"></script>
+</body>
+
+</html>
+

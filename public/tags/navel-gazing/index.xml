@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Navel Gazing on </title>
-    <link>/tags/navel-gazing/</link>
-    <description>Recent content in Navel Gazing on </description>
+    <title>Navel Gazing on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/navel-gazing/</link>
+    <description>Recent content in Navel Gazing on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 18 Nov 2009 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/navel-gazing/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/navel-gazing/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Web Developer Contractor Rates</title>
-      <link>/2009/11/18/web-developer-contractor-rates/</link>
+      <link>https://blog.schmichael.com/2009/11/18/web-developer-contractor-rates/</link>
       <pubDate>Wed, 18 Nov 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/11/18/web-developer-contractor-rates/</guid>
+      <guid>https://blog.schmichael.com/2009/11/18/web-developer-contractor-rates/</guid>
       <description>&lt;p&gt;We just happened* to start chatting in the #pdxdjango IRC channel on Freenode about what the rates web developer contractors charge today, and I wanted to post my experiences after leaving the contractor world a few months ago after 2 years of more or less successful contracting either individually or via &lt;a href=&#34;http://lofiart.com&#34;&gt;Lo-Fi Art&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;A really rough table of my rates as a contractor:&lt;/p&gt;
@@ -110,10 +110,10 @@
     
     <item>
       <title>Man Babies</title>
-      <link>/2008/05/08/man-babies/</link>
+      <link>https://blog.schmichael.com/2008/05/08/man-babies/</link>
       <pubDate>Fri, 09 May 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/05/08/man-babies/</guid>
+      <guid>https://blog.schmichael.com/2008/05/08/man-babies/</guid>
       <description>&lt;p&gt;Right after I graduated from college, I taught 2 low level CS courses over a couple of semesters. Two of my students created some sort of chat program where you could punch your friends in the face if I remember correctly. It was awesome.&lt;/p&gt;
 
 &lt;p&gt;Now they&amp;#8217;ve graduated and [brought something even more amazing into this world: ManBabies.com][1]&lt;/p&gt;
@@ -128,10 +128,10 @@
     
     <item>
       <title>New WordPress Plugins and Updates</title>
-      <link>/2007/09/01/new-wordpress-plugins-and-updates/</link>
+      <link>https://blog.schmichael.com/2007/09/01/new-wordpress-plugins-and-updates/</link>
       <pubDate>Sun, 02 Sep 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/09/01/new-wordpress-plugins-and-updates/</guid>
+      <guid>https://blog.schmichael.com/2007/09/01/new-wordpress-plugins-and-updates/</guid>
       <description>&lt;div style=&#34;margin: 6px; float: right&#34;&gt;
   &lt;a href=&#34;http://wordpress.org&#34; title=&#34;WordPress&#34;&gt;&lt;img src=&#34;http://michael.susens-schurter.com/blog/wp-content/uploads/2007/09/wordpress-screenshot.png&#34; alt=&#34;WordPress Screenshot&#34; /&gt;&lt;/a&gt;
 &lt;/div&gt;
@@ -169,10 +169,10 @@ bar&lt;/pre&gt;
     
     <item>
       <title>Vista not a Dud…</title>
-      <link>/2007/07/24/vista-not-a-dud/</link>
+      <link>https://blog.schmichael.com/2007/07/24/vista-not-a-dud/</link>
       <pubDate>Wed, 25 Jul 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/07/24/vista-not-a-dud/</guid>
+      <guid>https://blog.schmichael.com/2007/07/24/vista-not-a-dud/</guid>
       <description>&lt;p&gt;&amp;#8230;[its just irrelevant][1]. The operating system you use doesn&amp;#8217;t matter much anymore, and arguably it shouldn&amp;#8217;t.&lt;/p&gt;
 
 &lt;p&gt;I&amp;#8217;m not defending Vista. In fact it seems like the perfect example of how Microsoft doesn&amp;#8217;t understand where the computer industry is headed.&lt;/p&gt;
@@ -189,10 +189,10 @@ bar&lt;/pre&gt;
     
     <item>
       <title>Hula</title>
-      <link>/2006/05/19/hula/</link>
+      <link>https://blog.schmichael.com/2006/05/19/hula/</link>
       <pubDate>Fri, 19 May 2006 00:00:00 +0000</pubDate>
       
-      <guid>/2006/05/19/hula/</guid>
+      <guid>https://blog.schmichael.com/2006/05/19/hula/</guid>
       <description>&lt;p&gt;For Samantha&amp;#8217;s new job at First United Methodist Church in Peoria, she and I are supposed to send them a photo along with a 2 paragraph bio for the &lt;em&gt;church newsletter&lt;/em&gt;. After reading today&amp;#8217;s &lt;a href=&#34;http://www.comics.com/comics/pearls/archive/pearls-20060519.html&#34;&gt;Pearls Before Swine&lt;/a&gt;, I&amp;#8217;ve decided its a better description of who I am than I could ever come up with in 2 paragraphs:&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.comics.com/comics/pearls/archive/pearls-20060519.html&#34;&gt;&lt;img src=&#34;http://www.comics.com/comics/pearls/archive/images/pearls2006029312519.gif&#34; alt=&#34;Hula&#34; title=&#34;Hula&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
@@ -203,10 +203,10 @@ bar&lt;/pre&gt;
     
     <item>
       <title>Fun with Facial Recognition</title>
-      <link>/2006/05/17/fun-with-facial-recognition/</link>
+      <link>https://blog.schmichael.com/2006/05/17/fun-with-facial-recognition/</link>
       <pubDate>Wed, 17 May 2006 00:00:00 +0000</pubDate>
       
-      <guid>/2006/05/17/fun-with-facial-recognition/</guid>
+      <guid>https://blog.schmichael.com/2006/05/17/fun-with-facial-recognition/</guid>
       <description>&lt;p&gt;So my friend &lt;a href=&#34;http://www.dancoulter.com/2006/05/17/who-do-i-look-like/&#34;&gt;Dan blogged his results&lt;/a&gt; from [MyHeritage.com&amp;#8217;s free celebrity facial comparison][2].&lt;/p&gt;
 
 &lt;p&gt;Evidently I look Asian because my #1 result was a South Korean actor, Bae Yong-jun.&lt;/p&gt;

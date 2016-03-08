@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Python on </title>
-    <link>/tags/python/</link>
-    <description>Recent content in Python on </description>
+    <title>Python on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/python/</link>
+    <description>Recent content in Python on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 03 Oct 2012 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>MmStats in Scripts</title>
-      <link>/2012/10/03/mmstats-in-scripts/</link>
+      <link>https://blog.schmichael.com/2012/10/03/mmstats-in-scripts/</link>
       <pubDate>Wed, 03 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>/2012/10/03/mmstats-in-scripts/</guid>
+      <guid>https://blog.schmichael.com/2012/10/03/mmstats-in-scripts/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://mmstats.readthedocs.org/&#34;&gt;MmStats&lt;/a&gt; is a library I created to expose and read statistics, metrics, and debugging information from running Python processes without the overhead of syscalls (eg writing to a socket or file) or threads, and to make sure that as many utilities as you want can read those metrics without affecting the performance of the main process exposing stats.&lt;/p&gt;
@@ -144,10 +144,10 @@ for i, user in enumerate(models.User.objects.all()):
     
     <item>
       <title>Sharing Python data between processes using mmap</title>
-      <link>/2011/05/15/sharing-python-data-between-processes-using-mmap/</link>
+      <link>https://blog.schmichael.com/2011/05/15/sharing-python-data-between-processes-using-mmap/</link>
       <pubDate>Mon, 16 May 2011 00:00:00 +0000</pubDate>
       
-      <guid>/2011/05/15/sharing-python-data-between-processes-using-mmap/</guid>
+      <guid>https://blog.schmichael.com/2011/05/15/sharing-python-data-between-processes-using-mmap/</guid>
       <description>&lt;p&gt;I&amp;#8217;ve been toying with an idea of exposing statistics for a Python application via shared memory to keep the performance impact on the application as low as possible. The goal being an application could passively expose a number of metrics that could either be periodically polled via &lt;a href=&#34;http://munin-monitoring.org/&#34;&gt;munin&lt;/a&gt;/&lt;a href=&#34;http://www.icinga.org/&#34;&gt;Icinga&lt;/a&gt;/etc plugins or interactive tools when diagnosing issues on a system.&lt;/p&gt;
 
 &lt;p&gt;But first things first: I need to put data into &lt;a href=&#34;http://en.wikipedia.org/wiki/Shared_memory&#34;&gt;shared memory&lt;/a&gt; from Python. &lt;a href=&#34;http://en.wikipedia.org/wiki/Mmap&#34;&gt;mmap&lt;/a&gt; is an excellent widely-implemented POSIX system call for creating a shared memory space backed by an on-disk file.&lt;/p&gt;
@@ -271,10 +271,10 @@ if __name__ == &#39;__main__&#39;:
     
     <item>
       <title>Switched tc-rest to webob</title>
-      <link>/2009/08/10/switched-tc-est-to-webob/</link>
+      <link>https://blog.schmichael.com/2009/08/10/switched-tc-est-to-webob/</link>
       <pubDate>Tue, 11 Aug 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/08/10/switched-tc-est-to-webob/</guid>
+      <guid>https://blog.schmichael.com/2009/08/10/switched-tc-est-to-webob/</guid>
       <description>&lt;p&gt;Small update on my toy tc-rest project: I switched to using &lt;a href=&#34;http://pythonpaste.org/webob/&#34;&gt;WebOb&lt;/a&gt; for creating HTTP Request and Response objects. Cleaned up the code a bit, but a real dispatcher is what&amp;#8217;s needed to really remove the cruft.&lt;/p&gt;
 
 &lt;p&gt;I&amp;#8217;m anxious to extend the API and add features, but I have no clue when I&amp;#8217;ll have time to touch it again. In the mean time I&amp;#8217;ve [pushed tc-rest to bitbucket.org if you want to take a look][2].&lt;/p&gt;
@@ -285,13 +285,13 @@ if __name__ == &#39;__main__&#39;:
     
     <item>
       <title>TokyoCabinet &#43; fapws3 = tc-rest</title>
-      <link>/2009/08/08/tokyocabinet-fapws3-tc-rest/</link>
+      <link>https://blog.schmichael.com/2009/08/08/tokyocabinet-fapws3-tc-rest/</link>
       <pubDate>Sun, 09 Aug 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/08/08/tokyocabinet-fapws3-tc-rest/</guid>
+      <guid>https://blog.schmichael.com/2009/08/08/tokyocabinet-fapws3-tc-rest/</guid>
       <description>&lt;p&gt;Have you ever wondered how hard it would be to tack a RESTful HTTP interface on top of a fast key/value database like TokyoCabinet?&lt;/p&gt;
 
-&lt;p&gt;Probably not, but I did: &lt;a href=&#34;/files/tc-rest.tar.gz&#34;&gt;tc-rest.tar.gz&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Probably not, but I did: &lt;a href=&#34;https://blog.schmichael.com/files/tc-rest.tar.gz&#34;&gt;tc-rest.tar.gz&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Components:&lt;/p&gt;
 
@@ -342,18 +342,18 @@ if __name__ == &#39;__main__&#39;:
     
     <item>
       <title>Tokyo {Cabinet, [Py]Tyrant} Talk</title>
-      <link>/2009/03/11/tokyo-cabinet-pytyrant-talk/</link>
+      <link>https://blog.schmichael.com/2009/03/11/tokyo-cabinet-pytyrant-talk/</link>
       <pubDate>Wed, 11 Mar 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/03/11/tokyo-cabinet-pytyrant-talk/</guid>
+      <guid>https://blog.schmichael.com/2009/03/11/tokyo-cabinet-pytyrant-talk/</guid>
       <description>&lt;p&gt;I did an introductory talk on &lt;a href=&#34;http://tokyocabinet.sourceforge.net/index.html&#34;&gt;Tokyo Cabinet&lt;/a&gt;, &lt;a href=&#34;http://tokyocabinet.sourceforge.net/tyrantdoc/&#34;&gt;Tokyo Tyrant&lt;/a&gt;, &lt;a href=&#34;http://pypi.python.org/pypi/pytc/&#34;&gt;pytc&lt;/a&gt;, and &lt;a href=&#34;http://code.google.com/p/pytyrant/&#34;&gt;PyTyrant&lt;/a&gt; at the &lt;a href=&#34;http://www.pdxpython.org&#34;&gt;Portland Python User Group&lt;/a&gt; meeting last night.&lt;/p&gt;
 
 &lt;p&gt;It was definitely just an introductory talk, so if you&amp;#8217;re already familiar with these projects it probably won&amp;#8217;t be very interesting.&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;/tokyotalk/&#34;&gt;Slides (html)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;/tokyotalk/tokyotalk.html&#34;&gt;Single page (HTML version)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;/tokyotalk/tokyotalk.pdf&#34;&gt;Single page (PDF version)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.schmichael.com/tokyotalk/&#34;&gt;Slides (html)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.schmichael.com/tokyotalk/tokyotalk.html&#34;&gt;Single page (HTML version)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.schmichael.com/tokyotalk/tokyotalk.pdf&#34;&gt;Single page (PDF version)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;[reStructuredText (rst) source][9]&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -365,10 +365,10 @@ if __name__ == &#39;__main__&#39;:
     
     <item>
       <title>(Yet Another) Deploying Django with CherryPy Script</title>
-      <link>/2009/02/18/deploying-django-with-cherrypy/</link>
+      <link>https://blog.schmichael.com/2009/02/18/deploying-django-with-cherrypy/</link>
       <pubDate>Wed, 18 Feb 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/02/18/deploying-django-with-cherrypy/</guid>
+      <guid>https://blog.schmichael.com/2009/02/18/deploying-django-with-cherrypy/</guid>
       <description>&lt;p&gt;Recently I deployed a &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; project on an OSX server. I foolishly thought this would be as easy as on Linux until I ran into the mess that is _x86&lt;em&gt;64&lt;/em&gt; Apache + &lt;a href=&#34;http://www.modwsgi.org/&#34;&gt;mod_wsgi&lt;/a&gt;* + Django + psycopg2 + &lt;em&gt;i386&lt;/em&gt; PostgreSQL. After wasting far too much time googling and recompiling various bits trying to get everything happy, I followed &lt;a href=&#34;http://www.eflorenzano.com/blog/post/hosting-django-site-pure-python/&#34;&gt;Eric Florenzano&amp;#8217;s post&lt;/a&gt; on deploying Django using &lt;a href=&#34;http://www.cherrypy.org/&#34;&gt;CherryPy&lt;/a&gt;&amp;#8216;s** [wsgiserver][5].&lt;/p&gt;
 
 &lt;p&gt;Here&amp;#8217;s my lightly modified version of Eric&amp;#8217;s script:&lt;/p&gt;
@@ -431,10 +431,10 @@ if __name__ == &#34;__main__&#34;:
     
     <item>
       <title>Web Server Quandary</title>
-      <link>/2008/12/27/web-server-quandary/</link>
+      <link>https://blog.schmichael.com/2008/12/27/web-server-quandary/</link>
       <pubDate>Sat, 27 Dec 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/12/27/web-server-quandary/</guid>
+      <guid>https://blog.schmichael.com/2008/12/27/web-server-quandary/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://httpd.apache.org/&#34;&gt;Apache&lt;/a&gt; was probably the first Linux application I learned how to configure. However, I&amp;#8217;ve gotten a bit frustrated with it recently&amp;#8230;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;The Problem&lt;/strong&gt;&lt;/p&gt;
@@ -502,10 +502,10 @@ if __name__ == &#34;__main__&#34;:
     
     <item>
       <title>Fixing Gnome Notification’s Popup Location</title>
-      <link>/2008/12/01/fixing-gnome-notifications-popup-location/</link>
+      <link>https://blog.schmichael.com/2008/12/01/fixing-gnome-notifications-popup-location/</link>
       <pubDate>Tue, 02 Dec 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/12/01/fixing-gnome-notifications-popup-location/</guid>
+      <guid>https://blog.schmichael.com/2008/12/01/fixing-gnome-notifications-popup-location/</guid>
       <description>&lt;p&gt;Gnome notifications popup in the lower left corner of your desktop by default* which constantly annoys me. I usually have a terminal open in the lower left corner, and having my work covered by notifications is quite annoying.&lt;/p&gt;
 
 &lt;p&gt;Luckily the fix is easy:&lt;/p&gt;
@@ -530,7 +530,7 @@ True
 True
 &lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&#34;/files/notification-top_right.png&#34; alt=&#34;Notification in the upper right.&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.schmichael.com/files/notification-top_right.png&#34; alt=&#34;Notification in the upper right.&#34; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;at least on Gnome 2.22.3 on Debian Sid with notification-daemon 0.3.7-1+b1&lt;/li&gt;
@@ -544,10 +544,10 @@ True
     
     <item>
       <title>Listing All Passwords Stored in Gnome Keyring</title>
-      <link>/2008/10/30/listing-all-passwords-stored-in-gnome-keyring/</link>
+      <link>https://blog.schmichael.com/2008/10/30/listing-all-passwords-stored-in-gnome-keyring/</link>
       <pubDate>Fri, 31 Oct 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/10/30/listing-all-passwords-stored-in-gnome-keyring/</guid>
+      <guid>https://blog.schmichael.com/2008/10/30/listing-all-passwords-stored-in-gnome-keyring/</guid>
       <description>&lt;p&gt;I was toying with writing my first desktop application in years and got distracted by how cool &lt;a href=&#34;http://live.gnome.org/GnomeKeyring&#34;&gt;Gnome Keyring&lt;/a&gt; is. Of course storing and retrieving passwords is pretty mundane, so here&amp;#8217;s a fun example that dumps all of the current user&amp;#8217;s passwords:&lt;/p&gt;
 
 &lt;pre lang=&#34;python&#34;&gt;#!/usr/bin/env python
@@ -592,10 +592,10 @@ if __name__ == &#39;__main__&#39;:
     
     <item>
       <title>Kyle Waremburg</title>
-      <link>/2008/09/02/kyle-waremburg/</link>
+      <link>https://blog.schmichael.com/2008/09/02/kyle-waremburg/</link>
       <pubDate>Tue, 02 Sep 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/09/02/kyle-waremburg/</guid>
+      <guid>https://blog.schmichael.com/2008/09/02/kyle-waremburg/</guid>
       <description>&lt;p&gt;When I worked at Tremont Community Schools, Kyle was still a student, but he helped build &lt;a href=&#34;http://code.google.com/p/firewall-admin/&#34;&gt;Firewall Admin&lt;/a&gt;, a Linux desktop that spanned 9 monitors, and many robots. [He&amp;#8217;s now blogging, and I can almost guarantee he&amp;#8217;ll always be doing something wilder and more interesting than me!][2]&lt;/p&gt;
 
 &lt;p&gt;[2]: &lt;a href=&#34;http://blog.kython.org/&#34;&gt;http://blog.kython.org/&lt;/a&gt;&lt;/p&gt;
@@ -604,10 +604,10 @@ if __name__ == &#39;__main__&#39;:
     
     <item>
       <title>Introducing Hzzah!</title>
-      <link>/2008/07/15/introducing-hzzah/</link>
+      <link>https://blog.schmichael.com/2008/07/15/introducing-hzzah/</link>
       <pubDate>Tue, 15 Jul 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/07/15/introducing-hzzah/</guid>
+      <guid>https://blog.schmichael.com/2008/07/15/introducing-hzzah/</guid>
       <description>&lt;p&gt;&lt;small&gt;from the I-can-haz-a-search-engine department&amp;#8230;&lt;/small&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Sorry about the tacky donate link all. I tried to hide it from feed readers with WordPress&amp;#8217;s &amp;lt;!&amp;#8211;more&amp;gt; feature, but evidently that doesn&amp;#8217;t apply to feeds. &lt;img src=&#34;http://localhost/wp-includes/images/smilies/frownie.png&#34; alt=&#34;:(&#34; class=&#34;wp-smiley&#34; style=&#34;height: 1em; max-height: 1em;&#34; /&gt;&lt;/p&gt;
@@ -660,10 +660,10 @@ bzr branch http://michael.susens-schurter.com/code/hzzah-public hzzah-steve
     
     <item>
       <title>WordPress Rocks at Updates</title>
-      <link>/2008/07/15/wordpress-rocks-at-updates/</link>
+      <link>https://blog.schmichael.com/2008/07/15/wordpress-rocks-at-updates/</link>
       <pubDate>Tue, 15 Jul 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/07/15/wordpress-rocks-at-updates/</guid>
+      <guid>https://blog.schmichael.com/2008/07/15/wordpress-rocks-at-updates/</guid>
       <description>&lt;p&gt;I feel I owe it to my friends who put up with my senseless Python fanboying to admit &lt;a href=&#34;http://wordpress.org&#34;&gt;WordPress&lt;/a&gt; is not only a great blog engine, but rocks at updates.&lt;/p&gt;
 
 &lt;p&gt;I just upgraded from 2.5 to 2.6 by doing a simple &lt;code&gt;svn switch http://...&lt;/code&gt; and then logging into the web admin interface. It took about 30 seconds to complete.&lt;/p&gt;
@@ -678,10 +678,10 @@ bzr branch http://michael.susens-schurter.com/code/hzzah-public hzzah-steve
     
     <item>
       <title>Common Django Typo in URLconf</title>
-      <link>/2008/03/10/common-django-typo-in-urlconf/</link>
+      <link>https://blog.schmichael.com/2008/03/10/common-django-typo-in-urlconf/</link>
       <pubDate>Mon, 10 Mar 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/03/10/common-django-typo-in-urlconf/</guid>
+      <guid>https://blog.schmichael.com/2008/03/10/common-django-typo-in-urlconf/</guid>
       <description>&lt;p&gt;If you&amp;#8217;re hacking Django and get this&amp;#8230;&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;ImproperlyConfigured: Error while importing URLconf &#39;proj.app.urls&#39;: &#39;tuple&#39; object is not callable&lt;/code&gt;&lt;/p&gt;
@@ -696,10 +696,10 @@ bzr branch http://michael.susens-schurter.com/code/hzzah-public hzzah-steve
     
     <item>
       <title>Fun with Django and modwsgi</title>
-      <link>/2008/02/05/fun-with-django-and-modwsgi/</link>
+      <link>https://blog.schmichael.com/2008/02/05/fun-with-django-and-modwsgi/</link>
       <pubDate>Wed, 06 Feb 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/02/05/fun-with-django-and-modwsgi/</guid>
+      <guid>https://blog.schmichael.com/2008/02/05/fun-with-django-and-modwsgi/</guid>
       <description>&lt;p&gt;Today I deployed my first &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; application for a client. Its yet-another-blog, so I&amp;#8217;ll refrain from posting the code and cluttering up the django-*blog* namespace on Google Code. Before you roll your eyes and complain about why I didn&amp;#8217;t use an existing solution, I think I have 2 somewhat valid reasons:&lt;/p&gt;
 
 &lt;ol&gt;
@@ -761,10 +761,10 @@ Alias /static/ /srv/spam/eggs/static/
     
     <item>
       <title>Fun with SQLObject and mxDateTime</title>
-      <link>/2007/11/29/fun-with-sqlobject-and-mxdatetime/</link>
+      <link>https://blog.schmichael.com/2007/11/29/fun-with-sqlobject-and-mxdatetime/</link>
       <pubDate>Fri, 30 Nov 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/11/29/fun-with-sqlobject-and-mxdatetime/</guid>
+      <guid>https://blog.schmichael.com/2007/11/29/fun-with-sqlobject-and-mxdatetime/</guid>
       <description>&lt;p&gt;I&amp;#8217;m working on a small &lt;a href=&#34;http://cherrypy.org&#34;&gt;CherryPy&lt;/a&gt; web service that among other things saves timestamps to a database. The timestamp is in &lt;a href=&#34;http://www.ietf.org/rfc/rfc3339.txt&#34;&gt;RFC 3339&lt;/a&gt; format (like &lt;code&gt;2007-07-31T16:05:00.000-05:00&lt;/code&gt;), and I needed to store the timezone.&lt;/p&gt;
 
 &lt;p&gt;Luckily &lt;a href=&#34;http://www.egenix.com/products/python/mxBase/mxDateTime/&#34;&gt;mxDateTime&lt;/a&gt; and SQLObject&amp;#8217;s DateTimeCol both support full dates with times and time zone. Unfortunately its not immediately obvious from &lt;a href=&#34;http://sqlobject.org/SQLObject.html&#34;&gt;SQLObject&amp;#8217;s lackluster documentation&lt;/a&gt; how to use mxDateTime instead of Python&amp;#8217;s built-in datetime.&lt;/p&gt;

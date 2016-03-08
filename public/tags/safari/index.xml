@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Safari on </title>
-    <link>/tags/safari/</link>
-    <description>Recent content in Safari on </description>
+    <title>Safari on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/safari/</link>
+    <description>Recent content in Safari on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 17 Oct 2007 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/safari/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/safari/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Every 3rd Safari Upload Fails</title>
-      <link>/2007/10/17/every-3rd-safari-upload-fails/</link>
+      <link>https://blog.schmichael.com/2007/10/17/every-3rd-safari-upload-fails/</link>
       <pubDate>Wed, 17 Oct 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/10/17/every-3rd-safari-upload-fails/</guid>
+      <guid>https://blog.schmichael.com/2007/10/17/every-3rd-safari-upload-fails/</guid>
       <description>&lt;div style=&#34;float: left;&#34;&gt;
   &lt;a href=&#34;http://cherrypy.org&#34;&gt;&lt;img src=&#34;http://michael.susens-schurter.com/files/cplogo.jpg&#34; alt=&#34;CherryPy Logo&#34; /&gt;&lt;/a&gt;
 &lt;/div&gt;

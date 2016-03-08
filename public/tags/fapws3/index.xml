@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Fapws3 on </title>
-    <link>/tags/fapws3/</link>
-    <description>Recent content in Fapws3 on </description>
+    <title>Fapws3 on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/fapws3/</link>
+    <description>Recent content in Fapws3 on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 11 Aug 2009 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/fapws3/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/fapws3/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Switched tc-rest to webob</title>
-      <link>/2009/08/10/switched-tc-est-to-webob/</link>
+      <link>https://blog.schmichael.com/2009/08/10/switched-tc-est-to-webob/</link>
       <pubDate>Tue, 11 Aug 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/08/10/switched-tc-est-to-webob/</guid>
+      <guid>https://blog.schmichael.com/2009/08/10/switched-tc-est-to-webob/</guid>
       <description>&lt;p&gt;Small update on my toy tc-rest project: I switched to using &lt;a href=&#34;http://pythonpaste.org/webob/&#34;&gt;WebOb&lt;/a&gt; for creating HTTP Request and Response objects. Cleaned up the code a bit, but a real dispatcher is what&amp;#8217;s needed to really remove the cruft.&lt;/p&gt;
 
 &lt;p&gt;I&amp;#8217;m anxious to extend the API and add features, but I have no clue when I&amp;#8217;ll have time to touch it again. In the mean time I&amp;#8217;ve [pushed tc-rest to bitbucket.org if you want to take a look][2].&lt;/p&gt;
@@ -24,13 +24,13 @@
     
     <item>
       <title>TokyoCabinet &#43; fapws3 = tc-rest</title>
-      <link>/2009/08/08/tokyocabinet-fapws3-tc-rest/</link>
+      <link>https://blog.schmichael.com/2009/08/08/tokyocabinet-fapws3-tc-rest/</link>
       <pubDate>Sun, 09 Aug 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/08/08/tokyocabinet-fapws3-tc-rest/</guid>
+      <guid>https://blog.schmichael.com/2009/08/08/tokyocabinet-fapws3-tc-rest/</guid>
       <description>&lt;p&gt;Have you ever wondered how hard it would be to tack a RESTful HTTP interface on top of a fast key/value database like TokyoCabinet?&lt;/p&gt;
 
-&lt;p&gt;Probably not, but I did: &lt;a href=&#34;/files/tc-rest.tar.gz&#34;&gt;tc-rest.tar.gz&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Probably not, but I did: &lt;a href=&#34;https://blog.schmichael.com/files/tc-rest.tar.gz&#34;&gt;tc-rest.tar.gz&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Components:&lt;/p&gt;
 

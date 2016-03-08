@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Opensource on </title>
-    <link>/tags/opensource/</link>
-    <description>Recent content in Opensource on </description>
+    <title>Opensource on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/opensource/</link>
+    <description>Recent content in Opensource on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 15 Jul 2008 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/opensource/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/opensource/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Introducing Hzzah!</title>
-      <link>/2008/07/15/introducing-hzzah/</link>
+      <link>https://blog.schmichael.com/2008/07/15/introducing-hzzah/</link>
       <pubDate>Tue, 15 Jul 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/07/15/introducing-hzzah/</guid>
+      <guid>https://blog.schmichael.com/2008/07/15/introducing-hzzah/</guid>
       <description>&lt;p&gt;&lt;small&gt;from the I-can-haz-a-search-engine department&amp;#8230;&lt;/small&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Sorry about the tacky donate link all. I tried to hide it from feed readers with WordPress&amp;#8217;s &amp;lt;!&amp;#8211;more&amp;gt; feature, but evidently that doesn&amp;#8217;t apply to feeds. &lt;img src=&#34;http://localhost/wp-includes/images/smilies/frownie.png&#34; alt=&#34;:(&#34; class=&#34;wp-smiley&#34; style=&#34;height: 1em; max-height: 1em;&#34; /&gt;&lt;/p&gt;

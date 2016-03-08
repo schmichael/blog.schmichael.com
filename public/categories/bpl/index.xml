@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Bpl on </title>
-    <link>/categories/bpl/</link>
-    <description>Recent content in Bpl on </description>
+    <title>Bpl on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/categories/bpl/</link>
+    <description>Recent content in Bpl on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 18 Mar 2009 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/categories/bpl/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/categories/bpl/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>BPL Died, Nobody Came to the Funeral</title>
-      <link>/2009/03/18/bpl-died-nobody-came-to-the-funeral/</link>
+      <link>https://blog.schmichael.com/2009/03/18/bpl-died-nobody-came-to-the-funeral/</link>
       <pubDate>Wed, 18 Mar 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/03/18/bpl-died-nobody-came-to-the-funeral/</guid>
+      <guid>https://blog.schmichael.com/2009/03/18/bpl-died-nobody-came-to-the-funeral/</guid>
       <description>&lt;p&gt;Growing up, going to college, and then working for a couple of years in rural Illinois, BPL (Broadband over Powerlines) was always a technology I watched with eager anticipation.&lt;/p&gt;
 
 &lt;p&gt;Unfortunately sometime in &lt;a href=&#34;http://michael.susens-schurter.com/blog/2005/10/20/broadband-over-power-line-more-non-news/&#34;&gt;2005 I realized Duke Nukem Forever and Perl 6 had better chances of seeing the light of day than BPL.&lt;/a&gt;&lt;/p&gt;
@@ -59,10 +59,10 @@
     
     <item>
       <title>BPL: Still Not Going to Happen</title>
-      <link>/2007/03/15/bpl-still-not-going-to-happen/</link>
+      <link>https://blog.schmichael.com/2007/03/15/bpl-still-not-going-to-happen/</link>
       <pubDate>Thu, 15 Mar 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/03/15/bpl-still-not-going-to-happen/</guid>
+      <guid>https://blog.schmichael.com/2007/03/15/bpl-still-not-going-to-happen/</guid>
       <description>&lt;p&gt;An article from &lt;a href=&#34;http://arstechnica.com/news.ars/post/20070315-bpl-standard-taking-shape-as-doubts-cloud-its-future.html&#34;&gt;Ars Technica on BPL&lt;/a&gt; reminded me of [my long held belief that BPL is going nowhere fast][2].&lt;/p&gt;
 
 &lt;p&gt;The Ars article outlined a reason that I&amp;#8217;ve run into first hand at a rural electric cooperative I worked at: &lt;strong&gt;utilities have no desire to become an ISP&lt;/strong&gt;.Â  There&amp;#8217;s absolute zero overlap in employee skills, technologies, and materials other than the physical power lines.Â  Its like McDonalds selling clothes because&amp;#8230; well&amp;#8230; why not?Â  And considering BPL isn&amp;#8217;t going to be any cheaper than DSL or Cable, there&amp;#8217;s probably not much money to be made.&lt;/p&gt;

@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Pip on </title>
-    <link>/tags/pip/</link>
-    <description>Recent content in Pip on </description>
+    <title>Pip on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/pip/</link>
+    <description>Recent content in Pip on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 09 Sep 2009 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/pip/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/pip/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Python Packaging Talk</title>
-      <link>/2009/09/09/python-packaging-talk/</link>
+      <link>https://blog.schmichael.com/2009/09/09/python-packaging-talk/</link>
       <pubDate>Wed, 09 Sep 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/09/09/python-packaging-talk/</guid>
+      <guid>https://blog.schmichael.com/2009/09/09/python-packaging-talk/</guid>
       <description>&lt;p&gt;I gave a talk at &lt;a href=&#34;http://pdxpython.org/&#34;&gt;PDX Python&lt;/a&gt; last night on Python Packaging. It&amp;#8217;s just an overview and introduction completely lacking in any practical examples.&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;/files/packaging.odp&#34;&gt;Python Packaging slides (ODP)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;/files/packaging-2.pdf&#34;&gt;Python Packaging slides (PDF)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.schmichael.com/files/packaging.odp&#34;&gt;Python Packaging slides (ODP)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.schmichael.com/files/packaging-2.pdf&#34;&gt;Python Packaging slides (PDF)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;small&gt;Let me know if the ODP source is messed up. OpenOffice.org liked randomly losing background images and forgetting other formatting.&lt;/small&gt;&lt;/p&gt;

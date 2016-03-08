@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Deploying CherryPy on Apache 2 using mod_proxy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.15" />
+  <link href="" rel="alternate" type="application/rss+xml" title="schmichael&#39;s blog" />
+  <link href="https://blog.schmichael.com//css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://blog.schmichael.com//css/hc.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  
+    
+    </head>
+    <body>
+<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Herring Cove </div>
+      <div id = "wrapper">
+
+
+<div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="https://blog.schmichael.com//"><p class="navbar-brand">schmichael&#39;s blog</p></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+					
+					
+					<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+					<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+					<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+       
+       <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+					<img src="" />
+          <li class="sidebar-brand"><a href="https://blog.schmichael.com//"><h1 class="brand">schmichael&#39;s blog</h1></a><h3></h3></li>
+          <hr />
+					
+						<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+						<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+						<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          <hr />
+          <div id="social-wrapper">
+           
+           
+           
+           
+         </div>
+       </ul>
+     </div>
+
+
+
+     <div class="container">
+
+
+  <div id="article">
+   <div class="article-title">Deploying CherryPy on Apache 2 using mod_proxy</div>
+   <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2007-08-16</small></p> <hr/>
+   <div class="post">
+     <p><strong>Background</strong></p>
+
+<p>I&#8217;ve been trying to move away from PHP to <a href="http://python.org/">Python</a> for web applications. I tried <a href="http://www.djangoproject.com/">Django</a> and <a href="http://turbogears.org/">TurboGears,</a> but I settled upon the more basic <a href="http://cherrypy.org/">CherryPy</a> framework. It helped that my friend <a href="http://dowski.com/">Christian</a> is active in the CherryPy community and promised to answer all of my stupid questions (thanks Christian!).</p>
+
+<p>Regardless of which framework I had chosen though, they all have a significant architectural difference from PHP:</p>
+
+<ul>
+<li>PHP is a <em>scripting language</em>.</li>
+<li>Django, TurboGears, CherryPy, etc. are <em>application servers</em>.</li>
+</ul>
+
+<p>Technically Python is a scripting language and PHP+Apache could be called an application server, so I should explain:</p>
+
+<ul>
+<li>PHP web applications are executed from start to finish for each web request.</li>
+<li>The Python frameworks all run as a daemon and requests are processed based on object and method mappings.</li>
+</ul>
+
+<p><small>Still probably a gross oversimplification, but for the sake of brevity lets move on!</small></p>
+
+<p>The reason I mention these fundamental differences is because they <strong>completely change how you deploy your web applications.</strong> <em>PHP scripts can be FTPed</em> (via SSH/SSL/TLS of course!) to a web accessible directory and instantly accessed. <em>Python web applications must be started</em> and somehow integrated with your existing web server (Apache 2 in my case).</p>
+
+<p><strong>The Problem</strong></p>
+
+<p><em>So how do you deploy CherryPy applications and have them play nice with Apache 2?</em></p>
+
+<p><strong>One Solution: Using <a href="http://httpd.apache.org/docs/2.2/mod/mod_proxy.html">mod_proxy</a></strong></p>
+
+<p><em>Warning:</em> These instructions are for <a href="http://www.debian.org/releases/etch/"><em>Debian Etch</em></a>, but the principles should be fairly universal.</p>
+
+<p>Example domain: <code>www.example.com</code></p>
+
+<p>Example CherryPy URL: <code>http://www.example.com/webapp/</code></p>
+
+<p>Example CherryPy Root Object: <code>WebApp()</code></p>
+
+<p>Example CherryPy Configuration File: <code>webapp.config</code></p>
+
+<ol>
+<li>Install Apache 2 (if you don&#8217;t use PHP, feel free to choose a MPM other than prefork) and Python</li>
+
+<li><p>Install python-setuptools if you haven&#8217;t already:</p>
+
+<p><code>sudo apt-get install python-setuptools</code></p></li>
+
+<li><p>Install CherryPy via _easy<em>install</em> to get the latest stable version:</p>
+
+<p><code>sudo easy_install cherrypy</code></p></li>
+
+<li><p>Edit your CherryPy applications&#8217; config file (webapp.config in this example) to include the following lines:</p>
+
+<p><code>server.socket_port = 6464&lt;br /&gt;
+server.socket_host = &quot;127.0.0.1&quot;</code></p></li>
+
+<li><p>To start your web application you should have a line similar to:</p>
+
+<p><code style="text-align: left;">cherrypy.quickstart(WebApp(), &lsquo;/webapp&rsquo;, &lsquo;webapp.config&rsquo;)</code></p></li>
+
+<li><p>Start your application as a background process. I usually use a command like this:</p>
+
+<p><code style="text-align: left;">python start-webapp.py &gt; stdout.log &amp;</code></p></li>
+
+<li><p>If you have lynx or links installed you can test your web application:</p>
+
+<p><code style="text-align: left;">lynx <a href="http://127.0.01:6464/webapp/">http://127.0.01:6464/webapp/</a></code></p></li>
+
+<li><p>Enable mod_proxy for Apache 2:</p>
+
+<p><code style="text-align: left;">sudo a2enmod proxy_http</code></p></li>
+
+<li><p>Add the following to the <strong>Apache virtual host configuration for <em>www.example.com</em></strong> (for example: /etc/apache2/sites-enabled/000-default or /etc/apache2/sites-enabled/www.example.com):</p>
+
+<p><code style="text-align: left">ProxyPreserveHost on&lt;br /&gt;
+&lt;Proxy *&gt;&lt;br /&gt;
+&nbsp;&nbsp;Order allow,deny&lt;br /&gt;
+&nbsp;&nbsp;Allow from all&lt;br /&gt;
+&lt;/Proxy&gt;&lt;br /&gt;
+ProxyPass /webapp/ <a href="http://127.0.0.1:6464/webapp/&lt;br">http://127.0.0.1:6464/webapp/&lt;br</a> /&gt;
+ProxyPassReverse /webapp/ <a href="http://127.0.0.1:6464/webapp/">http://127.0.0.1:6464/webapp/</a></code></p></li>
+
+<li><p>Restart Apache 2 using the following command:</p>
+
+<p><code>sudo /etc/init.d/apache2 force-reload</code></p></li>
+</ol>
+
+<p>Go to <a href="http://www.example.com/webapp">http://www.example.com/webapp</a> to see if it works!</p>
+
+<p>**Caveats and Tips</p>
+
+<p>**</p>
+
+<ul>
+<li>Be careful using <strong>absolute URLs</strong> (especially in <strong>redirects</strong>!) in your web application.</li>
+
+<li><p>To make sure your web application <strong>always starts at boot</strong>, add this line to your <em>crontab</em>:</p>
+
+<p><code style="text-align: left">@reboot /usr/bin/python /path/to/start-webapp.py &gt; /path/to/stdout.log &amp;</code></p></li>
+</ul>
+
+<p><strong>Other Solutions</strong></p>
+
+<p>Using mod_proxy is neither the only way to deploy CherryPy web applications nor the best for all deployment scenarios. Once I have a bit more experience I&#8217;d love to post a side-by-side comparison, but for now your probably best off reading [CherryPy&#8217;s wiki article on the subject][8].</p>
+
+<p>[8]: <a href="http://tools.cherrypy.org/wiki/BehindApache">http://tools.cherrypy.org/wiki/BehindApache</a></p>
+
+   </div>
+ </div>
+
+
+ <a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+ <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+ <ul class="pager">
+      &nbsp;<li class="previous"><a href="https://blog.schmichael.com/2007/08/18/adblock-is-bad/"> AdBlock is bad…</a></li>
+      &nbsp;<li class="next"><a href="https://blog.schmichael.com/2007/08/15/i-love-linode/"> I Love Linode</a></li>
+</ul>
+
+
+
+    </ul>
+    </div>
+    <footer>
+
+        <p class="text-muted credit">&copy; . All rights reserved. </p>
+    </footer>
+ 
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/hc.js"></script>
+</body>
+
+</html>
+

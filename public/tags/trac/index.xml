@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Trac on </title>
-    <link>/tags/trac/</link>
-    <description>Recent content in Trac on </description>
+    <title>Trac on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/trac/</link>
+    <description>Recent content in Trac on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 15 Jul 2008 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/trac/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/trac/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>WordPress Rocks at Updates</title>
-      <link>/2008/07/15/wordpress-rocks-at-updates/</link>
+      <link>https://blog.schmichael.com/2008/07/15/wordpress-rocks-at-updates/</link>
       <pubDate>Tue, 15 Jul 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/07/15/wordpress-rocks-at-updates/</guid>
+      <guid>https://blog.schmichael.com/2008/07/15/wordpress-rocks-at-updates/</guid>
       <description>&lt;p&gt;I feel I owe it to my friends who put up with my senseless Python fanboying to admit &lt;a href=&#34;http://wordpress.org&#34;&gt;WordPress&lt;/a&gt; is not only a great blog engine, but rocks at updates.&lt;/p&gt;
 
 &lt;p&gt;I just upgraded from 2.5 to 2.6 by doing a simple &lt;code&gt;svn switch http://...&lt;/code&gt; and then logging into the web admin interface. It took about 30 seconds to complete.&lt;/p&gt;

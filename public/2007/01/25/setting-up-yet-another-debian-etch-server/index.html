@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Setting Up Yet Another Debian Etch Server</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.15" />
+  <link href="" rel="alternate" type="application/rss+xml" title="schmichael&#39;s blog" />
+  <link href="https://blog.schmichael.com//css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://blog.schmichael.com//css/hc.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  
+    
+    </head>
+    <body>
+<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Herring Cove </div>
+      <div id = "wrapper">
+
+
+<div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="https://blog.schmichael.com//"><p class="navbar-brand">schmichael&#39;s blog</p></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+					
+					
+					<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+					<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+					<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+       
+       <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+					<img src="" />
+          <li class="sidebar-brand"><a href="https://blog.schmichael.com//"><h1 class="brand">schmichael&#39;s blog</h1></a><h3></h3></li>
+          <hr />
+					
+						<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+						<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+						<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          <hr />
+          <div id="social-wrapper">
+           
+           
+           
+           
+         </div>
+       </ul>
+     </div>
+
+
+
+     <div class="container">
+
+
+  <div id="article">
+   <div class="article-title">Setting Up Yet Another Debian Etch Server</div>
+   <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2007-01-25</small></p> <hr/>
+   <div class="post">
+     <p>A teacher e-mailed me the other day wondering if I could setup a server with <a href="http://moodle.org/">Moodle</a> on it for him to test. I was overjoyed at the request because the teacher had discovered Moodle, <a href="http://mysql.com/">MySQL,</a> <a href="http://php.net/">PHP,</a> and Linux (as well as their freeness) all by himself!</p>
+
+<p>I used the <a href="http://www.debian.org/">Debian</a> <a href="http://www.debian.org/releases/etch/">Etch</a> <a href="http://cdimage.debian.org/cdimage/daily-builds/daily/arch-latest/i386/iso-cd/debian-testing-i386-netinst.iso">Net Install Daily Image</a> for today (1/25/2007), and everything went pretty smoothly.</p>
+
+<p><strong>Installation</strong></p>
+
+<p>I thought I had entered &#8220;installgui&#8221; at the boot prompt, but I still got the old text based setup. Everything went smoothly, so I have no complaints. Perhaps the net installation doesn&#8217;t have the GUI installer?</p>
+
+<p>One scary thing did happen during installation: after the initial reboot Linux ran fsck on the new installation and found a number of errors! After another reboot everything appears to be working normally. This is an old PIII computer, so I&#8217;m immediately installing smartmontools.</p>
+
+<p><strong>Setup</strong></p>
+
+<p>GDM came up with a few colored vertical lines. One <a href="http://michael.susens-schurter.com/blog/xorg%20intel%2082815">Google search later</a> <a href="http://www.linuxquestions.org/hcl/showproduct.php/product/2851">I discovered that the i810 Intel driver might do that at higher resolutions</a>. I lowered my resolution to 1024 x 768 and everything works beautifully.</p>
+
+<p>Upon updating my package lists in Synaptic, I got some strange errors from gpg, so Debian can&#8217;t validate a number of packages. A bit strange, but it doesn&#8217;t hurt anything.</p>
+
+<p><strong>apt-zeroconf</strong></p>
+
+<p>Thanks to <a href="http://trac.phidev.org/trac/wiki/AptZeroconf">apt-zeroconf</a> I downloaded the 40+ megs of extra packages I needed mostly off of my other 2 local Debian boxes. Now if only I could configure the net install CD to use apt-zeroconf&#8230; hm&#8230; Sounds like a job for lazyweb!</p>
+
+<p>I do get periodic 404 errors when using apt-zeroconf, but just trying again fixes it every time.</p>
+
+<p><strong>Summary</strong></p>
+
+<p>All things considered I didn&#8217;t see any reason not to <strong>release Etch immediately</strong>!</p>
+
+<p><em>I still recommend <a href="http://www.ubuntu.com/">Ubuntu</a> or [openSUSE][11] for normal users or people new to Linux as Debian just doesn&#8217;t do enough hand holding for people not willing to spend some time learning Linux.</em></p>
+
+<p>[11]: <a href="http://www.opensuse.org/">http://www.opensuse.org/</a></p>
+
+   </div>
+ </div>
+
+
+ <a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+ <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+ <ul class="pager">
+      &nbsp;<li class="previous"><a href="https://blog.schmichael.com/2007/01/26/giving-ad-domain-admins-root-access-in-linux/"> Giving AD Domain Admins Root Access in Linux</a></li>
+      &nbsp;<li class="next"><a href="https://blog.schmichael.com/2007/01/24/back-to-slashdot/"> Back to Slashdot</a></li>
+</ul>
+
+
+
+    </ul>
+    </div>
+    <footer>
+
+        <p class="text-muted credit">&copy; . All rights reserved. </p>
+    </footer>
+ 
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/hc.js"></script>
+</body>
+
+</html>
+

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CherryMail and Fun with AJAX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.15" />
+  <link href="" rel="alternate" type="application/rss+xml" title="schmichael&#39;s blog" />
+  <link href="https://blog.schmichael.com//css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://blog.schmichael.com//css/hc.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  
+    
+    </head>
+    <body>
+<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Herring Cove </div>
+      <div id = "wrapper">
+
+
+<div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="https://blog.schmichael.com//"><p class="navbar-brand">schmichael&#39;s blog</p></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+					
+					
+					<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+					<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+					<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+       
+       <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+					<img src="" />
+          <li class="sidebar-brand"><a href="https://blog.schmichael.com//"><h1 class="brand">schmichael&#39;s blog</h1></a><h3></h3></li>
+          <hr />
+					
+						<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+						<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+						<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          <hr />
+          <div id="social-wrapper">
+           
+           
+           
+           
+         </div>
+       </ul>
+     </div>
+
+
+
+     <div class="container">
+
+
+  <div id="article">
+   <div class="article-title">CherryMail and Fun with AJAX</div>
+   <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2007-05-07</small></p> <hr/>
+   <div class="post">
+     <p>I&#8217;ve hacked a bit more on CherryMail, my web mail for IMAP project. I&#8217;ve never really played around with any of the fancy new JavaScript frameworks out there, so I quick slapped some <a href="http://developer.yahoo.com/yui/datatable/">DataTables</a> from <a href="http://developer.yahoo.com/yui/">Yahoo&#8217;s UI Library</a> into CherryMail.</p>
+
+<p>The result is actually a slower interface, but the addition of AJAX had interesting implications on my code layout. I now have 1 controller module (controller.py) for serving mostly static HTML, and all of the IMAP controller logic has been moved into a second controller (jsoncontroller.py) that outputs <a href="http://www.json.org/">JSON</a> for my JavaScript widgets to digest.</p>
+
+<p>Not exactly useful at this point, but I found it interesting to basically use AJAX as the primary data connector.</p>
+
+<p>If you really feel like torturing your eyes with my code, feel free to grab it here:</p>
+
+<p><a href="http://michael.susens-schurter.com/blog/wp-content/uploads/2007/05/cherrymail-20070507.tar.gz" title="CherryMail 2007.05.07">CherryMail 2007.05.07</a></p>
+
+<p>Or grab the latest source from my Subversion repository:</p>
+
+<p><a href="http://michael.susens-schurter.com/cherrymail/svn/trunk/">http://michael.susens-schurter.com/cherrymail/svn/trunk/</a></p>
+
+<p>My subversion repository ended up being as messy as my code, but I&#8217;ve always found the process of importing source into a new subversion repository a bit clumsy.</p>
+
+<p>Speaking of clumsy, I&#8217;ve been using <a href="http://www.eclipse.org/">Eclipse</a> and <a href="http://pydev.sourceforge.net/">PyDev</a> for development, so I thought I might as well try [Subclipse][7] as well. While Subclipse seems very feature complete, I find myself dropping to the command line to use the old svn command because Eclipse is just so clumsy and slow.</p>
+
+<p>Its like using a forklift to move furniture in your house: perfectly capable, but a bit more hassle than its worth.</p>
+
+<p>[7]: <a href="http://subclipse.tigris.org/">http://subclipse.tigris.org/</a></p>
+
+   </div>
+ </div>
+
+
+ <a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+ <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+ <ul class="pager">
+      &nbsp;<li class="previous"><a href="https://blog.schmichael.com/2007/05/10/any-takers-for-drupal-in-python/"> Any Takers for Drupal in Python?</a></li>
+      &nbsp;<li class="next"><a href="https://blog.schmichael.com/2007/05/07/losing-loose/"> Losing Loose</a></li>
+</ul>
+
+
+
+    </ul>
+    </div>
+    <footer>
+
+        <p class="text-muted credit">&copy; . All rights reserved. </p>
+    </footer>
+ 
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/hc.js"></script>
+</body>
+
+</html>
+

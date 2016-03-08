@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Giving AD Domain Admins Root Access in Linux</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.15" />
+  <link href="" rel="alternate" type="application/rss+xml" title="schmichael&#39;s blog" />
+  <link href="https://blog.schmichael.com//css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://blog.schmichael.com//css/hc.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  
+    
+    </head>
+    <body>
+<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Herring Cove </div>
+      <div id = "wrapper">
+
+
+<div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="https://blog.schmichael.com//"><p class="navbar-brand">schmichael&#39;s blog</p></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+					
+					
+					<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+					<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+					<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+       
+       <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+					<img src="" />
+          <li class="sidebar-brand"><a href="https://blog.schmichael.com//"><h1 class="brand">schmichael&#39;s blog</h1></a><h3></h3></li>
+          <hr />
+					
+						<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+						<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+						<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          <hr />
+          <div id="social-wrapper">
+           
+           
+           
+           
+         </div>
+       </ul>
+     </div>
+
+
+
+     <div class="container">
+
+
+  <div id="article">
+   <div class="article-title">Giving AD Domain Admins Root Access in Linux</div>
+   <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2007-01-26</small></p> <hr/>
+   <div class="post">
+     <p>The <a href="http://www.gratisoft.us/sudo/">sudo</a> command makes it very easy to give the <a href="http://technet2.microsoft.com/WindowsServer/en/library/1631acad-ef34-4f77-9c2e-94a62f8846cf1033.mspx?mfr=true">Domain Admins</a>, or any Active Directory group, root access on Linux workstations and servers.</p>
+
+<p>The big prerequisite is that you have to have <a href="http://www.samba.org/">Samba</a> and Winbind properly setup to authenticate your Linux boxes against Active Directory. Read Samba&#8217;s documentation[<a href="http://us3.samba.org/samba/docs/man/Samba-HOWTO-Collection/domain-member.html#ads-member">1</a>][<a href="http://us3.samba.org/samba/docs/man/Samba-HOWTO-Collection/winbind.html">2</a>] and refer to my [InteropWiki][6] notes for help.</p>
+
+<p>Once you&#8217;re able to login into Linux as Active Directory user, running the <em>id</em> command should display something like this:</p>
+
+<p style="font-family: monospace">
+  michael@mail:~$ id<br /> uid=13930(michael) gid=10512(domain admins) groups=10512(domain admins),10513(domain users),11006(teachers),11607(sti everyone 2),11608(sti jr. high),11609(sti high school),11610(sti grade school)
+</p>
+
+<p>Where <em>groups=&#8230;</em> is a list of the Active Directory groups of which your user is a member.</p>
+
+<p>Run the <em>visudo</em> command as root:</p>
+
+<p style="font-family: monospace">
+  michael@mail:~$ su &#8211;<br /> Password: <em>&#8211;root&#8217;s password&#8211;</em><br /> mail:~# visudo
+</p>
+
+<p>In the editor (probably <em>vim</em> or <em>nano</em>) scroll to the end and add the following line:</p>
+
+<p style="font-family: monospace">
+  %domain\ admins ALL= ALL
+</p>
+
+<p>The <em>%</em> sign means the following name is a group name, and <strong>you need the backslash in order to use group names with spaces</strong>. Vim&#8217;s syntax highlighting doesn&#8217;t seem to properly parse the group name after you use a slash, but sudo will know what you&#8217;re talking about.</p>
+
+<p>Save the file, exit the editor, and now all of your Domain Admins have root access!</p>
+
+<p>To run a command as root simply prepend the <em>sudo</em> command:</p>
+
+<p style="font-family: monospace">
+  michael@mail:~$ sudo aptitude
+</p>
+
+<p>You&#8217;ll be asked to enter <strong><em>your</em> password</strong> (not root&#8217;s!) only once as long as you continue to use <em>sudo</em> within a specific timeout period.</p>
+
+<p>[6]: <a href="http://michael.susens-schurter.com/interop/Main_Page">http://michael.susens-schurter.com/interop/Main_Page</a></p>
+
+   </div>
+ </div>
+
+
+ <a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+ <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+ <ul class="pager">
+      &nbsp;<li class="previous"><a href="https://blog.schmichael.com/2007/01/26/administering-multiple-linux-servers-remotely/"> Administering Multiple Linux Servers Remotely</a></li>
+      &nbsp;<li class="next"><a href="https://blog.schmichael.com/2007/01/25/setting-up-yet-another-debian-etch-server/"> Setting Up Yet Another Debian Etch Server</a></li>
+</ul>
+
+
+
+    </ul>
+    </div>
+    <footer>
+
+        <p class="text-muted credit">&copy; . All rights reserved. </p>
+    </footer>
+ 
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/hc.js"></script>
+</body>
+
+</html>
+

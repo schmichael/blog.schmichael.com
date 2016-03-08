@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>mDNS crashes Samba</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.15" />
+  <link href="" rel="alternate" type="application/rss+xml" title="schmichael&#39;s blog" />
+  <link href="https://blog.schmichael.com//css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://blog.schmichael.com//css/hc.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  
+    
+    </head>
+    <body>
+<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Herring Cove </div>
+      <div id = "wrapper">
+
+
+<div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="https://blog.schmichael.com//"><p class="navbar-brand">schmichael&#39;s blog</p></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+					
+					
+					<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+					<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+					<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+       
+       <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+					<img src="" />
+          <li class="sidebar-brand"><a href="https://blog.schmichael.com//"><h1 class="brand">schmichael&#39;s blog</h1></a><h3></h3></li>
+          <hr />
+					
+						<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+						<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+						<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+          <hr />
+          <div id="social-wrapper">
+           
+           
+           
+           
+         </div>
+       </ul>
+     </div>
+
+
+
+     <div class="container">
+
+
+  <div id="article">
+   <div class="article-title">mDNS crashes Samba</div>
+   <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2006-11-29</small></p> <hr/>
+   <div class="post">
+     <p>Wow. This was a weird one that ended causing me to use my feeble knowledge of <em>gdb</em> figure out whats going on.</p>
+
+<p>I&#8217;ve been messing around with the best way to integrate my Debian GNU/Linux desktop with the Active Directory network at work. Some recommended that I re-run the <em>net ads join</em> command, but I kept getting a <strong>Segmentation fault</strong> error after entering my password!</p>
+
+<p>A few minutes of toying with <em>gdb &#8211;args net ads join</em> and the <em>bt</em> (backtrace) command showed me the crash was in <strong>libnss_mdns</strong>! libnss_mdns is the multicast DNS name resolution service used by Avahi. mDNS uses the .local domain and our Active Directory uses the <span style="font-style: italic">tremont.<span style="font-weight: bold">local</span></span> domain name, so I wonder if there&#8217;s some sort of conflict&#8230;</p>
+
+<p>After removing all mention of <strong>mdns</strong> and <strong>minimal_mdns</strong> from my <strong>/etc/nsswitch.conf</strong> file, <em>net ads join</em> ran perfectly.</p>
+
+<p>Here&#8217;s the backtrace for anyone interested (or googling):</p>
+
+<p style="text-align: left">
+  #0 0x0816e15d in timeval_add ()<br /> #1 0xb791e76b in avahi_resolve_address () from /usr/lib/libnss_mdns.so.2<br /> #2 0xb791ed09 in mdns_query_ipv4 () from /usr/lib/libnss_mdns.so.2<br /> #3 0xb791c979 in _nss_mdns_gethostbyaddr_r () from /usr/lib/libnss_mdns.so.2<br /> #4 0xb7cb6389 in gethostbyaddr_r () from /lib/tls/i686/cmov/libc.so.6<br /> #5 0xb7cbeaac in getnameinfo () from /lib/tls/i686/cmov/libc.so.6<br /> #6 0xb7da9c3a in ldap_pvt_get_hname () from /usr/lib/libldap_r.so.2<br /> #7 0xb7da5007 in ldap_host_connected_to () from /usr/lib/libldap_r.so.2<br /> #8 0xb7d91060 in ldap_int_open_connection () from /usr/lib/libldap_r.so.2<br /> #9 0xb7da3503 in ldap_new_connection () from /usr/lib/libldap_r.so.2<br /> #10 0xb7d90ef1 in ldap_open_defconn () from /usr/lib/libldap_r.so.2<br /> #11 0xb7d91776 in ldap_open () from /usr/lib/libldap_r.so.2<br /> #12 0x081cc341 in ldap_open_with_timeout ()<br /> #13 0x081cc41f in ads_connect ()<br /> #14 0x0807b9b1 in net_ads_check_our_domain ()<br /> #15 0x0807d4bf in net_ads_join ()<br /> #16 0x0807afa9 in net_ads ()<br /> #17 0x0807adea in main ()
+</p>
+
+<p>I don&#8217;t even know <strong>where to submit a bug report</strong> since (at least) 3 separate projects are referenced in the backtrace: <a href="http://samba.org">Samba</a>, <a href="http://www.openldap.org/">OpenLDAP</a> (libldap), and <a href="http://avahi.org/">Avahi</a>/libnss_mdns. Anyone able to enlighten me?</p>
+
+<p><strong>Update:</strong>Â  Gerald (Jerry) Carter from the Samba Team <a href="http://lists.samba.org/archive/samba/2006-July/123102.html">told someone with a similar experience to report the bug to the Avahi team</a>.Â  [So I did][5].</p>
+
+<p>[5]: <a href="http://avahi.org/ticket/78">http://avahi.org/ticket/78</a></p>
+
+   </div>
+ </div>
+
+
+ <a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+ <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+ <ul class="pager">
+      &nbsp;<li class="previous"><a href="https://blog.schmichael.com/2006/12/01/snow-day/"> Snow Day!</a></li>
+      &nbsp;<li class="next"><a href="https://blog.schmichael.com/2006/11/28/iceweasel/"> Iceweasel</a></li>
+</ul>
+
+
+
+    </ul>
+    </div>
+    <footer>
+
+        <p class="text-muted credit">&copy; . All rights reserved. </p>
+    </footer>
+ 
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/hc.js"></script>
+</body>
+
+</html>
+

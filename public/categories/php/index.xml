@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Php on </title>
-    <link>/categories/php/</link>
-    <description>Recent content in Php on </description>
+    <title>Php on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/categories/php/</link>
+    <description>Recent content in Php on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 18 Nov 2009 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/categories/php/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/categories/php/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Web Developer Contractor Rates</title>
-      <link>/2009/11/18/web-developer-contractor-rates/</link>
+      <link>https://blog.schmichael.com/2009/11/18/web-developer-contractor-rates/</link>
       <pubDate>Wed, 18 Nov 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/11/18/web-developer-contractor-rates/</guid>
+      <guid>https://blog.schmichael.com/2009/11/18/web-developer-contractor-rates/</guid>
       <description>&lt;p&gt;We just happened* to start chatting in the #pdxdjango IRC channel on Freenode about what the rates web developer contractors charge today, and I wanted to post my experiences after leaving the contractor world a few months ago after 2 years of more or less successful contracting either individually or via &lt;a href=&#34;http://lofiart.com&#34;&gt;Lo-Fi Art&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;A really rough table of my rates as a contractor:&lt;/p&gt;
@@ -110,10 +110,10 @@
     
     <item>
       <title>Web Server Quandary</title>
-      <link>/2008/12/27/web-server-quandary/</link>
+      <link>https://blog.schmichael.com/2008/12/27/web-server-quandary/</link>
       <pubDate>Sat, 27 Dec 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/12/27/web-server-quandary/</guid>
+      <guid>https://blog.schmichael.com/2008/12/27/web-server-quandary/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://httpd.apache.org/&#34;&gt;Apache&lt;/a&gt; was probably the first Linux application I learned how to configure. However, I&amp;#8217;ve gotten a bit frustrated with it recently&amp;#8230;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;The Problem&lt;/strong&gt;&lt;/p&gt;
@@ -181,10 +181,10 @@
     
     <item>
       <title>Selling some books</title>
-      <link>/2008/07/26/selling-some-books/</link>
+      <link>https://blog.schmichael.com/2008/07/26/selling-some-books/</link>
       <pubDate>Sun, 27 Jul 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/07/26/selling-some-books/</guid>
+      <guid>https://blog.schmichael.com/2008/07/26/selling-some-books/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://www.amazon.com/gp/shops/index.html?ie=UTF8&amp;amp;sellerID=A1BXMNI10WRYMA&#34;&gt;I&amp;#8217;m selling some books on Amazon&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Here&amp;#8217;s the full list that I&amp;#8217;m too lazy to link individually (click above instead):&lt;/p&gt;
@@ -218,10 +218,10 @@
     
     <item>
       <title>WordPress Rocks at Updates</title>
-      <link>/2008/07/15/wordpress-rocks-at-updates/</link>
+      <link>https://blog.schmichael.com/2008/07/15/wordpress-rocks-at-updates/</link>
       <pubDate>Tue, 15 Jul 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/07/15/wordpress-rocks-at-updates/</guid>
+      <guid>https://blog.schmichael.com/2008/07/15/wordpress-rocks-at-updates/</guid>
       <description>&lt;p&gt;I feel I owe it to my friends who put up with my senseless Python fanboying to admit &lt;a href=&#34;http://wordpress.org&#34;&gt;WordPress&lt;/a&gt; is not only a great blog engine, but rocks at updates.&lt;/p&gt;
 
 &lt;p&gt;I just upgraded from 2.5 to 2.6 by doing a simple &lt;code&gt;svn switch http://...&lt;/code&gt; and then logging into the web admin interface. It took about 30 seconds to complete.&lt;/p&gt;
@@ -236,10 +236,10 @@
     
     <item>
       <title>Simple WordPress Upgrade Using Subversion</title>
-      <link>/2007/10/28/simple-wordpress-upgrade-using-subversion/</link>
+      <link>https://blog.schmichael.com/2007/10/28/simple-wordpress-upgrade-using-subversion/</link>
       <pubDate>Sun, 28 Oct 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/10/28/simple-wordpress-upgrade-using-subversion/</guid>
+      <guid>https://blog.schmichael.com/2007/10/28/simple-wordpress-upgrade-using-subversion/</guid>
       <description>&lt;p&gt;I&amp;#8217;ve been using subversion to update WordPress for a few minor revisions now. I simply followed the 2.2 branch and ran&amp;#8230;&lt;/p&gt;
 
 &lt;pre lang=&#34;bash&#34;&gt;svn up&lt;/pre&gt;
@@ -260,10 +260,10 @@
     
     <item>
       <title>IRC After a 10 Year Hiatus</title>
-      <link>/2007/09/21/irc-after-a-10-year-hiatus/</link>
+      <link>https://blog.schmichael.com/2007/09/21/irc-after-a-10-year-hiatus/</link>
       <pubDate>Fri, 21 Sep 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/09/21/irc-after-a-10-year-hiatus/</guid>
+      <guid>https://blog.schmichael.com/2007/09/21/irc-after-a-10-year-hiatus/</guid>
       <description>&lt;p&gt;Its probably been 10+ years since I&amp;#8217;ve touched IRC. In the early days of the public Internet, IRC was IM + MySpace + Filesharing, only a lot geekier. &lt;img src=&#34;http://localhost/wp-includes/images/smilies/simple-smile.png&#34; alt=&#34;:)&#34; class=&#34;wp-smiley&#34; style=&#34;height: 1em; max-height: 1em;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Then came ICQ and soon after a flood of IM clients that rendered IRC clumsy and antiquated for casual chatting. When I went from High School to College in 2000, I left IRC behind&amp;#8230;&lt;/p&gt;
@@ -295,10 +295,10 @@
     
     <item>
       <title>New WordPress Plugins and Updates</title>
-      <link>/2007/09/01/new-wordpress-plugins-and-updates/</link>
+      <link>https://blog.schmichael.com/2007/09/01/new-wordpress-plugins-and-updates/</link>
       <pubDate>Sun, 02 Sep 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/09/01/new-wordpress-plugins-and-updates/</guid>
+      <guid>https://blog.schmichael.com/2007/09/01/new-wordpress-plugins-and-updates/</guid>
       <description>&lt;div style=&#34;margin: 6px; float: right&#34;&gt;
   &lt;a href=&#34;http://wordpress.org&#34; title=&#34;WordPress&#34;&gt;&lt;img src=&#34;http://michael.susens-schurter.com/blog/wp-content/uploads/2007/09/wordpress-screenshot.png&#34; alt=&#34;WordPress Screenshot&#34; /&gt;&lt;/a&gt;
 &lt;/div&gt;
@@ -336,10 +336,10 @@ bar&lt;/pre&gt;
     
     <item>
       <title>Deploying CherryPy on Apache 2 using mod_proxy</title>
-      <link>/2007/08/16/deploying-cherrypy-on-apache-2-using-mod_proxy/</link>
+      <link>https://blog.schmichael.com/2007/08/16/deploying-cherrypy-on-apache-2-using-mod_proxy/</link>
       <pubDate>Thu, 16 Aug 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/08/16/deploying-cherrypy-on-apache-2-using-mod_proxy/</guid>
+      <guid>https://blog.schmichael.com/2007/08/16/deploying-cherrypy-on-apache-2-using-mod_proxy/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Background&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;I&amp;#8217;ve been trying to move away from PHP to &lt;a href=&#34;http://python.org/&#34;&gt;Python&lt;/a&gt; for web applications. I tried &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; and &lt;a href=&#34;http://turbogears.org/&#34;&gt;TurboGears,&lt;/a&gt; but I settled upon the more basic &lt;a href=&#34;http://cherrypy.org/&#34;&gt;CherryPy&lt;/a&gt; framework. It helped that my friend &lt;a href=&#34;http://dowski.com/&#34;&gt;Christian&lt;/a&gt; is active in the CherryPy community and promised to answer all of my stupid questions (thanks Christian!).&lt;/p&gt;
@@ -449,10 +449,10 @@ ProxyPassReverse /webapp/ &lt;a href=&#34;http://127.0.0.1:6464/webapp/&#34;&gt;
     
     <item>
       <title>Drupal Database Maintenance Script</title>
-      <link>/2007/08/03/drupal-database-maintenance-script/</link>
+      <link>https://blog.schmichael.com/2007/08/03/drupal-database-maintenance-script/</link>
       <pubDate>Fri, 03 Aug 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/08/03/drupal-database-maintenance-script/</guid>
+      <guid>https://blog.schmichael.com/2007/08/03/drupal-database-maintenance-script/</guid>
       <description>&lt;p&gt;I love &lt;a href=&#34;http://drupal.org&#34;&gt;Drupal&lt;/a&gt;, but its insistence on saving every session its ever created causes the &lt;code&gt;sessions&lt;/code&gt; table to become massive. So I usually end up creating a shell script like the following:&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;drupal-db-maint.sh&lt;/strong&gt; (I posted &lt;a href=&#34;http://pastebin.ca/644472&#34;&gt;a copy to pastebin&lt;/a&gt; since WordPress makes the code impossible to read.)&lt;/p&gt;
@@ -505,10 +505,10 @@ ProxyPassReverse /webapp/ &lt;a href=&#34;http://127.0.0.1:6464/webapp/&#34;&gt;
     
     <item>
       <title>Tips on Surviving DreamHost</title>
-      <link>/2007/06/10/tips-on-surviving-dreamhost/</link>
+      <link>https://blog.schmichael.com/2007/06/10/tips-on-surviving-dreamhost/</link>
       <pubDate>Mon, 11 Jun 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/06/10/tips-on-surviving-dreamhost/</guid>
+      <guid>https://blog.schmichael.com/2007/06/10/tips-on-surviving-dreamhost/</guid>
       <description>&lt;p&gt;I use DreamHost and it is by far the &lt;em&gt;&lt;strong&gt;least&lt;/strong&gt;&lt;/em&gt; &lt;strong&gt;reliable hosting service I&amp;#8217;ve ever used.&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;However, they&amp;#8217;re quite cheap for the vast amounts of storage and bandwidth provided. I also &lt;strong&gt;love&lt;/strong&gt; their &lt;a href=&#34;http://blog.dreamhost.com/&#34;&gt;blog&lt;/a&gt;, newsletter, &lt;a href=&#34;http://www.dreamhoststatus.com/&#34;&gt;status page&lt;/a&gt;, control panel, and especially that they&amp;#8217;re &lt;a href=&#34;http://www.dreamhost.com/green.cgi?susens-schurter.com&#34;&gt;green&lt;/a&gt;!&lt;/p&gt;
@@ -542,10 +542,10 @@ ProxyPassReverse /webapp/ &lt;a href=&#34;http://127.0.0.1:6464/webapp/&#34;&gt;
     
     <item>
       <title>Any Takers for Drupal in Python?</title>
-      <link>/2007/05/10/any-takers-for-drupal-in-python/</link>
+      <link>https://blog.schmichael.com/2007/05/10/any-takers-for-drupal-in-python/</link>
       <pubDate>Thu, 10 May 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/05/10/any-takers-for-drupal-in-python/</guid>
+      <guid>https://blog.schmichael.com/2007/05/10/any-takers-for-drupal-in-python/</guid>
       <description>&lt;p&gt;I half-jokingly &lt;a href=&#34;http://buytaert.net/php-is-dead-long-live-php&#34;&gt;posted a comment on Dries Buytaert blog about re-implementing Drupal in Python&lt;/a&gt;.Â  Honestly, I expected to either be flamed or ignored, but instead it turns out I&amp;#8217;m not the first person to think of this!Â  Some people even suggested Haskell&amp;#8230;Â  I think something a tad more mainstream like Python would fair much better.&lt;/p&gt;
 
 &lt;p&gt;Another commenter suggested &lt;strong&gt;Python doesn&amp;#8217;t need Yet Another Web Framework&lt;/strong&gt; which is absolutely true!Â  However, &lt;strong&gt;Python desperately needs an easy to use Content Management System&lt;/strong&gt;, and Drupal is the best there is!&lt;/p&gt;
@@ -560,10 +560,10 @@ ProxyPassReverse /webapp/ &lt;a href=&#34;http://127.0.0.1:6464/webapp/&#34;&gt;
     
     <item>
       <title>Debian Etch Released</title>
-      <link>/2007/04/08/debian-etch-released/</link>
+      <link>https://blog.schmichael.com/2007/04/08/debian-etch-released/</link>
       <pubDate>Sun, 08 Apr 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/04/08/debian-etch-released/</guid>
+      <guid>https://blog.schmichael.com/2007/04/08/debian-etch-released/</guid>
       <description>&lt;p&gt;It &lt;a href=&#34;http://www.debian-administration.org/articles/514&#34;&gt;appears&lt;/a&gt; &lt;a href=&#34;http://www.debian.org/releases/etch/releasenotes&#34;&gt;Debian GNU/Linux 4.0, codenamed Etch,&lt;/a&gt; (quite a mouthful) &lt;a href=&#34;http://www.debian.org/News/2007/20070408&#34;&gt;has been released as the latest stable version of Debian&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Go &lt;a href=&#34;http://www.debian.org/CD/torrent-cd/&#34;&gt;download it using BitTorrent to be cool&lt;/a&gt;. 😉&lt;/p&gt;
@@ -603,10 +603,10 @@ ProxyPassReverse /webapp/ &lt;a href=&#34;http://127.0.0.1:6464/webapp/&#34;&gt;
     
     <item>
       <title>Even Python Coders Love Drupal</title>
-      <link>/2007/02/23/even-python-coders-love-drupal/</link>
+      <link>https://blog.schmichael.com/2007/02/23/even-python-coders-love-drupal/</link>
       <pubDate>Fri, 23 Feb 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/02/23/even-python-coders-love-drupal/</guid>
+      <guid>https://blog.schmichael.com/2007/02/23/even-python-coders-love-drupal/</guid>
       <description>&lt;p&gt;Its no secret that I&amp;#8217;ve been trying to kick my &lt;a href=&#34;http://php.net&#34;&gt;PHP&lt;/a&gt; habit in favor of &lt;a href=&#34;http://python.org/&#34;&gt;Python.&lt;/a&gt;Â  However, I started using [Drupal]&lt;a href=&#34;a PHP content management system&#34;&gt;3&lt;/a&gt; around 4.4 or 4.5 and haven&amp;#8217;t found any Python solutions that can even begin to compete with its ease of use and features.&lt;/p&gt;
 
 &lt;p&gt;With that in mind, I found it funny today when I ran across &lt;a href=&#34;http://www.enterpriseblacklist.org/&#34; style=&#34;font-weight: bold&#34;&gt;a site prominently displaying a &amp;#8220;powered by python&amp;#8221; logo, when its obviously powered by Drupal&lt;/a&gt;.&lt;/p&gt;
@@ -621,10 +621,10 @@ ProxyPassReverse /webapp/ &lt;a href=&#34;http://127.0.0.1:6464/webapp/&#34;&gt;
     
     <item>
       <title>What did WordPress do with Firefox’s Spell Check?</title>
-      <link>/2007/02/23/what-did-wordpress-do-with-firefoxs-spell-check/</link>
+      <link>https://blog.schmichael.com/2007/02/23/what-did-wordpress-do-with-firefoxs-spell-check/</link>
       <pubDate>Fri, 23 Feb 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/02/23/what-did-wordpress-do-with-firefoxs-spell-check/</guid>
+      <guid>https://blog.schmichael.com/2007/02/23/what-did-wordpress-do-with-firefoxs-spell-check/</guid>
       <description>&lt;p&gt;I upgraded to &lt;a href=&#34;http://wordpress.org/development/2007/02/new-releases/&#34;&gt;WordPress 2.1.1&lt;/a&gt; last night, and now WordPress wants me to use its spell checker instead of &lt;a href=&#34;http://www.getfirefox.com&#34;&gt;Firefox&lt;/a&gt;&amp;#8216;s.&lt;/p&gt;
 
 &lt;p&gt;This is really annoying as I don&amp;#8217;t really want or need a new spell checker. Firefox&amp;#8217;s works great. WordPress&amp;#8217;s is just slow and laggy because it uses AJAX.&lt;/p&gt;
@@ -645,10 +645,10 @@ ProxyPassReverse /webapp/ &lt;a href=&#34;http://127.0.0.1:6464/webapp/&#34;&gt;
     
     <item>
       <title>Lost in a Sea of Web Frameworks</title>
-      <link>/2007/02/07/lost-in-a-sea-of-web-frameworks/</link>
+      <link>https://blog.schmichael.com/2007/02/07/lost-in-a-sea-of-web-frameworks/</link>
       <pubDate>Wed, 07 Feb 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/02/07/lost-in-a-sea-of-web-frameworks/</guid>
+      <guid>https://blog.schmichael.com/2007/02/07/lost-in-a-sea-of-web-frameworks/</guid>
       <description>&lt;p&gt;So I&amp;#8217;ve been trying to learn Python and have successfully written a couple small scripts. For the couple of small web sites/services I&amp;#8217;ve written, I used CherryPy mostly because I know someone who is active in the CherryPy community.Coming from PHP and ASP.NET, Python&amp;#8217;s offerings of web frameworks are a bit confusing. Here is my impression of the general landscape of the 3 platforms:&lt;/p&gt;
 
 &lt;ul&gt;

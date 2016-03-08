@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Fixing Gnome Notification’s Popup Location</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.15" />
+  <link href="" rel="alternate" type="application/rss+xml" title="schmichael&#39;s blog" />
+  <link href="https://blog.schmichael.com//css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://blog.schmichael.com//css/hc.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  
+    
+    </head>
+    <body>
+<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Herring Cove </div>
+      <div id = "wrapper">
+
+
+<div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="https://blog.schmichael.com//"><p class="navbar-brand">schmichael&#39;s blog</p></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+					
+					
+					<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+					<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+					<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+       
+       <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+					<img src="" />
+          <li class="sidebar-brand"><a href="https://blog.schmichael.com//"><h1 class="brand">schmichael&#39;s blog</h1></a><h3></h3></li>
+          <hr />
+					
+						<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+						<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+						<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          <hr />
+          <div id="social-wrapper">
+           
+           
+           
+           
+         </div>
+       </ul>
+     </div>
+
+
+
+     <div class="container">
+
+
+  <div id="article">
+   <div class="article-title">Fixing Gnome Notification’s Popup Location</div>
+   <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2008-12-02</small></p> <hr/>
+   <div class="post">
+     <p>Gnome notifications popup in the lower left corner of your desktop by default* which constantly annoys me. I usually have a terminal open in the lower left corner, and having my work covered by notifications is quite annoying.</p>
+
+<p>Luckily the fix is easy:</p>
+
+<ol>
+<li>Open Applications &gt; System Tools &gt; Configuration Editor**</li>
+<li>Navigate to <code>apps</code> &gt; <code>notification-daemon</code></li>
+<li>Edit the <code>popup_location</code> to be something less annoying. I prefer <strong><code>top_right</code></strong>.</li>
+<li>Close Configuration Editor. Changes will take effect next time you login <em>or</em> just restart the notification-daemon: <pre lang="bash">~$ killall notification-daemon
+~$ /usr/lib/notification-daemon/notification-daemon &#038;
+</pre></li>
+</ol>
+
+<p>Note that the notifications will actually show up over the top of your panel which seems a bit strange. However, I&#8217;d rather the notification covered the panel than take up any more precious application space than is necessary.</p>
+
+<p>Luckily you can easily test notifications if you have Python and python-notify installed:</p>
+
+<pre lang="python">>>> import pynotify
+>>> pynotify.init('foo')
+True
+>>> pynotify.Notification('foo', 'bar').show()
+True
+</pre>
+
+<p><img src="/files/notification-top_right.png" alt="Notification in the upper right." /></p>
+
+<ul>
+<li>at least on Gnome 2.22.3 on Debian Sid with notification-daemon 0.3.7-1+b1</li>
+</ul>
+
+<p>** aka <a href="http://projects.gnome.org/gconf/">gconf-editor</a> from the [gconf-editor package][3] which should be installed with Gnome.</p>
+
+<p>[3]: <a href="http://packages.debian.org/search?keywords=gconf-editor&amp;searchon=names&amp;suite=all&amp;section=all&amp;sourceid=mozilla-search">http://packages.debian.org/search?keywords=gconf-editor&amp;searchon=names&amp;suite=all&amp;section=all&amp;sourceid=mozilla-search</a></p>
+
+   </div>
+ </div>
+
+
+ <a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+ <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+ <ul class="pager">
+      &nbsp;<li class="previous"><a href="https://blog.schmichael.com/2008/12/22/my-past-24-hours/"> My Past 24 Hours</a></li>
+      &nbsp;<li class="next"><a href="https://blog.schmichael.com/2008/11/23/paper-route/"> Paper Route</a></li>
+</ul>
+
+
+
+    </ul>
+    </div>
+    <footer>
+
+        <p class="text-muted credit">&copy; . All rights reserved. </p>
+    </footer>
+ 
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/hc.js"></script>
+</body>
+
+</html>
+

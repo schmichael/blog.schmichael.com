@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ssh on </title>
-    <link>/tags/ssh/</link>
-    <description>Recent content in Ssh on </description>
+    <title>Ssh on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/ssh/</link>
+    <description>Recent content in Ssh on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 26 Feb 2009 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/ssh/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/ssh/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Bazaar: DVCS for Dummies</title>
-      <link>/2009/02/26/bazaar-dvcs-for-dummies/</link>
+      <link>https://blog.schmichael.com/2009/02/26/bazaar-dvcs-for-dummies/</link>
       <pubDate>Thu, 26 Feb 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/02/26/bazaar-dvcs-for-dummies/</guid>
+      <guid>https://blog.schmichael.com/2009/02/26/bazaar-dvcs-for-dummies/</guid>
       <description>&lt;p&gt;I like &lt;a href=&#34;http://bazaar-vcs.org/&#34;&gt;Bazaar (bzr)&lt;/a&gt;. It doesn&amp;#8217;t make me popular in the &lt;a href=&#34;http://www.selenic.com/mercurial/&#34;&gt;Mercurial&lt;/a&gt;-centric Pythonosphere. It doesn&amp;#8217;t make me a 1337 Ã¼ber hacker like &lt;a href=&#34;http://whygitisbetterthanx.com/&#34;&gt;git&lt;/a&gt; would.&lt;/p&gt;
 
 &lt;p&gt;However, it does meet the most important criteria: &lt;strong&gt;It just works&lt;/strong&gt; &lt;em&gt;for me&lt;/em&gt;.&lt;/p&gt;
@@ -91,10 +91,10 @@
     
     <item>
       <title>Summer of Hacks</title>
-      <link>/2008/05/13/summer-of-hacks/</link>
+      <link>https://blog.schmichael.com/2008/05/13/summer-of-hacks/</link>
       <pubDate>Tue, 13 May 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/05/13/summer-of-hacks/</guid>
+      <guid>https://blog.schmichael.com/2008/05/13/summer-of-hacks/</guid>
       <description>&lt;p&gt;My &lt;a href=&#34;http://www.linode.com/&#34;&gt;Linode&lt;/a&gt; has been experiencing a huge number of brute force login attempts in the past week. I don&amp;#8217;t keep detailed statistics, but I would guess there have been &lt;strong&gt;300 attempts in the past week&lt;/strong&gt; as opposed to &lt;em&gt;the usual rate of about 500 attempts over 200 days (2-3 attempts per day)&lt;/em&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://denyhosts.sourceforge.net/&#34;&gt;Denyhosts&lt;/a&gt; has been doing its job perfectly. It should be illegal to run a Internet exposed SSH server without it or a similar tool.*&lt;/p&gt;
@@ -109,10 +109,10 @@
     
     <item>
       <title>Easy Rsync Remote Backups Using SSH Keys</title>
-      <link>/2008/03/19/easy-rsync-remote-backups-using-ssh-keys/</link>
+      <link>https://blog.schmichael.com/2008/03/19/easy-rsync-remote-backups-using-ssh-keys/</link>
       <pubDate>Thu, 20 Mar 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/03/19/easy-rsync-remote-backups-using-ssh-keys/</guid>
+      <guid>https://blog.schmichael.com/2008/03/19/easy-rsync-remote-backups-using-ssh-keys/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://www.samba.org/rsync/&#34;&gt;Rsync&lt;/a&gt; is an excellent file transfer utility thats especially well suited for backing up files over the Internet because it only transfers the data that has changed. A friend asked me how to set it up, so I thought I&amp;#8217;d post what I sent him here.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; Backup a directory from computer &lt;code&gt;Zim&lt;/code&gt; to computer &lt;code&gt;Ark&lt;/code&gt;&lt;/p&gt;
@@ -186,10 +186,10 @@
     
     <item>
       <title>Hostname Tab-Completion for OpenSSH</title>
-      <link>/2008/01/30/hostname-tab-completion-for-openssh/</link>
+      <link>https://blog.schmichael.com/2008/01/30/hostname-tab-completion-for-openssh/</link>
       <pubDate>Wed, 30 Jan 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/01/30/hostname-tab-completion-for-openssh/</guid>
+      <guid>https://blog.schmichael.com/2008/01/30/hostname-tab-completion-for-openssh/</guid>
       <description>&lt;p&gt;I use &lt;a href=&#34;http://openssh.org/&#34;&gt;OpenSSH&lt;/a&gt; daily. In fact the only app I probably use more is &lt;a href=&#34;http://www.vim.org/&#34;&gt;vim&lt;/a&gt;. However, until yesterday I was typing out the full username and hostname when using ssh:&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;ssh username@ridiculouslylong.domain.com&lt;/code&gt;&lt;/p&gt;

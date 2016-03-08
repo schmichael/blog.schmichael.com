@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Wireless Bridges are a Scam</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.15" />
+  <link href="" rel="alternate" type="application/rss+xml" title="schmichael&#39;s blog" />
+  <link href="https://blog.schmichael.com//css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://blog.schmichael.com//css/hc.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  
+    
+    </head>
+    <body>
+<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Herring Cove </div>
+      <div id = "wrapper">
+
+
+<div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="https://blog.schmichael.com//"><p class="navbar-brand">schmichael&#39;s blog</p></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+					
+					
+					<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+					<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+					<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+       
+       <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+					<img src="" />
+          <li class="sidebar-brand"><a href="https://blog.schmichael.com//"><h1 class="brand">schmichael&#39;s blog</h1></a><h3></h3></li>
+          <hr />
+					
+						<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+						<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+						<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          <hr />
+          <div id="social-wrapper">
+           
+           
+           
+           
+         </div>
+       </ul>
+     </div>
+
+
+
+     <div class="container">
+
+
+  <div id="article">
+   <div class="article-title">Wireless Bridges are a Scam</div>
+   <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2007-12-18</small></p> <hr/>
+   <div class="post">
+     <p>Disclaimer: I am not a hardware guy. The days when I enjoyed cracking open a computer case and poking around are long since past. These days if I can&#8217;t fix something via keyboard, I want no part of it.</p>
+
+<p>Unfortunately, for a client I needed to extend a LAN from Building A across 30 feet of asphalt to Building B. Time to don my Net Admin hat to install a nice straightforward WiFi bridge.</p>
+
+<p>Despite already owning a <a href="http://en.wikipedia.org/wiki/WRT54G">Linksys WRT54G series router</a>, I decided to just pickup 2 Linksys <a href="http://www.linksys.com/servlet/Satellite?c=L_Product_C2&amp;childpagename=US%2FLayout&amp;cid=1134692497433&amp;pagename=Linksys%2FCommon%2FVisitorWrapper&amp;lid=9743339789B32">WET54G</a> wireless bridges (version 3.1). The <strong>bridges are actually <em>more</em> expensive than routers.</strong> But that just means they&#8217;re better suited for their simple task, right? Wrong&#8230;</p>
+
+<p>The 2 WET54Gs have been nothing but trouble for me. Their web interface sometimes redirects to the hardcoded IP address. They drop their connection and require resetting a lot. They just don&#8217;t work reliably.</p>
+
+<p>So I flashed the WRT54G with Tomato firmware to replace one of the WET54Gs, and so far things are working much better.</p>
+
+<p>If I&#8217;ve never mentioned it before: <strong>I love <a href="http://www.polarcloud.com/tomato">Tomato</a> firmware.</strong> I&#8217;ve been using it at home for ages and <strong>never</strong> have to reset it. The [features][4] are outstanding (QoS with ACK Prioritization is a lifesaver when working over SSH).</p>
+
+<p>From now on anytime I need a WiFi router, access point, or bridge, I&#8217;m going to buy a WRT54G and put Tomato on it. Its cheaper than buying specialized Access Points or Bridges and has lots more features.</p>
+
+<p>Did I mention Tomato generates sexy real-time graphs in SVG? Have a screenshot:</p>
+
+<div>
+  <a href="http://michael.susens-schurter.com/files/tomato-firmware.png"><img src="http://michael.susens-schurter.com/files/tomato-firmware.thumb.png" alt="Tomato Firmware Bandwidth Graph" /></a>
+</div>
+
+<p>[4]: <a href="http://en.wikibooks.org/wiki/Tomato_Firmware#Features">http://en.wikibooks.org/wiki/Tomato_Firmware#Features</a></p>
+
+   </div>
+ </div>
+
+
+ <a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+ <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+ <ul class="pager">
+      &nbsp;<li class="previous"><a href="https://blog.schmichael.com/2007/12/17/new-cable-internet-22-lcd-and-wifi/"> New Cable Internet, 22″ LCD, and WiFi!</a></li>
+      &nbsp;<li class="next"><a href="https://blog.schmichael.com/2007/12/13/searching-for-that-perfect-django-blog-app/"> Searching for that perfect Django Blog App</a></li>
+</ul>
+
+
+
+    </ul>
+    </div>
+    <footer>
+
+        <p class="text-muted credit">&copy; . All rights reserved. </p>
+    </footer>
+ 
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/hc.js"></script>
+</body>
+
+</html>
+

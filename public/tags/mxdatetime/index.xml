@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Mxdatetime on </title>
-    <link>/tags/mxdatetime/</link>
-    <description>Recent content in Mxdatetime on </description>
+    <title>Mxdatetime on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/mxdatetime/</link>
+    <description>Recent content in Mxdatetime on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 30 Nov 2007 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/mxdatetime/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/mxdatetime/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Fun with SQLObject and mxDateTime</title>
-      <link>/2007/11/29/fun-with-sqlobject-and-mxdatetime/</link>
+      <link>https://blog.schmichael.com/2007/11/29/fun-with-sqlobject-and-mxdatetime/</link>
       <pubDate>Fri, 30 Nov 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/11/29/fun-with-sqlobject-and-mxdatetime/</guid>
+      <guid>https://blog.schmichael.com/2007/11/29/fun-with-sqlobject-and-mxdatetime/</guid>
       <description>&lt;p&gt;I&amp;#8217;m working on a small &lt;a href=&#34;http://cherrypy.org&#34;&gt;CherryPy&lt;/a&gt; web service that among other things saves timestamps to a database. The timestamp is in &lt;a href=&#34;http://www.ietf.org/rfc/rfc3339.txt&#34;&gt;RFC 3339&lt;/a&gt; format (like &lt;code&gt;2007-07-31T16:05:00.000-05:00&lt;/code&gt;), and I needed to store the timezone.&lt;/p&gt;
 
 &lt;p&gt;Luckily &lt;a href=&#34;http://www.egenix.com/products/python/mxBase/mxDateTime/&#34;&gt;mxDateTime&lt;/a&gt; and SQLObject&amp;#8217;s DateTimeCol both support full dates with times and time zone. Unfortunately its not immediately obvious from &lt;a href=&#34;http://sqlobject.org/SQLObject.html&#34;&gt;SQLObject&amp;#8217;s lackluster documentation&lt;/a&gt; how to use mxDateTime instead of Python&amp;#8217;s built-in datetime.&lt;/p&gt;

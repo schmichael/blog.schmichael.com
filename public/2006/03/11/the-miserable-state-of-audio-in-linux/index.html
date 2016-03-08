@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>The Miserable State of Audio in Linux</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.15" />
+  <link href="" rel="alternate" type="application/rss+xml" title="schmichael&#39;s blog" />
+  <link href="https://blog.schmichael.com//css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://blog.schmichael.com//css/hc.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  
+    
+    </head>
+    <body>
+<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Herring Cove </div>
+      <div id = "wrapper">
+
+
+<div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="https://blog.schmichael.com//"><p class="navbar-brand">schmichael&#39;s blog</p></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+					
+					
+					<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+					<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+					<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+       
+       <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+					<img src="" />
+          <li class="sidebar-brand"><a href="https://blog.schmichael.com//"><h1 class="brand">schmichael&#39;s blog</h1></a><h3></h3></li>
+          <hr />
+					
+						<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+						<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+						<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+          <hr />
+          <div id="social-wrapper">
+           
+           
+           
+           
+         </div>
+       </ul>
+     </div>
+
+
+
+     <div class="container">
+
+
+  <div id="article">
+   <div class="article-title">The Miserable State of Audio in Linux</div>
+   <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2006-03-12</small></p> <hr/>
+   <div class="post">
+     <p>So I&#8217;ve been trying to transfer some interviews my Dad did back in the late 1970s with coal miners to my Debian Linux desktop computer for archiving. I have an ancient Sony tape deck hooked into my Line In jack, and once I unmuted Line In in the mixer I could hear the tape playing through my computer&#8217;s speakers.</p>
+
+<p>However, I was completely unable to capture the audio on my computer despite hearing it through my computers speakers and being able to adjust the volume through my mixer.</p>
+
+<p>I went through the 2 million normal steps you have to go through to get audio to work in Linux: run alsaconf, unmute channels, raise volume levels, set capture channel, etc.</p>
+
+<p>Nothing. I tried it with Gnome&#8217;s Sound Recorder utility as well as the command line recorder that comes with ALSA. Gnome&#8217;s Sound Recorder wouldn&#8217;t do a thing. ALSA&#8217;s sound recorder at least captured static.</p>
+
+<p>So then I thought perhaps I&#8217;ll try one of the millions of more powerful audio utilities for Linux. I began to venture into the world of JACK, Audacity, and other applications with horrible UIs and cryptic options. The various JACK tools I played with gave me a dazzling array of channels that I think I could hook up to one another and monitor and adjust and record and &#8230; nothing ever happened.</p>
+
+<p>So as far as I can tell audio in Linux is the most confusing jumble of technologies and acronyms and is a pretty good example of what happens when open source hackers refuse to standardize.</p>
+
+<p>Just for kicks here are the various audio technologies/tools I played with: <a href="ftp://ftp.alsa-project.org/pub/oss-lib/">OSS Compatibiltiy in ALSA</a>, <a href="http://www.alsa-project.org/">ALSA</a>, <a href="http://jackit.sourceforge.net/">JACK</a>, <a href="http://jackeq.sourceforge.net/">JACKEQ</a>, <a href="http://www.ladspa.org/">LADSPA</a>, ESD (likes to crash), <a href="http://gstreamer.freedesktop.org/">GStreamer</a>, Gnome Sound Recorder, [Audacity][7], and a couple other utilities.</p>
+
+<p>[7]: <a href="http://audacity.sourceforge.net/">http://audacity.sourceforge.net/</a></p>
+
+   </div>
+ </div>
+
+
+ <a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+ <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+ <ul class="pager">
+      &nbsp;<li class="previous"><a href="https://blog.schmichael.com/2006/03/20/the-joy-of-slackware/"> The Joy of Slackware</a></li>
+      &nbsp;<li class="next"><a href="https://blog.schmichael.com/2006/03/08/few-other-aspnet-20-features-missing-from-mono-11134/"> More ASP.Net 2.0 features missing from Mono 1.1.13.4</a></li>
+</ul>
+
+
+
+    </ul>
+    </div>
+    <footer>
+
+        <p class="text-muted credit">&copy; . All rights reserved. </p>
+    </footer>
+ 
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/hc.js"></script>
+</body>
+
+</html>
+

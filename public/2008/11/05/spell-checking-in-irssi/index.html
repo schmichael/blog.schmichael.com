@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Spell checking in irssi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.15" />
+  <link href="" rel="alternate" type="application/rss+xml" title="schmichael&#39;s blog" />
+  <link href="https://blog.schmichael.com//css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://blog.schmichael.com//css/hc.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  
+    
+    </head>
+    <body>
+<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Herring Cove </div>
+      <div id = "wrapper">
+
+
+<div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="https://blog.schmichael.com//"><p class="navbar-brand">schmichael&#39;s blog</p></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+					
+					
+					<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+					<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+					<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+       
+       <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+					<img src="" />
+          <li class="sidebar-brand"><a href="https://blog.schmichael.com//"><h1 class="brand">schmichael&#39;s blog</h1></a><h3></h3></li>
+          <hr />
+					
+						<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+						<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+						<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+          <hr />
+          <div id="social-wrapper">
+           
+           
+           
+           
+         </div>
+       </ul>
+     </div>
+
+
+
+     <div class="container">
+
+
+  <div id="article">
+   <div class="article-title">Spell checking in irssi</div>
+   <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2008-11-06</small></p> <hr/>
+   <div class="post">
+     <p><a href="http://irssi.org/">irssi</a> is <em>the client of the future</em> and the only real option if you use IRC.</p>
+
+<p>However, one feature I always wished it had was spell-checking. Turns out with about 30 seconds worth of work (including [googling][2]), you can have it!</p>
+
+<p>First on a Debian (probably works on Ubuntu too) system, install Lingua::Ispell and Ispell using the following commands:</p>
+
+<pre lang="bash">$ sudo apt-get install ispell liblingua-ispell-perl
+</pre>
+
+<p>It should pull in a number of other packages including a dictionary. I actually received an error as well, but it seems safe to ignore:</p>
+
+<p>`<a href="http://irssi.org/">irssi</a> is <em>the client of the future</em> and the only real option if you use IRC.</p>
+
+<p>However, one feature I always wished it had was spell-checking. Turns out with about 30 seconds worth of work (including [googling][2]), you can have it!</p>
+
+<p>First on a Debian (probably works on Ubuntu too) system, install Lingua::Ispell and Ispell using the following commands:</p>
+
+<pre lang="bash">$ sudo apt-get install ispell liblingua-ispell-perl
+</pre>
+
+<p>It should pull in a number of other packages including a dictionary. I actually received an error as well, but it seems safe to ignore:</p>
+
+<p>`</p>
+
+<p>Next up download the irssi <code>spell</code> script:</p>
+
+<pre lang="bash">$ cd ~/.irssi/scripts/
+$ wget http://scripts.irssi.org/scripts/spell.pl
+$ # Reattach to your irssi screen session now...
+$ screen -rAad irssi
+</pre>
+
+<p>Finally&#8230;</p>
+
+<ol>
+<li>Load the script into irssi</li>
+<li><strong>bind Alt-s</strong> as the shortcut to spell-check your current line*</li>
+<li>tell the script to give you more than the default of 1 guess</li>
+</ol>
+
+<p>&#8230;by running the following commands in irssi:</p>
+
+<pre lang="mirc">/script load spell.pl
+/bind meta-s /_spellcheck
+/set spell_max_guesses 3
+</pre>
+
+<p>And you&#8217;re done! Now when you press Alt-s, irssi spell checks your current line and gives you spelling suggestions in the current window.</p>
+
+<p><small>* I highlighted this part because the <a href="http://scripts.irssi.org/">irssi scripts page</a> doesn&#8217;t mention it. You have to view <a href="http://scripts.irssi.org/html/spell.pl.html">the documentation at the top of the script file to find out that you have to manually bind the shortcut key</a>.</small></p>
+
+<p>[2]: <a href="http://www.google.com/search?q=irssi+spell+check">http://www.google.com/search?q=irssi+spell+check</a></p>
+
+   </div>
+ </div>
+
+
+ <a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+ <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+ <ul class="pager">
+      &nbsp;<li class="previous"><a href="https://blog.schmichael.com/2008/11/23/paper-route/"> Paper Route</a></li>
+      &nbsp;<li class="next"><a href="https://blog.schmichael.com/2008/10/31/join-webdevpdx-on-freenode/"> Join #webdevpdx on Freenode</a></li>
+</ul>
+
+
+
+    </ul>
+    </div>
+    <footer>
+
+        <p class="text-muted credit">&copy; . All rights reserved. </p>
+    </footer>
+ 
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/hc.js"></script>
+</body>
+
+</html>
+

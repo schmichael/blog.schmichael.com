@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Fb on </title>
-    <link>/tags/fb/</link>
-    <description>Recent content in Fb on </description>
+    <title>Fb on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/fb/</link>
+    <description>Recent content in Fb on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sun, 13 Sep 2009 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/fb/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/fb/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Great article on big government</title>
-      <link>/2009/09/13/great-article-on-big-government/</link>
+      <link>https://blog.schmichael.com/2009/09/13/great-article-on-big-government/</link>
       <pubDate>Sun, 13 Sep 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/09/13/great-article-on-big-government/</guid>
+      <guid>https://blog.schmichael.com/2009/09/13/great-article-on-big-government/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://log.ometer.com/2009-09.html#12&#34;&gt;Havoc Pennington has a great post entitled Which Piece of Big Government Are You Against?&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;War on Terror + DoD ~= 21.6% of our budget. I know we can&amp;#8217;t cut it all, but a guy can dream can&amp;#8217;t he? &lt;img src=&#34;http://localhost/wp-includes/images/smilies/simple-smile.png&#34; alt=&#34;:-)&#34; class=&#34;wp-smiley&#34; style=&#34;height: 1em; max-height: 1em;&#34; /&gt;&lt;/p&gt;
@@ -38,17 +38,17 @@
     
     <item>
       <title>Biking to Work</title>
-      <link>/2009/08/07/biking-to-work/</link>
+      <link>https://blog.schmichael.com/2009/08/07/biking-to-work/</link>
       <pubDate>Sat, 08 Aug 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/08/07/biking-to-work/</guid>
+      <guid>https://blog.schmichael.com/2009/08/07/biking-to-work/</guid>
       <description>&lt;p&gt;Finally made it up to biking to work 3 times this week! Had only been averaging about once every 2 weeks for the past couple months. Sam &amp;amp; I recently moved to North Portland which is flat. We had been living in the very hilly Southwest area of town, and biking to work from there was killer.&lt;/p&gt;
 
 &lt;p&gt;I really didn&amp;#8217;t realize how much my situation had improved until my friend, Aaron Colflesh, pointed me to &lt;a href=&#34;http://www.heywhatsthat.com/profiler.html&#34;&gt;HeyWhatsThat.com&lt;/a&gt; which generates elevation change profiles for you based on coordinates:&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;My current route from home to work:&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;/files/new-route.png&#34;&gt;&lt;img src=&#34;/files/new-route.png&#34; alt=&#34;current route to work&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.schmichael.com/files/new-route.png&#34;&gt;&lt;img src=&#34;https://blog.schmichael.com/files/new-route.png&#34; alt=&#34;current route to work&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;It has a good 100&amp;#8242; hill in it. Not fun on the way home, but it doesn&amp;#8217;t last too long.&lt;/p&gt;
 
@@ -66,10 +66,10 @@
     
     <item>
       <title>Good-bye Lo-Fi Art, Hello YouGov</title>
-      <link>/2009/07/09/good-bye-lo-fi-art-hello-yougov/</link>
+      <link>https://blog.schmichael.com/2009/07/09/good-bye-lo-fi-art-hello-yougov/</link>
       <pubDate>Thu, 09 Jul 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/07/09/good-bye-lo-fi-art-hello-yougov/</guid>
+      <guid>https://blog.schmichael.com/2009/07/09/good-bye-lo-fi-art-hello-yougov/</guid>
       <description>&lt;p&gt;Next week I&amp;#8217;ll be leaving &lt;a href=&#34;http://lofiart.com/&#34;&gt;Lo-Fi Art&lt;/a&gt; to start working for &lt;a href=&#34;http://polimetrix.com/&#34;&gt;YouGov Polimetrix&lt;/a&gt; (aka PMX). For the past couple of years I&amp;#8217;ve been consulting with Chris Pitzer mostly as a Python web developer specializing in Django. It will be sad to stop working for a company I own with a friend, but I&amp;#8217;ve been working part time for PMX and am excited to work for them full time.&lt;/p&gt;
 
 &lt;p&gt;There are many reasons for my decision, but I should make it clear that it has nothing to do with Chris! It has been great working with him, and I&amp;#8217;m glad we get to continue to share office space even if we&amp;#8217;re working on different things. There is &lt;em&gt;plenty&lt;/em&gt; of client work stacking up for him to do as well, so I&amp;#8217;m not bailing on a sinking ship.&lt;/p&gt;
@@ -96,10 +96,10 @@
     
     <item>
       <title>Web Server Shootout Slides</title>
-      <link>/2009/06/18/web-server-shootout-slides/</link>
+      <link>https://blog.schmichael.com/2009/06/18/web-server-shootout-slides/</link>
       <pubDate>Thu, 18 Jun 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/06/18/web-server-shootout-slides/</guid>
+      <guid>https://blog.schmichael.com/2009/06/18/web-server-shootout-slides/</guid>
       <description>&lt;p&gt;The &lt;a href=&#34;http://opensourcebridge.org/sessions/119&#34;&gt;presentation&lt;/a&gt; has been given.&lt;/p&gt;
 
 &lt;p&gt;The slides are available as &lt;a href=&#34;http://michael.susens-schurter.com/files/wss/wss.html&#34;&gt;HTML&lt;/a&gt; or [the source OpenOffice.org Impress file][3].&lt;/p&gt;
@@ -116,10 +116,10 @@
     
     <item>
       <title>Catching up on photos: Lots o’ Hiking</title>
-      <link>/2009/04/25/catching-up-on-photos-lots-o-hiking/</link>
+      <link>https://blog.schmichael.com/2009/04/25/catching-up-on-photos-lots-o-hiking/</link>
       <pubDate>Sun, 26 Apr 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/04/25/catching-up-on-photos-lots-o-hiking/</guid>
+      <guid>https://blog.schmichael.com/2009/04/25/catching-up-on-photos-lots-o-hiking/</guid>
       <description>&lt;p&gt;I&amp;#8217;ve finally gotten around to organizing and uploading over a months worth of photos off of my little digital camera. Just to make sure there&amp;#8217;s something geeky in this post: I use &lt;a href=&#34;http://f-spot.org/&#34;&gt;F-Spot&lt;/a&gt; to organize and upload my photos to PicasaWeb. Despite neither of those products being terribly popular, I really enjoy them both. I&amp;#8217;ve found PicasaWeb to be a lot easier to work with than Flickr, but Flickr definitely has a lot more support from 3rd party tools and products.&lt;/p&gt;
 
 &lt;p&gt;You can &lt;a href=&#34;http://picasaweb.google.com/michael.schurter&#34;&gt;view all of my photo albums&lt;/a&gt; or just check out the ones you&amp;#8217;re interested in:&lt;/p&gt;
@@ -137,10 +137,10 @@
     
     <item>
       <title>Bad Banks</title>
-      <link>/2009/03/08/bad-banks/</link>
+      <link>https://blog.schmichael.com/2009/03/08/bad-banks/</link>
       <pubDate>Mon, 09 Mar 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/03/08/bad-banks/</guid>
+      <guid>https://blog.schmichael.com/2009/03/08/bad-banks/</guid>
       <description>&lt;p&gt;While I try to keep up with the news, like most Americans I really have only a vague picture of this financial crisis we&amp;#8217;re in, and how to get out.&lt;/p&gt;
 
 &lt;p&gt;Here are a couple pieces of media I&amp;#8217;ve found helpful in figuring out whats going on:&lt;/p&gt;
@@ -180,10 +180,10 @@
     
     <item>
       <title>My Past 24 Hours</title>
-      <link>/2008/12/22/my-past-24-hours/</link>
+      <link>https://blog.schmichael.com/2008/12/22/my-past-24-hours/</link>
       <pubDate>Mon, 22 Dec 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/12/22/my-past-24-hours/</guid>
+      <guid>https://blog.schmichael.com/2008/12/22/my-past-24-hours/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Sunday, December 21st&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;The plan is the not chance the weather and stay overnight at the airport tonight to make sure to catch our 6:30am flight Monday morning. Here&amp;#8217;s what happened:&lt;/p&gt;
@@ -212,10 +212,10 @@ Pitzer&amp;#8217;s house is not going to happen.&lt;/li&gt;
     
     <item>
       <title>From Anabaptist to Methodist and Back Again</title>
-      <link>/2008/10/19/from-anabaptist-to-methodist-and-back-again/</link>
+      <link>https://blog.schmichael.com/2008/10/19/from-anabaptist-to-methodist-and-back-again/</link>
       <pubDate>Mon, 20 Oct 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/10/19/from-anabaptist-to-methodist-and-back-again/</guid>
+      <guid>https://blog.schmichael.com/2008/10/19/from-anabaptist-to-methodist-and-back-again/</guid>
       <description>&lt;p&gt;My wife, Samantha, and I attended &lt;a href=&#34;http://www.portlandmennonite.org/&#34;&gt;Portland Mennonite Church&lt;/a&gt; for their Sunday morning service today. The singing was beautiful.&lt;a href=&#34;http://www.portlandmennonite.org/&#34;&gt;1&lt;/a&gt; The sermon excellent.&lt;a href=&#34;http://en.wikipedia.org/wiki/Apostolic_Christian_Church&#34;&gt;2&lt;/a&gt; And the potluck: classic.&lt;a href=&#34;http://fumcpeoria.org/&#34;&gt;3&lt;/a&gt; Ironically within seconds of nervously taking a seat at potluck someone mentions going to Central Illinois for a wedding, and we discovered someone else&amp;#8217;s wife went to the same tiny summer camp in Minnesota as Sam.&lt;/p&gt;
 
 &lt;p&gt;However, the real irony was in the fact that I found myself enjoying an Anabaptist service. To understand this you have to know a bit of Schurter family lore:&lt;/p&gt;

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Failing with MongoDB</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.15" />
+  <link href="" rel="alternate" type="application/rss+xml" title="schmichael&#39;s blog" />
+  <link href="https://blog.schmichael.com//css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://blog.schmichael.com//css/hc.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  
+    
+    </head>
+    <body>
+<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Herring Cove </div>
+      <div id = "wrapper">
+
+
+<div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="https://blog.schmichael.com//"><p class="navbar-brand">schmichael&#39;s blog</p></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+					
+					
+					<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+					<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+					<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+       
+       <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+					<img src="" />
+          <li class="sidebar-brand"><a href="https://blog.schmichael.com//"><h1 class="brand">schmichael&#39;s blog</h1></a><h3></h3></li>
+          <hr />
+					
+						<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+						<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+						<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          <hr />
+          <div id="social-wrapper">
+           
+           
+           
+           
+         </div>
+       </ul>
+     </div>
+
+
+
+     <div class="container">
+
+
+  <div id="article">
+   <div class="article-title">Failing with MongoDB</div>
+   <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2011-11-05</small></p> <hr/>
+   <div class="post">
+     <p><strong>Update:</strong> Sorry this isn&#8217;t my best piece of writing and there seems to be some confusion. The dataset in question was first in a 1.8 master/slave pair and then migrated to sharded replica sets and 2.0.0.</p>
+
+<p>For a bit of history of my dealings with MongoDB at Urban Airship, I gave a couple versions of a Scaling with MongoDB talk:</p>
+
+<ul>
+<li><a href="http://opensourcebridge.org/2011/wiki/Scaling_with_MongoDB">at Open Source Bridge (latest &amp; greatest)</a></li>
+<li><a href="/2011/02/02/schmongodb-slides-from-update-portland/">at Update Portland (original, less polished version)</a></li>
+</ul>
+
+<p>My coworker Adam Lowry even gave a follow-up talk of sorts at <a href="http://postgresopen.org/2011/schedule/presentations/98/">Postgres Open 2011</a> (<a href="http://wiki.postgresql.org/images/7/7f/Adam-lowry-postgresopen2011.pdf">slides</a>) about migrating one of our datasets off of MongoDB and (back) on to PostgreSQL.</p>
+
+<p>After reading through those slides you&#8217;re probably wondering why we&#8217;re still dealing with MongoDB at all. We fully intended to migrate our data out of it by now, but priorities change, deadlines slip, and we never expected one of our last uses of MongoDB to experience a surge in growth.</p>
+
+<p>The dataset in question seemed ideal for MongoDB:</p>
+
+<ul>
+<li>Ephemeral &#8211; if we lose it we experience service degradation for a short while, but nothing catastrophic</li>
+<li>Small &#8211; easily fits into memory (~15 GB)</li>
+<li>Secondary index &#8211; In a key/value store we would have had to manage a secondary index manually</li>
+</ul>
+
+<p>So this dataset dodged a lot of the previous problems we had with MongoDB and seemed safe to migrate at our leisure.</p>
+
+<p><a name="global_write_lock"><b>Global Write Lock</b></a></p>
+
+<p><a href="http://www.mongodb.org/display/DOCS/How+does+concurrency+work#Howdoesconcurrencywork-Read%2FWriteLock">MongoDB has a global write lock.</a> This means that while applying an insert or update, a single mongod instance can&#8217;t respond to other queries.</p>
+
+<p>Our dataset may be small but it has a heavy read and write load. When the service it backed experienced a surge in usage, MongoDB quickly became CPU bound. This was especially frustrating considering mongod was running in a simple master/slave setup on two servers: each with 16 cores and enough memory to hold all the data a few times over again.</p>
+
+<p>Because of the global write lock and heavy write load, operations are effectively serialized and executed on a single core. Meaning our servers didn&#8217;t even look loaded, as just 1 core would be 100% utilized by mongod.</p>
+
+<p><a name="sharding"><b>Let the Sharding Begin</b></a></p>
+
+<p>So we need to utilize multiple cores&#8230;</p>
+
+<p>To do that we need multiple write locks&#8230;</p>
+
+<p>There&#8217;s 1 write lock per mongod. So&#8230;</p>
+
+<p>&#8230;multiple mongods per server?</p>
+
+<p>We&#8217;d been avoiding sharding after having no luck getting it working in the 1.5.x dev series, but it&#8217;s our only choice now to get multiple mongods. I ran some tests and it seemed like we could turn our master/slave setup into a 2 shard setup with 2 mongods and 1 arbiter per shard with downtime in the seconds or low minutes.</p>
+
+<p>The operational complexity of configuring a MongoDB cluster is daunting with each component bringing its own caveats:</p>
+
+<p><strong>mongod config servers</strong></p>
+
+<ul>
+<li>You need <em>exactly</em> 3 config mongods (1 is fine for testing, which makes things appear simpler than they really are).</li>
+<li>There are lots of caveats with the config servers, so read <a href="http://www.mongodb.org/display/DOCS/Changing+Config+Servers">Changing Config Servers</a> carefully before configuring your cluster.</li>
+<li>Otherwise these mongod instances are fairly blackboxish to me. Despite being mongod processes you administer them completely differently.</li>
+</ul>
+
+<p><strong>mongos routers</strong></p>
+
+<ul>
+<li>1 per app server. This wouldn&#8217;t be a big deal <a href="http://www.mongodb.org/display/DOCS/flushRouterConfig+command">except that our mongoses often start failing and require flushRouterConfig to be run on them</a>. [2.0.1 supposedly fixes this][8], but we haven&#8217;t tested that yet (and trading known problems for new unknown ones is always scary).</li>
+<li>mongos instances can use a lot of CPU and seem to have random spikes where they fully utilize every core very briefly. Keep this in mind if your application servers are already CPU bound.</li>
+<li>On the bright side mongos balanced our data rather quickly. Our shard key is a uuid, and it properly setup reasonable ranges in very short order without having to preconfigure them.</li>
+<li>&#8220;mongos&#8221; is a terribly confusing name. It sounds like multiple mongo instances. We&#8217;ve taken to calling them mongooses internally due to frequent typos and confusion.</li>
+</ul>
+
+<p><strong>arbiters</strong></p>
+
+<ul>
+<li>You need at least 3 members in a replica set in order to complete an election if 1 member goes down.</li>
+<li>We haven&#8217;t had any issues with arbiters&#8230; not sure what we&#8217;d do if one broke somehow but since they have no persistent data they&#8217;re safe to restart at any time.</li>
+</ul>
+
+<p><strong>mongods</strong></p>
+
+<ul>
+<li>Early on we ran into a problem where changing replica set member entries wasn&#8217;t propagated to the config servers&#8217; shard configuration. Restarting every mongos fixed it.</li>
+<li>As far as I can tell a new replica set member will never leave the initial RECOVERING state until all operations to that set are stopped. Even 40 updates per second was enough of a trickle to prevent a new set member from leaving RECOVERING to becoming a SECONDARY. We had to shutdown mongoses to cut off all traffic to bring up a new member. (The replication log gave every indication of being caught up and our usual update load is thousands per second.)</li>
+<li>Setting rest in the config file doesn&#8217;t seem to work. Put &#8211;rest in your command line options.</li>
+<li>Sending an HTTP request to a mongod&#8217;s main port (instead of the HTTP endpoint) seems to be capable of crashing the mongod.</li>
+</ul>
+
+<p><strong>Client Drivers</strong></p>
+
+<p>While a single replica set member was in a RECOVERING state our Java services couldn&#8217;t complete <em>any</em> operations while our Python service was happily working away.</p>
+
+<p><strong>Summary</strong></p>
+
+<p>Right now we&#8217;re getting by with 2 shards on 2 dedicated servers and then mongoses and config servers spread throughout other servers. There appears to be some data loss occurring, though due to the ephemeral fast changing nature of this dataset it&#8217;s very difficult to determine definitively or reproduce independently.</p>
+
+<p>So we&#8217;re trying to migrate off of MongoDB to a custom service better suited for this dataset ASAP.</p>
+
+<p>[8]: <a href="https://jira.mongodb.org/browse/SERVER-3739">https://jira.mongodb.org/browse/SERVER-3739</a></p>
+
+   </div>
+ </div>
+
+
+ <a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+ <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+ <ul class="pager">
+      &nbsp;<li class="previous"><a href="https://blog.schmichael.com/2012/05/29/building-python-2-6-8-on-ubuntu-12-04/"> Building Python 2.6.8 on Ubuntu 12.04</a></li>
+      &nbsp;<li class="next"><a href="https://blog.schmichael.com/2011/09/05/memorymapfile-convenience-class-for-python/"> MemoryMapFile Convenience Class for Python</a></li>
+</ul>
+
+
+
+    </ul>
+    </div>
+    <footer>
+
+        <p class="text-muted credit">&copy; . All rights reserved. </p>
+    </footer>
+ 
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/hc.js"></script>
+</body>
+
+</html>
+

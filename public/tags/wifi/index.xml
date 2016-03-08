@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Wifi on </title>
-    <link>/tags/wifi/</link>
-    <description>Recent content in Wifi on </description>
+    <title>Wifi on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/wifi/</link>
+    <description>Recent content in Wifi on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 23 Mar 2009 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/wifi/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/wifi/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>New Laptop: Acer Extensa 4630Z</title>
-      <link>/2009/03/22/new-laptop-acer-extensa-4630z/</link>
+      <link>https://blog.schmichael.com/2009/03/22/new-laptop-acer-extensa-4630z/</link>
       <pubDate>Mon, 23 Mar 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/03/22/new-laptop-acer-extensa-4630z/</guid>
+      <guid>https://blog.schmichael.com/2009/03/22/new-laptop-acer-extensa-4630z/</guid>
       <description>&lt;p&gt;I bought a laptop recently because being a web consultant and tied to a desktop is not only embarrassing, but is a quick way to lose (or at least frustrate) clients who&amp;#8217;d love to see my hairy hacker face on-site.&lt;/p&gt;
 
 &lt;p&gt;I use Linux, Firefox, and vim for work so my requirements for a laptop basically came down to WiFi. I also didn&amp;#8217;t want something big and clunky because I&amp;#8217;m looking to augment my desktop, not replace it.&lt;/p&gt;
@@ -50,10 +50,10 @@
     
     <item>
       <title>New Cable Internet, 22″ LCD, and WiFi!</title>
-      <link>/2007/12/17/new-cable-internet-22-lcd-and-wifi/</link>
+      <link>https://blog.schmichael.com/2007/12/17/new-cable-internet-22-lcd-and-wifi/</link>
       <pubDate>Tue, 18 Dec 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/12/17/new-cable-internet-22-lcd-and-wifi/</guid>
+      <guid>https://blog.schmichael.com/2007/12/17/new-cable-internet-22-lcd-and-wifi/</guid>
       <description>&lt;p&gt;Today was my work Christmas! I work from home most of the time, so I&amp;#8217;m finally getting around to upgrading some of the equipment I use for my job every day. Today I got 3 new pieces of technology and just finished setting them all up!&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Goodbye ATT&amp;amp;T!&lt;/strong&gt;&lt;/p&gt;
@@ -92,10 +92,10 @@
     
     <item>
       <title>Wireless Bridges are a Scam</title>
-      <link>/2007/12/18/wireless-bridges-are-a-scam/</link>
+      <link>https://blog.schmichael.com/2007/12/18/wireless-bridges-are-a-scam/</link>
       <pubDate>Tue, 18 Dec 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/12/18/wireless-bridges-are-a-scam/</guid>
+      <guid>https://blog.schmichael.com/2007/12/18/wireless-bridges-are-a-scam/</guid>
       <description>&lt;p&gt;Disclaimer: I am not a hardware guy. The days when I enjoyed cracking open a computer case and poking around are long since past. These days if I can&amp;#8217;t fix something via keyboard, I want no part of it.&lt;/p&gt;
 
 &lt;p&gt;Unfortunately, for a client I needed to extend a LAN from Building A across 30 feet of asphalt to Building B. Time to don my Net Admin hat to install a nice straightforward WiFi bridge.&lt;/p&gt;

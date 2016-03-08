@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ctypes on </title>
-    <link>/tags/ctypes/</link>
-    <description>Recent content in Ctypes on </description>
+    <title>Ctypes on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/ctypes/</link>
+    <description>Recent content in Ctypes on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 16 May 2011 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/ctypes/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/ctypes/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Sharing Python data between processes using mmap</title>
-      <link>/2011/05/15/sharing-python-data-between-processes-using-mmap/</link>
+      <link>https://blog.schmichael.com/2011/05/15/sharing-python-data-between-processes-using-mmap/</link>
       <pubDate>Mon, 16 May 2011 00:00:00 +0000</pubDate>
       
-      <guid>/2011/05/15/sharing-python-data-between-processes-using-mmap/</guid>
+      <guid>https://blog.schmichael.com/2011/05/15/sharing-python-data-between-processes-using-mmap/</guid>
       <description>&lt;p&gt;I&amp;#8217;ve been toying with an idea of exposing statistics for a Python application via shared memory to keep the performance impact on the application as low as possible. The goal being an application could passively expose a number of metrics that could either be periodically polled via &lt;a href=&#34;http://munin-monitoring.org/&#34;&gt;munin&lt;/a&gt;/&lt;a href=&#34;http://www.icinga.org/&#34;&gt;Icinga&lt;/a&gt;/etc plugins or interactive tools when diagnosing issues on a system.&lt;/p&gt;
 
 &lt;p&gt;But first things first: I need to put data into &lt;a href=&#34;http://en.wikipedia.org/wiki/Shared_memory&#34;&gt;shared memory&lt;/a&gt; from Python. &lt;a href=&#34;http://en.wikipedia.org/wiki/Mmap&#34;&gt;mmap&lt;/a&gt; is an excellent widely-implemented POSIX system call for creating a shared memory space backed by an on-disk file.&lt;/p&gt;

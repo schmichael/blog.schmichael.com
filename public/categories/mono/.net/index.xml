@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Mono/.Net on </title>
-    <link>/categories/mono/index.net/</link>
-    <description>Recent content in Mono/.Net on </description>
+    <title>Mono/.Net on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/categories/mono/index.net/</link>
+    <description>Recent content in Mono/.Net on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sat, 18 Apr 2009 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/categories/mono/.net/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/categories/mono/.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Keeping all your notes in sync with Dropbox and Tomboy</title>
-      <link>/2009/04/17/in-sync-with-dropbox-and-tomboy/</link>
+      <link>https://blog.schmichael.com/2009/04/17/in-sync-with-dropbox-and-tomboy/</link>
       <pubDate>Sat, 18 Apr 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/04/17/in-sync-with-dropbox-and-tomboy/</guid>
+      <guid>https://blog.schmichael.com/2009/04/17/in-sync-with-dropbox-and-tomboy/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://projects.gnome.org/tomboy/&#34;&gt;Tomboy&lt;/a&gt; is a wonderful note taking program for Gnome. It has some synchronization features built-in, but not everyone has a server to store their notes for synchronizing between multiple computers.&lt;/p&gt;
 
 &lt;p&gt;Enter &lt;a href=&#34;https://www.getdropbox.com/referrals/NTE2ODkwNDk&#34;&gt;Dropbox&lt;/a&gt;: a service for synchronizing files between computers. It works great in Gnome (Windows and Mac OSX as well).&lt;/p&gt;
@@ -28,10 +28,10 @@
     
     <item>
       <title>Selling some books</title>
-      <link>/2008/07/26/selling-some-books/</link>
+      <link>https://blog.schmichael.com/2008/07/26/selling-some-books/</link>
       <pubDate>Sun, 27 Jul 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/07/26/selling-some-books/</guid>
+      <guid>https://blog.schmichael.com/2008/07/26/selling-some-books/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://www.amazon.com/gp/shops/index.html?ie=UTF8&amp;amp;sellerID=A1BXMNI10WRYMA&#34;&gt;I&amp;#8217;m selling some books on Amazon&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Here&amp;#8217;s the full list that I&amp;#8217;m too lazy to link individually (click above instead):&lt;/p&gt;
@@ -65,12 +65,12 @@
     
     <item>
       <title>LugRadio</title>
-      <link>/2007/10/15/lugradio/</link>
+      <link>https://blog.schmichael.com/2007/10/15/lugradio/</link>
       <pubDate>Tue, 16 Oct 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/10/15/lugradio/</guid>
+      <guid>https://blog.schmichael.com/2007/10/15/lugradio/</guid>
       <description>&lt;div style=&#34;float: left;&#34;&gt;
-  &lt;a href=&#34;http://lugradio.org&#34;&gt;&lt;img src=&#34;/files/lugradio.jpg&#34; alt=&#34;LugRadio&#34; /&gt;&lt;/a&gt;
+  &lt;a href=&#34;http://lugradio.org&#34;&gt;&lt;img src=&#34;https://blog.schmichael.com/files/lugradio.jpg&#34; alt=&#34;LugRadio&#34; /&gt;&lt;/a&gt;
 &lt;/div&gt;
 
 &lt;p&gt;I spent half an hour tonight finding a AAA battery to resurrect my ancient 512 MB SanDisk SDMX1 MP3 player, so I could listen to &lt;a href=&#34;http://lugradio.org/&#34;&gt;LugRadio&lt;/a&gt; while washing dishes.&lt;/p&gt;
@@ -89,10 +89,10 @@
     
     <item>
       <title>SharpOS Says Hello</title>
-      <link>/2007/04/08/sharpos-says-hello/</link>
+      <link>https://blog.schmichael.com/2007/04/08/sharpos-says-hello/</link>
       <pubDate>Mon, 09 Apr 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/04/08/sharpos-says-hello/</guid>
+      <guid>https://blog.schmichael.com/2007/04/08/sharpos-says-hello/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://sharpos.org/&#34;&gt;SharpOS&lt;/a&gt; is an ambitious project to create a fully managed operating system using Mono/.Net. I tried working on the project until I realized that just knowing C# doesn&amp;#8217;t mean you can help create an operating system written in C#.&lt;/p&gt;
 
 &lt;p&gt;Now it seems the project has achieved an important milestone: Hello World. Check out the &lt;a href=&#34;http://sharpos.org/wiki/Screenshots&#34;&gt;screenshot&lt;/a&gt; and &lt;a href=&#34;http://svn.sharpos.org/sandbox/DarxKies/Stuff/HelloWorld/&#34;&gt;download a virtual machine image&lt;/a&gt;.&lt;/p&gt;
@@ -105,10 +105,10 @@
     
     <item>
       <title>Debian Etch Released</title>
-      <link>/2007/04/08/debian-etch-released/</link>
+      <link>https://blog.schmichael.com/2007/04/08/debian-etch-released/</link>
       <pubDate>Sun, 08 Apr 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/04/08/debian-etch-released/</guid>
+      <guid>https://blog.schmichael.com/2007/04/08/debian-etch-released/</guid>
       <description>&lt;p&gt;It &lt;a href=&#34;http://www.debian-administration.org/articles/514&#34;&gt;appears&lt;/a&gt; &lt;a href=&#34;http://www.debian.org/releases/etch/releasenotes&#34;&gt;Debian GNU/Linux 4.0, codenamed Etch,&lt;/a&gt; (quite a mouthful) &lt;a href=&#34;http://www.debian.org/News/2007/20070408&#34;&gt;has been released as the latest stable version of Debian&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Go &lt;a href=&#34;http://www.debian.org/CD/torrent-cd/&#34;&gt;download it using BitTorrent to be cool&lt;/a&gt;. 😉&lt;/p&gt;
@@ -148,10 +148,10 @@
     
     <item>
       <title>Handy .Net Service Template</title>
-      <link>/2007/02/15/handy-net-service-template/</link>
+      <link>https://blog.schmichael.com/2007/02/15/handy-net-service-template/</link>
       <pubDate>Thu, 15 Feb 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/02/15/handy-net-service-template/</guid>
+      <guid>https://blog.schmichael.com/2007/02/15/handy-net-service-template/</guid>
       <description>&lt;p&gt;I love .Net Services. Its a handy way to create background processes, and they work beautifully in both Windows and Linux (thanks to Mono!).&lt;/p&gt;
 
 &lt;p&gt;However, every time I create one I find myself writing a lot of the same code with minor variations:&lt;/p&gt;
@@ -185,10 +185,10 @@
     
     <item>
       <title>Lost in a Sea of Web Frameworks</title>
-      <link>/2007/02/07/lost-in-a-sea-of-web-frameworks/</link>
+      <link>https://blog.schmichael.com/2007/02/07/lost-in-a-sea-of-web-frameworks/</link>
       <pubDate>Wed, 07 Feb 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/02/07/lost-in-a-sea-of-web-frameworks/</guid>
+      <guid>https://blog.schmichael.com/2007/02/07/lost-in-a-sea-of-web-frameworks/</guid>
       <description>&lt;p&gt;So I&amp;#8217;ve been trying to learn Python and have successfully written a couple small scripts. For the couple of small web sites/services I&amp;#8217;ve written, I used CherryPy mostly because I know someone who is active in the CherryPy community.Coming from PHP and ASP.NET, Python&amp;#8217;s offerings of web frameworks are a bit confusing. Here is my impression of the general landscape of the 3 platforms:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -213,10 +213,10 @@
     
     <item>
       <title>cssh: C# Shell</title>
-      <link>/2006/12/20/cssh-c-shell/</link>
+      <link>https://blog.schmichael.com/2006/12/20/cssh-c-shell/</link>
       <pubDate>Wed, 20 Dec 2006 00:00:00 +0000</pubDate>
       
-      <guid>/2006/12/20/cssh-c-shell/</guid>
+      <guid>https://blog.schmichael.com/2006/12/20/cssh-c-shell/</guid>
       <description>&lt;p&gt;The other day I found myself writing a shell script in PHP because I refuse to learn bash&amp;#8217;s archaic syntax.Â  I&amp;#8217;m actually a lot happier with PHP as a shell scripting language than a web application language.Â  However, I&amp;#8217;ve always wanted a scripting language with the power of Mono/.NET.&lt;/p&gt;
 
 &lt;p&gt;So yesterday I quickly threw together &lt;em&gt;cssh&lt;/em&gt;: C# Shell.Â  You can&amp;#8217;t use it as a real shell like bash, but it does allow you to write quick little C# programs that can be run like a script.&lt;/p&gt;
@@ -233,10 +233,10 @@
     
     <item>
       <title>Novell/Microsoft in Linux Lovefest</title>
-      <link>/2006/11/02/novellmicrosoft-in-linux-lovefest/</link>
+      <link>https://blog.schmichael.com/2006/11/02/novellmicrosoft-in-linux-lovefest/</link>
       <pubDate>Fri, 03 Nov 2006 00:00:00 +0000</pubDate>
       
-      <guid>/2006/11/02/novellmicrosoft-in-linux-lovefest/</guid>
+      <guid>https://blog.schmichael.com/2006/11/02/novellmicrosoft-in-linux-lovefest/</guid>
       <description>&lt;p&gt;In case you haven&amp;#8217;t heard, &lt;strong&gt;Microsoft and Novell just entered into a partnership which is extremely beneficial to Linux&lt;/strong&gt;. Instead of me trying to explain it, read &lt;a href=&#34;http://tirania.org/blog/archive/2006/Nov-02.html&#34;&gt;Miguel de Icaza&amp;#8217;s post&lt;/a&gt;, &lt;a href=&#34;http://www.joeaudette.com/BlogView.aspx?pageid=101&amp;amp;ItemID=291&amp;amp;mid=104&amp;amp;pageindex=&#34;&gt;Joe Audette&amp;#8217;s post&lt;/a&gt;, and/or the &lt;a href=&#34;http://www.novell.com/linux/microsoft/openletter.html&#34;&gt;official Press Release&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; From what I can tell this is actually a bad thing.Â  Seems Microsoft just wants to start getting money out of Linux vendors for patent protection.Â  I don&amp;#8217;t know&amp;#8230; go read [groklaw][4] or something for a much better comentary. &lt;img src=&#34;http://localhost/wp-includes/images/smilies/simple-smile.png&#34; alt=&#34;:)&#34; class=&#34;wp-smiley&#34; style=&#34;height: 1em; max-height: 1em;&#34; /&gt;&lt;/p&gt;
@@ -247,10 +247,10 @@
     
     <item>
       <title>ODBC Test Tool</title>
-      <link>/2006/09/12/odbc-test-tool/</link>
+      <link>https://blog.schmichael.com/2006/09/12/odbc-test-tool/</link>
       <pubDate>Tue, 12 Sep 2006 00:00:00 +0000</pubDate>
       
-      <guid>/2006/09/12/odbc-test-tool/</guid>
+      <guid>https://blog.schmichael.com/2006/09/12/odbc-test-tool/</guid>
       <description>&lt;p&gt;Today I find myself once again fighting Crystal Reports. It claims that it can&amp;#8217;t connect to the ODBC datasource I created for it since it can&amp;#8217;t use Npgsql. Just to prove it wrong I quick hacked together an ODBC Test Tool in &lt;a href=&#34;http://www.icsharpcode.net/OpenSource/SD/&#34;&gt;SharpDevelop&lt;/a&gt;. Sure enough, the ODBC connection works just fine.&lt;/p&gt;
 
 &lt;p&gt;[Here&amp;#8217;s a zip of ODBCTestTool][2] which contains the source code and compiled executables under the &lt;em&gt;bin&lt;/em&gt; directory. It requires .NET 2.0, and I doubt it runs on Mono since it uses ODBC.&lt;/p&gt;
@@ -263,10 +263,10 @@
     
     <item>
       <title>SchoolWorks on Linux: Part 1 of Many</title>
-      <link>/2006/09/06/schoolworks-on-linux-part-1-of-many/</link>
+      <link>https://blog.schmichael.com/2006/09/06/schoolworks-on-linux-part-1-of-many/</link>
       <pubDate>Thu, 07 Sep 2006 00:00:00 +0000</pubDate>
       
-      <guid>/2006/09/06/schoolworks-on-linux-part-1-of-many/</guid>
+      <guid>https://blog.schmichael.com/2006/09/06/schoolworks-on-linux-part-1-of-many/</guid>
       <description>&lt;p&gt;Now that &lt;a href=&#34;http://www.schoolworksinc.com/&#34;&gt;SchoolWorks&lt;/a&gt; has officially been released, I guess I can begin posting about my attempts to get it running on Linux.&lt;/p&gt;
 
 &lt;p&gt;First of all SchoolWorks is school administration software (or &lt;a href=&#34;http://en.wikipedia.org/wiki/Student_information_system&#34;&gt;SIS&lt;/a&gt;) built using:&lt;/p&gt;
@@ -299,10 +299,10 @@
     
     <item>
       <title>Never Use Crystal Reports Again</title>
-      <link>/2006/08/23/never-use-crystal-reports-again/</link>
+      <link>https://blog.schmichael.com/2006/08/23/never-use-crystal-reports-again/</link>
       <pubDate>Wed, 23 Aug 2006 00:00:00 +0000</pubDate>
       
-      <guid>/2006/08/23/never-use-crystal-reports-again/</guid>
+      <guid>https://blog.schmichael.com/2006/08/23/never-use-crystal-reports-again/</guid>
       <description>&lt;p&gt;I&amp;#8217;m sick of being suckered into using Crystal Reports because it comes free with Microsoft Visual Studio. Crystal Reports and its API are easily the most buggy, most poorly designed, and worst documented I&amp;#8217;ve ever worked with.&lt;/p&gt;
 
 &lt;p&gt;So I thought I&amp;#8217;d dump a list of some alternatives I&amp;#8217;ve stumbled across &amp;#8211; both open source and proprietary reporting solutions:&lt;/p&gt;
@@ -328,10 +328,10 @@
     
     <item>
       <title>Missing MySQL’s REPLACE (aka MERGE) in PostgreSQL</title>
-      <link>/2006/07/13/missing-mysqls-replace-aka-merge-in-postgresql/</link>
+      <link>https://blog.schmichael.com/2006/07/13/missing-mysqls-replace-aka-merge-in-postgresql/</link>
       <pubDate>Thu, 13 Jul 2006 00:00:00 +0000</pubDate>
       
-      <guid>/2006/07/13/missing-mysqls-replace-aka-merge-in-postgresql/</guid>
+      <guid>https://blog.schmichael.com/2006/07/13/missing-mysqls-replace-aka-merge-in-postgresql/</guid>
       <description>&lt;p&gt;When Synthesys first decided to go with PostgreSQL as the database for a large web application, I was very excited to get away from our usual reliance on MySQL and move to a &lt;em&gt;real&lt;/em&gt; database platform.&lt;/p&gt;
 
 &lt;p&gt;Once we figured out the whole MySQL auto_increment vs. &lt;a href=&#34;http://www.postgresql.org/docs/8.1/interactive/datatype.html#DATATYPE-SERIAL&#34;&gt;PostgreSQL SERIAL&lt;/a&gt;, the first thing we really missed in PostgreSQL was the REPLACE statement. I understand why its missing, and it is kind of a hack of a SQL statement (its not in a SQL standard).&lt;/p&gt;
@@ -346,10 +346,10 @@
     
     <item>
       <title>Microsoft Creates SourceForge 2.0?</title>
-      <link>/2006/05/23/microsoft-creates-sourceforge-20/</link>
+      <link>https://blog.schmichael.com/2006/05/23/microsoft-creates-sourceforge-20/</link>
       <pubDate>Tue, 23 May 2006 00:00:00 +0000</pubDate>
       
-      <guid>/2006/05/23/microsoft-creates-sourceforge-20/</guid>
+      <guid>https://blog.schmichael.com/2006/05/23/microsoft-creates-sourceforge-20/</guid>
       <description>&lt;p&gt;&lt;img width=&#34;128&#34; height=&#34;74&#34; alt=&#34;CodePlex.com&#34; id=&#34;image117&#34; style=&#34;margin: 6px; float: left&#34; src=&#34;http://blogs.synthesyssolutions.com/michael/wp-content/uploads/2006/05/codeplex2.thumbnail.png&#34; /&gt;I just &lt;a href=&#34;http://osnews.com/comment.php?news_id=14681&#34;&gt;read on OSNews.com&lt;/a&gt; that Microsoft created a site called &lt;a href=&#34;http://www.codeplex.com/&#34;&gt;CodePlex&lt;/a&gt; which appears to be identical to SourceForge.net. Evidently the point of CodePlex is to host and manage open source projects (as well as Microsoft&amp;#8217;s &lt;em&gt;shared&lt;/em&gt; source projects). CodePlex has a &lt;a href=&#34;http://www.codeplex.com/Wiki/View.aspx?ProjectName=CodePlex&amp;amp;title=CodePlex%20Help%20Wiki&#34;&gt;Wiki&lt;/a&gt; which looks like it will eventually contain useful information, but its pretty sparse right now.&lt;/p&gt;
 
 &lt;p&gt;For example, I can&amp;#8217;t find what version control system it uses. The &lt;a href=&#34;http://www.codeplex.com/Wiki/View.aspx?ProjectName=CodePlex&amp;amp;title=Obtaining%20the%20Team%20Explorer%20client&#34;&gt;Wiki references some Team Explorer Client application&lt;/a&gt; which can be used to connect to CodePlex projects, but I&amp;#8217;ll leave that up to someone else to play with.&lt;/p&gt;
@@ -366,10 +366,10 @@
     
     <item>
       <title>More ASP.Net 2.0 features missing from Mono 1.1.13.4</title>
-      <link>/2006/03/08/few-other-aspnet-20-features-missing-from-mono-11134/</link>
+      <link>https://blog.schmichael.com/2006/03/08/few-other-aspnet-20-features-missing-from-mono-11134/</link>
       <pubDate>Wed, 08 Mar 2006 00:00:00 +0000</pubDate>
       
-      <guid>/2006/03/08/few-other-aspnet-20-features-missing-from-mono-11134/</guid>
+      <guid>https://blog.schmichael.com/2006/03/08/few-other-aspnet-20-features-missing-from-mono-11134/</guid>
       <description>&lt;p&gt;After stripping out the SiteMap Provider, Membership Provider, and Role Provider, I discovered a few more ASP.Net 2.0 features that are missing from Mono 1.1.13.4:&lt;/p&gt;
 
 &lt;ol&gt;

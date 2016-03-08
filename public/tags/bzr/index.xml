@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Bzr on </title>
-    <link>/tags/bzr/</link>
-    <description>Recent content in Bzr on </description>
+    <title>Bzr on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/bzr/</link>
+    <description>Recent content in Bzr on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 26 Feb 2009 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/bzr/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/bzr/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Bazaar: DVCS for Dummies</title>
-      <link>/2009/02/26/bazaar-dvcs-for-dummies/</link>
+      <link>https://blog.schmichael.com/2009/02/26/bazaar-dvcs-for-dummies/</link>
       <pubDate>Thu, 26 Feb 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/02/26/bazaar-dvcs-for-dummies/</guid>
+      <guid>https://blog.schmichael.com/2009/02/26/bazaar-dvcs-for-dummies/</guid>
       <description>&lt;p&gt;I like &lt;a href=&#34;http://bazaar-vcs.org/&#34;&gt;Bazaar (bzr)&lt;/a&gt;. It doesn&amp;#8217;t make me popular in the &lt;a href=&#34;http://www.selenic.com/mercurial/&#34;&gt;Mercurial&lt;/a&gt;-centric Pythonosphere. It doesn&amp;#8217;t make me a 1337 Ã¼ber hacker like &lt;a href=&#34;http://whygitisbetterthanx.com/&#34;&gt;git&lt;/a&gt; would.&lt;/p&gt;
 
 &lt;p&gt;However, it does meet the most important criteria: &lt;strong&gt;It just works&lt;/strong&gt; &lt;em&gt;for me&lt;/em&gt;.&lt;/p&gt;
@@ -91,10 +91,10 @@
     
     <item>
       <title>Why not Subversion &#43; DVCS of Choice?</title>
-      <link>/2009/01/06/why-not-subversion-dvcs-of-choice/</link>
+      <link>https://blog.schmichael.com/2009/01/06/why-not-subversion-dvcs-of-choice/</link>
       <pubDate>Wed, 07 Jan 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/01/06/why-not-subversion-dvcs-of-choice/</guid>
+      <guid>https://blog.schmichael.com/2009/01/06/why-not-subversion-dvcs-of-choice/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://michael.susens-schurter.com/blog/2009/01/04/time-to-learn-git/&#34;&gt;A follow-up to my last post on DVCSes&amp;#8230;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://planet.gnome.org/&#34;&gt;Gnomers&lt;/a&gt; have been &lt;a href=&#34;http://wingolog.org/archives/2009/01/06/git-and-bzr&#34;&gt;discussing DVCSes a lot lately&lt;/a&gt;, and at least one seems to prefer &lt;a href=&#34;http://blogs.gnome.org/johncarr/2008/12/11/dvcs-for-gnome/&#34;&gt;bzr as the repository format and git as the protocol it speaks.&lt;/a&gt; &lt;small&gt;If this sounds like madness to you, you&amp;#8217;re not alone.&lt;/small&gt;&lt;/p&gt;
@@ -143,10 +143,10 @@
     
     <item>
       <title>Time to Learn Git?</title>
-      <link>/2009/01/04/time-to-learn-git/</link>
+      <link>https://blog.schmichael.com/2009/01/04/time-to-learn-git/</link>
       <pubDate>Sun, 04 Jan 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/01/04/time-to-learn-git/</guid>
+      <guid>https://blog.schmichael.com/2009/01/04/time-to-learn-git/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Doh! Sorry for flooding everyone&amp;#8217;s feed readers with my epic post. Evidently WordPress ignored my &amp;#8220;more&amp;#8221; tag. &lt;small&gt;I think I ran into this problem before&amp;#8230;&lt;/small&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Update 2:&lt;/strong&gt; Retracted the meaningless Google Trends point. Thanks to commenters for pointing out how meaningless it was. I still feel like git has a much stronger web presence than bzr or hg, but its just another one of the many &amp;#8220;gut feelings&amp;#8221; in this post. &lt;img src=&#34;http://localhost/wp-includes/images/smilies/simple-smile.png&#34; alt=&#34;:-)&#34; class=&#34;wp-smiley&#34; style=&#34;height: 1em; max-height: 1em;&#34; /&gt;&lt;/p&gt;
@@ -310,10 +310,10 @@
     
     <item>
       <title>Hzzah: AJAX Searching, Grouped Searches, and Version Numbers</title>
-      <link>/2008/07/15/hzzah-ajax-searching-grouped-searches-and-version-numbers/</link>
+      <link>https://blog.schmichael.com/2008/07/15/hzzah-ajax-searching-grouped-searches-and-version-numbers/</link>
       <pubDate>Wed, 16 Jul 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/07/15/hzzah-ajax-searching-grouped-searches-and-version-numbers/</guid>
+      <guid>https://blog.schmichael.com/2008/07/15/hzzah-ajax-searching-grouped-searches-and-version-numbers/</guid>
       <description>&lt;p&gt;&lt;strong&gt;AJAX Searching&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;Thanks to &lt;a href=&#34;http://docs.jquery.com/Ajax&#34;&gt;jQuery&lt;/a&gt; and the &lt;a href=&#34;http://plugins.jquery.com/project/history&#34;&gt;jQuery History plugin&lt;/a&gt;, searching is now done via AJAX but it doesn&amp;#8217;t break your back and forward buttons.&lt;/p&gt;
@@ -344,10 +344,10 @@
     
     <item>
       <title>Introducing Hzzah!</title>
-      <link>/2008/07/15/introducing-hzzah/</link>
+      <link>https://blog.schmichael.com/2008/07/15/introducing-hzzah/</link>
       <pubDate>Tue, 15 Jul 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/07/15/introducing-hzzah/</guid>
+      <guid>https://blog.schmichael.com/2008/07/15/introducing-hzzah/</guid>
       <description>&lt;p&gt;&lt;small&gt;from the I-can-haz-a-search-engine department&amp;#8230;&lt;/small&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Sorry about the tacky donate link all. I tried to hide it from feed readers with WordPress&amp;#8217;s &amp;lt;!&amp;#8211;more&amp;gt; feature, but evidently that doesn&amp;#8217;t apply to feeds. &lt;img src=&#34;http://localhost/wp-includes/images/smilies/frownie.png&#34; alt=&#34;:(&#34; class=&#34;wp-smiley&#34; style=&#34;height: 1em; max-height: 1em;&#34; /&gt;&lt;/p&gt;
@@ -400,10 +400,10 @@ bzr branch http://michael.susens-schurter.com/code/hzzah-public hzzah-steve
     
     <item>
       <title>Simple WordPress Upgrade Using Subversion</title>
-      <link>/2007/10/28/simple-wordpress-upgrade-using-subversion/</link>
+      <link>https://blog.schmichael.com/2007/10/28/simple-wordpress-upgrade-using-subversion/</link>
       <pubDate>Sun, 28 Oct 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/10/28/simple-wordpress-upgrade-using-subversion/</guid>
+      <guid>https://blog.schmichael.com/2007/10/28/simple-wordpress-upgrade-using-subversion/</guid>
       <description>&lt;p&gt;I&amp;#8217;ve been using subversion to update WordPress for a few minor revisions now. I simply followed the 2.2 branch and ran&amp;#8230;&lt;/p&gt;
 
 &lt;pre lang=&#34;bash&#34;&gt;svn up&lt;/pre&gt;

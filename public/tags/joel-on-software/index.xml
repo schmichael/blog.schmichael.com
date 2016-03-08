@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Joel On Software on </title>
-    <link>/tags/joel-on-software/</link>
-    <description>Recent content in Joel On Software on </description>
+    <title>Joel On Software on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/joel-on-software/</link>
+    <description>Recent content in Joel On Software on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 18 Mar 2008 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/joel-on-software/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/joel-on-software/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Annoyed with Joel on Software</title>
-      <link>/2008/03/17/annoyed-with-joel-on-software/</link>
+      <link>https://blog.schmichael.com/2008/03/17/annoyed-with-joel-on-software/</link>
       <pubDate>Tue, 18 Mar 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/03/17/annoyed-with-joel-on-software/</guid>
+      <guid>https://blog.schmichael.com/2008/03/17/annoyed-with-joel-on-software/</guid>
       <description>&lt;p&gt;A quote from [Joel on Software&amp;#8217;s latest post on the IE8 standards mode by default][1]:&lt;/p&gt;
 
 &lt;blockquote&gt;

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Synthesys on </title>
-    <link>/tags/synthesys/</link>
-    <description>Recent content in Synthesys on </description>
+    <title>Synthesys on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/synthesys/</link>
+    <description>Recent content in Synthesys on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 03 Nov 2006 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/synthesys/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/synthesys/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>A Favorable Demotion</title>
-      <link>/2006/11/02/a-favorable-demotion/</link>
+      <link>https://blog.schmichael.com/2006/11/02/a-favorable-demotion/</link>
       <pubDate>Fri, 03 Nov 2006 00:00:00 +0000</pubDate>
       
-      <guid>/2006/11/02/a-favorable-demotion/</guid>
+      <guid>https://blog.schmichael.com/2006/11/02/a-favorable-demotion/</guid>
       <description>&lt;p&gt;On Nov 1st 2006, I left my position as the lead Developer at Synthesys Solutions to become a lowly assistant Computer Technician at Tremont School District #702.&lt;/p&gt;
 
 &lt;p&gt;While there are a number of reasons for the switch, the #1 reason was &lt;strong&gt;I wasn&amp;#8217;t happy coding all day&lt;/strong&gt;. I never wanted to be a code monkey, and working from home only made the position more isolating and dull.&lt;/p&gt;
@@ -42,10 +42,10 @@
     
     <item>
       <title>Moving on…</title>
-      <link>/2006/10/09/moving-on/</link>
+      <link>https://blog.schmichael.com/2006/10/09/moving-on/</link>
       <pubDate>Mon, 09 Oct 2006 00:00:00 +0000</pubDate>
       
-      <guid>/2006/10/09/moving-on/</guid>
+      <guid>https://blog.schmichael.com/2006/10/09/moving-on/</guid>
       <description>&lt;p&gt;I&amp;#8217;ve accepted a new job and it looks like Oct. 31st will be my last day at [Synthesys][1]. I&amp;#8217;m going to move my blog to a personal web site, and I&amp;#8217;ll post more details then.&lt;/p&gt;
 
 &lt;p&gt;It&amp;#8217;s going to be an extremely busy month!&lt;/p&gt;
@@ -58,10 +58,10 @@
     
     <item>
       <title>SchoolWorks on Linux: Part 1 of Many</title>
-      <link>/2006/09/06/schoolworks-on-linux-part-1-of-many/</link>
+      <link>https://blog.schmichael.com/2006/09/06/schoolworks-on-linux-part-1-of-many/</link>
       <pubDate>Thu, 07 Sep 2006 00:00:00 +0000</pubDate>
       
-      <guid>/2006/09/06/schoolworks-on-linux-part-1-of-many/</guid>
+      <guid>https://blog.schmichael.com/2006/09/06/schoolworks-on-linux-part-1-of-many/</guid>
       <description>&lt;p&gt;Now that &lt;a href=&#34;http://www.schoolworksinc.com/&#34;&gt;SchoolWorks&lt;/a&gt; has officially been released, I guess I can begin posting about my attempts to get it running on Linux.&lt;/p&gt;
 
 &lt;p&gt;First of all SchoolWorks is school administration software (or &lt;a href=&#34;http://en.wikipedia.org/wiki/Student_information_system&#34;&gt;SIS&lt;/a&gt;) built using:&lt;/p&gt;
@@ -94,10 +94,10 @@
     
     <item>
       <title>Being a Geek in Peoria</title>
-      <link>/2006/06/20/being-a-geek-in-peoria/</link>
+      <link>https://blog.schmichael.com/2006/06/20/being-a-geek-in-peoria/</link>
       <pubDate>Tue, 20 Jun 2006 00:00:00 +0000</pubDate>
       
-      <guid>/2006/06/20/being-a-geek-in-peoria/</guid>
+      <guid>https://blog.schmichael.com/2006/06/20/being-a-geek-in-peoria/</guid>
       <description>&lt;p&gt;While I&amp;#8217;m loving working from home, there is something to be said for human contact.  So &lt;a href=&#34;http://www.meetup.com/members/2936669/&#34;&gt;I signed up for a bunch of technology related interests on Meetup.com&lt;/a&gt; and subscribed to &lt;a href=&#34;http://upcoming.org/metro/us/il/pera/&#34;&gt;Peoria events at Upcoming.org&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;I also found a local Linux User Group, &lt;a href=&#34;http://www.lugop.org/&#34;&gt;Linux User Group of Peoria&lt;/a&gt;, which I&amp;#8217;m pretty excited about.  I&amp;#8217;ve subscribed to their &lt;a href=&#34;http://www.lugop.org/index.php/Mailing_List&#34;&gt;mailing list&lt;/a&gt;, and will probably attend their upcoming meeting on July 3rd.&lt;/p&gt;
@@ -110,10 +110,10 @@
     
     <item>
       <title>The Myth of the $400 Computer</title>
-      <link>/2006/06/20/the-myth-of-the-400-computer/</link>
+      <link>https://blog.schmichael.com/2006/06/20/the-myth-of-the-400-computer/</link>
       <pubDate>Tue, 20 Jun 2006 00:00:00 +0000</pubDate>
       
-      <guid>/2006/06/20/the-myth-of-the-400-computer/</guid>
+      <guid>https://blog.schmichael.com/2006/06/20/the-myth-of-the-400-computer/</guid>
       <description>&lt;p&gt;While writing a hardware proposal for a small business yesterday, I had to estimate the cost of 8 new desktop computers. Time and time again I&amp;#8217;ve had clients surprised when I budget $800-$1,100 per computer when they&amp;#8217;ve seen the Dell ads for $350-$400 computers.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;There is no such thing as a $400 computer for businesses.&lt;/strong&gt;&lt;/p&gt;
@@ -130,10 +130,10 @@
     
     <item>
       <title>Hello Peoria</title>
-      <link>/2006/06/15/hello-peoria/</link>
+      <link>https://blog.schmichael.com/2006/06/15/hello-peoria/</link>
       <pubDate>Thu, 15 Jun 2006 00:00:00 +0000</pubDate>
       
-      <guid>/2006/06/15/hello-peoria/</guid>
+      <guid>https://blog.schmichael.com/2006/06/15/hello-peoria/</guid>
       <description>&lt;p&gt;Sam and I are finally getting settled in our new house in Peoria. We&amp;#8217;ve had plenty of fun experiences like:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -157,10 +157,10 @@
     
     <item>
       <title>The License Beast</title>
-      <link>/2006/05/09/the-license-beast/</link>
+      <link>https://blog.schmichael.com/2006/05/09/the-license-beast/</link>
       <pubDate>Tue, 09 May 2006 00:00:00 +0000</pubDate>
       
-      <guid>/2006/05/09/the-license-beast/</guid>
+      <guid>https://blog.schmichael.com/2006/05/09/the-license-beast/</guid>
       <description>&lt;p&gt;An &lt;a href=&#34;http://www.computerworld.com/action/article.do?command=viewArticleBasic&amp;amp;articleId=111186&#34;&gt;article over at Computer World&lt;/a&gt; is indirectly one of the best arguments for &lt;a href=&#34;http://www.fsf.org/licensing/licenses/gpl-faq.html&#34;&gt;Free Software&lt;/a&gt; I&amp;#8217;ve ever read. I&amp;#8217;ve attempted to navigate [Microsoft&amp;#8217;s various licensing schemes][3] for small businesses before, and its always been a confusing and ardous process.&lt;/p&gt;
 
 &lt;p&gt;The whole idea of per-seat software licensing seems inherently flawed to me. A great deal of time and resources seems to be wasted on it by both vendors and consumers.&lt;/p&gt;
@@ -171,10 +171,10 @@
     
     <item>
       <title>Moving to Peoria</title>
-      <link>/2006/04/28/moving-to-peoria/</link>
+      <link>https://blog.schmichael.com/2006/04/28/moving-to-peoria/</link>
       <pubDate>Fri, 28 Apr 2006 00:00:00 +0000</pubDate>
       
-      <guid>/2006/04/28/moving-to-peoria/</guid>
+      <guid>https://blog.schmichael.com/2006/04/28/moving-to-peoria/</guid>
       <description>&lt;p&gt;I&amp;#8217;m moving to &lt;a href=&#34;http://maps.google.com/maps?f=q&amp;amp;hl=en&amp;amp;q=peoria,+il&amp;amp;t=h&amp;amp;om=0&#34;&gt;Peoria, Illinois&lt;/a&gt;! My amazing wife Samantha got a job with the &lt;a href=&#34;http://www.fumcpeoria.org/&#34;&gt;First United Methodist Church&lt;/a&gt;, and we decided to move. I&amp;#8217;m going to continue working for &lt;a href=&#34;http://www.synthesyssolutions.com&#34;&gt;Synthesys&lt;/a&gt;, but I&amp;#8217;m looking for new clients in the Peoria area.&lt;/p&gt;
 
 &lt;p&gt;I&amp;#8217;d love to work with public schools and open source software. However, since I have experience with &lt;a href=&#34;http://www.nreca.org/AboutUs/Co-op101.htm&#34;&gt;rural electric cooperatives&lt;/a&gt; (from an IT perspective), I&amp;#8217;ll probably be trying to make contacts in that sector as well.&lt;/p&gt;
@@ -191,10 +191,10 @@
     
     <item>
       <title>Boss Blogging About Venezuela</title>
-      <link>/2006/03/28/boss-blogging-about-venezuela/</link>
+      <link>https://blog.schmichael.com/2006/03/28/boss-blogging-about-venezuela/</link>
       <pubDate>Tue, 28 Mar 2006 00:00:00 +0000</pubDate>
       
-      <guid>/2006/03/28/boss-blogging-about-venezuela/</guid>
+      <guid>https://blog.schmichael.com/2006/03/28/boss-blogging-about-venezuela/</guid>
       <description>&lt;p&gt;I haven&amp;#8217;t even gotten around to blogging about Synthesys&amp;#8217;s planned trip to Venezuela, but &lt;a href=&#34;http://blogs.synthesyssolutions.com/bob/&#34;&gt;my boss, Bob Rinella, has been posting like crazy!&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;The story goes, Bob visited a school/church in Venezuela a few months ago and &lt;a href=&#34;http://www.synthesyssolutions.com/venezuela_project&#34;&gt;has been planning a work trip Synthesys there ever since&lt;/a&gt;. The plan is to set the school up with &lt;a href=&#34;http://www.edubuntu.org/&#34;&gt;Edubuntu&lt;/a&gt; on old laptops for the children to learn basic typing and computing skills. &lt;a href=&#34;http://smh.com.au/news/breaking/venezuela-promotes-open-source-software/2006/03/25/1143084033526.html&#34;&gt;With the Venezuelan government&amp;#8217;s plan to move entirely to open source&lt;/a&gt;, learning Edubuntu will hopefully give these kids a boost in the world.&lt;/p&gt;
@@ -211,10 +211,10 @@
     
     <item>
       <title>OpenIT Progress</title>
-      <link>/2006/01/24/openit-progress/</link>
+      <link>https://blog.schmichael.com/2006/01/24/openit-progress/</link>
       <pubDate>Wed, 25 Jan 2006 00:00:00 +0000</pubDate>
       
-      <guid>/2006/01/24/openit-progress/</guid>
+      <guid>https://blog.schmichael.com/2006/01/24/openit-progress/</guid>
       <description>&lt;p&gt;I&amp;#8217;ve been keeping up a good pace of bug fixing in &lt;a href=&#34;https://sourceforge.net/projects/openit&#34;&gt;OpenIT&lt;/a&gt; thanks to user bug reports. I&amp;#8217;m really getting bitter about using &lt;a href=&#34;http://www.mysql.com&#34;&gt;MySQL&lt;/a&gt; 4.0, especially after we&amp;#8217;ve started using &lt;a href=&#34;http://www.postgresql.org&#34;&gt;PostgreSQL&lt;/a&gt; for a new project at Synthesys.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.postgresql.org/docs/8.1/interactive/tutorial-views.html&#34;&gt;Views&lt;/a&gt;? &lt;a href=&#34;http://www.postgresql.org/docs/8.1/interactive/tutorial-fk.html&#34;&gt;Foreign Key Constraints&lt;/a&gt;? [Cascading UPDATEs and DELETEs][6]? I&amp;#8217;ve had to implement these in PHP! Lord have mercy on my soul. While I appreciate how easy MySQL is to install and use, after using PostgreSQL for just a short while I&amp;#8217;m ready to drop MySQL and never look back.&lt;/p&gt;
@@ -225,10 +225,10 @@
     
     <item>
       <title>New SynthesysSolutions.com Design</title>
-      <link>/2006/01/07/new-synthesyssolutionscom-design/</link>
+      <link>https://blog.schmichael.com/2006/01/07/new-synthesyssolutionscom-design/</link>
       <pubDate>Sun, 08 Jan 2006 00:00:00 +0000</pubDate>
       
-      <guid>/2006/01/07/new-synthesyssolutionscom-design/</guid>
+      <guid>https://blog.schmichael.com/2006/01/07/new-synthesyssolutionscom-design/</guid>
       <description>&lt;p&gt;On Thursday I helped Tony upload the new &lt;a href=&#34;http://www.synthesyssolutions.com&#34;&gt;Synthesys Solutions&lt;/a&gt; home page. We replaced our old custom built PHP site with &lt;a href=&#34;http://drupal.org&#34;&gt;Drupal&lt;/a&gt;. There are still a few kinks to work out &amp;#8211; such as not mentioning [OpenIT][3]! &amp;#8211; but for the most part I&amp;#8217;m excited to finally have a powerful CMS driving our home page.&lt;/p&gt;
 
 &lt;p&gt;[3]: &lt;a href=&#34;http://openit.synthesyssolutions.com&#34;&gt;http://openit.synthesyssolutions.com&lt;/a&gt;&lt;/p&gt;
@@ -237,10 +237,10 @@
     
     <item>
       <title>Adventures in ASP.Net</title>
-      <link>/2005/12/17/adventures-in-aspnet/</link>
+      <link>https://blog.schmichael.com/2005/12/17/adventures-in-aspnet/</link>
       <pubDate>Sat, 17 Dec 2005 00:00:00 +0000</pubDate>
       
-      <guid>/2005/12/17/adventures-in-aspnet/</guid>
+      <guid>https://blog.schmichael.com/2005/12/17/adventures-in-aspnet/</guid>
       <description>&lt;p&gt;Lately, &lt;a href=&#34;http://blogs.synthesyssolutions.com/aaron/&#34;&gt;Aaron&lt;/a&gt; and I have been hacking on a &lt;a href=&#34;http://www.synthesyssolutions.com/&#34;&gt;Synthesys&lt;/a&gt; product that uses an ASP.Net Web Service to act as a sort of a proxy between two remote client applications. It&amp;#8217;s been a long and interesting road, especially since until recently the product was something we only used internally and hacked on occassionally.&lt;/p&gt;
 
 &lt;p&gt;So the poor web service has been bounced from &lt;a href=&#34;http://httpd.apache.org/&#34;&gt;Apache&lt;/a&gt;+&lt;a href=&#34;http://www.mono-project.com/ASP.NET#Apache_Hosting_with_Mod_Mono&#34;&gt;mod-mono&lt;/a&gt; on Linux to &lt;a href=&#34;http://www.mono-project.com/ASP.NET#XSP&#34;&gt;XSP&lt;/a&gt; on Linux to IIS6 on Windows 2003 Server (the horror!), and now I&amp;#8217;m secretly porting it back to &lt;a href=&#34;http://svn.myrealbox.com/viewcvs/trunk/xsp/?rev=54567&#34;&gt;XSP2&lt;/a&gt; on Linux.&lt;/p&gt;
@@ -264,10 +264,10 @@
     
     <item>
       <title>Stretching PHP</title>
-      <link>/2005/12/06/stretching-php/</link>
+      <link>https://blog.schmichael.com/2005/12/06/stretching-php/</link>
       <pubDate>Tue, 06 Dec 2005 00:00:00 +0000</pubDate>
       
-      <guid>/2005/12/06/stretching-php/</guid>
+      <guid>https://blog.schmichael.com/2005/12/06/stretching-php/</guid>
       <description>&lt;p&gt;My last post probably deserves a little more elaboration about what I&amp;#8217;m busy doing. Currently I&amp;#8217;m working on an internal PHP project that uses PHP in ways most people would find frightening:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -290,10 +290,10 @@
     
     <item>
       <title>Rural IT – Like India, Slightly Better Accents</title>
-      <link>/2005/11/22/rural-it-like-india-slightly-better-accents/</link>
+      <link>https://blog.schmichael.com/2005/11/22/rural-it-like-india-slightly-better-accents/</link>
       <pubDate>Tue, 22 Nov 2005 00:00:00 +0000</pubDate>
       
-      <guid>/2005/11/22/rural-it-like-india-slightly-better-accents/</guid>
+      <guid>https://blog.schmichael.com/2005/11/22/rural-it-like-india-slightly-better-accents/</guid>
       <description>&lt;p&gt;Wired News is running a great article on &lt;a href=&#34;http://wired-vig.wired.com/news/business/0,1367,69585,00.html?tw=wn_story_page_prev2&#34;&gt;outsourcing to Rural IT companies.&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;If you missed [my previous post about an ABC News story on the same subject][2], Synthesys is one of these rural IT consulting companies. We&amp;#8217;re quite similar to the company mentioned in the Wired News article except we&amp;#8217;re smaller. Even the price range listed in the article is pretty close to our own.&lt;/p&gt;
@@ -308,10 +308,10 @@
     
     <item>
       <title>I am Michael Bolton</title>
-      <link>/2005/11/04/i-am-michael-bolton/</link>
+      <link>https://blog.schmichael.com/2005/11/04/i-am-michael-bolton/</link>
       <pubDate>Fri, 04 Nov 2005 00:00:00 +0000</pubDate>
       
-      <guid>/2005/11/04/i-am-michael-bolton/</guid>
+      <guid>https://blog.schmichael.com/2005/11/04/i-am-michael-bolton/</guid>
       <description>&lt;p&gt;&lt;img src=&#34;http://blogs.synthesyssolutions.com/michael/wp-images/bolton3.jpg&#34; alt=&#34;Me&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;&lt;strong&gt;Proof:&lt;/strong&gt;&lt;/em&gt; I was listening to &lt;strong&gt;Jay-Z&lt;/strong&gt; (well, the &lt;a href=&#34;http://www.eff.org/IP/grey_tuesday.php&#34;&gt;Grey Album&lt;/a&gt;) while driving in my &lt;strong&gt;Ford Focus&lt;/strong&gt; to work as an &lt;strong&gt;IT consultant&lt;/strong&gt; while wearing my usual uniform of a &lt;strong&gt;blue button down shirt&lt;/strong&gt; and completely generic &lt;strong&gt;khakis&lt;/strong&gt;.&lt;/p&gt;

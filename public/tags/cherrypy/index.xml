@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Cherrypy on </title>
-    <link>/tags/cherrypy/</link>
-    <description>Recent content in Cherrypy on </description>
+    <title>Cherrypy on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/cherrypy/</link>
+    <description>Recent content in Cherrypy on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 18 Feb 2009 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/cherrypy/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/cherrypy/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>(Yet Another) Deploying Django with CherryPy Script</title>
-      <link>/2009/02/18/deploying-django-with-cherrypy/</link>
+      <link>https://blog.schmichael.com/2009/02/18/deploying-django-with-cherrypy/</link>
       <pubDate>Wed, 18 Feb 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/02/18/deploying-django-with-cherrypy/</guid>
+      <guid>https://blog.schmichael.com/2009/02/18/deploying-django-with-cherrypy/</guid>
       <description>&lt;p&gt;Recently I deployed a &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; project on an OSX server. I foolishly thought this would be as easy as on Linux until I ran into the mess that is _x86&lt;em&gt;64&lt;/em&gt; Apache + &lt;a href=&#34;http://www.modwsgi.org/&#34;&gt;mod_wsgi&lt;/a&gt;* + Django + psycopg2 + &lt;em&gt;i386&lt;/em&gt; PostgreSQL. After wasting far too much time googling and recompiling various bits trying to get everything happy, I followed &lt;a href=&#34;http://www.eflorenzano.com/blog/post/hosting-django-site-pure-python/&#34;&gt;Eric Florenzano&amp;#8217;s post&lt;/a&gt; on deploying Django using &lt;a href=&#34;http://www.cherrypy.org/&#34;&gt;CherryPy&lt;/a&gt;&amp;#8216;s** [wsgiserver][5].&lt;/p&gt;
 
 &lt;p&gt;Here&amp;#8217;s my lightly modified version of Eric&amp;#8217;s script:&lt;/p&gt;
@@ -76,10 +76,10 @@ if __name__ == &#34;__main__&#34;:
     
     <item>
       <title>Looking for CherryPy Case Studies</title>
-      <link>/2008/03/18/looking-for-cherrypy-case-studies/</link>
+      <link>https://blog.schmichael.com/2008/03/18/looking-for-cherrypy-case-studies/</link>
       <pubDate>Tue, 18 Mar 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/03/18/looking-for-cherrypy-case-studies/</guid>
+      <guid>https://blog.schmichael.com/2008/03/18/looking-for-cherrypy-case-studies/</guid>
       <description>&lt;div style=&#34;float: right; padding: 0px 0px 5px 5px;&#34;&gt;
   &lt;a href=&#34;http://cherrypy.org&#34;&gt;&lt;img src=&#34;http://michael.susens-schurter.com/files/cplogo.jpg&#34; alt=&#34;CherryPy Logo&#34; /&gt;&lt;/a&gt;
 &lt;/div&gt;
@@ -131,10 +131,10 @@ if __name__ == &#34;__main__&#34;:
     
     <item>
       <title>Permanent home for firewall-admin</title>
-      <link>/2008/02/17/permanent-home-for-firewall-admin/</link>
+      <link>https://blog.schmichael.com/2008/02/17/permanent-home-for-firewall-admin/</link>
       <pubDate>Sun, 17 Feb 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/02/17/permanent-home-for-firewall-admin/</guid>
+      <guid>https://blog.schmichael.com/2008/02/17/permanent-home-for-firewall-admin/</guid>
       <description>&lt;p&gt;The &lt;a href=&#34;http://michael.susens-schurter.com/blog/2007/11/06/recipe-for-a-transparent-linux-firewall-and-cherrypy-control-panel/&#34;&gt;little recipe I posted&lt;/a&gt; for a dedicated Linux firewall with a CherryPy powered administrative interface finally has a [permanent home over at Google Code][2].&lt;/p&gt;
 
 &lt;p&gt;Many thanks to Kyle Waremburg for creating the project page and helping me develop [firewall-admin][2]! I hope other people find it useful.&lt;/p&gt;
@@ -145,10 +145,10 @@ if __name__ == &#34;__main__&#34;:
     
     <item>
       <title>Fun with Django and modwsgi</title>
-      <link>/2008/02/05/fun-with-django-and-modwsgi/</link>
+      <link>https://blog.schmichael.com/2008/02/05/fun-with-django-and-modwsgi/</link>
       <pubDate>Wed, 06 Feb 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/02/05/fun-with-django-and-modwsgi/</guid>
+      <guid>https://blog.schmichael.com/2008/02/05/fun-with-django-and-modwsgi/</guid>
       <description>&lt;p&gt;Today I deployed my first &lt;a href=&#34;http://www.djangoproject.com/&#34;&gt;Django&lt;/a&gt; application for a client. Its yet-another-blog, so I&amp;#8217;ll refrain from posting the code and cluttering up the django-*blog* namespace on Google Code. Before you roll your eyes and complain about why I didn&amp;#8217;t use an existing solution, I think I have 2 somewhat valid reasons:&lt;/p&gt;
 
 &lt;ol&gt;
@@ -210,10 +210,10 @@ Alias /static/ /srv/spam/eggs/static/
     
     <item>
       <title>Fun with SQLObject and mxDateTime</title>
-      <link>/2007/11/29/fun-with-sqlobject-and-mxdatetime/</link>
+      <link>https://blog.schmichael.com/2007/11/29/fun-with-sqlobject-and-mxdatetime/</link>
       <pubDate>Fri, 30 Nov 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/11/29/fun-with-sqlobject-and-mxdatetime/</guid>
+      <guid>https://blog.schmichael.com/2007/11/29/fun-with-sqlobject-and-mxdatetime/</guid>
       <description>&lt;p&gt;I&amp;#8217;m working on a small &lt;a href=&#34;http://cherrypy.org&#34;&gt;CherryPy&lt;/a&gt; web service that among other things saves timestamps to a database. The timestamp is in &lt;a href=&#34;http://www.ietf.org/rfc/rfc3339.txt&#34;&gt;RFC 3339&lt;/a&gt; format (like &lt;code&gt;2007-07-31T16:05:00.000-05:00&lt;/code&gt;), and I needed to store the timezone.&lt;/p&gt;
 
 &lt;p&gt;Luckily &lt;a href=&#34;http://www.egenix.com/products/python/mxBase/mxDateTime/&#34;&gt;mxDateTime&lt;/a&gt; and SQLObject&amp;#8217;s DateTimeCol both support full dates with times and time zone. Unfortunately its not immediately obvious from &lt;a href=&#34;http://sqlobject.org/SQLObject.html&#34;&gt;SQLObject&amp;#8217;s lackluster documentation&lt;/a&gt; how to use mxDateTime instead of Python&amp;#8217;s built-in datetime.&lt;/p&gt;
@@ -250,10 +250,10 @@ print &#39;Local Timestamp:&#39;, bar.timestamp.localtime()
     
     <item>
       <title>Recipe for a Transparent Linux Firewall and CherryPy Control Panel</title>
-      <link>/2007/11/06/recipe-for-a-transparent-linux-firewall-and-cherrypy-control-panel/</link>
+      <link>https://blog.schmichael.com/2007/11/06/recipe-for-a-transparent-linux-firewall-and-cherrypy-control-panel/</link>
       <pubDate>Tue, 06 Nov 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/11/06/recipe-for-a-transparent-linux-firewall-and-cherrypy-control-panel/</guid>
+      <guid>https://blog.schmichael.com/2007/11/06/recipe-for-a-transparent-linux-firewall-and-cherrypy-control-panel/</guid>
       <description>&lt;div style=&#34;float: right; padding: 10px;&#34;&gt;
   &lt;a href=&#34;http://michael.susens-schurter.com/files/firewalladmin.png&#34;&gt;&lt;img alt=&#34;firewalladmin screenshot&#34; src=&#34;http://michael.susens-schurter.com/files/firewalladmin-small.png&#34; /&gt;&lt;/a&gt;
 &lt;/div&gt;
@@ -311,10 +311,10 @@ RewriteRule ^(.*)$ index.html [L,QSA]
     
     <item>
       <title>Every 3rd Safari Upload Fails</title>
-      <link>/2007/10/17/every-3rd-safari-upload-fails/</link>
+      <link>https://blog.schmichael.com/2007/10/17/every-3rd-safari-upload-fails/</link>
       <pubDate>Wed, 17 Oct 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/10/17/every-3rd-safari-upload-fails/</guid>
+      <guid>https://blog.schmichael.com/2007/10/17/every-3rd-safari-upload-fails/</guid>
       <description>&lt;div style=&#34;float: left;&#34;&gt;
   &lt;a href=&#34;http://cherrypy.org&#34;&gt;&lt;img src=&#34;http://michael.susens-schurter.com/files/cplogo.jpg&#34; alt=&#34;CherryPy Logo&#34; /&gt;&lt;/a&gt;
 &lt;/div&gt;

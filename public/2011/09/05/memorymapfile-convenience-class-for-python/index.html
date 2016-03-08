@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>MemoryMapFile Convenience Class for Python</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.15" />
+  <link href="" rel="alternate" type="application/rss+xml" title="schmichael&#39;s blog" />
+  <link href="https://blog.schmichael.com//css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://blog.schmichael.com//css/hc.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  
+    
+    </head>
+    <body>
+<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Herring Cove </div>
+      <div id = "wrapper">
+
+
+<div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="https://blog.schmichael.com//"><p class="navbar-brand">schmichael&#39;s blog</p></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+					
+					
+					<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+					<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+					<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+       
+       <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+					<img src="" />
+          <li class="sidebar-brand"><a href="https://blog.schmichael.com//"><h1 class="brand">schmichael&#39;s blog</h1></a><h3></h3></li>
+          <hr />
+					
+						<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+						<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+						<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          <hr />
+          <div id="social-wrapper">
+           
+           
+           
+           
+         </div>
+       </ul>
+     </div>
+
+
+
+     <div class="container">
+
+
+  <div id="article">
+   <div class="article-title">MemoryMapFile Convenience Class for Python</div>
+   <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2011-09-06</small></p> <hr/>
+   <div class="post">
+     <p>My <a href="/2011/05/15/sharing-python-data-between-processes-using-mmap/">obsession</a> with <a href="http://en.wikipedia.org/wiki/Mmap">mmap</a> hasn&#8217;t died, but while <a href="http://docs.python.org/library/mmap">Python&#8217;s mmap module</a> is a wonderful low level library it&#8217;s a bit hard for a newcomer to use properly.</p>
+
+<p>I&#8217;ve started toying with a convenience wrapper class for <code>mmap.mmap</code> (at least the Unix version):</p>
+
+<p>My original goal was to automatically <a href="http://docs.python.org/library/mmap#mmap.resize">grow</a> the mmap whenever the user attempts to write beyond the current size of the mmap file, but that&#8217;s going to take carefully wrapping quite a few methods (<code>write</code>, <code>__setitem__</code>, and maybe get/read methods too).</p>
+
+<p>If it becomes useful, I may use it in [mmstats][5].</p>
+
+<p>Feedback welcome!</p>
+
+<p><strong>Update:</strong> Discovered the hard way (segfaults) that resizing mmaps is tricky: the region can be moved but data will be copied. However, any existing pointers (from ctypes.<type>.from_buffer in my case) will now point to freed memory and segfault upon use.</p>
+
+<p>tl;dr &#8211; If at all possible, precompute the size of your mmap before using it.</p>
+
+<p>[5]: <a href="https://github.com/schmichael/mmstats">https://github.com/schmichael/mmstats</a></p>
+
+   </div>
+ </div>
+
+
+ <a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+ <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+ <ul class="pager">
+      &nbsp;<li class="previous"><a href="https://blog.schmichael.com/2011/11/05/failing-with-mongodb/"> Failing with MongoDB</a></li>
+      &nbsp;<li class="next"><a href="https://blog.schmichael.com/2011/05/15/sharing-python-data-between-processes-using-mmap/"> Sharing Python data between processes using mmap</a></li>
+</ul>
+
+
+
+    </ul>
+    </div>
+    <footer>
+
+        <p class="text-muted credit">&copy; . All rights reserved. </p>
+    </footer>
+ 
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/hc.js"></script>
+</body>
+
+</html>
+

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>IRC Bot to Post Links to Delicious</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.15" />
+  <link href="" rel="alternate" type="application/rss+xml" title="schmichael&#39;s blog" />
+  <link href="https://blog.schmichael.com//css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://blog.schmichael.com//css/hc.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  
+    
+    </head>
+    <body>
+<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Herring Cove </div>
+      <div id = "wrapper">
+
+
+<div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="https://blog.schmichael.com//"><p class="navbar-brand">schmichael&#39;s blog</p></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+					
+					
+					<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+					<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+					<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+       
+       <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+					<img src="" />
+          <li class="sidebar-brand"><a href="https://blog.schmichael.com//"><h1 class="brand">schmichael&#39;s blog</h1></a><h3></h3></li>
+          <hr />
+					
+						<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+						<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+						<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          <hr />
+          <div id="social-wrapper">
+           
+           
+           
+           
+         </div>
+       </ul>
+     </div>
+
+
+
+     <div class="container">
+
+
+  <div id="article">
+   <div class="article-title">IRC Bot to Post Links to Delicious</div>
+   <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2007-10-28</small></p> <hr/>
+   <div class="post">
+     <p>I lurk in an IRC chatroom with some friends and throughout the course of a day a lot of links are posted.</p>
+
+<p>I wanted to be able to catch up on the links without having to read through the entire channel backlog, so I hacked together a new module for <a href="http://inamidst.com/phenny/">Phenny</a> (a Python IRC bot) which posted the links to a <a href="http://del.icio.us/">Delicious</a> account. I subscribe to that account via Google Reader, and read through the latest Internet memes at my leisure. <img src="http://localhost/wp-includes/images/smilies/simple-smile.png" alt=":)" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+
+<p>To use my little hack:</p>
+
+<ol>
+<li>Install [pydelicious][3]</li>
+<li>Install <a href="http://inamidst.com/phenny/">Phenny</a></li>
+<li>copy the following code into a new file: <code>modules/delicious.py</code> <pre lang="python">#!/usr/bin/env python
+&ldquo;&rdquo;&rdquo;
+delicious.py - Automatically post URLs to delicious
+Author: Michael Schurter, <a href="http://michael.susens-schurter.com/">http://michael.susens-schurter.com/</a>
+License: Public Domain
+About: <a href="http://inamidst.com/phenny/">http://inamidst.com/phenny/</a>
+&ldquo;&rdquo;&rdquo;</li>
+</ol>
+
+<p>import re
+import pydelicious</p>
+
+<p>r = re.compile(r&rsquo;http\S*&lsquo;)</p>
+
+<p>def f_delicious(self, origin, match, args):
+  try:
+    matches = r.findall(match.group())
+    if matches:
+      d = pydelicious.DeliciousAPI(&lsquo;DELICIOUS_USERNAME&rsquo;, &lsquo;DELICIOUS_PASSWORD&rsquo;)
+      for url in matches:
+        title = &lsquo;%s: %s&rsquo; % (origin.nick, match.group())
+        if len(title) &gt; 50:
+          title = &lsquo;%s&hellip;&rsquo; % title[:50]
+        d.posts_add(
+          url=url,
+          description=title,
+          extended=match.group(),
+          # Add custom tags below
+          tags=&lsquo;oggbot oggbot-added-by:%s&rsquo; % origin.nick
+        )
+  except:
+    self.msg(origin.sender, &lsquo;Oops!  Missed that one.  Blame schmichael!&rsquo;)
+f_delicious.rule = r&rsquo;.*&rsquo;
+</pre></p>
+
+<ol>
+<li>Fill in delicious account information in the obvious place.</li>
+<li>Start/Restart Phenny and watch posted links appear in delicious.</ul></li>
+</ol>
+
+<p>There&#8217;s lots of room for improvement in the code, but it works for me!</p>
+
+<p><small>Sorry for poor tab spacing. I had vim configured for some Drupal hacking and forgot to switch back to 4-space tabs.</small></p>
+
+<p>[3]: <a href="http://code.google.com/p/pydelicious/">http://code.google.com/p/pydelicious/</a></p>
+
+   </div>
+ </div>
+
+
+ <a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+ <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+ <ul class="pager">
+      &nbsp;<li class="previous"><a href="https://blog.schmichael.com/2007/11/06/recipe-for-a-transparent-linux-firewall-and-cherrypy-control-panel/"> Recipe for a Transparent Linux Firewall and CherryPy Control Panel</a></li>
+      &nbsp;<li class="next"><a href="https://blog.schmichael.com/2007/10/28/simple-wordpress-upgrade-using-subversion/"> Simple WordPress Upgrade Using Subversion</a></li>
+</ul>
+
+
+
+    </ul>
+    </div>
+    <footer>
+
+        <p class="text-muted credit">&copy; . All rights reserved. </p>
+    </footer>
+ 
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/hc.js"></script>
+</body>
+
+</html>
+

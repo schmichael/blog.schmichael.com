@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Webdev on </title>
-    <link>/tags/webdev/</link>
-    <description>Recent content in Webdev on </description>
+    <title>Webdev on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/webdev/</link>
+    <description>Recent content in Webdev on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 18 Nov 2009 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/webdev/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/webdev/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Web Developer Contractor Rates</title>
-      <link>/2009/11/18/web-developer-contractor-rates/</link>
+      <link>https://blog.schmichael.com/2009/11/18/web-developer-contractor-rates/</link>
       <pubDate>Wed, 18 Nov 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/11/18/web-developer-contractor-rates/</guid>
+      <guid>https://blog.schmichael.com/2009/11/18/web-developer-contractor-rates/</guid>
       <description>&lt;p&gt;We just happened* to start chatting in the #pdxdjango IRC channel on Freenode about what the rates web developer contractors charge today, and I wanted to post my experiences after leaving the contractor world a few months ago after 2 years of more or less successful contracting either individually or via &lt;a href=&#34;http://lofiart.com&#34;&gt;Lo-Fi Art&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;A really rough table of my rates as a contractor:&lt;/p&gt;
@@ -110,10 +110,10 @@
     
     <item>
       <title>Google Chrome Frame</title>
-      <link>/2009/09/22/google-chrome-frame/</link>
+      <link>https://blog.schmichael.com/2009/09/22/google-chrome-frame/</link>
       <pubDate>Tue, 22 Sep 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/09/22/google-chrome-frame/</guid>
+      <guid>https://blog.schmichael.com/2009/09/22/google-chrome-frame/</guid>
       <description>&lt;p&gt;I maintain a web application that must support Internet Explorer 6, so I was delighted to hear about [Google Chrome Frame][1].&lt;/p&gt;
 
 &lt;p&gt;Unfortunately their warnings of its alpha status seem to be well founded. The 2 show-stoppers I ran into fairly quickly were:&lt;/p&gt;
@@ -131,10 +131,10 @@
     
     <item>
       <title>Join #webdevpdx on Freenode</title>
-      <link>/2008/10/31/join-webdevpdx-on-freenode/</link>
+      <link>https://blog.schmichael.com/2008/10/31/join-webdevpdx-on-freenode/</link>
       <pubDate>Fri, 31 Oct 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/10/31/join-webdevpdx-on-freenode/</guid>
+      <guid>https://blog.schmichael.com/2008/10/31/join-webdevpdx-on-freenode/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://twitter.com/chrispitzer/status/983462380&#34;&gt;Chris just created a channel for web developers in Portland, OR&lt;/a&gt; on Freenode, so if you&amp;#8217;re a web developer (or sysadmin or dba or designer or manager forced to deal with us webdevs) come on in!&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;irc://irc.freenode.net/webdevpdx&#34;&gt;#webdevpdx on irc.freenode.net&lt;/a&gt;&lt;/p&gt;
@@ -155,10 +155,10 @@
     
     <item>
       <title>JavaScript Collation Fail</title>
-      <link>/2008/07/14/javascript-collation-fail/</link>
+      <link>https://blog.schmichael.com/2008/07/14/javascript-collation-fail/</link>
       <pubDate>Mon, 14 Jul 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/07/14/javascript-collation-fail/</guid>
+      <guid>https://blog.schmichael.com/2008/07/14/javascript-collation-fail/</guid>
       <description>&lt;p&gt;In JavaScript, the &lt;a href=&#34;https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String/localeCompare&#34;&gt;localeCompare method on Strings&lt;/a&gt; seems like a great way to properly sort strings, but its not:&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://michael.susens-schurter.com/files/localecompare-x-browser.png&#34;&gt;&lt;img src=&#34;http://michael.susens-schurter.com/files/localecompare-x-browser.png&#34; alt=&#34;localeCompare Javasript method in 4 browsers&#34; /&gt;&lt;/a&gt;&lt;/p&gt;

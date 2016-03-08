@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Mongodb on </title>
-    <link>/tags/mongodb/</link>
-    <description>Recent content in Mongodb on </description>
+    <title>Mongodb on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/mongodb/</link>
+    <description>Recent content in Mongodb on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sat, 05 Nov 2011 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/mongodb/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/mongodb/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Failing with MongoDB</title>
-      <link>/2011/11/05/failing-with-mongodb/</link>
+      <link>https://blog.schmichael.com/2011/11/05/failing-with-mongodb/</link>
       <pubDate>Sat, 05 Nov 2011 00:00:00 +0000</pubDate>
       
-      <guid>/2011/11/05/failing-with-mongodb/</guid>
+      <guid>https://blog.schmichael.com/2011/11/05/failing-with-mongodb/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Sorry this isn&amp;#8217;t my best piece of writing and there seems to be some confusion. The dataset in question was first in a 1.8 master/slave pair and then migrated to sharded replica sets and 2.0.0.&lt;/p&gt;
 
 &lt;p&gt;For a bit of history of my dealings with MongoDB at Urban Airship, I gave a couple versions of a Scaling with MongoDB talk:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://opensourcebridge.org/2011/wiki/Scaling_with_MongoDB&#34;&gt;at Open Source Bridge (latest &amp;amp; greatest)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;/2011/02/02/schmongodb-slides-from-update-portland/&#34;&gt;at Update Portland (original, less polished version)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.schmichael.com/2011/02/02/schmongodb-slides-from-update-portland/&#34;&gt;at Update Portland (original, less polished version)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;My coworker Adam Lowry even gave a follow-up talk of sorts at &lt;a href=&#34;http://postgresopen.org/2011/schedule/presentations/98/&#34;&gt;Postgres Open 2011&lt;/a&gt; (&lt;a href=&#34;http://wiki.postgresql.org/images/7/7f/Adam-lowry-postgresopen2011.pdf&#34;&gt;slides&lt;/a&gt;) about migrating one of our datasets off of MongoDB and (back) on to PostgreSQL.&lt;/p&gt;
@@ -108,10 +108,10 @@
     
     <item>
       <title>schmongodb slides from Update Portland</title>
-      <link>/2011/02/02/schmongodb-slides-from-update-portland/</link>
+      <link>https://blog.schmichael.com/2011/02/02/schmongodb-slides-from-update-portland/</link>
       <pubDate>Thu, 03 Feb 2011 00:00:00 +0000</pubDate>
       
-      <guid>/2011/02/02/schmongodb-slides-from-update-portland/</guid>
+      <guid>https://blog.schmichael.com/2011/02/02/schmongodb-slides-from-update-portland/</guid>
       <description>&lt;p&gt;A few months ago someone in #pdxwebdev on Freenode asked an innocent &lt;a href=&#34;http://www.mongodb.org&#34;&gt;MongoDB&lt;/a&gt; question. In response I ranted seemingly endlessly about our experience with MongoDB at &lt;a href=&#34;http://urbanairship.com&#34;&gt;Urban Airship&lt;/a&gt;. After a few moments somebody (perhaps sarcastically? who can know on IRC) suggested I give a talk on my experiences with MongoDB. That led me to realize despite &lt;a href=&#34;http://calagator.org/&#34;&gt;Portland&amp;#8217;s amazing meetup culture&lt;/a&gt; there were no tech-meetups that focused on either:&lt;/p&gt;
 
 &lt;ol&gt;
@@ -150,10 +150,10 @@
     
     <item>
       <title>Less Pagination, More More</title>
-      <link>/2010/07/16/less-pagination-more-more/</link>
+      <link>https://blog.schmichael.com/2010/07/16/less-pagination-more-more/</link>
       <pubDate>Sat, 17 Jul 2010 00:00:00 +0000</pubDate>
       
-      <guid>/2010/07/16/less-pagination-more-more/</guid>
+      <guid>https://blog.schmichael.com/2010/07/16/less-pagination-more-more/</guid>
       <description>&lt;p&gt;We live in a brave new (to some) world of databases other than a relational database with a SQL interface. Normally end users never notice a difference, but the astute viewer may notice the slow demise of an old friend: pagination.&lt;/p&gt;
 
 &lt;p&gt;Traditionally with SQL databases pagination has looked something like this:&lt;/p&gt;
@@ -207,10 +207,10 @@
     
     <item>
       <title>Making Server-Side MongoDB Functions Less Awkward</title>
-      <link>/2010/01/11/making-server-side-mongodb-functions-less-awkward/</link>
+      <link>https://blog.schmichael.com/2010/01/11/making-server-side-mongodb-functions-less-awkward/</link>
       <pubDate>Tue, 12 Jan 2010 00:00:00 +0000</pubDate>
       
-      <guid>/2010/01/11/making-server-side-mongodb-functions-less-awkward/</guid>
+      <guid>https://blog.schmichael.com/2010/01/11/making-server-side-mongodb-functions-less-awkward/</guid>
       <description>&lt;p&gt;I&amp;#8217;ve recently switched my project at work to use MongoDB for the user database and a few other datasets.&lt;/p&gt;
 
 &lt;p&gt;Currently I don&amp;#8217;t use many JavaScript functions, but when I do I like to store them on the server so that they&amp;#8217;re accessible when I&amp;#8217;m poking around in a console.&lt;/p&gt;

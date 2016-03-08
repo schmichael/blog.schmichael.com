@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Mojave on </title>
-    <link>/tags/mojave/</link>
-    <description>Recent content in Mojave on </description>
+    <title>Mojave on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/mojave/</link>
+    <description>Recent content in Mojave on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 28 Jul 2008 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/mojave/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/mojave/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>The Mojave Experiment Hosted on Linux &amp; Apache</title>
-      <link>/2008/07/28/the-mojave-experiment-hosted-on-linux-apache/</link>
+      <link>https://blog.schmichael.com/2008/07/28/the-mojave-experiment-hosted-on-linux-apache/</link>
       <pubDate>Mon, 28 Jul 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/07/28/the-mojave-experiment-hosted-on-linux-apache/</guid>
+      <guid>https://blog.schmichael.com/2008/07/28/the-mojave-experiment-hosted-on-linux-apache/</guid>
       <description>&lt;p&gt;The Mojave Experiment is a silly Microsoft marketing ploy designed to convince people they really do like Windows Vista.&lt;/p&gt;
 
 &lt;p&gt;Regardless, [I find it hilarious that they don&amp;#8217;t use IIS to host their web site.][1]&lt;/p&gt;

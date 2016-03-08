@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Json on </title>
-    <link>/tags/json/</link>
-    <description>Recent content in Json on </description>
+    <title>Json on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/json/</link>
+    <description>Recent content in Json on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sun, 26 Apr 2009 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/json/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/json/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Handy Python Progress for JSON module</title>
-      <link>/2009/04/26/handy-python-progress-for-json-module/</link>
+      <link>https://blog.schmichael.com/2009/04/26/handy-python-progress-for-json-module/</link>
       <pubDate>Sun, 26 Apr 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/04/26/handy-python-progress-for-json-module/</guid>
+      <guid>https://blog.schmichael.com/2009/04/26/handy-python-progress-for-json-module/</guid>
       <description>&lt;p&gt;I&amp;#8217;ve been spending a good deal of time the past couple of days processing large JSON files to try and fix some corrupted data (long story, short version: my fault). While JSON is a fast file format to work with, processing &amp;gt; 50 MB of any data format takes some time.&lt;/p&gt;
 
 &lt;p&gt;So to give myself some idea of what was going on, I whipped up a small progress bar for Python 2.6&amp;#8217;s &lt;a href=&#34;http://docs.python.org/library/json.html&#34;&gt;json&lt;/a&gt; module (works on [simplejson][2] if you&amp;#8217;re still using 2.&lt;sup&gt;4&lt;/sup&gt;&amp;frasl;&lt;sub&gt;2&lt;/sub&gt;.5):&lt;/p&gt;

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Rant on </title>
-    <link>/tags/rant/</link>
-    <description>Recent content in Rant on </description>
+    <title>Rant on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/rant/</link>
+    <description>Recent content in Rant on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 22 Sep 2008 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/rant/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/rant/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>APIs FTW</title>
-      <link>/2008/09/21/apis-ftw/</link>
+      <link>https://blog.schmichael.com/2008/09/21/apis-ftw/</link>
       <pubDate>Mon, 22 Sep 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/09/21/apis-ftw/</guid>
+      <guid>https://blog.schmichael.com/2008/09/21/apis-ftw/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://www.theregister.co.uk/2008/09/22/dziuba_anti_revolution/&#34;&gt;Thanks to El Reg for reminding us that new APIs really aren&amp;#8217;t any reason to get excited.&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;My $0.02 (because everyone is &lt;em&gt;dying&lt;/em&gt; to know):&lt;/p&gt;

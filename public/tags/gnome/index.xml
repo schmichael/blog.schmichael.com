@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Gnome on </title>
-    <link>/tags/gnome/</link>
-    <description>Recent content in Gnome on </description>
+    <title>Gnome on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/gnome/</link>
+    <description>Recent content in Gnome on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 03 Jun 2009 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/gnome/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/gnome/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>My Gnome 3.0: A Real Web Desktop</title>
-      <link>/2009/06/02/my-gnome-30-a-real-web-desktop/</link>
+      <link>https://blog.schmichael.com/2009/06/02/my-gnome-30-a-real-web-desktop/</link>
       <pubDate>Wed, 03 Jun 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/06/02/my-gnome-30-a-real-web-desktop/</guid>
+      <guid>https://blog.schmichael.com/2009/06/02/my-gnome-30-a-real-web-desktop/</guid>
       <description>&lt;p&gt;So I missed the &lt;a href=&#34;http://www.google.com/cse?cx=007525575524326405779%3Ac0gv0y410u0&amp;amp;q=gnome+3.0&amp;amp;cof=FORID%3A0&#34;&gt;stream of What I Want for &lt;strike&gt;Christmas&lt;/strike&gt; Gnome 3.0&lt;/a&gt; by &amp;#8230; a while, but better late than never!*&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;The Win&lt;/strong&gt;&lt;/p&gt;
@@ -80,10 +80,10 @@
     
     <item>
       <title>Keeping all your notes in sync with Dropbox and Tomboy</title>
-      <link>/2009/04/17/in-sync-with-dropbox-and-tomboy/</link>
+      <link>https://blog.schmichael.com/2009/04/17/in-sync-with-dropbox-and-tomboy/</link>
       <pubDate>Sat, 18 Apr 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/04/17/in-sync-with-dropbox-and-tomboy/</guid>
+      <guid>https://blog.schmichael.com/2009/04/17/in-sync-with-dropbox-and-tomboy/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://projects.gnome.org/tomboy/&#34;&gt;Tomboy&lt;/a&gt; is a wonderful note taking program for Gnome. It has some synchronization features built-in, but not everyone has a server to store their notes for synchronizing between multiple computers.&lt;/p&gt;
 
 &lt;p&gt;Enter &lt;a href=&#34;https://www.getdropbox.com/referrals/NTE2ODkwNDk&#34;&gt;Dropbox&lt;/a&gt;: a service for synchronizing files between computers. It works great in Gnome (Windows and Mac OSX as well).&lt;/p&gt;
@@ -98,10 +98,10 @@
     
     <item>
       <title>Why not Subversion &#43; DVCS of Choice?</title>
-      <link>/2009/01/06/why-not-subversion-dvcs-of-choice/</link>
+      <link>https://blog.schmichael.com/2009/01/06/why-not-subversion-dvcs-of-choice/</link>
       <pubDate>Wed, 07 Jan 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/01/06/why-not-subversion-dvcs-of-choice/</guid>
+      <guid>https://blog.schmichael.com/2009/01/06/why-not-subversion-dvcs-of-choice/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://michael.susens-schurter.com/blog/2009/01/04/time-to-learn-git/&#34;&gt;A follow-up to my last post on DVCSes&amp;#8230;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://planet.gnome.org/&#34;&gt;Gnomers&lt;/a&gt; have been &lt;a href=&#34;http://wingolog.org/archives/2009/01/06/git-and-bzr&#34;&gt;discussing DVCSes a lot lately&lt;/a&gt;, and at least one seems to prefer &lt;a href=&#34;http://blogs.gnome.org/johncarr/2008/12/11/dvcs-for-gnome/&#34;&gt;bzr as the repository format and git as the protocol it speaks.&lt;/a&gt; &lt;small&gt;If this sounds like madness to you, you&amp;#8217;re not alone.&lt;/small&gt;&lt;/p&gt;
@@ -150,10 +150,10 @@
     
     <item>
       <title>Fixing Gnome Notification’s Popup Location</title>
-      <link>/2008/12/01/fixing-gnome-notifications-popup-location/</link>
+      <link>https://blog.schmichael.com/2008/12/01/fixing-gnome-notifications-popup-location/</link>
       <pubDate>Tue, 02 Dec 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/12/01/fixing-gnome-notifications-popup-location/</guid>
+      <guid>https://blog.schmichael.com/2008/12/01/fixing-gnome-notifications-popup-location/</guid>
       <description>&lt;p&gt;Gnome notifications popup in the lower left corner of your desktop by default* which constantly annoys me. I usually have a terminal open in the lower left corner, and having my work covered by notifications is quite annoying.&lt;/p&gt;
 
 &lt;p&gt;Luckily the fix is easy:&lt;/p&gt;
@@ -178,7 +178,7 @@ True
 True
 &lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&#34;/files/notification-top_right.png&#34; alt=&#34;Notification in the upper right.&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.schmichael.com/files/notification-top_right.png&#34; alt=&#34;Notification in the upper right.&#34; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;at least on Gnome 2.22.3 on Debian Sid with notification-daemon 0.3.7-1+b1&lt;/li&gt;
@@ -192,10 +192,10 @@ True
     
     <item>
       <title>Listing All Passwords Stored in Gnome Keyring</title>
-      <link>/2008/10/30/listing-all-passwords-stored-in-gnome-keyring/</link>
+      <link>https://blog.schmichael.com/2008/10/30/listing-all-passwords-stored-in-gnome-keyring/</link>
       <pubDate>Fri, 31 Oct 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/10/30/listing-all-passwords-stored-in-gnome-keyring/</guid>
+      <guid>https://blog.schmichael.com/2008/10/30/listing-all-passwords-stored-in-gnome-keyring/</guid>
       <description>&lt;p&gt;I was toying with writing my first desktop application in years and got distracted by how cool &lt;a href=&#34;http://live.gnome.org/GnomeKeyring&#34;&gt;Gnome Keyring&lt;/a&gt; is. Of course storing and retrieving passwords is pretty mundane, so here&amp;#8217;s a fun example that dumps all of the current user&amp;#8217;s passwords:&lt;/p&gt;
 
 &lt;pre lang=&#34;python&#34;&gt;#!/usr/bin/env python

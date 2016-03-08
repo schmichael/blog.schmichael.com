@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ATI Proprietary Linux Driver Annoyance</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.15" />
+  <link href="" rel="alternate" type="application/rss+xml" title="schmichael&#39;s blog" />
+  <link href="https://blog.schmichael.com//css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://blog.schmichael.com//css/hc.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  
+    
+    </head>
+    <body>
+<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Herring Cove </div>
+      <div id = "wrapper">
+
+
+<div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="https://blog.schmichael.com//"><p class="navbar-brand">schmichael&#39;s blog</p></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+					
+					
+					<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+					<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+					<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+       
+       <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+					<img src="" />
+          <li class="sidebar-brand"><a href="https://blog.schmichael.com//"><h1 class="brand">schmichael&#39;s blog</h1></a><h3></h3></li>
+          <hr />
+					
+						<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+						<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+						<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          <hr />
+          <div id="social-wrapper">
+           
+           
+           
+           
+         </div>
+       </ul>
+     </div>
+
+
+
+     <div class="container">
+
+
+  <div id="article">
+   <div class="article-title">ATI Proprietary Linux Driver Annoyance</div>
+   <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2007-03-06</small></p> <hr/>
+   <div class="post">
+     <p>If you use dual monitors with an ATI video card and [Gnome][1], don&#8217;t use Gnome&#8217;s Screen Resolution capplet. The Screen Resolution capplet will reset the &#8220;<code>DesktopSetup</code>&#8221; option in your <code>/etc/X11/xorg.conf</code> file to the default of &#8220;<code>clone</code>&#8220;.If you&#8217;ve already used the Screen Resolution capplet and don&#8217;t want your desktop cloned, remove the following folder from your home directory:<code>~/.gconf/desktop/gnome/screen</code></p>
+
+<p>I really wish Gnome&#8217;s Configuration Editor would let you delete folders, but just deleting the folder and restarting Gnome works fine.</p>
+
+<p>Thanks to everyone in #gnome on irc.gnome.org who helped me figure this one out!</p>
+
+<p><strong>Update:</strong> I&#8217;m an idiot. One of the students that uses Linux pointed out to me that the ATI drivers simple use a wider resolution when spanning monitors. So if I add &#8220;2048&#215;768&#8221; to my xorg.conf, the Screen Resolution capplet will work again.</p>
+
+<p>[1]: <a href="http://www.gnome.org/">http://www.gnome.org/</a></p>
+
+   </div>
+ </div>
+
+
+ <a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+ <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+ <ul class="pager">
+      &nbsp;<li class="previous"><a href="https://blog.schmichael.com/2007/03/07/connecting-sqlobjects-to-postgresql-via-ssl/"> Connecting SQLObjects to PostgreSQL via SSL</a></li>
+      &nbsp;<li class="next"><a href="https://blog.schmichael.com/2007/02/27/dan-was-right/"> Dan Was Right</a></li>
+</ul>
+
+
+
+    </ul>
+    </div>
+    <footer>
+
+        <p class="text-muted credit">&copy; . All rights reserved. </p>
+    </footer>
+ 
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/hc.js"></script>
+</body>
+
+</html>
+

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Cassandra on </title>
-    <link>/tags/cassandra/</link>
-    <description>Recent content in Cassandra on </description>
+    <title>Cassandra on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/cassandra/</link>
+    <description>Recent content in Cassandra on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sat, 17 Jul 2010 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/cassandra/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/cassandra/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Less Pagination, More More</title>
-      <link>/2010/07/16/less-pagination-more-more/</link>
+      <link>https://blog.schmichael.com/2010/07/16/less-pagination-more-more/</link>
       <pubDate>Sat, 17 Jul 2010 00:00:00 +0000</pubDate>
       
-      <guid>/2010/07/16/less-pagination-more-more/</guid>
+      <guid>https://blog.schmichael.com/2010/07/16/less-pagination-more-more/</guid>
       <description>&lt;p&gt;We live in a brave new (to some) world of databases other than a relational database with a SQL interface. Normally end users never notice a difference, but the astute viewer may notice the slow demise of an old friend: pagination.&lt;/p&gt;
 
 &lt;p&gt;Traditionally with SQL databases pagination has looked something like this:&lt;/p&gt;

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Installing fglrx (ATI) drivers in Debian Etch</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.15" />
+  <link href="" rel="alternate" type="application/rss+xml" title="schmichael&#39;s blog" />
+  <link href="https://blog.schmichael.com//css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://blog.schmichael.com//css/hc.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  
+    
+    </head>
+    <body>
+<div class="nav-toggle"><i class="fa fa-bars fa-2x"></i> Herring Cove </div>
+      <div id = "wrapper">
+
+
+<div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="https://blog.schmichael.com//"><p class="navbar-brand">schmichael&#39;s blog</p></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+					
+					
+					<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+					<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+					<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+       
+       <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+					<img src="" />
+          <li class="sidebar-brand"><a href="https://blog.schmichael.com//"><h1 class="brand">schmichael&#39;s blog</h1></a><h3></h3></li>
+          <hr />
+					
+						<li><a href="https://blog.schmichael.com//blog/">Blog </a></li>
+					
+						<li><a href="https://blog.schmichael.com//about-me/">About </a></li>
+					
+						<li><a href="https://blog.schmichael.com//">Home </a></li>
+					
+          <hr />
+          <div id="social-wrapper">
+           
+           
+           
+           
+         </div>
+       </ul>
+     </div>
+
+
+
+     <div class="container">
+
+
+  <div id="article">
+   <div class="article-title">Installing fglrx (ATI) drivers in Debian Etch</div>
+   <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2006-11-20</small></p> <hr/>
+   <div class="post">
+     <p>The instructions in <strong>/usr/share/doc/fglrx-kernel-src/README.Debian.gz</strong> left something to be desired, so here&#8217;s how I installed the official <strong>ATI display drivers</strong> (<em>fglrx</em>) in <a href="http://www.us.debian.org/releases/etch/">Debian Etch</a> (<em>without rebooting!</em>):</p>
+
+<p>Here are the relevant packages I have installed. This list may not be exactly what you need but should work. Install using <em>Synaptic</em> or <em>apt-get</em> or what-ever-you-want.</p>
+
+<ul>
+<li>fglrx-control, fglrx-driver, fglrx-kernel-src &#8211; 8.28.8-3</li>
+<li>module-assistant &#8211; 0.10.7</li>
+<li>mesa-utils &#8211; 6.3.2-2.1 (for the <em>glxinfo</em> command)</li>
+</ul>
+
+<p>Just for reference, here&#8217;s some of my system information:</p>
+
+<ul>
+<li>Dell Optiplex GX620</li>
+<li>ATI RV380 [Radeon X600 (PCI-E)]</li>
+<li>Debian 4.0 aka Etch (&#8220;testing&#8221; release as of this post)</li>
+<li>Kernel package: linux-image-2.6.17.2-686 &#8211; 2.6.17-9</li>
+<li>Gnome 2.14 (important because I use <em>gdm</em> while KDE users probably use <em>kdm</em>)</li>
+</ul>
+
+<p>As root run the following:</p>
+
+<ol>
+<li>cd /usr/src</li>
+<li>module-assistant prepare</li>
+<li>module-assistant a-i fglrx</li>
+<li><em>Edit your</em> /etc/X11/xorg.conf <em>file, and set your display driver to</em> <strong>fglrx</strong> <em>(it is probably currently set to</em> <strong>radeon</strong>_, if not, step #7 will probably be different for you)</li>
+</ol>
+
+<p>_
+  5. _Exit Gnome (or KDE, just get out of X Windows), press ctrl-alt-F1 to get a console, login as root.</p>
+
+<p>_
+  6. /etc/init.d/gdm stop
+  7. modprobe -r radeon
+  8. modprobe fglrx
+  9. /etc/init.d/gdm start
+ 10. <em><strong>Done!</strong></em></p>
+
+<p>To verify that it is installed correctly go to <em>Desktop</em> &gt; <em>Administration</em> &gt; <em>ATI Control Panel</em> and make sure the Renderer is something like <em>RADEON X600 Pro Generic</em>. Also run the excellent <strong>glxinfo</strong> tool and make sure it contains the line &#8220;direct rendering: Yes&#8221;.</p>
+
+<p>Many thanks to [dcarvil at forums.debian.net whose post helped me figure out step #7][2].</p>
+
+<p><strong>Update:</strong> This configuration <strong>does not seem to work with the Composite X.org extension</strong> needed to use <em><strong>AIGLX/Compiz</strong></em>.Â  AIGLX/Compiz is so new, and there are so many conflicting web sites on how to get it working, that I probably won&#8217;t try to fix this error for a while.</p>
+
+<p>[2]: <a href="http://forums.debian.net/viewtopic.php?t=9945&amp;sid=bbb26d5e9c78579e107f9367998d5234">http://forums.debian.net/viewtopic.php?t=9945&amp;sid=bbb26d5e9c78579e107f9367998d5234</a></p>
+
+   </div>
+ </div>
+
+
+ <a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a>
+ <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+ <ul class="pager">
+      &nbsp;<li class="previous"><a href="https://blog.schmichael.com/2006/11/21/interop-brain-dump/"> Interop Brain Dump</a></li>
+      &nbsp;<li class="next"><a href="https://blog.schmichael.com/2006/11/17/finding-logged-in-users-by-ip-using-sambaad/"> Finding Logged In Users by IP using Samba/AD</a></li>
+</ul>
+
+
+
+    </ul>
+    </div>
+    <footer>
+
+        <p class="text-muted credit">&copy; . All rights reserved. </p>
+    </footer>
+ 
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/hc.js"></script>
+</body>
+
+</html>
+

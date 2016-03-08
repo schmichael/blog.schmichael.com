@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>It on </title>
-    <link>/categories/it/</link>
-    <description>Recent content in It on </description>
+    <title>It on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/categories/it/</link>
+    <description>Recent content in It on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 31 Oct 2008 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/categories/it/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/categories/it/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Join #webdevpdx on Freenode</title>
-      <link>/2008/10/31/join-webdevpdx-on-freenode/</link>
+      <link>https://blog.schmichael.com/2008/10/31/join-webdevpdx-on-freenode/</link>
       <pubDate>Fri, 31 Oct 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/10/31/join-webdevpdx-on-freenode/</guid>
+      <guid>https://blog.schmichael.com/2008/10/31/join-webdevpdx-on-freenode/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://twitter.com/chrispitzer/status/983462380&#34;&gt;Chris just created a channel for web developers in Portland, OR&lt;/a&gt; on Freenode, so if you&amp;#8217;re a web developer (or sysadmin or dba or designer or manager forced to deal with us webdevs) come on in!&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;irc://irc.freenode.net/webdevpdx&#34;&gt;#webdevpdx on irc.freenode.net&lt;/a&gt;&lt;/p&gt;
@@ -34,10 +34,10 @@
     
     <item>
       <title>Summer of Hacks</title>
-      <link>/2008/05/13/summer-of-hacks/</link>
+      <link>https://blog.schmichael.com/2008/05/13/summer-of-hacks/</link>
       <pubDate>Tue, 13 May 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/05/13/summer-of-hacks/</guid>
+      <guid>https://blog.schmichael.com/2008/05/13/summer-of-hacks/</guid>
       <description>&lt;p&gt;My &lt;a href=&#34;http://www.linode.com/&#34;&gt;Linode&lt;/a&gt; has been experiencing a huge number of brute force login attempts in the past week. I don&amp;#8217;t keep detailed statistics, but I would guess there have been &lt;strong&gt;300 attempts in the past week&lt;/strong&gt; as opposed to &lt;em&gt;the usual rate of about 500 attempts over 200 days (2-3 attempts per day)&lt;/em&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://denyhosts.sourceforge.net/&#34;&gt;Denyhosts&lt;/a&gt; has been doing its job perfectly. It should be illegal to run a Internet exposed SSH server without it or a similar tool.*&lt;/p&gt;
@@ -52,10 +52,10 @@
     
     <item>
       <title>Easy Rsync Remote Backups Using SSH Keys</title>
-      <link>/2008/03/19/easy-rsync-remote-backups-using-ssh-keys/</link>
+      <link>https://blog.schmichael.com/2008/03/19/easy-rsync-remote-backups-using-ssh-keys/</link>
       <pubDate>Thu, 20 Mar 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/03/19/easy-rsync-remote-backups-using-ssh-keys/</guid>
+      <guid>https://blog.schmichael.com/2008/03/19/easy-rsync-remote-backups-using-ssh-keys/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://www.samba.org/rsync/&#34;&gt;Rsync&lt;/a&gt; is an excellent file transfer utility thats especially well suited for backing up files over the Internet because it only transfers the data that has changed. A friend asked me how to set it up, so I thought I&amp;#8217;d post what I sent him here.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; Backup a directory from computer &lt;code&gt;Zim&lt;/code&gt; to computer &lt;code&gt;Ark&lt;/code&gt;&lt;/p&gt;
@@ -129,10 +129,10 @@
     
     <item>
       <title>Permanent home for firewall-admin</title>
-      <link>/2008/02/17/permanent-home-for-firewall-admin/</link>
+      <link>https://blog.schmichael.com/2008/02/17/permanent-home-for-firewall-admin/</link>
       <pubDate>Sun, 17 Feb 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/02/17/permanent-home-for-firewall-admin/</guid>
+      <guid>https://blog.schmichael.com/2008/02/17/permanent-home-for-firewall-admin/</guid>
       <description>&lt;p&gt;The &lt;a href=&#34;http://michael.susens-schurter.com/blog/2007/11/06/recipe-for-a-transparent-linux-firewall-and-cherrypy-control-panel/&#34;&gt;little recipe I posted&lt;/a&gt; for a dedicated Linux firewall with a CherryPy powered administrative interface finally has a [permanent home over at Google Code][2].&lt;/p&gt;
 
 &lt;p&gt;Many thanks to Kyle Waremburg for creating the project page and helping me develop [firewall-admin][2]! I hope other people find it useful.&lt;/p&gt;
@@ -143,10 +143,10 @@
     
     <item>
       <title>Hostname Tab-Completion for OpenSSH</title>
-      <link>/2008/01/30/hostname-tab-completion-for-openssh/</link>
+      <link>https://blog.schmichael.com/2008/01/30/hostname-tab-completion-for-openssh/</link>
       <pubDate>Wed, 30 Jan 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/01/30/hostname-tab-completion-for-openssh/</guid>
+      <guid>https://blog.schmichael.com/2008/01/30/hostname-tab-completion-for-openssh/</guid>
       <description>&lt;p&gt;I use &lt;a href=&#34;http://openssh.org/&#34;&gt;OpenSSH&lt;/a&gt; daily. In fact the only app I probably use more is &lt;a href=&#34;http://www.vim.org/&#34;&gt;vim&lt;/a&gt;. However, until yesterday I was typing out the full username and hostname when using ssh:&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;ssh username@ridiculouslylong.domain.com&lt;/code&gt;&lt;/p&gt;
@@ -188,10 +188,10 @@ Host domain3.com&lt;/code&gt;&lt;/p&gt;
     
     <item>
       <title>Wireless Bridges are a Scam</title>
-      <link>/2007/12/18/wireless-bridges-are-a-scam/</link>
+      <link>https://blog.schmichael.com/2007/12/18/wireless-bridges-are-a-scam/</link>
       <pubDate>Tue, 18 Dec 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/12/18/wireless-bridges-are-a-scam/</guid>
+      <guid>https://blog.schmichael.com/2007/12/18/wireless-bridges-are-a-scam/</guid>
       <description>&lt;p&gt;Disclaimer: I am not a hardware guy. The days when I enjoyed cracking open a computer case and poking around are long since past. These days if I can&amp;#8217;t fix something via keyboard, I want no part of it.&lt;/p&gt;
 
 &lt;p&gt;Unfortunately, for a client I needed to extend a LAN from Building A across 30 feet of asphalt to Building B. Time to don my Net Admin hat to install a nice straightforward WiFi bridge.&lt;/p&gt;
@@ -218,10 +218,10 @@ Host domain3.com&lt;/code&gt;&lt;/p&gt;
     
     <item>
       <title>Recipe for a Transparent Linux Firewall and CherryPy Control Panel</title>
-      <link>/2007/11/06/recipe-for-a-transparent-linux-firewall-and-cherrypy-control-panel/</link>
+      <link>https://blog.schmichael.com/2007/11/06/recipe-for-a-transparent-linux-firewall-and-cherrypy-control-panel/</link>
       <pubDate>Tue, 06 Nov 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/11/06/recipe-for-a-transparent-linux-firewall-and-cherrypy-control-panel/</guid>
+      <guid>https://blog.schmichael.com/2007/11/06/recipe-for-a-transparent-linux-firewall-and-cherrypy-control-panel/</guid>
       <description>&lt;div style=&#34;float: right; padding: 10px;&#34;&gt;
   &lt;a href=&#34;http://michael.susens-schurter.com/files/firewalladmin.png&#34;&gt;&lt;img alt=&#34;firewalladmin screenshot&#34; src=&#34;http://michael.susens-schurter.com/files/firewalladmin-small.png&#34; /&gt;&lt;/a&gt;
 &lt;/div&gt;
@@ -279,10 +279,10 @@ RewriteRule ^(.*)$ index.html [L,QSA]
     
     <item>
       <title>I Love Linode</title>
-      <link>/2007/08/15/i-love-linode/</link>
+      <link>https://blog.schmichael.com/2007/08/15/i-love-linode/</link>
       <pubDate>Thu, 16 Aug 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/08/15/i-love-linode/</guid>
+      <guid>https://blog.schmichael.com/2007/08/15/i-love-linode/</guid>
       <description>&lt;p&gt;I just signed up for a new &lt;a href=&#34;http://www.linode.com/&#34;&gt;Linode&lt;/a&gt; account. This is the fourth account I&amp;#8217;ve created with them over the years, and I&amp;#8217;ve always been very pleased. I wish I do a side-by-side comparison with another &lt;a href=&#34;http://en.wikipedia.org/wiki/Vps&#34;&gt;VPS&lt;/a&gt; host, but I&amp;#8217;ve never had any reason to shop around.&lt;/p&gt;
 
 &lt;p&gt;&lt;small&gt;I guess I did administer a Windows 2003 VPS on &lt;a href=&#34;http://www.godaddy.com/&#34;&gt;GoDaddy&lt;/a&gt; for a while. The experience was too horrific to even try to compare to Linode. Why anyone would want a Windows web server is beyond me. At the time we had been fooled into using ASP.NET to build a huge web application. I&amp;#8217;ll never make that mistake again.&lt;/small&gt;&lt;/p&gt;
@@ -311,10 +311,10 @@ RewriteRule ^(.*)$ index.html [L,QSA]
     
     <item>
       <title>Handy .Net Service Template</title>
-      <link>/2007/02/15/handy-net-service-template/</link>
+      <link>https://blog.schmichael.com/2007/02/15/handy-net-service-template/</link>
       <pubDate>Thu, 15 Feb 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/02/15/handy-net-service-template/</guid>
+      <guid>https://blog.schmichael.com/2007/02/15/handy-net-service-template/</guid>
       <description>&lt;p&gt;I love .Net Services. Its a handy way to create background processes, and they work beautifully in both Windows and Linux (thanks to Mono!).&lt;/p&gt;
 
 &lt;p&gt;However, every time I create one I find myself writing a lot of the same code with minor variations:&lt;/p&gt;
@@ -348,10 +348,10 @@ RewriteRule ^(.*)$ index.html [L,QSA]
     
     <item>
       <title>System Information for Windows on Linux</title>
-      <link>/2007/02/15/system-information-for-windows-on-linux/</link>
+      <link>https://blog.schmichael.com/2007/02/15/system-information-for-windows-on-linux/</link>
       <pubDate>Thu, 15 Feb 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/02/15/system-information-for-windows-on-linux/</guid>
+      <guid>https://blog.schmichael.com/2007/02/15/system-information-for-windows-on-linux/</guid>
       <description>&lt;p&gt;I saw &lt;a href=&#34;http://www.gtopala.com/&#34;&gt;System Information for Windows&lt;/a&gt; posted on &lt;a href=&#34;http://lifehacker.com/software/information/screenshot-tour-learn-everything-about-your-pc-with-siw-236760.php&#34;&gt;Lifehacker&lt;/a&gt; and couldn&amp;#8217;t resist:&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://michael.susens-schurter.com/blog/wp-content/uploads/2007/02/siw-screenshot.png&#34; title=&#34;SIW on Linux&#34;&gt;&lt;img alt=&#34;SIW on Linux&#34; id=&#34;image189&#34; src=&#34;http://michael.susens-schurter.com/blog/wp-content/uploads/2007/02/siw-screenshot.thumbnail.png&#34; /&gt;&lt;/a&gt;{.imagelink}&lt;/p&gt;
@@ -366,10 +366,10 @@ RewriteRule ^(.*)$ index.html [L,QSA]
     
     <item>
       <title>BBC Article Comparing Vista, OSX, and Linux</title>
-      <link>/2007/01/29/bbc-article-comparing-vista-osx-and-linux/</link>
+      <link>https://blog.schmichael.com/2007/01/29/bbc-article-comparing-vista-osx-and-linux/</link>
       <pubDate>Tue, 30 Jan 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/01/29/bbc-article-comparing-vista-osx-and-linux/</guid>
+      <guid>https://blog.schmichael.com/2007/01/29/bbc-article-comparing-vista-osx-and-linux/</guid>
       <description>&lt;p&gt;The BBC has &lt;a href=&#34;http://news.bbc.co.uk/1/hi/technology/6309425.stm&#34;&gt;an excellent article where 4 users describe their favorite operating system&lt;/a&gt;. It seems extremely balanced and accurate to me. Although I can&amp;#8217;t help but point out one Windows user&amp;#8217;s admission that OSX is better:&lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -386,10 +386,10 @@ RewriteRule ^(.*)$ index.html [L,QSA]
     
     <item>
       <title>Vista Package Manager</title>
-      <link>/2007/01/30/vista-package-manager/</link>
+      <link>https://blog.schmichael.com/2007/01/30/vista-package-manager/</link>
       <pubDate>Tue, 30 Jan 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/01/30/vista-package-manager/</guid>
+      <guid>https://blog.schmichael.com/2007/01/30/vista-package-manager/</guid>
       <description>&lt;p&gt;Ars Technica has &lt;a href=&#34;http://arstechnica.com/news.ars/post/20070129-8728.html&#34;&gt;an article describing Microsoft Windows Vista&amp;#8217;s &amp;#8220;Anytime Upgrade&amp;#8221; feature&lt;/a&gt;. In the patent for the technology Microsoft describes it as &amp;#8220;modular OS updates.&amp;#8221;&lt;/p&gt;
 
 &lt;p&gt;So far it sounds like Microsoft got a clue from Linux and Apple: users want timely, incremental updates. Not years of silence followed by a monolithic change.&lt;/p&gt;
@@ -402,13 +402,13 @@ RewriteRule ^(.*)$ index.html [L,QSA]
     
     <item>
       <title>Administering Multiple Linux Servers Remotely</title>
-      <link>/2007/01/26/administering-multiple-linux-servers-remotely/</link>
+      <link>https://blog.schmichael.com/2007/01/26/administering-multiple-linux-servers-remotely/</link>
       <pubDate>Fri, 26 Jan 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/01/26/administering-multiple-linux-servers-remotely/</guid>
+      <guid>https://blog.schmichael.com/2007/01/26/administering-multiple-linux-servers-remotely/</guid>
       <description>&lt;p&gt;So I was playing around with &lt;a href=&#34;http://recordmydesktop.sourceforge.net/&#34;&gt;recordMyDesktop,&lt;/a&gt; and I decided I might as well make something useful with it.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;/files/remote_administration.ogg&#34;&gt;Administering Multiple Linux Servers Remotely&lt;/a&gt; (&lt;a href=&#34;http://www.theora.org/&#34;&gt;ogg&lt;/a&gt; format)&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.schmichael.com/files/remote_administration.ogg&#34;&gt;Administering Multiple Linux Servers Remotely&lt;/a&gt; (&lt;a href=&#34;http://www.theora.org/&#34;&gt;ogg&lt;/a&gt; format)&lt;/p&gt;
 
 &lt;p&gt;If you can&amp;#8217;t play Ogg Theora video files, [download VLC][4] &amp;#8211; it can play anything (or get Linux 😉 ).&lt;/p&gt;
 
@@ -430,10 +430,10 @@ RewriteRule ^(.*)$ index.html [L,QSA]
     
     <item>
       <title>Giving AD Domain Admins Root Access in Linux</title>
-      <link>/2007/01/26/giving-ad-domain-admins-root-access-in-linux/</link>
+      <link>https://blog.schmichael.com/2007/01/26/giving-ad-domain-admins-root-access-in-linux/</link>
       <pubDate>Fri, 26 Jan 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/01/26/giving-ad-domain-admins-root-access-in-linux/</guid>
+      <guid>https://blog.schmichael.com/2007/01/26/giving-ad-domain-admins-root-access-in-linux/</guid>
       <description>&lt;p&gt;The &lt;a href=&#34;http://www.gratisoft.us/sudo/&#34;&gt;sudo&lt;/a&gt; command makes it very easy to give the &lt;a href=&#34;http://technet2.microsoft.com/WindowsServer/en/library/1631acad-ef34-4f77-9c2e-94a62f8846cf1033.mspx?mfr=true&#34;&gt;Domain Admins&lt;/a&gt;, or any Active Directory group, root access on Linux workstations and servers.&lt;/p&gt;
 
 &lt;p&gt;The big prerequisite is that you have to have &lt;a href=&#34;http://www.samba.org/&#34;&gt;Samba&lt;/a&gt; and Winbind properly setup to authenticate your Linux boxes against Active Directory. Read Samba&amp;#8217;s documentation[&lt;a href=&#34;http://us3.samba.org/samba/docs/man/Samba-HOWTO-Collection/domain-member.html#ads-member&#34;&gt;1&lt;/a&gt;][&lt;a href=&#34;http://us3.samba.org/samba/docs/man/Samba-HOWTO-Collection/winbind.html&#34;&gt;2&lt;/a&gt;] and refer to my [InteropWiki][6] notes for help.&lt;/p&gt;
@@ -476,10 +476,10 @@ RewriteRule ^(.*)$ index.html [L,QSA]
     
     <item>
       <title>Setting Up Yet Another Debian Etch Server</title>
-      <link>/2007/01/25/setting-up-yet-another-debian-etch-server/</link>
+      <link>https://blog.schmichael.com/2007/01/25/setting-up-yet-another-debian-etch-server/</link>
       <pubDate>Thu, 25 Jan 2007 00:00:00 +0000</pubDate>
       
-      <guid>/2007/01/25/setting-up-yet-another-debian-etch-server/</guid>
+      <guid>https://blog.schmichael.com/2007/01/25/setting-up-yet-another-debian-etch-server/</guid>
       <description>&lt;p&gt;A teacher e-mailed me the other day wondering if I could setup a server with &lt;a href=&#34;http://moodle.org/&#34;&gt;Moodle&lt;/a&gt; on it for him to test. I was overjoyed at the request because the teacher had discovered Moodle, &lt;a href=&#34;http://mysql.com/&#34;&gt;MySQL,&lt;/a&gt; &lt;a href=&#34;http://php.net/&#34;&gt;PHP,&lt;/a&gt; and Linux (as well as their freeness) all by himself!&lt;/p&gt;
 
 &lt;p&gt;I used the &lt;a href=&#34;http://www.debian.org/&#34;&gt;Debian&lt;/a&gt; &lt;a href=&#34;http://www.debian.org/releases/etch/&#34;&gt;Etch&lt;/a&gt; &lt;a href=&#34;http://cdimage.debian.org/cdimage/daily-builds/daily/arch-latest/i386/iso-cd/debian-testing-i386-netinst.iso&#34;&gt;Net Install Daily Image&lt;/a&gt; for today (1/25/2007), and everything went pretty smoothly.&lt;/p&gt;

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Slides on </title>
-    <link>/tags/slides/</link>
-    <description>Recent content in Slides on </description>
+    <title>Slides on schmichael&#39;s blog</title>
+    <link>https://blog.schmichael.com/tags/slides/</link>
+    <description>Recent content in Slides on schmichael&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 25 Jan 2011 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/slides/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.schmichael.com/tags/slides/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Deploying Python behind Nginx Talk Slides</title>
-      <link>/2011/01/25/deploying-python-behind-nginx-talk-slides/</link>
+      <link>https://blog.schmichael.com/2011/01/25/deploying-python-behind-nginx-talk-slides/</link>
       <pubDate>Tue, 25 Jan 2011 00:00:00 +0000</pubDate>
       
-      <guid>/2011/01/25/deploying-python-behind-nginx-talk-slides/</guid>
+      <guid>https://blog.schmichael.com/2011/01/25/deploying-python-behind-nginx-talk-slides/</guid>
       <description>&lt;p&gt;I gave a talk on deploying Python WSGI apps behind &lt;a href=&#34;http://wiki.nginx.org/&#34;&gt;nginx&lt;/a&gt; at the &lt;a href=&#34;http://wiki.python.org/moin/PortlandPythonUserGroup&#34;&gt;Portland Python User Group&lt;/a&gt; meeting on January 11th and finally got around to publishing the slides: &lt;a href=&#34;https://docs.google.com/present/edit?id=0Ab7GDIugV1qCZGR6c3d6YnJfMTA1aGRtZmJxYzI&amp;amp;hl=en&#34;&gt;schmingx&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;I should mention &lt;a href=&#34;http://discorporate.us/jek/&#34;&gt;Jason Kirtland&lt;/a&gt; informed me after the meeting that &lt;a href=&#34;http://www.fastcgi.com/devkit/doc/fcgi-spec.html&#34;&gt;FastCGI&lt;/a&gt; supports [persistent connections (and a host of other features)][6] between a load balancer and backend app servers.&lt;/p&gt;
@@ -24,15 +24,15 @@
     
     <item>
       <title>Python Packaging Talk</title>
-      <link>/2009/09/09/python-packaging-talk/</link>
+      <link>https://blog.schmichael.com/2009/09/09/python-packaging-talk/</link>
       <pubDate>Wed, 09 Sep 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/09/09/python-packaging-talk/</guid>
+      <guid>https://blog.schmichael.com/2009/09/09/python-packaging-talk/</guid>
       <description>&lt;p&gt;I gave a talk at &lt;a href=&#34;http://pdxpython.org/&#34;&gt;PDX Python&lt;/a&gt; last night on Python Packaging. It&amp;#8217;s just an overview and introduction completely lacking in any practical examples.&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;/files/packaging.odp&#34;&gt;Python Packaging slides (ODP)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;/files/packaging-2.pdf&#34;&gt;Python Packaging slides (PDF)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.schmichael.com/files/packaging.odp&#34;&gt;Python Packaging slides (ODP)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.schmichael.com/files/packaging-2.pdf&#34;&gt;Python Packaging slides (PDF)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;small&gt;Let me know if the ODP source is messed up. OpenOffice.org liked randomly losing background images and forgetting other formatting.&lt;/small&gt;&lt;/p&gt;
