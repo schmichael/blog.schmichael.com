@@ -32,6 +32,6 @@ You can stalk me various places around the web:
  [5]: https://plus.google.com/+MichaelSchurter
  [6]: https://www.linkedin.com/in/michaelschurter
  [7]: https://www.nomadproject.io/
- [8]: http://blog.schmichael.com/static/2017-02-wa.jpg
+ [8]: http://blog.schmichael.com/2017-02-wa.jpg
  [9]: https://www.instagram.com/schmichael0/
  [10]: https://github.com/schmichael
