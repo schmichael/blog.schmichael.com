@@ -14,4 +14,4 @@ I did a presentation at [PDX Serverless Architecture Meetup][1] on self-hosted
 with 100% More Servers!"][2].
 
 [1]: https://www.meetup.com/Portland-Serverless-Architecture-Meetup/events/236706479/
-[2]: https://drive.google.com/open?id=1zFo25SiZxSKIidQGgsGPoIxZEbfaWtEw8pUUUQk4Ffc
+[2]: https://docs.google.com/presentation/d/1zFo25SiZxSKIidQGgsGPoIxZEbfaWtEw8pUUUQk4Ffc/edit?usp=sharing
