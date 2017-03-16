@@ -1,8 +1,9 @@
-baseurl: https://blog.schmichael.com
-title: schmichael's blog
-theme: "herring-cove"
+baseurl: "https://blog.schmichael.com"
+title:   "schmichael's blog"
+theme:   "herring-cove"
 permalinks:
-        post: /:year/:month/:day/:title/
+        post: "/:year/:month/:day/:title/"
+        page: "/:title/"
 params:
         # From Hugo docs
         AuthorName: "Michael Schurter"
