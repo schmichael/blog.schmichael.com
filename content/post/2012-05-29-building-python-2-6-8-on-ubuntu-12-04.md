@@ -35,4 +35,4 @@ You can also just grab the diff below:
  [1]: https://github.com/saghul/pythonz
  [2]: http://bugs.python.org/issue12012
  [3]: https://bitbucket.org/schmichael/cpython-v2.6.8-nosslv2/src/d77684a8fdd5
- [4]: http://schmichael.com/files/python-2.6.8~nosslv2.tar.gz
+ [4]: https://schmichael.com/files/python-2.6.8~nosslv2.tar.gz

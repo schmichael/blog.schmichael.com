@@ -60,11 +60,11 @@ I should note that MongoDB is fairly unique in the non-relational database world
 
 Sadly MongoDB currently doesn&#8217;t have the distributed features necessary to automatically handle data too big for a single server.
 
- [1]: http://schmichael.com/files/pagination.png
- [2]: http://schmichael.com/files/twitter-more.png
- [3]: http://schmichael.com/files/facebook-more.png
+ [1]: https://schmichael.com/files/pagination.png
+ [2]: https://schmichael.com/files/twitter-more.png
+ [3]: https://schmichael.com/files/facebook-more.png
  [4]: http://blog.urbanairship.com/2010/05/25/android-delivers-push-notifications-are-here-to-stay/
- [5]: http://schmichael.com/files/apids-more.png
+ [5]: https://schmichael.com/files/apids-more.png
  [6]: http://cassandra.apache.org/
  [7]: http://www.mongodb.org/display/DOCS/Aggregation#Aggregation-Count
  [8]: http://www.mongodb.org/display/DOCS/Advanced+Queries#AdvancedQueries-%7B%7Bskip%28%29%7D%7D

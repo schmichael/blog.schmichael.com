@@ -656,13 +656,13 @@ I don't know if this is the best solution or even a correct one, but it appears 
  [8]: http://sysoev.ru/en/
  [9]: http://nginx.org/download/nginx-0.8.54.tar.gz
  [10]: http://betterthangrep.com/
- [11]: http://schmichael.com/files/nginx-01-ack.png "ack-grep 'client sent .* method without'"
+ [11]: https://schmichael.com/files/nginx-01-ack.png "ack-grep 'client sent .* method without'"
  [12]: http://nginx.org/pipermail/nginx-devel/2010-December/000605.html
  [13]: http://nginx.org/pipermail/nginx-devel/2010-December/000606.html
  [14]: http://wiki.nginx.org/HttpDavModule
- [15]: http://schmichael.com/files/nginx-02-import-existing.png
- [16]: http://schmichael.com/files/nginx-03-debug-conf.png
- [17]: http://schmichael.com/files/nginx-04-select-process.png
- [18]: http://schmichael.com/files/nginx-05-debugging.png
+ [15]: https://schmichael.com/files/nginx-02-import-existing.png
+ [16]: https://schmichael.com/files/nginx-03-debug-conf.png
+ [17]: https://schmichael.com/files/nginx-04-select-process.png
+ [18]: https://schmichael.com/files/nginx-05-debugging.png
  [19]: https://github.com/schmichael/nginx/commit/c6051556460561bac4b0931fd9436e37b84925a3
  [20]: http://nginx.org/pipermail/nginx-devel/2010-December/000609.html
