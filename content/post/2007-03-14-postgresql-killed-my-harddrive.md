@@ -20,16 +20,10 @@ Luckily the harddrive still worked enough that I could attach it to another comp
 
 Below are the SMART statistics for the drive as collected by [smartmontools][4] and [munin][5]. As I was able to retrieve data off the disk, I would say SMART did its job even if it didn&#8217;t give me much warning.
 
-[![moodletremontlocal-smart_hda-day.png][6]][7]
-  
-[![moodletremontlocal-smart_hda-month.png][8]][9]
+*Images were lost in a blog transition circa 2017. Sorry!*
 
  [1]: http://www.postgresql.org
  [2]: http://developer.postgresql.org/pgdocs/postgres/runtime-config-wal.html
  [3]: http://www.postgresql.org/docs/8.1/interactive/runtime-config-wal.html
  [4]: http://smartmontools.sourceforge.net/
- [5]: http://munin.projects.linpro.no/
- [6]: http://michael.susens-schurter.com/blog/wp-content/uploads/2007/03/moodletremontlocal-smart_hda-day.png
- [7]: http://michael.susens-schurter.com/blog/wp-content/uploads/2007/03/moodletremontlocal-smart_hda-day.png "moodletremontlocal-smart_hda-day.png"
- [8]: http://michael.susens-schurter.com/blog/wp-content/uploads/2007/03/moodletremontlocal-smart_hda-month.png
- [9]: http://michael.susens-schurter.com/blog/wp-content/uploads/2007/03/moodletremontlocal-smart_hda-month.png "moodletremontlocal-smart_hda-month.png"
+ [5]: http://munin-monitoring.org/
